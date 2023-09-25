@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://81m78snn8tgj"
+path="res://.godot/imported/e4.mp3-0af85f7a79f6958d8e1c360976385321.mp3str"
+
+[deps]
+
+source_file="res://Piano Key WAV/e4.mp3"
+dest_files=["res://.godot/imported/e4.mp3-0af85f7a79f6958d8e1c360976385321.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ccdh3gbvv8jwm"
+path="res://.godot/imported/g-3.mp3-cd741c5a59848d0735e1bc20968861fc.mp3str"
+
+[deps]
+
+source_file="res://Piano Key WAV/g-3.mp3"
+dest_files=["res://.godot/imported/g-3.mp3-cd741c5a59848d0735e1bc20968861fc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
