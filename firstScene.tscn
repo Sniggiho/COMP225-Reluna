@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c1qqxujrvquvy"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 196.0
+offset_bottom = 126.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 276.0
+offset_bottom = 146.0
+text = "Hello World!"
