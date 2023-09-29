@@ -1,6 +1,8 @@
-[gd_scene format=3 uid="uid://c1qqxujrvquvy"]
+[gd_scene load_steps=2 format=3 uid="uid://c1qqxujrvquvy"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Script" path="res://AudioStreamPlayerTest.gd" id="1_0n51u"]
+
+[node name="Main" type="Node2D"]
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 196.0
@@ -12,3 +14,23 @@ size_flags_vertical = 4
 offset_right = 276.0
 offset_bottom = 146.0
 text = "Hello World!"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+script = ExtResource("1_0n51u")
+
+[node name="ButtonForDetuned" type="Button" parent="."]
+offset_left = 338.0
+offset_top = 376.0
+offset_right = 751.0
+offset_bottom = 478.0
+text = "press for detuned a3"
+
+[node name="ButtonForInTune" type="Button" parent="."]
+offset_left = 337.0
+offset_top = 184.0
+offset_right = 743.0
+offset_bottom = 285.0
+text = "Press for in tune a3"
+
+[connection signal="pressed" from="ButtonForDetuned" to="AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="ButtonForInTune" to="AudioStreamPlayer" method="_on_button_for_in_tune_pressed"]
