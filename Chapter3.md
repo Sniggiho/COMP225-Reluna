@@ -4,3 +4,7 @@ Uber surge pricing was ABSURD.
 $60 for a ride home??? DoorFactoryBurningGuy (mr. Wang) can't afford that. 
 Stuck, stranded, red handed, and broke, DoorFactoryBurningGuy was quickly cornered by the cops. 
 On the upside, his ride to the jail cell was free.
+The first thing he asked for was a lawyer specialized in arson.
+That's not a lawyer who loves to commit arson, but to practice its law. 
+He would know the best way to avoid the coming charges.
+When the cops asked why an arson laywer, he said no reason and smiled. 
