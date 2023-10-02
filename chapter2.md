@@ -12,3 +12,6 @@ You have to be able to eat it piece by piece, until there is nothing left.
 However, if you don't finish eating it in 5 minutes, then you die. 
 No one in the history of man kind has ever gotten to the door, so eating it in 5 minutes was even more unthinkable. 
 
+He prepared by eating doors in his spare time. 
+So he learned the subtleties in technique, taste, and pleasure in consuming different woods, brands, and sizes of door. 
+His favorite was an oak front door with a half-moon window. 
