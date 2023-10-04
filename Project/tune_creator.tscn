@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://0s7iemaa5lj5"]
+
+[ext_resource type="Script" path="res://TuneCreator.gd" id="1_8uf5y"]
+[ext_resource type="Texture2D" uid="uid://bwgscjeo6tp2x" path="res://TempImage/dogRight1.png" id="2_cfn4y"]
+
+[sub_resource type="Curve2D" id="Curve2D_akdvt"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 84, 155, 0, 0, 0, 0, 880, 157)
+}
+point_count = 2
+
+[node name="TuneCreator" type="Node2D" node_paths=PackedStringArray("tempNote")]
+script = ExtResource("1_8uf5y")
+tempNote = NodePath("TextureRect")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_akdvt")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(84, 155)
+rotation = 0.00251256
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_cfn4y")
