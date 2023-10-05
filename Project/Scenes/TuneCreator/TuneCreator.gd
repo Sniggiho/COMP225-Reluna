@@ -12,7 +12,7 @@ class_name TuneCreator
 @export var path : Path2D
 @onready var pathFollower = path.get_child(0)
 @export var dummyNote : PackedScene # This is a dummy note of a dog sprite.
-@export var note : PackedScene		# Real note. Button functionality and sound
+@export var noteScene : PackedScene		# Real note. Button functionality and sound
 
 @export var numNotes : int = 5
 @export var debug : bool = true
