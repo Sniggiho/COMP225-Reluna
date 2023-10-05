@@ -1,15 +1,27 @@
 extends Node2D
 class_name TuneCreator
 
-@export var pathFollower : PathFollow2D
-@export var tempNote : TextureRect
+@export var path : Path2D
+@onready var pathFollower = path.get_child(0)
+@export var dummyNote : PackedScene
 
-var list : Array
+@export var numNotes : int = 5
+
+var listOfNotes : Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
-	pass # Replace with function body.
+	var dx : float = 1.0 / (numNotes-1)
+	for i in range(numNotes):
+		
+		var note = dummyNote.instantiate()
+		add_child(note)
+		listOfNotes.append(note)
+		note.global_position = pathFollower.position
+		pathFollower.progress_ratio += dx
+		
+
 
 
 
@@ -18,5 +30,5 @@ func _process(delta):
 	pass
 
 func cleanup() -> void:
-	for note in list:
+	for note in listOfNotes:
 		note.queue_free()
