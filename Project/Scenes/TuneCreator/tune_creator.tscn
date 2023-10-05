@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://0s7iemaa5lj5"]
 
-[ext_resource type="Script" path="res://TuneCreator.gd" id="1_8uf5y"]
+[ext_resource type="Script" path="res://Scenes/TuneCreator/TuneCreator.gd" id="1_8uf5y"]
 [ext_resource type="Texture2D" uid="uid://bwgscjeo6tp2x" path="res://TempImage/dogRight1.png" id="2_cfn4y"]
 
 [sub_resource type="Curve2D" id="Curve2D_akdvt"]
