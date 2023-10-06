@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7kyrbrs3vv1m"]
+
+[ext_resource type="Script" path="res://Scenes/PlayBar/PlayBar.gd" id="1_3y8rp"]
+
+[node name="PlayBar" type="Polygon2D" node_paths=PackedStringArray("path")]
+position = Vector2(176, -74)
+scale = Vector2(0.111111, 2.04546)
+polygon = PackedVector2Array(185, 92, 185, 114, 194, 114, 194, 92)
+script = ExtResource("1_3y8rp")
+path = NodePath("")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/AudioStreamPlayerTest.gd" id="1_x644u"]
 [ext_resource type="PackedScene" uid="uid://0s7iemaa5lj5" path="res://Scenes/TuneCreator/tune_creator.tscn" id="2_8ghvy"]
-[ext_resource type="PackedScene" uid="uid://bw1j8vgpnjrk8" path="res://Scenes/Note/note.tscn" id="3_hn2g6"]
+[ext_resource type="PackedScene" uid="uid://b7kyrbrs3vv1m" path="res://Scenes/PlayBar/play_bar.tscn" id="3_quvye"]
 
 [sub_resource type="Curve2D" id="Curve2D_xmk5h"]
 _data = {
@@ -43,13 +43,24 @@ text = "Press for in tune a3"
 [node name="TuneCreator" parent="." node_paths=PackedStringArray("path") instance=ExtResource("2_8ghvy")]
 position = Vector2(200, 136)
 path = NodePath("../Path2D")
-note = ExtResource("3_hn2g6")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_xmk5h")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 position = Vector2(200, 136)
+loop = false
+
+[node name="PlayBar" parent="." node_paths=PackedStringArray("path") instance=ExtResource("3_quvye")]
+path = NodePath("../Path2D")
+
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 190.0
+offset_top = 195.0
+offset_right = 198.0
+offset_bottom = 203.0
+scale = Vector2(5, 4.28)
 
 [connection signal="pressed" from="ButtonForDetuned" to="AudioStreamPlayer" method="_on_button_pressed"]
 [connection signal="pressed" from="ButtonForInTune" to="AudioStreamPlayer" method="_on_button_for_in_tune_pressed"]
+[connection signal="pressed" from="PlayButton" to="PlayBar" method="play"]
