@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://dq0mp8xmuh00"]
 
 [ext_resource type="Script" path="res://Scenes/MusicStaff/MusicStaff.gd" id="1_5gv1w"]
-[ext_resource type="Texture2D" uid="uid://bproihxp3psmb" path="res://Scenes/MusicStaff/trebleClef.png" id="2_i6lif"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_o6m4j"]
 
 [node name="MusicStaff" type="Node2D"]
 position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_5gv1w")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 100.0
-offset_bottom = 100.0
-texture = ExtResource("2_i6lif")
-expand_mode = 3
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(120, 220)
+scale = Vector2(0.3, 0.3)
+texture = SubResource("ImageTexture_o6m4j")

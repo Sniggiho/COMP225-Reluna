@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bproihxp3psmb"
-path="res://.godot/imported/trebleClef.png-3f27f9f6cda29dd0d9514dfa9c755ec3.ctex"
+uid="uid://bspymo7qdmuuk"
+path="res://.godot/imported/trebleStaff.png-7036bf4046aed8c93ed7f197a9280615.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scenes/MusicStaff/trebleClef.png"
-dest_files=["res://.godot/imported/trebleClef.png-3f27f9f6cda29dd0d9514dfa9c755ec3.ctex"]
+source_file="res://Scenes/MusicStaff/trebleStaff.png"
+dest_files=["res://.godot/imported/trebleStaff.png-7036bf4046aed8c93ed7f197a9280615.ctex"]
 
 [params]
 
