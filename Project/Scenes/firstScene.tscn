@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1qqxujrvquvy"]
+[gd_scene load_steps=6 format=3 uid="uid://c1qqxujrvquvy"]
 
 [ext_resource type="Script" path="res://Scenes/AudioStreamPlayerTest.gd" id="1_x644u"]
 [ext_resource type="PackedScene" uid="uid://0s7iemaa5lj5" path="res://Scenes/TuneCreator/tune_creator.tscn" id="2_8ghvy"]
 [ext_resource type="PackedScene" uid="uid://b7kyrbrs3vv1m" path="res://Scenes/PlayBar/play_bar.tscn" id="3_quvye"]
+[ext_resource type="PackedScene" uid="uid://bw1j8vgpnjrk8" path="res://Scenes/Note/note.tscn" id="4_iblsp"]
 
 [sub_resource type="Curve2D" id="Curve2D_xmk5h"]
 _data = {
@@ -43,6 +44,7 @@ text = "Press for in tune a3"
 [node name="TuneCreator" parent="." node_paths=PackedStringArray("path") instance=ExtResource("2_8ghvy")]
 position = Vector2(200, 136)
 path = NodePath("../Path2D")
+noteScene = ExtResource("4_iblsp")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_xmk5h")

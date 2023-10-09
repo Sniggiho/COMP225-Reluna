@@ -25,7 +25,8 @@ func _ready():
 	var dx : float = 1.0 / (numNotes-1)
 	for i in range(numNotes):
 		
-		var note = dummyNote.instantiate()
+		var note = noteScene.instantiate()
+		note.setDetuneCents(randi_range(-50,50))
 		add_child(note)
 		listOfNotes.append(note)
 		note.global_position = pathFollower.position

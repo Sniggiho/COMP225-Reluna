@@ -1,7 +1,40 @@
 [gd_scene load_steps=3 format=3 uid="uid://bw1j8vgpnjrk8"]
 
 [ext_resource type="Script" path="res://Scenes/Note/Note.gd" id="1_2wmyl"]
-[ext_resource type="Script" path="res://Scenes/NoteAudioStreamPlayer.gd" id="2_l6d57"]
+
+[sub_resource type="GDScript" id="GDScript_ns5jr"]
+script/source = "extends AudioStreamPlayer
+
+var defaultVolume = 3 # this is in decibels
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	var noteName = get_node(\"..\").getNoteName()
+	var audioStream: AudioStreamMP3 = loadMp3(\"res://Piano Key WAV/\" + noteName + \".mp3\")
+	self.set_stream(audioStream)
+	self.set_volume_db(defaultVolume)
+
+func loadMp3(path) -> AudioStreamMP3:
+	var file = FileAccess.open(path, FileAccess.READ)
+	var sound = AudioStreamMP3.new()
+	sound.data = file.get_buffer(file.get_length())
+	return sound
+	
+func playDetuned() -> void:
+	var detuneCents = get_node(\"..\").getDetuneCents()
+	print(detuneCents)
+	var detuneRatio = get_node(\"..\").centsToRatio(detuneCents) # this is a scaling factor on the original pitch
+	print(detuneRatio)
+	self.set_pitch_scale(detuneRatio)
+	self.play()
+	
+func playInTune() -> void:
+	self.set_pitch_scale(1)
+	self.play()
+	
+func _onButtonPressed() -> void:
+	self.playDetuned() 
+"
 
 [node name="Note" type="Node2D"]
 script = ExtResource("1_2wmyl")
@@ -20,8 +53,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+text = "this is a note"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-script = ExtResource("2_l6d57")
+script = SubResource("GDScript_ns5jr")
 
 [connection signal="pressed" from="Button" to="AudioStreamPlayer" method="playDetuned"]
