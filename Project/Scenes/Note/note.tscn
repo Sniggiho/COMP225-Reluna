@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bw1j8vgpnjrk8"]
+[gd_scene load_steps=5 format=3 uid="uid://bw1j8vgpnjrk8"]
 
 [ext_resource type="Script" path="res://Scenes/Note/Note.gd" id="1_2wmyl"]
+[ext_resource type="Texture2D" uid="uid://bwgscjeo6tp2x" path="res://TempImage/dogRight1.png" id="2_sbi0h"]
 
 [sub_resource type="GDScript" id="GDScript_ns5jr"]
 script/source = "extends AudioStreamPlayer
@@ -62,7 +63,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "this is a note"
+focus_mode = 0
+action_mode = 0
+icon = ExtResource("2_sbi0h")
+flat = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 script = SubResource("GDScript_ns5jr")
