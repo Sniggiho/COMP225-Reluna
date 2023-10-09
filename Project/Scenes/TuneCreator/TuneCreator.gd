@@ -21,17 +21,11 @@ var _numNotes : int = 5
 var _listOfNotes : Array
 
 # Pregenerated list of all possible notes 
-var possibleNotes : Array
+var _possibleNotes : Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	possibleNotes = _createNoteArrayInKey(4,3,5, false)
-var _allPossibleNotes : Array
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	_allPossibleNotes = _createPossibleNoteArray(3,5)
-
+	_possibleNotes = _createNoteArrayInKey(4,3,5, false)
 	generate()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -57,8 +51,7 @@ func generate() -> void:
 		_pathFollower.progress_ratio += dx
 		var note = _noteScene.instantiate()
 		note.setDetuneCents(randi_range(-50,50))
-		note.setNoteByName(possibleNotes[randi() % possibleNotes.size()])
-		note.setNoteByName(_allPossibleNotes[randi() % _allPossibleNotes.size()])
+		note.setNoteByName(_possibleNotes[randi() % _possibleNotes.size()])
 		
 		add_child(note)
 		_listOfNotes.append(note)
@@ -69,9 +62,8 @@ func cleanup() -> void:
 	for note in _listOfNotes:
 		note.queue_free()
 
-func _createNoteArrayChromatic(lowOct, highOct)-> Array:
 # Internal function for creation of all possible note names between two given octaves. 
-func _createPossibleNoteArray(lowOct, highOct)-> Array:
+func _createNoteArrayChromatic(lowOct, highOct)-> Array:
 	""" This currently just generates all the possible note names between the two given octaves.
 	Later, this should be able to generate specific keys as note sets, and give more control in the exact range created,
 	the idea being that the user will someday adjust these parameters"""
