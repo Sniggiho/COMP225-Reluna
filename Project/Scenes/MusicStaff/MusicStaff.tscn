@@ -7,6 +7,8 @@
 [node name="MusicStaff" type="Node2D"]
 position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_5gv1w")
+lineHeight = 0.03
+lineThickness = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(120, 220)
