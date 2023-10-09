@@ -26,8 +26,17 @@ var allPossibleNotes : Array
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	allPossibleNotes = _createPossibleNoteArray(3,5)
-	print(allPossibleNotes)
-	
+
+	generate()
+
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+
+func generate() -> void:
 	var dx : float = 1.0 / (numNotes-1)
 	dx = 1.0 / numNotes
 	
@@ -40,18 +49,6 @@ func _ready():
 		add_child(note)
 		listOfNotes.append(note)
 		note.global_position = pathFollower.position
-		
-
-
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-func generate() -> void:
-	
-	pass
 
 
 func cleanup() -> void:
