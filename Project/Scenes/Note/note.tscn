@@ -22,11 +22,13 @@ func loadMp3(path) -> AudioStreamMP3:
 	
 func playDetuned() -> void:
 	var detuneCents = get_node(\"..\").getDetuneCents()
-	print(detuneCents)
 	var detuneRatio = get_node(\"..\").centsToRatio(detuneCents) # this is a scaling factor on the original pitch
-	print(detuneRatio)
 	self.set_pitch_scale(detuneRatio)
 	self.play()
+	
+	print(get_node(\"..\").noteName)
+	print(str(detuneCents) + \" cents out of tune\")
+
 	
 func playInTune() -> void:
 	self.set_pitch_scale(1)
