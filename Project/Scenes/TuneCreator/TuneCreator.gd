@@ -1,24 +1,24 @@
 extends Node2D
 class_name TuneCreator
+## The tune creator is an object that handles, in our main scene, the generation of notes.
+## 	
+## Must be given a Path2D in the inspector (this Path2D must have its PathFollow2D).
+## Then, the TuneCreator be given the note scene. 
+##
+## For n notes, the tune creator divides the path into equal chunks.
+## A note is created, then added as a child of the TuneCreator.
+## 	NOTE: the note's position is edited with *global* position
 
-# The tune creator is an object that handles, in our main scene, the generation of notes
-# 	- Must be given a Path2D in the inspector (this Path2D must have its PathFollow2D).
-#	- Then, the TuneCreator be given the scene for the note.
-#
-# For n notes, the tune creator divides the path into equal chunks
-# A note is created, then added as a child of the TuneCreator.
-# 	NOTE: the note's position is edited with *global* position
 
-@export var path : Path2D
-@onready var pathFollower : PathFollow2D = path.get_child(0)
-@export var dummyNote : PackedScene # This is a dummy note of a dog sprite.
-@export var noteScene : PackedScene # Real note. Button functionality and sound
+@export var _path : Path2D
+@onready var _pathFollower : PathFollow2D = _path.get_child(0)
+@export var _dummyNote : PackedScene # This is a dummy note of a dog sprite.
+@export var _noteScene : PackedScene # Real note. Button functionality and sound
 
-@export var numNotes : int = 5
-@export var debug : bool = true
+var _numNotes : int = 5
 
 # Indicates the list of notes that are put on the screen
-var listOfNotes : Array
+var _listOfNotes : Array
 
 # Pregenerated list of all possible notes 
 var possibleNotes : Array
@@ -26,32 +26,52 @@ var possibleNotes : Array
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	possibleNotes = _createNoteArrayInKey(4,3,5, false)
+var _allPossibleNotes : Array
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	_allPossibleNotes = _createPossibleNoteArray(3,5)
+
 	generate()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
+## For use in free play mode, the user's selection of difficulty is passed to
+## the Tune Creator for the generation of notes. 
+func setSpawnParameters() -> void:
+	pass
+
+## Supply a specific melody or set of notes to create.
+## i.e. tutorial levels or debugging. 
+func setSpecifcSpawn() -> void:
+	pass
+
+## Given the parameters for generating notes, running generate will populate the screen with notes. 
 func generate() -> void:
-	var dx : float = 1.0 / (numNotes-1)
-	dx = 1.0 / numNotes
+	var dx : float = 1.0 / (_numNotes-1)
+	dx = 1.0 / _numNotes
 	
-	for i in range(numNotes):
-		pathFollower.progress_ratio += dx
-		var note = noteScene.instantiate()
+	for i in range(_numNotes):
+		_pathFollower.progress_ratio += dx
+		var note = _noteScene.instantiate()
 		note.setDetuneCents(randi_range(-50,50))
 		note.setNoteByName(possibleNotes[randi() % possibleNotes.size()])
+		note.setNoteByName(_allPossibleNotes[randi() % _allPossibleNotes.size()])
 		
 		add_child(note)
-		listOfNotes.append(note)
-		note.global_position = pathFollower.position
+		_listOfNotes.append(note)
+		note.global_position = _pathFollower.position
 
-
+## Remove all notes.
 func cleanup() -> void:
-	for note in listOfNotes:
+	for note in _listOfNotes:
 		note.queue_free()
 
 func _createNoteArrayChromatic(lowOct, highOct)-> Array:
+# Internal function for creation of all possible note names between two given octaves. 
+func _createPossibleNoteArray(lowOct, highOct)-> Array:
 	""" This currently just generates all the possible note names between the two given octaves.
 	Later, this should be able to generate specific keys as note sets, and give more control in the exact range created,
 	the idea being that the user will someday adjust these parameters"""
