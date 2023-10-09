@@ -10,23 +10,29 @@ class_name TuneCreator
 # 	NOTE: the note's position is edited with *global* position
 
 @export var path : Path2D
-@onready var pathFollower = path.get_child(0)
+@onready var pathFollower : PathFollow2D = path.get_child(0)
 @export var dummyNote : PackedScene # This is a dummy note of a dog sprite.
-@export var noteScene : PackedScene		# Real note. Button functionality and sound
+@export var noteScene : PackedScene # Real note. Button functionality and sound
 
 @export var numNotes : int = 5
 @export var debug : bool = true
 
+# Indicates the list of notes that are put on the screen
 var listOfNotes : Array
+
+# Pregenerated list of all possible notes 
 var allPossibleNotes : Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	allPossibleNotes = _createPossibleNoteArray(3,5)
+	print(allPossibleNotes)
 	
 	var dx : float = 1.0 / (numNotes-1)
+	dx = 1.0 / numNotes
 	
 	for i in range(numNotes):
+		pathFollower.progress_ratio += dx
 		var note = noteScene.instantiate()
 		note.setDetuneCents(randi_range(-50,50))
 		note.setNoteByName(allPossibleNotes[randi() % allPossibleNotes.size()])
@@ -34,7 +40,6 @@ func _ready():
 		add_child(note)
 		listOfNotes.append(note)
 		note.global_position = pathFollower.position
-		pathFollower.progress_ratio += dx
 		
 
 
@@ -47,6 +52,7 @@ func _process(delta):
 func generate() -> void:
 	
 	pass
+
 
 func cleanup() -> void:
 	for note in listOfNotes:
