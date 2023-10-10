@@ -57,6 +57,15 @@ func generate() -> void:
 		_listOfNotes.append(note)
 		note.global_position = _pathFollower.position
 
+## Getter method for retrieving the list of notes
+func getListOfNotes() -> Array:
+	return _listOfNotes
+
+## Getter method for the set of notes the user has selected (i.e., that bad ones)
+func getSelectedNotes() -> Array:
+	return []
+	pass
+
 ## Remove all notes.
 func cleanup() -> void:
 	for note in _listOfNotes:
