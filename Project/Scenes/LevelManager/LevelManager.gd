@@ -2,8 +2,7 @@ extends Node2D
 class_name LevelManager
 ## The Level Manager manages the level (wow!). 
 ## 
-## Handles the generation of the tune and then commands the tune creator
-## Checks the players input against the expected solution. 
+## Handles the the level's parameters and communicates them to the Tune Creator
 ##
 ## The Level Manager will also be responsible for spawning the feedback window
 
