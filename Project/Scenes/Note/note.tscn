@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bw1j8vgpnjrk8"]
 
 [ext_resource type="Script" path="res://Scenes/Note/Note.gd" id="1_2wmyl"]
-[ext_resource type="Texture2D" uid="uid://bwgscjeo6tp2x" path="res://TempImage/dogRight1.png" id="2_sbi0h"]
+[ext_resource type="Texture2D" uid="uid://bqio3dujm8dsq" path="res://Scenes/Note/quarter.png" id="3_07ysi"]
 
 [sub_resource type="GDScript" id="GDScript_ns5jr"]
 script/source = "extends AudioStreamPlayer
@@ -45,28 +45,32 @@ func _on_area_2d_area_entered(area):
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q24im"]
+size = Vector2(57.5, 59.5)
 
 [node name="Note" type="Node2D"]
 script = ExtResource("1_2wmyl")
 
 [node name="Button" type="Button" parent="."]
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -29.0
+offset_top = -29.0
+offset_right = 29.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 focus_mode = 0
 action_mode = 0
-icon = ExtResource("2_sbi0h")
 flat = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Button"]
+position = Vector2(31, -36)
+scale = Vector2(0.064375, 0.0724404)
+texture = ExtResource("3_07ysi")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 script = SubResource("GDScript_ns5jr")

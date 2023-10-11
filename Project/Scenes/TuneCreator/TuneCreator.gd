@@ -52,7 +52,7 @@ func generate() -> void:
 		var note = _noteScene.instantiate()
 		note.setDetuneCents(randi_range(-50,50))
 		note.setNoteByName(_possibleNotes[randi() % _possibleNotes.size()])
-		
+		note.orientation()
 		add_child(note)
 		_listOfNotes.append(note)
 		note.global_position = _pathFollower.position

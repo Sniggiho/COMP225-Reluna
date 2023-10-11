@@ -28,3 +28,12 @@ func setDetuneCents(cents) -> void:
 	
 func getDetuneCents() -> int:
 	return detuneCents
+
+func orientation() -> void:
+	if(noteName[-1] > "4"):
+		var sprite = $Button/Sprite2D
+		sprite.set_flip_h(true)
+		sprite.set_flip_v(true)
+		var height = sprite.texture.get_height()
+		sprite.set_offset(Vector2(0,height*0.55))
+	
