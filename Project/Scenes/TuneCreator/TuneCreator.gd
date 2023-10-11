@@ -29,7 +29,7 @@ func _ready():
 	generate()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 ## For use in free play mode, the user's selection of difficulty is passed to
@@ -64,7 +64,6 @@ func getListOfNotes() -> Array:
 ## Getter method for the set of notes the user has selected (i.e., that bad ones)
 func getSelectedNotes() -> Array:
 	return []
-	pass
 
 ## Remove all notes.
 func cleanup() -> void:
@@ -83,8 +82,9 @@ func _createNoteArrayChromatic(lowOct, highOct)-> Array:
 				allNotes.append(note+"-"+str(oct))
 	return allNotes
 
-##Creates an array containing the note names for a mode with the specified number of accidentals
 	
+##Creates an array containing the note names for a mode with the specified number of accidentals
+##
 ##	Parameters:
 ##		accidentals : int 
 ##			number of accidentals for the desired key
