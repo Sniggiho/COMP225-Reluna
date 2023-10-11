@@ -17,6 +17,8 @@ point_count = 2
 
 [node name="MusicStaff" parent="." instance=ExtResource("5_bafn2")]
 position = Vector2(0, 0)
+lineHeight = 0.07
+lineThickness = 5.0
 
 [node name="TextureRect" type="TextureRect" parent="."]
 offset_right = 196.0

@@ -9,9 +9,9 @@ class_name MusicStaff
 # ledger lines
 var noteWidth = 0
 # scaling factor based on size of screen
-@export var lineHeight = 0.08
+@export var lineHeight = 0.07
 @export var staffLength = 0.90
-@export var lineThickness = 6.0
+@export var lineThickness = 5.0
 # size of screen
 var screenX
 var screenY 
@@ -38,8 +38,11 @@ func _draw():
 	for i in range(5):
 		draw_line(Vector2(startX, y), Vector2(startX + screenX * staffLength, y), Color.BLACK, lineThickness)
 		y = y + screenY * lineHeight
-	draw_line(Vector2(startX, startY), Vector2(startX, y - lineHeight * screenY), Color.BLACK, lineThickness)
-	draw_line(Vector2(startX + screenX * staffLength,startY), Vector2(startX + screenX * staffLength, y - lineHeight * screenY), Color.BLACK, lineThickness)
+	draw_line(Vector2(startX, startY - 2.5), Vector2(startX, y - lineHeight * screenY + 2.2), Color.BLACK, lineThickness* 1.5)
+	draw_line(Vector2(startX + screenX * staffLength,startY - 2.5 ), Vector2(startX + screenX * staffLength, y - lineHeight * screenY + 2.2), Color.BLACK, lineThickness * 1.5)
+	
+func getLineHeight() -> float:
+	return screenY * lineHeight
 	
 
 

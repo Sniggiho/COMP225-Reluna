@@ -11,6 +11,6 @@ lineHeight = 0.03
 lineThickness = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(120, 220)
-scale = Vector2(0.3, 0.3)
+position = Vector2(170, 270)
+scale = Vector2(0.4, 0.4)
 texture = SubResource("ImageTexture_o6m4j")
