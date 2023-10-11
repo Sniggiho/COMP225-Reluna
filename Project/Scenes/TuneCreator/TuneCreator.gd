@@ -25,7 +25,7 @@ var _possibleNotes : Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_possibleNotes = _createNoteArrayInKey(4,3,5, false)
+	_possibleNotes = _createNoteArrayInKey(4, false, 3,5)
 	generate()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
