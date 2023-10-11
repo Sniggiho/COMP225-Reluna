@@ -56,7 +56,7 @@ func generate() -> void:
 		add_child(note)
 		_listOfNotes.append(note)
 		note.global_position = _pathFollower.position
-
+		
 ## Getter method for retrieving the list of notes
 func getListOfNotes() -> Array:
 	return _listOfNotes
@@ -73,9 +73,8 @@ func cleanup() -> void:
 
 # Internal function for creation of all possible note names between two given octaves. 
 func _createNoteArrayChromatic(lowOct, highOct)-> Array:
-	""" This currently just generates all the possible note names between the two given octaves.
-	Later, this should be able to generate specific keys as note sets, and give more control in the exact range created,
-	the idea being that the user will someday adjust these parameters"""
+	"""Generates all the possible note names between the two given octaves (inclusive)
+	"""
 	var allNotes = []
 	for note in ["a","b","c","d","e","f","g"]:
 		for oct in range(lowOct,highOct+1):
@@ -83,14 +82,31 @@ func _createNoteArrayChromatic(lowOct, highOct)-> Array:
 			if note not in ["b","e"]:
 				allNotes.append(note+"-"+str(oct))
 	return allNotes
+
+##Creates an array containing the note names for a mode with the specified number of accidentals
 	
-func _createNoteArrayInKey(accidentals, lowOct, highOct, bySharps=true) -> Array:
-	""" Creates an array containing the note names for a mode with the specified number of sharps"""
+##	Parameters:
+##		accidentals : int 
+##			number of accidentals for the desired key
+##		bySharps : boolean 
+##			if true adds accidentals as sharps; otherwise adds them as flats
+##		lowOct : int 
+##			lowest octave from which to include note (inclusive)
+##		highOct : int 
+##			lowest octave from which to include note (inclusive)
+##
+##	Return:
+##		allNotes : array
+##			array containing the names of all notes found in the given key
+func _createNoteArrayInKey(accidentals, bySharps, lowOct, highOct) -> Array:
+
 	# sharps order is: F – C – G – D – A – E – B
 	# flats order is: B - E - A - D - G - C - F
 	
 	var sharps = ["f-", "c-", "g-", "d-", "a-", "e-", "b-"]
+	
 	var flats = ["a-", "d-", "g-", "c-", "f-", "b-", "e-"]
+	var naturalsForFlats = ["b","e","a","d","g","c","f"] # to simplify adding natural notes to a key with flats
 	
 	var notesInKey = []
 	var allNotes = []
@@ -104,7 +120,7 @@ func _createNoteArrayInKey(accidentals, lowOct, highOct, bySharps=true) -> Array
 		for i in range(accidentals):
 			notesInKey.append(flats[i])
 		for i in range(accidentals, 7):
-			notesInKey.append(flats[i].replace("-",""))
+			notesInKey.append(naturalsForFlats[i])
 	
 	for oct in range(lowOct,highOct+1):
 		for note in notesInKey:
