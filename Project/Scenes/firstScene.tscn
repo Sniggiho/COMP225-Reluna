@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://0s7iemaa5lj5" path="res://Scenes/TuneCreator/tune_creator.tscn" id="2_8ghvy"]
 [ext_resource type="PackedScene" uid="uid://bjs47qh2te7ar" path="res://Scenes/TuneCreator/dummyNote.tscn" id="3_jfqfn"]
 [ext_resource type="PackedScene" uid="uid://b7kyrbrs3vv1m" path="res://Scenes/PlayBar/play_bar.tscn" id="3_quvye"]
-[ext_resource type="PackedScene" uid="uid://bw1j8vgpnjrk8" path="res://Scenes/Note/note.tscn" id="4_iblsp"]
+[ext_resource type="PackedScene" uid="uid://bw1j8vgpnjrk8" path="res://Scenes/Note/Note.tscn" id="4_iblsp"]
 [ext_resource type="PackedScene" uid="uid://dq0mp8xmuh00" path="res://Scenes/MusicStaff/MusicStaff.tscn" id="5_bafn2"]
 
 [sub_resource type="Curve2D" id="Curve2D_xmk5h"]
