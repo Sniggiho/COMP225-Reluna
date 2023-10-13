@@ -15,17 +15,19 @@ class_name TuneCreator
 @export var _dummyNote : PackedScene # This is a dummy note of a dog sprite.
 @export var _noteScene : PackedScene # Real note. Button functionality and sound
 
-var _numNotes : int = 5
+var _numNotes : int
+var _detunedList : Array
+var _detuneDir : int # -1 for flat only, 0 for both, 1 for sharp only
+var _maxDetuneCents : int
+var _minDetuneCents : int
 
 # Indicates the list of notes that are put on the screen
 var _listOfNotes : Array
-
 # Pregenerated list of all possible notes 
 var _possibleNotes : Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_possibleNotes = _createNoteArrayInKey(4, false, 3,5)
 	generate()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -34,13 +36,14 @@ func _process(_delta):
 
 ## For use in free play mode, the user's selection of difficulty is passed to
 ## the Tune Creator for the generation of notes. 
-func setSpawnParameters() -> void:
-	pass
-
-## Supply a specific melody or set of notes to create.
-## i.e. tutorial levels or debugging. 
-func setSpecifcSpawn() -> void:
-	pass
+func setupRand(numAccidentals, bySharps, minOct, maxOct, detunedList, detuneDir, maxDetuneCents, minDetuneCents) -> void:
+	_possibleNotes = _createNoteArrayInKey(numAccidentals,bySharps,minOct,maxOct)
+	
+	_numNotes = len(detunedList)
+	_detunedList = detunedList
+	_detuneDir = detuneDir # -1 for flat only, 0 for both, 1 for sharp only
+	_maxDetuneCents = maxDetuneCents
+	_minDetuneCents = minDetuneCents
 
 ## Given the parameters for generating notes, running generate will populate the screen with notes. 
 func generate() -> void:
@@ -50,8 +53,23 @@ func generate() -> void:
 	for i in range(_numNotes):
 		_pathFollower.progress_ratio += dx
 		var note = _noteScene.instantiate()
-		note.setDetuneCents(randi_range(-50,50))
+		
+		if _detunedList[i]: # if this note should be detuned
+			
+			if _detuneDir == 0: # if we can detune either way, randomly select which
+				var tempDetuneDir = randi_range(0,1)*-1
+			else: # otherwise just go with the detune direction previously specified
+				var tempDetuneDir = _detuneDir
+				
+			if tempDetuneDir == 1:
+				note.setDetuneCents(randi_range(_minDetuneCents, _maxDetuneCents))
+			elif tempDetuneDir == -1:
+				note.setDetuneCents(randi_range(-1*_maxDetuneCents, -1*_minDetuneCents))
+			else:
+				print("Error in detune direction. Should not get here")
+				
 		note.setNoteByName(_possibleNotes[randi() % _possibleNotes.size()])
+		
 		note.orientation()
 		add_child(note)
 		_listOfNotes.append(note)
