@@ -10,10 +10,9 @@ class_name TuneCreator
 ## 	NOTE: the note's position is edited with *global* position
 
 
-@export var _path : Path2D
-@onready var _pathFollower : PathFollow2D = _path.get_child(0)
-@export var _dummyNote : PackedScene # This is a dummy note of a dog sprite.
-@export var _noteScene : PackedScene # Real note. Button functionality and sound
+var _path : Path2D
+var _pathFollower : PathFollow2D
+@onready var _noteScene : PackedScene = preload("res://Scenes/Note/note.tscn") # Real note. Button functionality and sound
 
 var _numNotes : int
 var _detunedList : Array
@@ -36,16 +35,21 @@ func _ready():
 func _process(_delta):
 	pass
 
+func givePath(path : Path2D):
+	self._path = path
+	_pathFollower = path.get_child(0)
+
 ## For use in free play mode, the user's selection of difficulty is passed to
 ## the Tune Creator for the generation of notes. 
+## _tuneCreator.setUpRand(numAccidentals, bySharp, minOct, maxOct, listOfDetunedNotes, detuneDirection, maxDetuneCents, minDetuneCents)
 func setupRand(numAccidentals, bySharps, minOct, maxOct, detunedList, detuneDir, maxDetuneCents, minDetuneCents) -> void:
-	_possibleNotes = _createNoteArrayInKey(numAccidentals,bySharps,minOct,maxOct)
+	self._possibleNotes = _createNoteArrayInKey(numAccidentals,bySharps,minOct,maxOct)
 	
-	_numNotes = len(detunedList)
-	_detunedList = detunedList
-	_detuneDir = detuneDir # -1 for flat only, 0 for both, 1 for sharp only
-	_maxDetuneCents = maxDetuneCents
-	_minDetuneCents = minDetuneCents
+	self._numNotes = len(detunedList)
+	self._detunedList = detunedList
+	self._detuneDir = detuneDir # -1 for flat only, 0 for both, 1 for sharp only
+	self._maxDetuneCents = maxDetuneCents
+	self._minDetuneCents = minDetuneCents
 	
 	generate()
 
@@ -62,7 +66,7 @@ func generate() -> void:
 			var tempDetuneDir : int
 			
 			if _detuneDir == 0: # if we can detune either way, randomly select which
-				tempDetuneDir = randi_range(0,1)*-1
+				tempDetuneDir = randi_range(0,1)*2-1
 			else: # otherwise just go with the detune direction previously specified
 				tempDetuneDir = _detuneDir
 				
@@ -77,6 +81,8 @@ func generate() -> void:
 		
 		note.orientation()
 		add_child(note)
+		
+		print(note.global_position)
 		_listOfNotes.append(note)
 		note.global_position = _pathFollower.position
 		

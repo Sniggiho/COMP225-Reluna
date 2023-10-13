@@ -1,10 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c1qqxujrvquvy"]
+[gd_scene load_steps=6 format=3 uid="uid://c1qqxujrvquvy"]
 
 [ext_resource type="Script" path="res://Scenes/AudioStreamPlayerTest.gd" id="1_x644u"]
-[ext_resource type="PackedScene" uid="uid://0s7iemaa5lj5" path="res://Scenes/TuneCreator/tune_creator.tscn" id="2_8ghvy"]
-[ext_resource type="PackedScene" uid="uid://bjs47qh2te7ar" path="res://Scenes/TuneCreator/dummyNote.tscn" id="3_jfqfn"]
+[ext_resource type="Script" path="res://Scenes/LevelManager/LevelManager.gd" id="1_xad2n"]
 [ext_resource type="PackedScene" uid="uid://b7kyrbrs3vv1m" path="res://Scenes/PlayBar/play_bar.tscn" id="3_quvye"]
-[ext_resource type="PackedScene" uid="uid://bw1j8vgpnjrk8" path="res://Scenes/Note/note.tscn" id="4_iblsp"]
 [ext_resource type="PackedScene" uid="uid://dq0mp8xmuh00" path="res://Scenes/MusicStaff/MusicStaff.tscn" id="5_bafn2"]
 
 [sub_resource type="Curve2D" id="Curve2D_xmk5h"]
@@ -14,6 +12,12 @@ _data = {
 point_count = 2
 
 [node name="Main" type="Node2D"]
+
+[node name="LevelManager" type="Node2D" parent="." node_paths=PackedStringArray("path")]
+script = ExtResource("1_xad2n")
+maxDetuneCents = 20
+minDetuneCents = 10
+path = NodePath("../Path2D")
 
 [node name="MusicStaff" parent="." instance=ExtResource("5_bafn2")]
 position = Vector2(0, 0)
@@ -47,12 +51,6 @@ offset_top = 184.0
 offset_right = 743.0
 offset_bottom = 285.0
 text = "Press for in tune a3"
-
-[node name="TuneCreator" parent="." node_paths=PackedStringArray("_path") instance=ExtResource("2_8ghvy")]
-position = Vector2(200, 136)
-_path = NodePath("../Path2D")
-_dummyNote = ExtResource("3_jfqfn")
-_noteScene = ExtResource("4_iblsp")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_xmk5h")

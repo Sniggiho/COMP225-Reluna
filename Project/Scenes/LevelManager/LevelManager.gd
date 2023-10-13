@@ -15,39 +15,42 @@ class_name LevelManager
 ## The Level Manager will also be responsible for spawning the feedback window
 
 ## Number of accidentals, refer to the circle of fifths. Number of flat or sharp notes
-var numAccidentals : int = 0
+@export var numAccidentals : int = 3
 
 ## bySharp controls whether the accidentals will be sharps or flats. This will 
 ## impact which notes can occur and which icon (sharp or flat) to draw on the staff
-var bySharp : bool = true
+@export var bySharp : bool = true
 
 ## Number of notes to spawn on screen
-var numNotes : int = 5
+@export var numNotes : int = 5
 
 ## Number of notes that will be out of tune.
 ## Should be less then numNotes.
-var numOutOfTune : int = 2
+@export var numOutOfTune : int = 2
 
 ## The maximum number of cents the note can be out of tune.
-var maxDetuneCents : int = 50
+@export var maxDetuneCents : int = 50
 
 ## The minimum number of cents the note can be out of tune.
-var minDetuneCents : int = 5
+@export var minDetuneCents : int = 5
 
 ## The minimum octave of notes to generate
-var minOct : int = 3
+@export var minOct : int = 3
 
 ## The maximum octave of notes to generate
-var maxOct : int = 5
+@export var maxOct : int = 5
 
 ## Direction of detune, that is sharp or flat or both.
 ## Sharp indicates increasing cents (detuneDirection =  1). 
 ## Flat indicates decreasing cents  (detuneDirection = -1). 
 ## Both means it could be either    (detuneDirection =  0).
-var detuneDirection : int = 0
+@export var detuneDirection : int = 0
 
 ## TODO
 @onready var feedbackWindow : PackedScene
+
+## Path is passed to the tune creator
+@export var path : Path2D
 
 @onready var _tuneCreatorScene : PackedScene = preload("res://Scenes/TuneCreator/tune_creator.tscn")
 var _tuneCreator : TuneCreator
@@ -71,7 +74,8 @@ func createListOfDetunedNotes() -> void:
 func createTuneCreator() -> void:
 	_tuneCreator = _tuneCreatorScene.instantiate()
 	add_child(_tuneCreator)
-	_tuneCreator.setUpRand(numAccidentals, bySharp, minOct, maxOct, listOfDetunedNotes, detuneDirection, maxDetuneCents, minDetuneCents)
+	_tuneCreator.givePath(path)
+	_tuneCreator.setupRand(numAccidentals, bySharp, minOct, maxOct, listOfDetunedNotes, detuneDirection, maxDetuneCents, minDetuneCents)
 	pass
 
 ## Delete the tune creator (ideally you're going to create a new one with 
@@ -102,5 +106,6 @@ func checkPlayerInput():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	createListOfDetunedNotes()
+	createTuneCreator()
 	print(listOfDetunedNotes)
 	pass
