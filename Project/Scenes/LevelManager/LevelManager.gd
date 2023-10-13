@@ -26,7 +26,7 @@ var numNotes : int = 5
 
 ## Number of notes that will be out of tune.
 ## Should be less then numNotes.
-var numOutOfTune : int = 1
+var numOutOfTune : int = 2
 
 ## The maximum number of cents the note can be out of tune.
 var maxDetuneCents : int = 50
@@ -34,11 +34,11 @@ var maxDetuneCents : int = 50
 ## The minimum number of cents the note can be out of tune.
 var minDetuneCents : int = 5
 
-## For a normal distribution, what will the average amount of detune be?
-var averageDetune : int = 40
+## The minimum octave of notes to generate
+var minOct : int = 3
 
-## Detune standard deviation
-var detuneSD : float = 5.0
+## The maximum octave of notes to generate
+var maxOct : int = 5
 
 ## Direction of detune, that is sharp or flat or both.
 ## Sharp indicates increasing cents (detuneDirection =  1). 
@@ -55,8 +55,23 @@ var _tuneCreator : TuneCreator
 ## Will look like [0, 1, 0, 0, 1], where the 1 positions have detuned notes
 var listOfDetunedNotes : Array
 
+## 
+func createListOfDetunedNotes() -> void:
+	listOfDetunedNotes.append(false)
+	
+	for i in range(numOutOfTune):
+		listOfDetunedNotes.append(true)
+	for i in range(numNotes - numOutOfTune - 1):
+		listOfDetunedNotes.append(false)
+	
+	print(listOfDetunedNotes.size())
+	pass
+
 ## Create a tune creator with the given parameters
 func createTuneCreator() -> void:
+	_tuneCreator = _tuneCreatorScene.instantiate()
+	_tuneCreator.setUpRand(numAccidentals, bySharp, minOct, maxOct, listOfDetunedNotes, detuneDirection, maxDetuneCents, minDetuneCents)
+	add_child(_tuneCreator)
 	pass
 
 ## Delete the tune creator (ideally you're going to create a new one with 
@@ -86,4 +101,6 @@ func checkPlayerInput():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	createListOfDetunedNotes()
+	print(listOfDetunedNotes)
 	pass
