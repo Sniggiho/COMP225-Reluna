@@ -4,6 +4,8 @@ class_name Note
 @export var detuneCents := 0 # the number of cents out of tune 
 @export var noteName := "c3" # default note is c3
 
+var selected : bool = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -36,4 +38,7 @@ func orientation() -> void:
 		sprite.set_flip_v(true)
 		var height = sprite.texture.get_height()
 		sprite.set_offset(Vector2(0,height*0.55))
+		
+func select() -> void:
+	selected = !selected
 	

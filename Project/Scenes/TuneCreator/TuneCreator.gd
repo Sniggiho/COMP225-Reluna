@@ -26,6 +26,8 @@ var _listOfNotes : Array
 # Pregenerated list of all possible notes 
 var _possibleNotes : Array
 
+var _selectedNotes : Array
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	generate()
@@ -55,11 +57,12 @@ func generate() -> void:
 		var note = _noteScene.instantiate()
 		
 		if _detunedList[i]: # if this note should be detuned
+			var tempDetuneDir : int
 			
 			if _detuneDir == 0: # if we can detune either way, randomly select which
-				var tempDetuneDir = randi_range(0,1)*-1
+				tempDetuneDir = randi_range(0,1)*-1
 			else: # otherwise just go with the detune direction previously specified
-				var tempDetuneDir = _detuneDir
+				tempDetuneDir = _detuneDir
 				
 			if tempDetuneDir == 1:
 				note.setDetuneCents(randi_range(_minDetuneCents, _maxDetuneCents))
@@ -80,8 +83,11 @@ func getListOfNotes() -> Array:
 	return _listOfNotes
 
 ## Getter method for the set of notes the user has selected (i.e., that bad ones)
-func getSelectedNotes() -> Array:
-	return []
+func retrieveSelectedNotes() -> Array:
+	_selectedNotes = []
+	for n in _listOfNotes:
+		_selectedNotes.append(n.selected)
+	return _selectedNotes
 
 ## Remove all notes.
 func cleanup() -> void:
