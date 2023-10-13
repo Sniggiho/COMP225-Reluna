@@ -70,8 +70,8 @@ func createListOfDetunedNotes() -> void:
 ## Create a tune creator with the given parameters
 func createTuneCreator() -> void:
 	_tuneCreator = _tuneCreatorScene.instantiate()
-	_tuneCreator.setUpRand(numAccidentals, bySharp, minOct, maxOct, listOfDetunedNotes, detuneDirection, maxDetuneCents, minDetuneCents)
 	add_child(_tuneCreator)
+	_tuneCreator.setUpRand(numAccidentals, bySharp, minOct, maxOct, listOfDetunedNotes, detuneDirection, maxDetuneCents, minDetuneCents)
 	pass
 
 ## Delete the tune creator (ideally you're going to create a new one with 

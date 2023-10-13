@@ -30,7 +30,7 @@ var _selectedNotes : Array
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	generate()
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -46,6 +46,8 @@ func setupRand(numAccidentals, bySharps, minOct, maxOct, detunedList, detuneDir,
 	_detuneDir = detuneDir # -1 for flat only, 0 for both, 1 for sharp only
 	_maxDetuneCents = maxDetuneCents
 	_minDetuneCents = minDetuneCents
+	
+	generate()
 
 ## Given the parameters for generating notes, running generate will populate the screen with notes. 
 func generate() -> void:
