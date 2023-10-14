@@ -4,10 +4,16 @@ class_name Note
 @export var detuneCents := 0 # the number of cents out of tune 
 @export var noteName := "c3" # default note is c3
 
+@onready var sprite : Sprite2D = $Button/Sprite2D
+
+@export var defaultColor : Color = Color("000000")
+@export var selectedColor : Color = Color("e24c59")
+
 var selected : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	sprite.modulate = defaultColor
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,4 +47,13 @@ func orientation() -> void:
 		
 func select() -> void:
 	selected = !selected
+	changeColor()
+	
+func changeColor() -> void:
+	if selected:
+		sprite.modulate = selectedColor
+	else:
+		sprite.modulate = defaultColor
+	print(sprite.modulate)
+	pass
 	
