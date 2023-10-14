@@ -7,7 +7,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_xmk5h"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 200, 136, 0, 0, 0, 0, 900, 136)
+"points": PackedVector2Array(0, 0, 0, 0, 200, 136, 0, 0, 0, 0, 1400, 136)
 }
 point_count = 2
 
