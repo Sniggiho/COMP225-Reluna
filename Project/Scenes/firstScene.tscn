@@ -13,6 +13,11 @@ point_count = 2
 
 [node name="Main" type="Node2D"]
 
+[node name="MusicStaff" parent="." instance=ExtResource("5_bafn2")]
+position = Vector2(0, 0)
+lineHeight = 0.07
+lineThickness = 5.0
+
 [node name="PlayBar" parent="." node_paths=PackedStringArray("path") instance=ExtResource("3_quvye")]
 path = NodePath("../Path2D")
 
@@ -22,39 +27,6 @@ maxDetuneCents = 20
 minDetuneCents = 10
 path = NodePath("../Path2D")
 
-[node name="MusicStaff" parent="." instance=ExtResource("5_bafn2")]
-position = Vector2(0, 0)
-lineHeight = 0.07
-lineThickness = 5.0
-
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 196.0
-offset_bottom = 126.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_right = 276.0
-offset_bottom = 146.0
-text = "Hello World!"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-script = ExtResource("1_x644u")
-
-[node name="ButtonForDetuned" type="Button" parent="."]
-offset_left = 338.0
-offset_top = 376.0
-offset_right = 751.0
-offset_bottom = 478.0
-text = "press for detuned a3"
-
-[node name="ButtonForInTune" type="Button" parent="."]
-offset_left = 337.0
-offset_top = 184.0
-offset_right = 743.0
-offset_bottom = 285.0
-text = "Press for in tune a3"
-
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_xmk5h")
 
@@ -63,12 +35,54 @@ position = Vector2(200, 136)
 loop = false
 
 [node name="PlayButton" type="Button" parent="."]
-offset_left = 190.0
-offset_top = 195.0
-offset_right = 198.0
-offset_bottom = 203.0
+offset_left = 182.0
+offset_top = 554.0
+offset_right = 190.0
+offset_bottom = 562.0
 scale = Vector2(5, 4.28)
 
-[connection signal="pressed" from="ButtonForDetuned" to="AudioStreamPlayer" method="_on_button_pressed"]
-[connection signal="pressed" from="ButtonForInTune" to="AudioStreamPlayer" method="_on_button_for_in_tune_pressed"]
+[node name="CheckButton" type="Button" parent="."]
+offset_left = 182.0
+offset_top = 632.0
+offset_right = 190.0
+offset_bottom = 640.0
+scale = Vector2(5, 4.28)
+
+[node name="Debug" type="Node" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Debug"]
+visible = false
+offset_right = 196.0
+offset_bottom = 126.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Debug"]
+visible = false
+offset_right = 276.0
+offset_bottom = 146.0
+text = "Hello World!"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Debug"]
+script = ExtResource("1_x644u")
+
+[node name="ButtonForDetuned" type="Button" parent="Debug"]
+visible = false
+offset_left = 338.0
+offset_top = 376.0
+offset_right = 751.0
+offset_bottom = 478.0
+text = "press for detuned a3"
+
+[node name="ButtonForInTune" type="Button" parent="Debug"]
+visible = false
+offset_left = 337.0
+offset_top = 184.0
+offset_right = 743.0
+offset_bottom = 285.0
+text = "Press for in tune a3"
+
 [connection signal="pressed" from="PlayButton" to="PlayBar" method="play"]
+[connection signal="pressed" from="CheckButton" to="LevelManager" method="checkPlayerInput"]
+[connection signal="pressed" from="Debug/ButtonForDetuned" to="Debug/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="Debug/ButtonForInTune" to="Debug/AudioStreamPlayer" method="_on_button_for_in_tune_pressed"]

@@ -47,13 +47,12 @@ func orientation() -> void:
 		
 func select() -> void:
 	selected = !selected
-	changeColor()
+	_changeColor()
 	
-func changeColor() -> void:
+func _changeColor() -> void:
 	if selected:
 		sprite.modulate = selectedColor
 	else:
 		sprite.modulate = defaultColor
-	print(sprite.modulate)
 	pass
 	

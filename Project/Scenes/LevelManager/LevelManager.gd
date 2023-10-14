@@ -58,7 +58,7 @@ var _tuneCreator : TuneCreator
 ## Will look like [0, 1, 0, 0, 1], where the 1 positions have detuned notes
 var listOfDetunedNotes : Array
 
-## 
+## TODO, make it generate better
 func createListOfDetunedNotes() -> void:
 	listOfDetunedNotes.append(false)
 	
@@ -90,7 +90,7 @@ func deleteTuneCreator() -> void:
 func checkPlayerInput():
 	var listOfNotes : Array = _tuneCreator.getListOfNotes()
 	# will look like [0, 1, 0, 0, 1]. Hopefully it's the same as the correct answer
-	var playersSelectedNotes : Array = _tuneCreator.getSelectedNotes()
+	var playersSelectedNotes : Array = _tuneCreator.retrieveSelectedNotes()
 	
 	if playersSelectedNotes.size() != listOfDetunedNotes.size():
 		printerr("Somehow the tune creator and the level manager disagree on the number of notes")
