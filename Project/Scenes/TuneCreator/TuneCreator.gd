@@ -87,11 +87,9 @@ func generate() -> void:
 		print(note.global_position)
 		_listOfNotes.append(note)
 		note.global_position = _pathFollower.global_position
-		note.global_position.y += hOffset(note.noteName)
+		note.global_position.y += -1 * (note.hOffset() * lineHeight / 2)
+		##print(note.hOffset() * lineHeight / 2)
 
-func hOffset(noteName : String) -> float:
-	return 0.0
-	pass
 	
 ## Getter method for retrieving the list of notes
 func getListOfNotes() -> Array:

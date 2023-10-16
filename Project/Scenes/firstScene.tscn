@@ -17,6 +17,7 @@ point_count = 2
 position = Vector2(74, 125)
 
 [node name="Path2D" type="Path2D" parent="MusicStaff"]
+position = Vector2(0, 93)
 curve = SubResource("Curve2D_xmk5h")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="MusicStaff/Path2D"]
@@ -26,6 +27,7 @@ loop = false
 path = NodePath("../MusicStaff/Path2D")
 
 [node name="LevelManager" type="Node2D" parent="." node_paths=PackedStringArray("path", "musicStaff")]
+position = Vector2(-1, 0)
 script = ExtResource("1_xad2n")
 numAccidentals = 6
 bySharp = false

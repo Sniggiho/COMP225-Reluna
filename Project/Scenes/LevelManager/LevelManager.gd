@@ -58,6 +58,7 @@ class_name LevelManager
 ## 
 var staffGapHeight : float
 
+
 @onready var _tuneCreatorScene : PackedScene = preload("res://Scenes/TuneCreator/tune_creator.tscn")
 var _tuneCreator : TuneCreator
 
@@ -86,8 +87,12 @@ func createListOfDetunedNotes() -> void:
 func createTuneCreator() -> void:
 	_tuneCreator = _tuneCreatorScene.instantiate()
 	add_child(_tuneCreator)
+	staffGapHeight = musicStaff.getLineHeight()
+	_tuneCreator.lineHeight = staffGapHeight
 	_tuneCreator.givePath(path)
 	_tuneCreator.setupRand(numAccidentals, bySharp, minOct, maxOct, listOfDetunedNotes, detuneDirection, maxDetuneCents, minDetuneCents)
+	
+	
 	pass
 
 ## Delete the tune creator (ideally you're going to create a new one with 
@@ -121,7 +126,7 @@ func _ready():
 		numOutOfTune = numNotes-1
 	createListOfDetunedNotes()
 	createTuneCreator()
-	staffGapHeight = musicStaff.getLineHeight()
-	_tuneCreator.lineHeight = staffGapHeight
+	
+	print(_tuneCreator.lineHeight)
 	print(listOfDetunedNotes)
 	pass
