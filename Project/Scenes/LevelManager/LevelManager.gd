@@ -55,19 +55,25 @@ class_name LevelManager
 @onready var _tuneCreatorScene : PackedScene = preload("res://Scenes/TuneCreator/tune_creator.tscn")
 var _tuneCreator : TuneCreator
 
-## Will look like [0, 1, 0, 0, 1], where the 1 positions have detuned notes
+## Will look like [false, true, false, false, ture], where the "true" positions have detuned notes
 var listOfDetunedNotes : Array
 
-## TODO, make it generate better
+## Randomly selects notes to be out of tune, storing this value in the listOfDetunedNotes class variable
 func createListOfDetunedNotes() -> void:
-	listOfDetunedNotes.append(false)
+	var detuneList = []
+	for n in range(numNotes):
+		detuneList.append(false)
+		
+	detuneList[0] = false # we require that the first note be out of tune
+	
+	var possibleIndices = range(1,numNotes)
+	possibleIndices.shuffle()
 	
 	for i in range(numOutOfTune):
-		listOfDetunedNotes.append(true)
-	for i in range(numNotes - numOutOfTune - 1):
-		listOfDetunedNotes.append(false)
+		detuneList[possibleIndices[i]] = true
 	
-	print(listOfDetunedNotes.size())
+	listOfDetunedNotes = detuneList
+	print("list of detuned notes:", listOfDetunedNotes)
 	pass
 
 ## Create a tune creator with the given parameters
@@ -105,6 +111,8 @@ func checkPlayerInput():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if numOutOfTune>numNotes-1: # if we want more out of tune notes than we have notes, we set the number of detuned notes to the max possible
+		numOutOfTune = numNotes-1
 	createListOfDetunedNotes()
 	createTuneCreator()
 	print(listOfDetunedNotes)
