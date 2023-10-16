@@ -14,9 +14,7 @@ point_count = 2
 [node name="Main" type="Node2D"]
 
 [node name="MusicStaff" parent="." instance=ExtResource("5_bafn2")]
-position = Vector2(0, 0)
-lineHeight = 0.07
-lineThickness = 5.0
+position = Vector2(34, 126)
 
 [node name="PlayBar" parent="." node_paths=PackedStringArray("path") instance=ExtResource("3_quvye")]
 path = NodePath("../Path2D")

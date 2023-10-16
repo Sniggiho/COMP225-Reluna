@@ -24,14 +24,8 @@ var trebleRatio
 func _ready():
 	screenX = get_viewport_rect().size.x
 	screenY = get_viewport_rect().size.y
-	startX = screenX * ((1 - staffLength)/2.0)
-	startY = screenY * 0.15 
-	var treble = Image.load_from_file("res://Scenes/MusicStaff/trebleStaff.png")
-	treble.set
-	var texture = ImageTexture.create_from_image(treble)
-	trebleRatio = 4 * lineHeight * screenY / treble.get_height()
-	treble.resize(treble.get_width()*trebleRatio, treble.get_height()* trebleRatio, Image.INTERPOLATE_BILINEAR)
-	$Sprite2D.texture = texture
+	startX = 0
+	startY = 0
 	
 func _draw():
 	var y = startY

@@ -1,16 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://dq0mp8xmuh00"]
 
 [ext_resource type="Script" path="res://Scenes/MusicStaff/MusicStaff.gd" id="1_5gv1w"]
-
-[sub_resource type="ImageTexture" id="ImageTexture_o6m4j"]
+[ext_resource type="Texture2D" uid="uid://bspymo7qdmuuk" path="res://Scenes/MusicStaff/trebleStaff.png" id="2_o0hg7"]
 
 [node name="MusicStaff" type="Node2D"]
 position = Vector2(2.08165e-12, 2.08165e-12)
 script = ExtResource("1_5gv1w")
-lineHeight = 0.03
-lineThickness = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(170, 270)
+position = Vector2(92, 133)
 scale = Vector2(0.4, 0.4)
-texture = SubResource("ImageTexture_o6m4j")
+texture = ExtResource("2_o0hg7")
