@@ -7,32 +7,32 @@
 
 [sub_resource type="Curve2D" id="Curve2D_xmk5h"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 200, 136, 0, 0, 0, 0, 1400, 136)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1399, 0)
 }
 point_count = 2
 
 [node name="Main" type="Node2D"]
 
 [node name="MusicStaff" parent="." instance=ExtResource("5_bafn2")]
-position = Vector2(34, 126)
+position = Vector2(74, 125)
+
+[node name="Path2D" type="Path2D" parent="MusicStaff"]
+curve = SubResource("Curve2D_xmk5h")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="MusicStaff/Path2D"]
+loop = false
 
 [node name="PlayBar" parent="." node_paths=PackedStringArray("path") instance=ExtResource("3_quvye")]
-path = NodePath("../Path2D")
+path = NodePath("../MusicStaff/Path2D")
 
-[node name="LevelManager" type="Node2D" parent="." node_paths=PackedStringArray("path")]
+[node name="LevelManager" type="Node2D" parent="." node_paths=PackedStringArray("path", "musicStaff")]
 script = ExtResource("1_xad2n")
 numAccidentals = 6
 bySharp = false
 maxDetuneCents = 20
 minDetuneCents = 10
-path = NodePath("../Path2D")
-
-[node name="Path2D" type="Path2D" parent="."]
-curve = SubResource("Curve2D_xmk5h")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(200, 136)
-loop = false
+path = NodePath("../MusicStaff/Path2D")
+musicStaff = NodePath("../MusicStaff")
 
 [node name="PlayButton" type="Button" parent="."]
 offset_left = 182.0

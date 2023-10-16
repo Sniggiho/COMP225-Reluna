@@ -52,6 +52,12 @@ class_name LevelManager
 ## Path is passed to the tune creator
 @export var path : Path2D
 
+##
+@export var musicStaff : MusicStaff
+
+## 
+var staffGapHeight : float
+
 @onready var _tuneCreatorScene : PackedScene = preload("res://Scenes/TuneCreator/tune_creator.tscn")
 var _tuneCreator : TuneCreator
 
@@ -115,5 +121,7 @@ func _ready():
 		numOutOfTune = numNotes-1
 	createListOfDetunedNotes()
 	createTuneCreator()
+	staffGapHeight = musicStaff.getLineHeight()
+	_tuneCreator.lineHeight = staffGapHeight
 	print(listOfDetunedNotes)
 	pass
