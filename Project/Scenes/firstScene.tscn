@@ -23,6 +23,8 @@ path = NodePath("../Path2D")
 
 [node name="LevelManager" type="Node2D" parent="." node_paths=PackedStringArray("path")]
 script = ExtResource("1_xad2n")
+numAccidentals = 6
+bySharp = false
 maxDetuneCents = 20
 minDetuneCents = 10
 path = NodePath("../Path2D")

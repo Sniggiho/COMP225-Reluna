@@ -132,12 +132,13 @@ func _createNoteArrayChromatic(lowOct, highOct)-> Array:
 ##			array containing the names of all notes found in the given key
 func _createNoteArrayInKey(accidentals, bySharps, lowOct, highOct) -> Array:
 
+	assert(accidentals<=6) # cannot have more than 6 accidentals
 	# sharps order is: F – C – G – D – A – E – B
 	# flats order is: B - E - A - D - G - C - F
 	
-	var sharps = ["f-", "c-", "g-", "d-", "a-", "e-", "b-"]
+	var sharps = ["f-", "c-", "g-", "d-", "a-", "f", "c"]
 	
-	var flats = ["a-", "d-", "g-", "c-", "f-", "b-", "e-"]
+	var flats = ["a-", "d-", "g-", "c-", "f-", "c", "f"]
 	var naturalsForFlats = ["b","e","a","d","g","c","f"] # to simplify adding natural notes to a key with flats
 	
 	var notesInKey = []
@@ -158,4 +159,5 @@ func _createNoteArrayInKey(accidentals, bySharps, lowOct, highOct) -> Array:
 		for note in notesInKey:
 			allNotes.append(note+str(oct))
 	
+	print("Current key contains:", allNotes)
 	return allNotes
