@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/PlayBar/PlayBar.gd" id="1_3y8rp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1cbyy"]
+size = Vector2(20, 1000)
 
 [node name="PlayBar" type="Polygon2D"]
 position = Vector2(176, -74)

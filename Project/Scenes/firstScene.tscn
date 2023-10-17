@@ -14,7 +14,7 @@ point_count = 2
 [node name="Main" type="Node2D"]
 
 [node name="MusicStaff" parent="." instance=ExtResource("5_bafn2")]
-position = Vector2(74, 125)
+position = Vector2(78, 293)
 
 [node name="Path2D" type="Path2D" parent="MusicStaff"]
 position = Vector2(0, 93)
