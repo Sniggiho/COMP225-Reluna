@@ -89,6 +89,7 @@ func generate() -> void:
 		note.global_position = _pathFollower.global_position
 		note.global_position.y += -1 * (note.hOffset() * lineHeight / 2)
 		##print(note.hOffset() * lineHeight / 2)
+#	_pathFollower.progress_ratio = 0
 
 	
 ## Getter method for retrieving the list of notes

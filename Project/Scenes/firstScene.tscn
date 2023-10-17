@@ -50,6 +50,14 @@ offset_right = 190.0
 offset_bottom = 640.0
 scale = Vector2(5, 4.28)
 
+[node name="ResetButton" type="Button" parent="."]
+offset_left = 255.0
+offset_top = 700.0
+offset_right = 306.0
+offset_bottom = 731.0
+scale = Vector2(5, 4.28)
+text = "Reset"
+
 [node name="Debug" type="Node" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="Debug"]
@@ -86,5 +94,6 @@ text = "Press for in tune a3"
 
 [connection signal="pressed" from="PlayButton" to="PlayBar" method="play"]
 [connection signal="pressed" from="CheckButton" to="LevelManager" method="checkPlayerInput"]
+[connection signal="pressed" from="ResetButton" to="LevelManager" method="_reset"]
 [connection signal="pressed" from="Debug/ButtonForDetuned" to="Debug/AudioStreamPlayer" method="_on_button_pressed"]
 [connection signal="pressed" from="Debug/ButtonForInTune" to="Debug/AudioStreamPlayer" method="_on_button_for_in_tune_pressed"]

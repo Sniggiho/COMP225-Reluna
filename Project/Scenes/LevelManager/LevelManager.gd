@@ -120,6 +120,14 @@ func checkPlayerInput():
 	else:
 		print("Aw, you were incorrect :(")
 
+## Call to keep a level manager around and generate new list of detuned notes, tune creator, etc.
+func _reset() -> void:
+	path.get_child(0).progress_ratio = 0
+	deleteTuneCreator()
+	createListOfDetunedNotes()
+	createTuneCreator()
+	pass
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if numOutOfTune>numNotes-1: # if we want more out of tune notes than we have notes, we set the number of detuned notes to the max possible
