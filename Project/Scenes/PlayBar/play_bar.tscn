@@ -6,13 +6,10 @@
 size = Vector2(20, 1000)
 
 [node name="PlayBar" type="Polygon2D"]
-position = Vector2(176, -74)
-scale = Vector2(0.111111, 2.04546)
-polygon = PackedVector2Array(185, 92, 185, 114, 194, 114, 194, 92)
+polygon = PackedVector2Array(-5, -100, -5, 100, 5, 100, 5, -100)
 script = ExtResource("1_3y8rp")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(189, 102.666)
 shape = SubResource("RectangleShape2D_1cbyy")

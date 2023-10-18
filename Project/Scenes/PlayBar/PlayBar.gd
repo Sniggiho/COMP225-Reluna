@@ -17,7 +17,7 @@ func _ready():
 func _process(delta):
 	if playing:
 		pathFollow.progress_ratio += (1.0 / melodyLengthT) * delta
-		global_position.x = pathFollow.global_position.x
+		global_position = pathFollow.global_position
 		
 		if pathFollow.progress_ratio > 1:
 			playing = false
