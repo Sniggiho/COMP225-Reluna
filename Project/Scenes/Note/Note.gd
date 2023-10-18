@@ -62,7 +62,7 @@ func hOffset() -> int:
 	## dictionary for differences between notes
 	var noteDict = {"c": 0, "d": 1, "e": 2, "f": 3, "g": 4, "a": 5, "b": 6 }
 	## each octave will be 7 half note offsets
-	var octave = (int(noteName[-1]) - 4) * 7
+	var octave = (int(noteName[-1]) - 5) * 7
 	## value based on the note
 	var noteVal = noteDict[noteName[0]]
 	return octave + noteVal
