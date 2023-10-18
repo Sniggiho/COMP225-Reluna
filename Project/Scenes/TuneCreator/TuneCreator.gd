@@ -25,6 +25,10 @@ var _listOfNotes : Array
 # Pregenerated list of all possible notes 
 var _possibleNotes : Array
 
+var _givenNotes : Array # in the case where we're given a melody, this holds that melody
+
+var _detunedAmountsList : Array # in case of full manual generation we're given a list of how much to detune each note, that's stored here
+
 var _selectedNotes : Array
 
 var lineHeight : float
@@ -55,8 +59,30 @@ func setupRand(numAccidentals, bySharps, minOct, maxOct, detunedList, detuneDir,
 	
 	generate()
 
+## For use in tutorial mode. Given a list of notes comprising some melody, and information on which
+## notes to detune, randomly detunes the given notes within given detune parameters.
+func setupHalfManual(notes, detunedList, detuneDir, maxDetuneCents, minDetuneCents):
+	self.givenNotes = notes
+	self._numNotes = len(notes)
+	self._detunedList = detunedList
+	self._detuneDir = detuneDir # -1 for flat only, 0 for both, 1 for sharp only
+	self._maxDetuneCents = maxDetuneCents
+	self._minDetuneCents = minDetuneCents
+	generate(false, true)
+	
+func setupFullManual(notes, detunedAmountsList):
+	self.givenNotes = notes
+	self._numNotes = len(notes)
+	for i in range(len(notes)):
+		if detunedAmountsList[i] == 0:
+			self._detunedList.append(false)
+		else:
+			self._detunedList.append(true)
+			
+	generate(false, false)
+
 ## Given the parameters for generating notes, running generate will populate the screen with notes. 
-func generate() -> void:
+func generate(randomNotes = true, randomDetune = true) -> void:
 	var dx : float = 1.0 / (_numNotes-1)
 	dx = 1.0 / _numNotes
 	
@@ -64,27 +90,32 @@ func generate() -> void:
 		_pathFollower.progress_ratio += dx
 		var note = _noteScene.instantiate()
 		
-		if _detunedList[i]: # if this note should be detuned
-			var tempDetuneDir : int
-			
-			if _detuneDir == 0: # if we can detune either way, randomly select which
-				tempDetuneDir = randi_range(0,1)*2-1
-			else: # otherwise just go with the detune direction previously specified
-				tempDetuneDir = _detuneDir
-				
-			if tempDetuneDir == 1:
-				note.setDetuneCents(randi_range(_minDetuneCents, _maxDetuneCents))
-			elif tempDetuneDir == -1:
-				note.setDetuneCents(randi_range(-1*_maxDetuneCents, -1*_minDetuneCents))
-			else:
-				print("Error in detune direction. Should not get here")
-				
-		note.setNoteByName(_possibleNotes[randi() % _possibleNotes.size()])
+		if randomNotes:		# if we should randomly generate the note values
+			note.setNoteByName(_possibleNotes[randi() % _possibleNotes.size()])
+		else: # if we've been given a pre-built melody
+			note.setNoteByName(_givenNotes[i])
 		
+		if _detunedList[i]: # if this note should be detuned
+			if randomDetune: # if we will randomly select how to detune thia note
+				var tempDetuneDir : int
+				
+				if _detuneDir == 0: # if we can detune either way, randomly select which
+					tempDetuneDir = randi_range(0,1)*2-1
+				else: # otherwise just go with the detune direction previously specified
+					tempDetuneDir = _detuneDir
+					
+				if tempDetuneDir == 1:
+					note.setDetuneCents(randi_range(_minDetuneCents, _maxDetuneCents))
+				elif tempDetuneDir == -1:
+					note.setDetuneCents(randi_range(-1*_maxDetuneCents, -1*_minDetuneCents))
+				else:
+					print("Error in detune direction. Should not get here")
+			else: # if we're in full manual tune creation, and just need to look up the proper detune amount
+				note.setDetuneCents(self._detunedAmountsList[i])
+
 		note.orientation()
 		add_child(note)
 		
-		print(note.global_position)
 		_listOfNotes.append(note)
 		note.global_position = _pathFollower.global_position
 		note.global_position.y += -1 * (note.hOffset() * lineHeight / 2)

@@ -22,6 +22,7 @@ var trebleRatio
 
 
 func _ready():
+	print("ready got called")
 	screenX = get_viewport_rect().size.x
 	screenY = get_viewport_rect().size.y
 	startX = 0
@@ -36,7 +37,7 @@ func _draw():
 	draw_line(Vector2(startX + screenX * staffLength,startY - 2.5 ), Vector2(startX + screenX * staffLength, y - lineHeight * screenY + 2.2), Color.BLACK, lineThickness * 1.5)
 	
 func getLineHeight() -> float:
-	return screenY * lineHeight
+	return self.screenY * lineHeight
 	
 
 
