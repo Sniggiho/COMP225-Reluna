@@ -20,6 +20,8 @@ var startX
 var startY
 var trebleRatio
 
+@onready var playBar : PlayBar = $PlayBar
+@onready var path : Path2D = $Path2D
 
 func _ready():
 	print("ready got called")
@@ -31,14 +33,35 @@ func _ready():
 func _draw():
 	var y = startY
 	for i in range(5):
-		draw_line(Vector2(startX, y), Vector2(startX + screenX * staffLength, y), Color.BLACK, lineThickness)
+		draw_line(
+			Vector2(startX, y), 
+			Vector2(startX + screenX * staffLength, y), 
+			Color.BLACK, 
+			lineThickness)
+			
 		y = y + screenY * lineHeight
-	draw_line(Vector2(startX, startY - 2.5), Vector2(startX, y - lineHeight * screenY + 2.2), Color.BLACK, lineThickness* 1.5)
-	draw_line(Vector2(startX + screenX * staffLength,startY - 2.5 ), Vector2(startX + screenX * staffLength, y - lineHeight * screenY + 2.2), Color.BLACK, lineThickness * 1.5)
+		pass
+	draw_line(
+		Vector2(startX, startY - 2.5), 
+		Vector2(startX, y - lineHeight * screenY + 2.2), 
+		Color.BLACK, 
+		lineThickness * 1.5)
+	draw_line(
+		Vector2(startX + screenX * staffLength,startY - 2.5 ), 
+		Vector2(startX + screenX * staffLength, y - lineHeight * screenY + 2.2), 
+		Color.BLACK, 
+		lineThickness * 1.5)
+	playBar.draw_line(
+		Vector2(startX, startY),
+		Vector2(startX, y),
+		Color.BLACK,
+		lineThickness * 3
+	)
 	
 func getLineHeight() -> float:
 	return self.screenY * lineHeight
 	
 
 
-
+func _on_play_button_pressed():
+	playBar.play()
