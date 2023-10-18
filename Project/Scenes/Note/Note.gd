@@ -11,6 +11,7 @@ class_name Note
 
 var selected : bool = false
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite.modulate = defaultColor
@@ -65,5 +66,9 @@ func hOffset() -> int:
 	var octave = (int(noteName[-1]) - 5) * 7
 	## value based on the note
 	var noteVal = noteDict[noteName[0]]
+	print("bySharps: ",get_parent().getBySharps() )
+	print("length NoteName: ", len(noteName))
+	if not get_parent().getBySharps()and len(noteName) == 3:
+		noteVal += 1
 	return octave + noteVal
 	

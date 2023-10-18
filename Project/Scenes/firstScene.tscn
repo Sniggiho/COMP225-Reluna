@@ -30,7 +30,7 @@ path = NodePath("../MusicStaff/Path2D")
 [node name="LevelManager" type="Node2D" parent="." node_paths=PackedStringArray("musicStaff")]
 position = Vector2(-1, 0)
 script = ExtResource("1_xad2n")
-numAccidentals = 6
+numAccidentals = 2
 bySharp = false
 maxDetuneCents = 20
 minDetuneCents = 10

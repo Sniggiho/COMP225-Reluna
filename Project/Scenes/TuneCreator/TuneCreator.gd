@@ -31,6 +31,8 @@ var _detunedAmountsList : Array # in case of full manual generation we're given 
 
 var _selectedNotes : Array
 
+var _bySharps : bool = true
+
 var lineHeight : float
 
 # Called when the node enters the scene tree for the first time.
@@ -50,7 +52,7 @@ func givePath(path : Path2D):
 ## _tuneCreator.setUpRand(numAccidentals, bySharp, minOct, maxOct, listOfDetunedNotes, detuneDirection, maxDetuneCents, minDetuneCents)
 func setupRand(numAccidentals, bySharps, minOct, maxOct, detunedList, detuneDir, maxDetuneCents, minDetuneCents) -> void:
 	self._possibleNotes = _createNoteArrayInKey(numAccidentals,bySharps,minOct,maxOct)
-	
+	self._bySharps = bySharps
 	self._numNotes = len(detunedList)
 	self._detunedList = detunedList
 	self._detuneDir = detuneDir # -1 for flat only, 0 for both, 1 for sharp only
@@ -61,8 +63,9 @@ func setupRand(numAccidentals, bySharps, minOct, maxOct, detunedList, detuneDir,
 
 ## For use in tutorial mode. Given a list of notes comprising some melody, and information on which
 ## notes to detune, randomly detunes the given notes within given detune parameters.
-func setupHalfManual(notes, detunedList, detuneDir, maxDetuneCents, minDetuneCents):
+func setupHalfManual(notes, bySharps, detunedList, detuneDir, maxDetuneCents, minDetuneCents):
 	self.givenNotes = notes
+	self._bySharps = bySharps
 	self._numNotes = len(notes)
 	self._detunedList = detunedList
 	self._detuneDir = detuneDir # -1 for flat only, 0 for both, 1 for sharp only
@@ -70,8 +73,9 @@ func setupHalfManual(notes, detunedList, detuneDir, maxDetuneCents, minDetuneCen
 	self._minDetuneCents = minDetuneCents
 	generate(false, true)
 	
-func setupFullManual(notes, detunedAmountsList):
+func setupFullManual(notes, bySharps, detunedAmountsList):
 	self.givenNotes = notes
+	self._bySharps = bySharps
 	self._numNotes = len(notes)
 	for i in range(len(notes)):
 		if detunedAmountsList[i] == 0:
@@ -198,3 +202,7 @@ func _createNoteArrayInKey(accidentals, bySharps, lowOct, highOct) -> Array:
 	
 	print("Current key contains:", allNotes)
 	return allNotes
+
+## return if scale is sharp or flat
+func getBySharps() -> bool:
+	return self._bySharps
