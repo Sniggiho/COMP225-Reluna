@@ -49,11 +49,12 @@ class_name LevelManager
 ## TODO
 @onready var feedbackWindow : PackedScene
 
-## Path is passed to the tune creator
-@export var path : Path2D
 
 ##
 @export var musicStaff : MusicStaff
+
+## Path is passed to the tune creator
+@onready var path : Path2D
 
 ## 
 var staffGapHeight : float
@@ -130,6 +131,7 @@ func _reset() -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	path = musicStaff.get_child(1)
 	if numOutOfTune>numNotes-1: # if we want more out of tune notes than we have notes, we set the number of detuned notes to the max possible
 		numOutOfTune = numNotes-1
 	createListOfDetunedNotes()

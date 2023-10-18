@@ -17,24 +17,23 @@ point_count = 2
 [node name="MusicStaff" parent="." instance=ExtResource("5_bafn2")]
 position = Vector2(78, 293)
 
-[node name="Path2D" type="Path2D" parent="MusicStaff"]
+[node name="Path2D2" type="Path2D" parent="MusicStaff"]
 position = Vector2(0, 93)
 curve = SubResource("Curve2D_xmk5h")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="MusicStaff/Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="MusicStaff/Path2D2"]
 loop = false
 
 [node name="PlayBar" parent="." node_paths=PackedStringArray("path") instance=ExtResource("3_quvye")]
 path = NodePath("../MusicStaff/Path2D")
 
-[node name="LevelManager" type="Node2D" parent="." node_paths=PackedStringArray("path", "musicStaff")]
+[node name="LevelManager" type="Node2D" parent="." node_paths=PackedStringArray("musicStaff")]
 position = Vector2(-1, 0)
 script = ExtResource("1_xad2n")
 numAccidentals = 6
 bySharp = false
 maxDetuneCents = 20
 minDetuneCents = 10
-path = NodePath("../MusicStaff/Path2D")
 musicStaff = NodePath("../MusicStaff")
 
 [node name="PlayButton" type="Button" parent="."]
