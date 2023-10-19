@@ -90,6 +90,12 @@ func generate(randomNotes = true, randomDetune = true) -> void:
 	var dx : float = 1.0 / (_numNotes-1)
 	dx = 1.0 / _numNotes
 	
+	var pathMin = 0.2
+	var pathMax = 1
+	dx = (pathMax - pathMin) / (float) (_numNotes + 1)
+	_pathFollower.progress_ratio = pathMin
+	print("dx: ", dx)
+	
 	for i in range(_numNotes):
 		_pathFollower.progress_ratio += dx
 		var note = _noteScene.instantiate()
