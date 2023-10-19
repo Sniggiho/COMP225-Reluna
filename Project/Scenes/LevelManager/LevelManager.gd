@@ -115,11 +115,17 @@ func checkPlayerInput():
 	
 	var correct : bool = listOfDetunedNotes.hash() == playersSelectedNotes.hash()
 	
+	var feedbackText = get_parent().find_child("feedbackTemp")
+	
 	## TODO
 	if correct:
 		print("Yay you were correct!")
+		if feedbackText:
+			feedbackText.text = "Yay you were correct!"
 	else:
 		print("Aw, you were incorrect :(")
+		if feedbackText:
+			feedbackText.text = "Aw, you were incorrect :("
 
 ## Call to keep a level manager around and generate new list of detuned notes, tune creator, etc.
 func _reset() -> void:

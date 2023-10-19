@@ -96,6 +96,13 @@ offset_bottom = 40.0
 [node name="PopupMenu" type="PopupMenu" parent="."]
 size = Vector2i(500, 500)
 
+[node name="feedbackTemp" type="RichTextLabel" parent="."]
+offset_left = 808.0
+offset_top = 592.0
+offset_right = 1219.0
+offset_bottom = 759.0
+mouse_filter = 2
+
 [connection signal="pressed" from="PlayButton" to="MusicStaff" method="_on_play_button_pressed"]
 [connection signal="pressed" from="CheckButton" to="LevelManager" method="checkPlayerInput"]
 [connection signal="pressed" from="ResetButton" to="LevelManager" method="_reset"]
