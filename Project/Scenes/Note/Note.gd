@@ -11,6 +11,8 @@ class_name Note
 
 var selected : bool = false
 
+var lineHeight : float
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -39,6 +41,7 @@ func getDetuneCents() -> int:
 	return detuneCents
 
 func orientation() -> void:
+	_draw()
 	if(noteName[-1] > "4"):
 		var sprite = $Button/Sprite2D
 		sprite.set_flip_h(true)
@@ -46,6 +49,78 @@ func orientation() -> void:
 		var height = sprite.texture.get_height()
 		sprite.set_offset(Vector2(0,height*0.55))
 		
+
+func _draw():
+	createLedgerLines()
+	pass
+		
+func createLedgerLines() ->  void:
+	if get_parent():
+		var h : int = hOffset()
+		
+		# Debug to create text to label the offset
+#		var label : RichTextLabel = RichTextLabel.new()
+#		add_child(label)
+#		label.text = str(h)
+#		label.mouse_filter = Control.MOUSE_FILTER_IGNORE
+#		label.size = Vector2(100, 100)
+		
+		# Color
+		var color : Color = Color.BLACK
+#		color = Color.CADET_BLUE # DEBUG
+
+		# Ledger line length (horizontal)
+		var length = 75
+		
+		# AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+		if h >= 5: # If above the staff
+			if h % 2 == 0:
+				h -= 6
+				h /= 2
+				for i in range(0, h+1, 1):
+					draw_line(
+						Vector2(-length/2.0, (1+2*i) * lineHeight / 2.0), 
+						Vector2(length/2.0, (1+2*i) * lineHeight / 2.0), 
+						color, 
+						5
+					)
+			else:
+				h -= 5
+				h /= 2
+				for i in range(0, h+1, 1):
+					draw_line(
+						Vector2(-length/2.0, 2*i * lineHeight / 2.0), 
+						Vector2(length/2.0, 2*i * lineHeight / 2.0), 
+						color, 
+						5
+					)
+		elif h <= -7: # If below the staff
+			h *= -1
+			if h % 2 == 0:
+				h -= 6
+				h /= 2
+				for i in range (0, h, 1):
+					draw_line(
+						Vector2(-length/2.0, (-1 - 2 * i) * lineHeight / 2.0),
+						Vector2(length/2.0, (-1 - 2 * i) * lineHeight / 2.0),
+						color,
+						5
+					)
+			else:
+				h -= 7
+				h /= 2
+				for i in range(0, h+1, 1):
+					draw_line(
+						Vector2(-length/2.0, -2 * i * lineHeight / 2.0),
+						Vector2(length/2.0, -2 * i * lineHeight / 2.0),
+						color,
+						5
+					)
+			pass
+	
+	
+	pass
+
 func select() -> void:
 	selected = !selected
 	_changeColor()
@@ -66,9 +141,9 @@ func hOffset() -> int:
 	var octave = (int(noteName[-1]) - 5) * 7
 	## value based on the note
 	var noteVal = noteDict[noteName[0]]
-	print("bySharps: ",get_parent().getBySharps() )
+	print("bySharps: ", get_parent().getBySharps())
 	print("length NoteName: ", len(noteName))
-	if not get_parent().getBySharps()and len(noteName) == 3:
+	if not get_parent().getBySharps() and len(noteName) == 3:
 		noteVal += 1
 	return octave + noteVal
 	

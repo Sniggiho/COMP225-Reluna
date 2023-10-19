@@ -119,7 +119,7 @@ func generate(randomNotes = true, randomDetune = true) -> void:
 
 		note.orientation()
 		add_child(note)
-		
+		note.lineHeight = lineHeight
 		_listOfNotes.append(note)
 		note.global_position = _pathFollower.global_position
 		note.global_position.y += -1 * (note.hOffset() * lineHeight / 2)
