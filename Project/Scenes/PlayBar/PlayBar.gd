@@ -17,15 +17,23 @@ func _ready():
 func _process(delta):
 	if playing:
 		pathFollow.progress_ratio += (1.0 / melodyLengthT) * delta
-		global_position = pathFollow.global_position
+		global_position.x = pathFollow.global_position.x
 		
-		if pathFollow.progress_ratio > 1:
-			playing = false
+		if pathFollow.progress_ratio >= 1:
+			_reset()
 		pass
 	pass
 
+# Reset position of play bar, set invisible, make it stop playing
+func _reset() -> void:
+	playing = false
+	visible = false
+	pathFollow.progress_ratio = 0
+	global_position.x = pathFollow.global_position.x
+	pass
 
 func play() -> void:
-	pathFollow.progress_ratio = 0
-	playing = true
-	pass
+	if not playing:
+		pathFollow.progress_ratio = 0
+		visible = true
+		playing = true

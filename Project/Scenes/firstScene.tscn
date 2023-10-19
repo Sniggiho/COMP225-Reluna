@@ -8,7 +8,7 @@
 [node name="Main" type="Node2D"]
 
 [node name="MusicStaff" parent="." instance=ExtResource("5_bafn2")]
-position = Vector2(122, 286)
+position = Vector2(113, 178)
 
 [node name="LevelManager" type="Node2D" parent="." node_paths=PackedStringArray("musicStaff")]
 position = Vector2(-1, 0)

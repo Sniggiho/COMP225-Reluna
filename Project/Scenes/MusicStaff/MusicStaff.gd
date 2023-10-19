@@ -51,12 +51,16 @@ func _draw():
 		Vector2(startX + screenX * staffLength, y - lineHeight * screenY + 2.2), 
 		Color.BLACK, 
 		lineThickness * 1.5)
-	playBar.draw_line(
-		Vector2(startX, startY),
-		Vector2(startX, y),
-		Color.BLACK,
-		lineThickness * 3
-	)
+		
+	
+#	Doesn't work currently, I wanted to draw a line of the correct width of the first vertical line and make that the play bar.
+#		Will find alternate method. 
+#	playBar.draw_line(
+#		Vector2(startX, startY),
+#		Vector2(startX, y),
+#		Color.BLACK,
+#		lineThickness * 3
+#	)
 	
 func getLineHeight() -> float:
 	return self.screenY * lineHeight
