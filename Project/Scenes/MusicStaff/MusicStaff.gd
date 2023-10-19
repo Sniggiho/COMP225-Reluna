@@ -45,14 +45,20 @@ func _draw():
 		Vector2(startX, startY - 2.5), 
 		Vector2(startX, y - lineHeight * screenY + 2.2), 
 		Color.BLACK, 
-		lineThickness * 1.5)
+		lineThickness * 1.5
+	)
 	draw_line(
 		Vector2(startX + screenX * staffLength,startY - 2.5 ), 
 		Vector2(startX + screenX * staffLength, y - lineHeight * screenY + 2.2), 
 		Color.BLACK, 
-		lineThickness * 1.5)
-		
-	
+		lineThickness * 1.5
+	)
+	# total height of (y - lineHeight * screenY) - (startY - 25)
+	var h = (y - lineHeight * screenY + 2.2) - (startY)
+	playBar.points[0] = Vector2(startX, -h/2 + 32)
+	playBar.points[1] = Vector2(startX, h/2 + 32)
+
+	playBar.width = lineThickness * 1.5
 #	Doesn't work currently, I wanted to draw a line of the correct width of the first vertical line and make that the play bar.
 #		Will find alternate method. 
 #	playBar.draw_line(

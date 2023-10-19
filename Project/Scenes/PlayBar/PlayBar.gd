@@ -1,4 +1,4 @@
-extends Polygon2D
+extends Line2D
 class_name PlayBar
 
 @export var path : Path2D
@@ -10,6 +10,7 @@ var melodyLengthT : float = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	visible = false
 	pass # Replace with function body.
 
 
@@ -29,7 +30,7 @@ func _reset() -> void:
 	playing = false
 	visible = false
 	pathFollow.progress_ratio = 0
-	global_position.x = pathFollow.global_position.x
+	global_position = pathFollow.global_position
 	pass
 
 func play() -> void:

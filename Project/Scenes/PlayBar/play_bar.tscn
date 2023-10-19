@@ -5,8 +5,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1cbyy"]
 size = Vector2(10, 1000)
 
-[node name="PlayBar" type="Polygon2D"]
-polygon = PackedVector2Array(-5, -100, -5, 100, 5, 100, 5, -100)
+[node name="PlayBar" type="Line2D"]
+points = PackedVector2Array(0, -100, 0, 100)
+width = 5.0
 script = ExtResource("1_3y8rp")
 
 [node name="Area2D" type="Area2D" parent="."]

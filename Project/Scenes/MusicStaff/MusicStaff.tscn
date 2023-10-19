@@ -6,7 +6,7 @@
 
 [sub_resource type="Curve2D" id="Curve2D_urwcl"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1399, 0)
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1440, 0)
 }
 point_count = 2
 
@@ -28,6 +28,6 @@ loop = false
 
 [node name="PlayBar" parent="." node_paths=PackedStringArray("path") instance=ExtResource("3_56f0e")]
 position = Vector2(-2.08165e-12, 93)
-color = Color(0, 0, 0, 1)
+default_color = Color(0, 0, 0, 1)
 antialiased = true
 path = NodePath("../Path2D")
