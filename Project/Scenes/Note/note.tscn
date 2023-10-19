@@ -45,7 +45,7 @@ func _on_area_2d_area_entered(_area):
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q24im"]
-size = Vector2(57.5, 59.5)
+size = Vector2(59.75, 59.5)
 
 [node name="Note" type="Node2D"]
 script = ExtResource("1_2wmyl")
@@ -55,10 +55,10 @@ anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -29.0
-offset_top = -29.0
-offset_right = 29.0
-offset_bottom = 30.0
+offset_left = -30.0
+offset_top = -30.0
+offset_right = 28.0
+offset_bottom = 29.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -68,7 +68,7 @@ action_mode = 0
 flat = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Button"]
-position = Vector2(32, -26)
+position = Vector2(30, -26)
 scale = Vector2(0.06, 0.06)
 texture = ExtResource("2_m8vj1")
 
@@ -78,6 +78,7 @@ script = SubResource("GDScript_ns5jr")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.125, 0)
 shape = SubResource("RectangleShape2D_q24im")
 
 [connection signal="pressed" from="Button" to="." method="select"]
