@@ -20,24 +20,26 @@ minDetuneCents = 10
 musicStaff = NodePath("../MusicStaff")
 
 [node name="PlayButton" type="Button" parent="."]
-offset_left = 182.0
-offset_top = 554.0
-offset_right = 190.0
-offset_bottom = 562.0
+offset_left = 34.0
+offset_top = 598.0
+offset_right = 75.0
+offset_bottom = 629.0
 scale = Vector2(5, 4.28)
+text = "Play"
 
 [node name="CheckButton" type="Button" parent="."]
-offset_left = 182.0
-offset_top = 632.0
-offset_right = 190.0
-offset_bottom = 640.0
+offset_left = 31.0
+offset_top = 740.0
+offset_right = 155.0
+offset_bottom = 771.0
 scale = Vector2(5, 4.28)
+text = "Check Selected"
 
 [node name="ResetButton" type="Button" parent="."]
-offset_left = 255.0
-offset_top = 700.0
-offset_right = 306.0
-offset_bottom = 731.0
+offset_left = 1322.0
+offset_top = 750.0
+offset_right = 1373.0
+offset_bottom = 781.0
 scale = Vector2(5, 4.28)
 text = "Reset"
 
@@ -102,6 +104,15 @@ offset_top = 592.0
 offset_right = 1219.0
 offset_bottom = 759.0
 mouse_filter = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 443.0
+offset_top = 37.0
+offset_right = 833.0
+offset_bottom = 77.0
+scale = Vector2(2.40627, 2.40627)
+mouse_filter = 2
+text = "Select the two notes that are out of tune"
 
 [connection signal="pressed" from="PlayButton" to="MusicStaff" method="_on_play_button_pressed"]
 [connection signal="pressed" from="CheckButton" to="LevelManager" method="checkPlayerInput"]
