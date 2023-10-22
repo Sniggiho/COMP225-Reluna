@@ -15,8 +15,8 @@ position = Vector2(-1, 0)
 script = ExtResource("1_xad2n")
 numAccidentals = 2
 bySharp = false
-maxDetuneCents = 20
-minDetuneCents = 10
+maxDetuneCents = 40
+minDetuneCents = 30
 musicStaff = NodePath("../MusicStaff")
 
 [node name="PlayButton" type="Button" parent="."]
