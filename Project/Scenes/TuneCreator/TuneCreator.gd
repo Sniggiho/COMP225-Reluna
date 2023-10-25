@@ -50,8 +50,8 @@ func givePath(path : Path2D):
 ## For use in free play mode, the user's selection of difficulty is passed to
 ## the Tune Creator for the generation of notes. 
 ## _tuneCreator.setUpRand(numAccidentals, bySharp, minOct, maxOct, listOfDetunedNotes, detuneDirection, maxDetuneCents, minDetuneCents)
-func setupRand(numAccidentals, bySharps, minOct, maxOct, detunedList, detuneDir, maxDetuneCents, minDetuneCents) -> void:
-	self._possibleNotes = _createNoteArrayInKey(numAccidentals,bySharps,minOct,maxOct)
+func setupRand(numAccidentals, bySharps, lowestNote, highestNote, detunedList, detuneDir, maxDetuneCents, minDetuneCents) -> void:
+	self._possibleNotes = _createNoteArrayInKey(numAccidentals,bySharps,lowestNote,highestNote)
 	self._bySharps = bySharps
 	self._numNotes = len(detunedList)
 	self._detunedList = detunedList
@@ -169,15 +169,15 @@ func _createNoteArrayChromatic(lowOct, highOct)-> Array:
 ##			number of accidentals for the desired key
 ##		bySharps : boolean 
 ##			if true adds accidentals as sharps; otherwise adds them as flats
-##		lowOct : int 
-##			lowest octave from which to include note (inclusive)
+##		lowest : int 
+##			all notes in key must be this or higher (inclusive)
 ##		highOct : int 
-##			lowest octave from which to include note (inclusive)
+##			all notes in key must be lower than this (exclusive)
 ##
 ##	Return:
 ##		allNotes : array
 ##			array containing the names of all notes found in the given key
-func _createNoteArrayInKey(accidentals, bySharps, lowOct, highOct) -> Array:
+func _createNoteArrayInKey(accidentals, bySharps, lowestNote, highestNote) -> Array:
 
 	assert(accidentals<=6) # cannot have more than 6 accidentals
 	# sharps order is: F – C – G – D – A – E – B
@@ -201,14 +201,41 @@ func _createNoteArrayInKey(accidentals, bySharps, lowOct, highOct) -> Array:
 			notesInKey.append(flats[i])
 		for i in range(accidentals, 7):
 			notesInKey.append(naturalsForFlats[i])
+			
+	var lowOct = int(lowestNote[-1])
+	var highOct = int(highestNote[-1])
 	
-	for oct in range(lowOct,highOct+1):
+	for oct in range(lowOct,highOct+1): # creates the scale in all of the possible octaves
 		for note in notesInKey:
 			allNotes.append(note+str(oct))
 	
-	print("Current key contains:", allNotes)
-	return allNotes
+	var allNotesCorrectRange = []
+	for n in allNotes: # narrows down to only the permitted notes
+		if self.compareNotes(n, lowestNote) and self.compareNotes(highestNote, n):
+			allNotesCorrectRange.append(n)
+			
+	
+	print("Current key contains:", allNotesCorrectRange)
+	return allNotesCorrectRange
 
 ## return if scale is sharp or flat
 func getBySharps() -> bool:
 	return self._bySharps
+
+## returns true if the first note is higher than or equal to the second note, and false if the second note is higher 
+func compareNotes(n1,n2) -> bool:
+	var oct1 = int(n1[-1])
+	var oct2 = int(n2[-1])
+	
+	var noteOrder = ["c","c-","d","d-","e","f","f-","g","g-","a","a-","b"]
+	
+	if oct1 > oct2:
+		return true
+	elif oct1 < oct2:
+		return false
+	else: #if they're in the same octave
+		var noteNum1 = noteOrder.rfind(n1.left(-1))
+		var noteNum2 = noteOrder.rfind(n2.left(-1))
+		if noteNum1 >= noteNum2:
+			return true
+	return false

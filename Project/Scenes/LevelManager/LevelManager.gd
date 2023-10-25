@@ -35,10 +35,10 @@ class_name LevelManager
 @export var minDetuneCents : int = 5
 
 ## The minimum octave of notes to generate
-@export var minOct : int = 3
+@export var lowestNote : String = "c4"
 
 ## The maximum octave of notes to generate
-@export var maxOct : int = 5
+@export var highestNote : String = "c6"
 
 ## Direction of detune, that is sharp or flat or both.
 ## Sharp indicates increasing cents (detuneDirection =  1). 
@@ -91,7 +91,7 @@ func createTuneCreator() -> void:
 	staffGapHeight = musicStaff.getLineHeight()
 	_tuneCreator.lineHeight = staffGapHeight
 	_tuneCreator.givePath(path)
-	_tuneCreator.setupRand(numAccidentals, bySharp, minOct, maxOct, listOfDetunedNotes, detuneDirection, maxDetuneCents, minDetuneCents)
+	_tuneCreator.setupRand(numAccidentals, bySharp, lowestNote, highestNote, listOfDetunedNotes, detuneDirection, maxDetuneCents, minDetuneCents)
 	
 	
 	pass
