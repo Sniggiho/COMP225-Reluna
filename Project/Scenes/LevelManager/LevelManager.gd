@@ -59,6 +59,7 @@ class_name LevelManager
 ## 
 var staffGapHeight : float
 
+@export var bpm : int = 120
 
 @onready var _tuneCreatorScene : PackedScene = preload("res://Scenes/TuneCreator/tune_creator.tscn")
 var _tuneCreator : TuneCreator
