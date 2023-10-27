@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://djhc22rfbysqm"]
+
+[ext_resource type="Script" path="res://Scenes/menuScreen.gd" id="1_2n4jg"]
+[ext_resource type="FontFile" uid="uid://cjsp1364xgk1j" path="res://Lemiesz.ttf" id="1_k8447"]
+
+[node name="menuScreen" type="Node2D"]
+script = ExtResource("1_2n4jg")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 256.0
+offset_top = 192.0
+offset_right = 1344.0
+offset_bottom = 307.0
+theme_override_colors/default_color = Color(0.6, 0.607843, 0.976471, 1)
+theme_override_fonts/normal_font = ExtResource("1_k8447")
+theme_override_font_sizes/normal_font_size = 105
+text = "Tooner Boomer"
+
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 632.0
+offset_top = 488.0
+offset_right = 920.0
+offset_bottom = 594.0
+theme_override_colors/font_color = Color(0.572549, 0.454902, 0.972549, 1)
+theme_override_colors/font_hover_color = Color(0, 0.376471, 0.996078, 1)
+theme_override_fonts/font = ExtResource("1_k8447")
+theme_override_font_sizes/font_size = 85
+text = "play"
+flat = true
+
+[connection signal="pressed" from="PlayButton" to="." method="_on_menu_button_pressed"]
