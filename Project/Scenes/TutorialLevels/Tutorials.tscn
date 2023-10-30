@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxm6t2dmvhbtu"]
+
+[ext_resource type="PackedScene" uid="uid://baubx0ndwrros" path="res://Scenes/LevelData/LevelData.tscn" id="1_duajq"]
+
+[node name="Tutorials" type="Node2D"]
+
+[node name="LevelData1" parent="." instance=ExtResource("1_duajq")]
+noteSet = [&"", null, null]
+
+[node name="LevelData2" parent="." instance=ExtResource("1_duajq")]
+
+[node name="LevelData3" parent="." instance=ExtResource("1_duajq")]
+
+[node name="LevelData4" parent="." instance=ExtResource("1_duajq")]
+
+[node name="LevelData5" parent="." instance=ExtResource("1_duajq")]
+
+[node name="LevelData6" parent="." instance=ExtResource("1_duajq")]
