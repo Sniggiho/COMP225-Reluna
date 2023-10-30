@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scenes/AudioStreamPlayerTest.gd" id="1_x644u"]
 [ext_resource type="Script" path="res://Scenes/LevelManager/LevelManager.gd" id="1_xad2n"]
-[ext_resource type="Script" path="res://Scenes/windowTest.gd" id="5_1dk32"]
 [ext_resource type="PackedScene" uid="uid://dq0mp8xmuh00" path="res://Scenes/MusicStaff/MusicStaff.tscn" id="5_bafn2"]
+[ext_resource type="Script" path="res://Scenes/FeedbackPopup.gd" id="5_r4b1t"]
 
 [node name="Main" type="Node2D"]
 
@@ -83,27 +83,25 @@ offset_right = 1600.0
 offset_bottom = 900.0
 color = Color(0.262745, 0.262745, 0.262745, 0.494118)
 
-[node name="Window" type="Window" parent="."]
-title = "Test Window"
+[node name="Popup" type="Popup" parent="."]
+title = "Feedback"
 initial_position = 1
-size = Vector2i(500, 500)
-visible = false
-content_scale_mode = 2
-script = ExtResource("5_1dk32")
+size = Vector2i(901, 615)
+script = ExtResource("5_r4b1t")
 
-[node name="ColorRect" type="ColorRect" parent="Window"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="PopupMenu" type="PopupMenu" parent="."]
-size = Vector2i(500, 500)
-
-[node name="feedbackTemp" type="RichTextLabel" parent="."]
+[node name="feedbackTemp" type="RichTextLabel" parent="Popup"]
 offset_left = 808.0
 offset_top = 592.0
-offset_right = 1219.0
-offset_bottom = 759.0
-mouse_filter = 2
+offset_right = 901.0
+offset_bottom = 615.0
+text = "I popped up"
+fit_content = true
+autowrap_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="Popup"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 offset_left = 443.0
@@ -116,9 +114,7 @@ text = "Select the two notes that are out of tune"
 
 [connection signal="pressed" from="PlayButton" to="MusicStaff" method="_on_play_button_pressed"]
 [connection signal="pressed" from="CheckButton" to="LevelManager" method="checkPlayerInput"]
+[connection signal="pressed" from="CheckButton" to="Popup" method="_on_check_button_pressed"]
 [connection signal="pressed" from="ResetButton" to="LevelManager" method="_reset"]
 [connection signal="pressed" from="Debug/ButtonForDetuned" to="Debug/AudioStreamPlayer" method="_on_button_pressed"]
 [connection signal="pressed" from="Debug/ButtonForInTune" to="Debug/AudioStreamPlayer" method="_on_button_for_in_tune_pressed"]
-[connection signal="close_requested" from="Window" to="Window" method="_on_close_requested"]
-[connection signal="mouse_entered" from="Window" to="Window" method="_on_mouse_entered"]
-[connection signal="window_input" from="Window" to="Window" method="_on_window_input"]
