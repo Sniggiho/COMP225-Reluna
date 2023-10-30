@@ -9,9 +9,12 @@ class_name Note
 @export var defaultColor : Color = Color("000000")
 @export var selectedColor : Color = Color("e24c59")
 
+var selectable : bool = true
 var selected : bool = false
 
 var lineHeight : float
+
+var text : RichTextLabel
 
 
 # Called when the node enters the scene tree for the first time.
@@ -122,8 +125,16 @@ func createLedgerLines() ->  void:
 	pass
 
 func select() -> void:
-	selected = !selected
-	_changeColor()
+	if selectable:
+		selected = !selected
+		_changeColor()
+	else: # is first note
+		if not text:
+			text = RichTextLabel.new()
+			text.text = "The first note will always be in-tune"
+			text.size = Vector2(100, 100)
+			text.mouse_filter = Control.MOUSE_FILTER_IGNORE
+			add_child(text)
 	
 func _changeColor() -> void:
 	if selected:
