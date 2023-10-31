@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bga4qsn2ueiyh"]
+
+[node name="FreeplaySettingsMenu" type="Node2D"]
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_left = 504.0
+offset_top = 151.0
+offset_right = 663.0
+offset_bottom = 263.0
+tick_count = 5
+ticks_on_borders = true
+
+[node name="VSlider" type="VSlider" parent="."]
+offset_left = 305.0
+offset_top = 109.0
+offset_right = 485.0
+offset_bottom = 293.0
+
+[node name="ItemList" type="ItemList" parent="."]
+offset_left = 63.0
+offset_top = 149.0
+offset_right = 230.0
+offset_bottom = 318.0
+item_count = 5
+item_0/text = "Alice"
+item_1/text = "Bob"
+item_2/text = "Chuck"
+item_3/text = "Dan"
+item_4/text = "Eric"
+
+[node name="MenuBar" type="MenuBar" parent="."]
+offset_left = 934.0
+offset_top = 82.0
+offset_right = 974.0
+offset_bottom = 122.0
+
+[node name="A" type="PopupMenu" parent="MenuBar"]
+
+[node name="B" type="PopupMenu" parent="MenuBar"]
+
+[node name="ReferenceRect" type="ReferenceRect" parent="."]
+offset_left = 792.0
+offset_top = 397.0
+offset_right = 845.0
+offset_bottom = 437.0
