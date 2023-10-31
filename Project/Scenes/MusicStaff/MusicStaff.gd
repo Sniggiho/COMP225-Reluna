@@ -23,6 +23,9 @@ var trebleRatio
 @onready var playBar : PlayBar = $PlayBar
 @onready var path : Path2D = $Path2D
 
+func setNotesBPM(numNotes : int, bpm : float) -> void:
+	playBar.setNotesBPM(numNotes, bpm)
+
 func _ready():
 	print("ready got called")
 	screenX = get_viewport_rect().size.x

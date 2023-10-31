@@ -128,6 +128,9 @@ func checkPlayerInput():
 		if feedbackText:
 			feedbackText.text = "Aw, you were incorrect :("
 
+func getNoteCountBPM() -> Array:
+	return [numNotes, bpm]
+
 ## Call to keep a level manager around and generate new list of detuned notes, tune creator, etc.
 func _reset() -> void:
 	path.get_child(0).progress_ratio = 0
@@ -143,6 +146,7 @@ func _ready():
 		numOutOfTune = numNotes-1
 	createListOfDetunedNotes()
 	createTuneCreator()
+	musicStaff.setNotesBPM(numNotes, bpm)
 	
 	print(_tuneCreator.lineHeight)
 	print(listOfDetunedNotes)

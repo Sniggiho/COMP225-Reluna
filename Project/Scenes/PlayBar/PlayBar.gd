@@ -6,7 +6,17 @@ class_name PlayBar
 
 var playing : bool = false
 
+var bpm : float
+
+var numNotes : int
+
+## (numNotes + 1) * 60 / bpm / (1 - pregap)
 var melodyLengthT : float = (6)*60/120.0/0.8
+
+func setNotesBPM(numNotes : int, bpm : float) -> void:
+	self.numNotes = numNotes
+	self.bpm = bpm
+	melodyLengthT = (numNotes + 1) * 60. / bpm / 0.8
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
