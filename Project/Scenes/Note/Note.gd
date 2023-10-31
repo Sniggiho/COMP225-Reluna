@@ -11,6 +11,8 @@ class_name Note
 
 var selectable : bool = true
 var selected : bool = false
+var shownText : bool = false
+var timer : Timer
 
 var lineHeight : float
 
@@ -42,6 +44,12 @@ func setDetuneCents(cents) -> void:
 	
 func getDetuneCents() -> int:
 	return detuneCents
+
+# connected to timer if it exsits.
+# Timer only exists for the first click of the first note
+func _clearText() -> void:
+	if text:
+		text.text = ""
 
 func orientation() -> void:
 	_draw()
@@ -135,6 +143,14 @@ func select() -> void:
 			text.size = Vector2(100, 100)
 			text.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			add_child(text)
+			shownText = true
+			
+			timer = Timer.new()
+			timer.one_shot = true
+			timer.autostart = true
+			timer.wait_time = 2
+			add_child(timer)
+			timer.timeout.connect(_clearText)
 	
 func _changeColor() -> void:
 	if selected:
