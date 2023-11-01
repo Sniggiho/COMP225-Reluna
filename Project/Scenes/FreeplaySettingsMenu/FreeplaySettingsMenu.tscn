@@ -1,6 +1,10 @@
-[gd_scene format=3 uid="uid://bga4qsn2ueiyh"]
+[gd_scene load_steps=3 format=3 uid="uid://bga4qsn2ueiyh"]
+
+[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gd" id="1_qg26p"]
+[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/DetuneDirection.gd" id="2_ygjhj"]
 
 [node name="FreeplaySettingsMenu" type="Node2D"]
+script = ExtResource("1_qg26p")
 
 [node name="HSlider" type="HSlider" parent="."]
 offset_left = 504.0
@@ -16,17 +20,17 @@ offset_top = 109.0
 offset_right = 485.0
 offset_bottom = 293.0
 
-[node name="ItemList" type="ItemList" parent="."]
+[node name="DetuneDirection" type="ItemList" parent="."]
 offset_left = 63.0
 offset_top = 149.0
 offset_right = 230.0
 offset_bottom = 318.0
-item_count = 5
-item_0/text = "Alice"
-item_1/text = "Bob"
-item_2/text = "Chuck"
-item_3/text = "Dan"
-item_4/text = "Eric"
+auto_height = true
+item_count = 3
+item_0/text = "Sharp"
+item_1/text = "Both"
+item_2/text = "Flat"
+script = ExtResource("2_ygjhj")
 
 [node name="MenuBar" type="MenuBar" parent="."]
 offset_left = 934.0
@@ -38,8 +42,4 @@ offset_bottom = 122.0
 
 [node name="B" type="PopupMenu" parent="MenuBar"]
 
-[node name="ReferenceRect" type="ReferenceRect" parent="."]
-offset_left = 792.0
-offset_top = 397.0
-offset_right = 845.0
-offset_bottom = 437.0
+[connection signal="item_selected" from="DetuneDirection" to="DetuneDirection" method="_on_item_selected"]

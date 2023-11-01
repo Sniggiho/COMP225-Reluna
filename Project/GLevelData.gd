@@ -1,3 +1,5 @@
+extends Node2D
+
 var tutorial : bool # true for tutorials, false for freeplay
 
 # shared settings
