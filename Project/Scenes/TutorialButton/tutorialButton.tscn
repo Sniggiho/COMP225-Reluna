@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://34403u2svqws"]
 
-[ext_resource type="Texture2D" uid="uid://xadd6xvwq8wc" path="res://TempImage/doge.png" id="1_uag4b"]
-[ext_resource type="Script" path="res://Scenes/TutorialLevels/tutorialButton.gd" id="2_n60e7"]
+[ext_resource type="Texture2D" uid="uid://xadd6xvwq8wc" path="res://TempImage/doge.png" id="1_4bacy"]
+[ext_resource type="Script" path="res://Scenes/TutorialButton/tutorialButton.gd" id="2_1pyx0"]
 
 [node name="tutorialButton" type="Button"]
 offset_left = 1.0
@@ -9,8 +9,8 @@ offset_top = -1.0
 offset_right = 295.0
 offset_bottom = 335.0
 theme_override_colors/icon_hover_color = Color(0.92549, 0, 0.196078, 1)
-icon = ExtResource("1_uag4b")
+icon = ExtResource("1_4bacy")
 flat = true
-script = ExtResource("2_n60e7")
+script = ExtResource("2_1pyx0")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]
