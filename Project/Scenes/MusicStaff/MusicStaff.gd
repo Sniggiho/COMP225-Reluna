@@ -27,7 +27,6 @@ func setNotesBPM(numNotes : int, bpm : float) -> void:
 	playBar.setNotesBPM(numNotes, bpm)
 
 func _ready():
-	print("ready got called")
 	screenX = get_viewport_rect().size.x
 	screenY = get_viewport_rect().size.y
 	startX = 0

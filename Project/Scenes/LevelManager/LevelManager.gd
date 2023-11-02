@@ -67,8 +67,11 @@ var _tuneCreator : TuneCreator
 ## Will look like [false, true, false, false, ture], where the "true" positions have detuned notes
 var listOfDetunedNotes : Array
 
+## Used in tutorial mode, a list of the notes comprising the melody
+var notes : Array 
+
 ## Randomly selects notes to be out of tune, storing this value in the listOfDetunedNotes class variable
-func createListOfDetunedNotes() -> void:
+func createListOfDetunedNotes(numNotes:int) -> void:
 	var detuneList = []
 	for n in range(numNotes):
 		detuneList.append(false)
@@ -82,20 +85,20 @@ func createListOfDetunedNotes() -> void:
 		detuneList[possibleIndices[i]] = true
 	
 	listOfDetunedNotes = detuneList
-	print("list of detuned notes:", listOfDetunedNotes)
-	pass
 
 ## Create a tune creator with the given parameters
-func createTuneCreator() -> void:
+func createTuneCreator(tutorial : bool) -> void:
 	_tuneCreator = _tuneCreatorScene.instantiate()
 	add_child(_tuneCreator)
 	staffGapHeight = musicStaff.getLineHeight()
 	_tuneCreator.lineHeight = staffGapHeight
 	_tuneCreator.givePath(path)
-	_tuneCreator.setupRand(numAccidentals, bySharp, lowestNote, highestNote, listOfDetunedNotes, detuneDirection, maxDetuneCents, minDetuneCents)
+	if tutorial:
+		_tuneCreator.setupFullManual(GLevelData.notes, GLevelData.bySharps, GLevelData.detunedAmountsList)
+	else:
+		# TODO: this should all be GLevelData data
+		_tuneCreator.setupRand(numAccidentals, bySharp, lowestNote, highestNote, listOfDetunedNotes, detuneDirection, maxDetuneCents, minDetuneCents)
 	
-	
-	pass
 
 ## Delete the tune creator (ideally you're going to create a new one with 
 ## similar parameters after this)
@@ -135,19 +138,28 @@ func getNoteCountBPM() -> Array:
 func _reset() -> void:
 	path.get_child(0).progress_ratio = 0
 	deleteTuneCreator()
-	createListOfDetunedNotes()
-	createTuneCreator()
-	pass
+	createListOfDetunedNotes(numNotes)
+	createTuneCreator(false)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	path = musicStaff.get_child(1)
-	if numOutOfTune>numNotes-1: # if we want more out of tune notes than we have notes, we set the number of detuned notes to the max possible
-		numOutOfTune = numNotes-1
-	createListOfDetunedNotes()
-	createTuneCreator()
-	musicStaff.setNotesBPM(numNotes, bpm)
+		
+	if GLevelData.tutorial: # if we're currently in a tutorial level
+		# first we figure out the list of detuned notes
+		var detuneList = []
+		for n in GLevelData.detunedAmountsList:
+			if n: 
+				detuneList.append(true)
+			else:
+				detuneList.append(false)
+		listOfDetunedNotes = detuneList
+		# then we make the tune creator
+		createTuneCreator(true)
+		musicStaff.setNotesBPM(GLevelData.numNotes, GLevelData.bpm) # TODO this gets moved outside conditional
+	else: 
+		# TODO: update this to use GLevelData
+		createListOfDetunedNotes(numNotes)
+		createTuneCreator(false)
+		musicStaff.setNotesBPM(numNotes, bpm)
 	
-	print(_tuneCreator.lineHeight)
-	print(listOfDetunedNotes)
-	pass

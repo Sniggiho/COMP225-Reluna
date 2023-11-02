@@ -11,7 +11,9 @@ func _on_pressed():
 	GLevelData.tutorial = true
 	GLevelData.bySharps = tut.bySharps
 	GLevelData.notes = tut.notes
-	GLevelData.detunedList = tut.detunedLists
+	GLevelData.detunedAmountsList = tut.detunedAmountsList
+	GLevelData.bpm = tut.bpm
+	GLevelData.numNotes = len(tut.notes)
 	
 	SceneTransition.change_scene("res://Scenes/firstScene.tscn")
 	

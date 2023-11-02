@@ -64,7 +64,7 @@ func setupRand(numAccidentals, bySharps, lowestNote, highestNote, detunedList, d
 ## For use in tutorial mode. Given a list of notes comprising some melody, and information on which
 ## notes to detune, randomly detunes the given notes within given detune parameters.
 func setupHalfManual(notes, bySharps, detunedList, detuneDir, maxDetuneCents, minDetuneCents):
-	self.givenNotes = notes
+	self._givenNotes = notes
 	self._bySharps = bySharps
 	self._numNotes = len(notes)
 	self._detunedList = detunedList
@@ -74,9 +74,10 @@ func setupHalfManual(notes, bySharps, detunedList, detuneDir, maxDetuneCents, mi
 	generate(false, true)
 	
 func setupFullManual(notes, bySharps, detunedAmountsList):
-	self.givenNotes = notes
+	self._givenNotes = notes
 	self._bySharps = bySharps
 	self._numNotes = len(notes)
+	self._detunedAmountsList = detunedAmountsList
 	for i in range(len(notes)):
 		if detunedAmountsList[i] == 0:
 			self._detunedList.append(false)
@@ -94,7 +95,6 @@ func generate(randomNotes = true, randomDetune = true) -> void:
 	var pathMax = 1
 	dx = (pathMax - pathMin) / (float) (_numNotes + 1)
 	_pathFollower.progress_ratio = pathMin
-	print("dx: ", dx)
 	
 	for i in range(_numNotes):
 		_pathFollower.progress_ratio += dx

@@ -14,6 +14,7 @@ var numDetunedNotes : int
 var detuneDir : int # -1 for flat only, 0 for both, 1 for sharp only
 var maxDetuneCents : int
 var minDetuneCents : int
+var numNotes : int
 
 # tutorial settings
 var notes : Array
