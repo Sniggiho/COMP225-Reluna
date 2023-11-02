@@ -1,24 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bga4qsn2ueiyh"]
+[gd_scene load_steps=5 format=3 uid="uid://bga4qsn2ueiyh"]
 
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gd" id="1_qg26p"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/DetuneDirection.gd" id="2_ygjhj"]
+[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumDetuned.gd" id="3_obu2l"]
+[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumNotes.gd" id="3_p50rh"]
 
 [node name="FreeplaySettingsMenu" type="Node2D"]
 script = ExtResource("1_qg26p")
-
-[node name="HSlider" type="HSlider" parent="."]
-offset_left = 504.0
-offset_top = 151.0
-offset_right = 663.0
-offset_bottom = 263.0
-tick_count = 5
-ticks_on_borders = true
-
-[node name="VSlider" type="VSlider" parent="."]
-offset_left = 305.0
-offset_top = 109.0
-offset_right = 485.0
-offset_bottom = 293.0
 
 [node name="DetuneDirection" type="ItemList" parent="."]
 offset_left = 63.0
@@ -42,4 +30,27 @@ offset_bottom = 122.0
 
 [node name="B" type="PopupMenu" parent="MenuBar"]
 
+[node name="NumNotes" type="HSlider" parent="."]
+offset_left = 529.0
+offset_top = 176.0
+offset_right = 688.0
+offset_bottom = 288.0
+min_value = 4.0
+max_value = 15.0
+value = 4.0
+ticks_on_borders = true
+script = ExtResource("3_p50rh")
+
+[node name="NumDetuned" type="HSlider" parent="."]
+offset_left = 524.0
+offset_top = 295.0
+offset_right = 691.0
+offset_bottom = 345.0
+min_value = 1.0
+value = 1.0
+script = ExtResource("3_obu2l")
+
 [connection signal="item_selected" from="DetuneDirection" to="DetuneDirection" method="_on_item_selected"]
+[connection signal="value_changed" from="NumNotes" to="NumNotes" method="_on_value_changed"]
+[connection signal="value_changed" from="NumNotes" to="NumDetuned" method="_on_num_notes_value_changed"]
+[connection signal="value_changed" from="NumDetuned" to="NumDetuned" method="_on_value_changed"]
