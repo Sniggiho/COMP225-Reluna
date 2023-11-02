@@ -11,6 +11,8 @@ func _ready():
 	text.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 
+# SIGNAL FROM SELF
+# Whenever this slider's value changes, update the text and GLevelData
 func _on_value_changed(passedValue):
 	text.text = str(passedValue)
 	GLevelData.numNotes = passedValue

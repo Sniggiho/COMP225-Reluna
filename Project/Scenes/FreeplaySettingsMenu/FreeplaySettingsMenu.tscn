@@ -9,10 +9,10 @@
 script = ExtResource("1_qg26p")
 
 [node name="DetuneDirection" type="ItemList" parent="."]
-offset_left = 63.0
-offset_top = 149.0
-offset_right = 230.0
-offset_bottom = 318.0
+offset_left = 58.0
+offset_top = 129.0
+offset_right = 225.0
+offset_bottom = 298.0
 auto_height = true
 item_count = 3
 item_0/text = "Sharp"
@@ -38,6 +38,7 @@ offset_bottom = 288.0
 min_value = 4.0
 max_value = 15.0
 value = 4.0
+tick_count = 12
 ticks_on_borders = true
 script = ExtResource("3_p50rh")
 
