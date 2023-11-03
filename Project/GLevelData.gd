@@ -7,6 +7,8 @@ var bySharps : bool
 var bpm : int
 var numAccidentals : int
 
+var displayText : String = "Display text didn't get set..."
+
 # free play settings
 var lowestNote : String
 var highestNote : String

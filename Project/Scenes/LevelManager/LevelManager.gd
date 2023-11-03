@@ -136,6 +136,10 @@ func getNoteCountBPM() -> Array:
 
 ## Call to keep a level manager around and generate new list of detuned notes, tune creator, etc.
 func _reset() -> void:
+	# TODO: update this to use GLevelData
+	GLevelData.displayText = "Random Level - Update this!!"
+	self.get_parent().find_child("DisplayText").refresh()
+	
 	path.get_child(0).progress_ratio = 0
 	deleteTuneCreator()
 	createListOfDetunedNotes(numNotes)

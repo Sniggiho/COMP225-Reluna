@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1qqxujrvquvy"]
+[gd_scene load_steps=6 format=3 uid="uid://c1qqxujrvquvy"]
 
 [ext_resource type="Script" path="res://Scenes/AudioStreamPlayerTest.gd" id="1_x644u"]
 [ext_resource type="Script" path="res://Scenes/LevelManager/LevelManager.gd" id="1_xad2n"]
 [ext_resource type="PackedScene" uid="uid://dq0mp8xmuh00" path="res://Scenes/MusicStaff/MusicStaff.tscn" id="5_bafn2"]
+[ext_resource type="Script" path="res://Scenes/DisplayText.gd" id="5_k5ivr"]
 [ext_resource type="Script" path="res://Scenes/FeedbackPopup.gd" id="5_r4b1t"]
 
 [node name="Main" type="Node2D"]
@@ -59,6 +60,7 @@ offset_bottom = 146.0
 text = "Hello World!"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Debug"]
+volume_db = -80.0
 script = ExtResource("1_x644u")
 
 [node name="ButtonForDetuned" type="Button" parent="Debug"]
@@ -110,7 +112,7 @@ visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="DisplayText" type="RichTextLabel" parent="."]
 offset_left = 443.0
 offset_top = 37.0
 offset_right = 833.0
@@ -118,6 +120,7 @@ offset_bottom = 77.0
 scale = Vector2(2.40627, 2.40627)
 mouse_filter = 2
 text = "Select the two notes that are out of tune"
+script = ExtResource("5_k5ivr")
 
 [connection signal="pressed" from="PlayButton" to="MusicStaff" method="_on_play_button_pressed"]
 [connection signal="pressed" from="CheckButton" to="LevelManager" method="checkPlayerInput"]
