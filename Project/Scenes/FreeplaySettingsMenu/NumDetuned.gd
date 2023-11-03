@@ -27,11 +27,23 @@ func _ready():
 func _on_num_notes_value_changed(passedValue):
 	max_value = passedValue-1
 	tick_count = int(max_value - min_value + 1)
-	if self.value > max_value:
-		self.value = max_value
+
 
 # SIGNAL FROM SELF
 # Whenver this objects value is changed, update the text and GLevelData
 func _on_value_changed(passedValue):
 	text.text = str(passedValue)
 	GLevelData.numDetunedNotes = passedValue
+
+
+# SIGNAL PASSED HERE FROM NUM NOTES
+#
+# Only change the value of this with respect to its new max value 
+# once the drag is done.
+#
+# If the user had 8 detuned notes and 13 notes and they dragged num notes below
+# 9, then the detuned number is instantly changed. Now, detuned notes 
+# will only be changed if the *final* release of num notes violates the bounds. 
+func _on_num_notes_drag_ended(value_changed):
+	if value_changed and value > max_value:
+		value = max_value

@@ -49,9 +49,11 @@ offset_right = 691.0
 offset_bottom = 345.0
 min_value = 1.0
 value = 1.0
+allow_greater = true
 script = ExtResource("3_obu2l")
 
 [connection signal="item_selected" from="DetuneDirection" to="DetuneDirection" method="_on_item_selected"]
+[connection signal="drag_ended" from="NumNotes" to="NumDetuned" method="_on_num_notes_drag_ended"]
 [connection signal="value_changed" from="NumNotes" to="NumNotes" method="_on_value_changed"]
 [connection signal="value_changed" from="NumNotes" to="NumDetuned" method="_on_num_notes_value_changed"]
 [connection signal="value_changed" from="NumDetuned" to="NumDetuned" method="_on_value_changed"]
