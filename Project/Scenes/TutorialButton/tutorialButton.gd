@@ -1,13 +1,12 @@
 extends Button
 
 @export var tutorialNum : String
-var tutorial : Object
+var tut : TutorialLevel
 
 func _ready():
-	tutorial = load("res://Tutorials/tutorial" + tutorialNum + ".gd") # resource is loaded at compile time
+	tut = GTutorialMenu.tutMenu[int(tutorialNum)]
 	
 func _on_pressed():
-	var tut = tutorial.new()
 	GLevelData.tutorial = true
 	GLevelData.bySharps = tut.bySharps
 	GLevelData.notes = tut.notes

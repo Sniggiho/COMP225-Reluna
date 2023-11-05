@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 SceneTransition="*res://Scenes/sceneTransition.tscn"
 GLevelData="*res://GLevelData.gd"
+GTutorialMenu="*res://Tutorials/GTutorialMenu.gd"
 
 [display]
 
