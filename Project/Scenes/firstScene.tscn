@@ -1,15 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://c1qqxujrvquvy"]
+[gd_scene load_steps=12 format=3 uid="uid://c1qqxujrvquvy"]
 
 [ext_resource type="Script" path="res://Scenes/AudioStreamPlayerTest.gd" id="1_x644u"]
 [ext_resource type="Script" path="res://Scenes/LevelManager/LevelManager.gd" id="1_xad2n"]
+[ext_resource type="Texture2D" uid="uid://b8vml561x4g7f" path="res://TempImage/cartoonPlayButton.png" id="3_5h0i4"]
+[ext_resource type="Texture2D" uid="uid://bw3glh7arhfak" path="res://TempImage/cartoonCheckButton.png" id="4_t0ppk"]
 [ext_resource type="PackedScene" uid="uid://dq0mp8xmuh00" path="res://Scenes/MusicStaff/MusicStaff.tscn" id="5_bafn2"]
 [ext_resource type="Script" path="res://Scenes/DisplayText.gd" id="5_k5ivr"]
+[ext_resource type="Texture2D" uid="uid://dcgiumtxtfa4f" path="res://TempImage/cartoonResetButton.png" id="5_qdbmx"]
 [ext_resource type="Script" path="res://Scenes/FeedbackPopup.gd" id="5_r4b1t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glx47"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_axlb3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_msstd"]
 
 [node name="Main" type="Node2D"]
 
 [node name="MusicStaff" parent="." instance=ExtResource("5_bafn2")]
-position = Vector2(113, 178)
+position = Vector2(77, 179)
 
 [node name="LevelManager" type="Node2D" parent="." node_paths=PackedStringArray("musicStaff")]
 position = Vector2(-1, 0)
@@ -21,36 +30,54 @@ minDetuneCents = 30
 musicStaff = NodePath("../MusicStaff")
 
 [node name="PlayButton" type="Button" parent="."]
-offset_left = 34.0
-offset_top = 598.0
-offset_right = 75.0
-offset_bottom = 629.0
-scale = Vector2(5, 4.28)
-text = "Play"
+offset_left = 636.0
+offset_top = 536.0
+offset_right = 1156.0
+offset_bottom = 1056.0
+scale = Vector2(0.54673, 0.520001)
+size_flags_horizontal = 4
+theme_override_colors/font_hover_color = Color(0.517647, 0.498039, 0.886275, 1)
+theme_override_colors/icon_hover_color = Color(0.517647, 0.498039, 0.886275, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_glx47")
+icon = ExtResource("3_5h0i4")
+flat = true
+icon_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CheckButton" type="Button" parent="."]
-offset_left = 31.0
-offset_top = 740.0
-offset_right = 155.0
-offset_bottom = 771.0
-scale = Vector2(5, 4.28)
-text = "Check Selected"
+offset_left = 1123.0
+offset_top = 675.0
+offset_right = 1643.0
+offset_bottom = 1195.0
+scale = Vector2(0.342164, 0.325416)
+theme_override_colors/font_hover_color = Color(0.517647, 0.498039, 0.886275, 1)
+theme_override_colors/icon_hover_color = Color(0.517647, 0.498039, 0.886275, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.517647, 0.498039, 0.886275, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_axlb3")
+icon = ExtResource("4_t0ppk")
+flat = true
+icon_alignment = 1
 
 [node name="ResetButton" type="Button" parent="."]
-offset_left = 1322.0
-offset_top = 750.0
-offset_right = 1373.0
-offset_bottom = 781.0
-scale = Vector2(5, 4.28)
-text = "Reset"
+offset_left = 237.0
+offset_top = 675.0
+offset_right = 757.0
+offset_bottom = 1195.0
+scale = Vector2(0.327103, 0.320003)
+theme_override_colors/font_hover_color = Color(0.517647, 0.498039, 0.886275, 1)
+theme_override_colors/icon_hover_color = Color(0.517647, 0.498039, 0.886275, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.517647, 0.498039, 0.886275, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_msstd")
+icon = ExtResource("5_qdbmx")
+flat = true
+metadata/_edit_group_ = true
 
 [node name="ResetButton" type="Button" parent="ResetButton"]
-offset_left = 1322.0
-offset_top = 750.0
-offset_right = 1373.0
-offset_bottom = 781.0
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 121.0
 scale = Vector2(5, 4.28)
-text = "Reset"
+flat = true
 
 [node name="Debug" type="Node" parent="."]
 
