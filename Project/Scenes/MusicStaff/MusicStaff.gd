@@ -70,3 +70,6 @@ func getLineHeight() -> float:
 
 func _on_play_button_pressed():
 	playBar.play()
+
+func on_return_button_pressed():
+	SceneTransition.change_scene("res://Scenes/tutorialScreen.tscn")

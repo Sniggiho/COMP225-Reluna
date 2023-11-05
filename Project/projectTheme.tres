@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://dhkx10rwrne4u"]
+
+[ext_resource type="FontFile" uid="uid://c5ab6oet3avnf" path="res://Ubuntu-Bold.ttf" id="1_l4cr8"]
+[ext_resource type="FontFile" uid="uid://d3lg2hx5rx507" path="res://Ubuntu-Medium.ttf" id="1_q22qy"]
+[ext_resource type="FontFile" uid="uid://gr8isl1vboyq" path="res://Ubuntu-Regular.ttf" id="3_ojqbp"]
+
+[resource]
+default_font_size = 23
+Button/colors/font_color = Color(0.305882, 0.305882, 0.305882, 1)
+Button/fonts/font = ExtResource("1_q22qy")
+Label/colors/font_color = Color(0.305882, 0.305882, 0.305882, 1)
+Label/font_sizes/font_size = 130
+Label/fonts/font = ExtResource("1_l4cr8")
+RichTextLabel/colors/default_color = Color(0.74902, 0.0980392, 0.901961, 1)
+RichTextLabel/font_sizes/bold_font_size = 600
+RichTextLabel/fonts/bold_font = ExtResource("1_l4cr8")
+menuButton/base_type = &"Button"
+menuButton/colors/font_color = Color(0.305882, 0.305882, 0.305882, 1)
+menuButton/colors/font_hover_color = Color(0.0431373, 0.8, 0.956863, 1)
+menuButton/font_sizes/font_size = 80
+menuButton/fonts/font = ExtResource("1_q22qy")
+tutorialButton/base_type = &"Button"
+tutorialButton/colors/font_color = Color(0, 0, 0, 1)
+tutorialButton/colors/font_hover_color = Color(0.0431373, 0.8, 0.956863, 1)
+tutorialButton/colors/icon_hover_color = Color(0.305882, 0.305882, 0.305882, 1)
+tutorialButton/colors/icon_normal_color = Color(0.305882, 0.305882, 0.305882, 1)
+tutorialButton/font_sizes/font_size = 60
+tutorialButton/fonts/font = ExtResource("3_ojqbp")
