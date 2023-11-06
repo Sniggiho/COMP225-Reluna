@@ -29,6 +29,7 @@ numAccidentals = 2
 bySharp = false
 maxDetuneCents = 40
 minDetuneCents = 30
+lowestNote = "a3"
 musicStaff = NodePath("../MusicStaff")
 
 [node name="ReturnButton" type="TextureButton" parent="."]

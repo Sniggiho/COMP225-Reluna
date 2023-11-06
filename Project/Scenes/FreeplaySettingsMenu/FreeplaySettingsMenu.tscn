@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bga4qsn2ueiyh"]
+[gd_scene load_steps=9 format=3 uid="uid://bga4qsn2ueiyh"]
 
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gd" id="1_qg26p"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/DetuneDirection.gd" id="2_ygjhj"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumNotes.gd" id="3_p50rh"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MaxDetuneCents.gd" id="5_14ibp"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MinDetuneCents.gd" id="6_pf2lm"]
+[ext_resource type="Theme" uid="uid://dhkx10rwrne4u" path="res://projectTheme.tres" id="7_adwbt"]
+[ext_resource type="Texture2D" uid="uid://b8vml561x4g7f" path="res://TempImage/cartoonPlayButton.png" id="7_u3omm"]
 
 [node name="FreeplaySettingsMenu" type="Node2D"]
 script = ExtResource("1_qg26p")
@@ -28,9 +30,10 @@ offset_top = 82.0
 offset_right = 974.0
 offset_bottom = 122.0
 
-[node name="A" type="PopupMenu" parent="MenuBar"]
+[node name="Alice" type="PopupMenu" parent="MenuBar"]
+size = Vector2i(500, 500)
 
-[node name="B" type="PopupMenu" parent="MenuBar"]
+[node name="Bobert" type="PopupMenu" parent="MenuBar"]
 
 [node name="NumNotes" type="HSlider" parent="."]
 offset_left = 295.0
@@ -74,6 +77,42 @@ max_value = 50.0
 value = 20.0
 script = ExtResource("6_pf2lm")
 
+[node name="Button" type="Button" parent="."]
+offset_left = 932.0
+offset_top = 332.0
+offset_right = 1452.0
+offset_bottom = 852.0
+theme = ExtResource("7_adwbt")
+icon = ExtResource("7_u3omm")
+
+[node name="numNotesLabel" type="RichTextLabel" parent="."]
+offset_left = 291.0
+offset_top = 114.0
+offset_right = 448.0
+offset_bottom = 275.0
+text = "Num notes, 
+num detuned"
+fit_content = true
+
+[node name="detunedCents" type="RichTextLabel" parent="."]
+offset_left = 508.0
+offset_top = 52.0
+offset_right = 678.0
+offset_bottom = 140.0
+text = "max and min detuned cents"
+
+[node name="MinNote" type="HSlider" parent="."]
+offset_left = 735.0
+offset_top = 248.0
+offset_right = 869.0
+offset_bottom = 264.0
+
+[node name="MaxNote" type="HSlider" parent="."]
+offset_left = 733.0
+offset_top = 178.0
+offset_right = 867.0
+offset_bottom = 194.0
+
 [connection signal="item_selected" from="DetuneDirection" to="DetuneDirection" method="_on_item_selected"]
 [connection signal="drag_ended" from="NumNotes" to="NumDetuned" method="_on_num_notes_drag_ended"]
 [connection signal="value_changed" from="NumNotes" to="NumNotes" method="_on_value_changed"]
@@ -82,3 +121,4 @@ script = ExtResource("6_pf2lm")
 [connection signal="value_changed" from="MaxDetuneCents" to="MaxDetuneCents" method="_on_value_changed"]
 [connection signal="value_changed" from="MaxDetuneCents" to="MinDetuneCents" method="_on_max_detune_cents_value_changed"]
 [connection signal="value_changed" from="MinDetuneCents" to="MinDetuneCents" method="_on_value_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
