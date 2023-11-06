@@ -79,6 +79,6 @@ script = ExtResource("6_pf2lm")
 [connection signal="value_changed" from="NumNotes" to="NumNotes" method="_on_value_changed"]
 [connection signal="value_changed" from="NumNotes" to="NumDetuned" method="_on_num_notes_value_changed"]
 [connection signal="value_changed" from="NumDetuned" to="NumDetuned" method="_on_value_changed"]
-[connection signal="value_changed" from="MaxDetuneCents" to="MinDetuneCents" method="_on_max_detune_cents_value_changed"]
 [connection signal="value_changed" from="MaxDetuneCents" to="MaxDetuneCents" method="_on_value_changed"]
+[connection signal="value_changed" from="MaxDetuneCents" to="MinDetuneCents" method="_on_max_detune_cents_value_changed"]
 [connection signal="value_changed" from="MinDetuneCents" to="MinDetuneCents" method="_on_value_changed"]
