@@ -14,8 +14,9 @@ func _on_pressed():
 	GLevelData.bpm = tut.bpm
 	GLevelData.numAccidentals = tut.numAccidentals
 	GLevelData.numNotes = len(tut.notes)
-	
 	GLevelData.displayText = tut.displayText
+	
+	GLevelData.currentTut = int(tutorialNum)
 
 	SceneTransition.change_scene("res://Scenes/firstScene.tscn")
 	

@@ -8,28 +8,100 @@
 script = ExtResource("1_yx5rl")
 
 [node name="level1" parent="." instance=ExtResource("1_ph1mo")]
-offset_left = 202.0
-offset_top = 115.0
-offset_right = 496.0
-offset_bottom = 451.0
+offset_left = 57.0
+offset_top = 144.0
+offset_right = 351.0
+offset_bottom = 480.0
 text = "1"
 tutorialNum = "1"
 
 [node name="level2" parent="." instance=ExtResource("1_ph1mo")]
-offset_left = 638.0
-offset_top = 118.0
-offset_right = 932.0
-offset_bottom = 454.0
+offset_left = 303.0
+offset_top = 146.0
+offset_right = 597.0
+offset_bottom = 482.0
 text = "2"
 tutorialNum = "2"
 
 [node name="level3" parent="." instance=ExtResource("1_ph1mo")]
-offset_left = 1102.0
-offset_top = 114.0
-offset_right = 1396.0
-offset_bottom = 450.0
+offset_left = 548.0
+offset_top = 143.0
+offset_right = 842.0
+offset_bottom = 479.0
 text = "3"
 tutorialNum = "3"
+
+[node name="level4" parent="." instance=ExtResource("1_ph1mo")]
+offset_left = 783.0
+offset_top = 146.0
+offset_right = 1077.0
+offset_bottom = 482.0
+text = "4"
+tutorialNum = "4"
+
+[node name="level5" parent="." instance=ExtResource("1_ph1mo")]
+offset_left = 1022.0
+offset_top = 147.0
+offset_right = 1316.0
+offset_bottom = 483.0
+text = "5"
+tutorialNum = "5"
+
+[node name="level6" parent="." instance=ExtResource("1_ph1mo")]
+offset_left = 1256.0
+offset_top = 148.0
+offset_right = 1550.0
+offset_bottom = 484.0
+text = "6"
+tutorialNum = "6"
+
+[node name="level7" parent="." instance=ExtResource("1_ph1mo")]
+offset_left = 57.0
+offset_top = 466.0
+offset_right = 351.0
+offset_bottom = 802.0
+text = "7"
+tutorialNum = "7"
+
+[node name="level8" parent="." instance=ExtResource("1_ph1mo")]
+offset_left = 305.0
+offset_top = 468.0
+offset_right = 599.0
+offset_bottom = 804.0
+text = "8"
+tutorialNum = "8"
+
+[node name="level9" parent="." instance=ExtResource("1_ph1mo")]
+offset_left = 548.0
+offset_top = 465.0
+offset_right = 842.0
+offset_bottom = 801.0
+text = "9"
+tutorialNum = "9"
+
+[node name="level10" parent="." instance=ExtResource("1_ph1mo")]
+offset_left = 785.0
+offset_top = 468.0
+offset_right = 1079.0
+offset_bottom = 804.0
+text = "10"
+tutorialNum = "10"
+
+[node name="level11" parent="." instance=ExtResource("1_ph1mo")]
+offset_left = 1022.0
+offset_top = 469.0
+offset_right = 1316.0
+offset_bottom = 805.0
+text = "11"
+tutorialNum = "11"
+
+[node name="level12" parent="." instance=ExtResource("1_ph1mo")]
+offset_left = 1256.0
+offset_top = 470.0
+offset_right = 1550.0
+offset_bottom = 806.0
+text = "12"
+tutorialNum = "12"
 
 [node name="backButton" type="Button" parent="."]
 offset_left = 42.0

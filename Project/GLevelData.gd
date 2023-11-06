@@ -21,6 +21,7 @@ var numNotes : int
 # tutorial settings
 var notes : Array
 var detunedAmountsList : Array
+var currentTut : int
 
 # Debugger function printing all internal variables
 func printValues():
