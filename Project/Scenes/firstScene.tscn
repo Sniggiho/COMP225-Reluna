@@ -56,19 +56,19 @@ icon = ExtResource("7_lc1xl")
 flat = true
 
 [node name="HintButton" type="TextureButton" parent="."]
-offset_left = 1093.0
-offset_top = 494.0
-offset_right = 1333.0
-offset_bottom = 734.0
-scale = Vector2(0.640001, 0.640001)
+offset_left = 308.0
+offset_top = 654.0
+offset_right = 548.0
+offset_bottom = 894.0
+scale = Vector2(0.637106, 0.637106)
 texture_normal = ExtResource("8_c0d27")
 texture_hover = ExtResource("9_rdd6e")
 
 [node name="ResetButton" type="Button" parent="."]
-offset_left = 237.0
-offset_top = 624.0
-offset_right = 757.0
-offset_bottom = 1144.0
+offset_left = 1417.0
+offset_top = 721.0
+offset_right = 1702.0
+offset_bottom = 1013.0
 scale = Vector2(0.490653, 0.480003)
 theme_override_colors/font_hover_color = Color(0.517647, 0.498039, 0.886275, 1)
 theme_override_colors/icon_hover_color = Color(0.517647, 0.498039, 0.886275, 1)
@@ -81,10 +81,11 @@ metadata/_edit_group_ = true
 
 [node name="ResetButton" type="Button" parent="ResetButton"]
 layout_mode = 0
-offset_right = 104.0
-offset_bottom = 121.0
+offset_right = 57.0
+offset_bottom = 68.0
 scale = Vector2(5, 4.28)
 flat = true
+metadata/_edit_group_ = true
 
 [node name="Debug" type="Node" parent="."]
 
