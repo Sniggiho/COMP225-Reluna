@@ -136,14 +136,32 @@ func getNoteCountBPM() -> Array:
 
 ## Call to keep a level manager around and generate new list of detuned notes, tune creator, etc.
 func _reset() -> void:
+	if GLevelData.tutorial: # if it's a tutorial, go to the next one
+		# TODO: this really shouldn't be in the reset button
+		var nextTutNum = GLevelData.currentTut + 1
+		var nextTut = GTutorialMenu.tutMenu[nextTutNum]
+		
+		GLevelData.tutorial = true
+		GLevelData.bySharps = nextTut.bySharps
+		GLevelData.notes = nextTut.notes
+		GLevelData.detunedAmountsList = nextTut.detunedAmountsList
+		GLevelData.bpm = nextTut.bpm
+		GLevelData.numAccidentals = nextTut.numAccidentals
+		GLevelData.numNotes = len(nextTut.notes)
+		GLevelData.displayText = nextTut.displayText
+		
+		GLevelData.currentTut = GLevelData.currentTut + 1
+
+		SceneTransition.change_scene("res://Scenes/firstScene.tscn")
+	else:
 	# TODO: update this to use GLevelData
-	GLevelData.displayText = "Random Level - Update this!!"
-	self.get_parent().find_child("DisplayText").refresh()
-	
-	path.get_child(0).progress_ratio = 0
-	deleteTuneCreator()
-	createListOfDetunedNotes(numNotes)
-	createTuneCreator(false)
+		GLevelData.displayText = "Random Level - Update this!!"
+		self.get_parent().find_child("DisplayText").refresh()
+		
+		path.get_child(0).progress_ratio = 0
+		deleteTuneCreator()
+		createListOfDetunedNotes(numNotes)
+		createTuneCreator(false)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
