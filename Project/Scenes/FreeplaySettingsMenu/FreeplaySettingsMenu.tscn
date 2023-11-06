@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bga4qsn2ueiyh"]
+[gd_scene load_steps=7 format=3 uid="uid://bga4qsn2ueiyh"]
 
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gd" id="1_qg26p"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/DetuneDirection.gd" id="2_ygjhj"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumDetuned.gd" id="3_obu2l"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumNotes.gd" id="3_p50rh"]
+[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MaxDetuneCents.gd" id="5_14ibp"]
+[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MinDetuneCents.gd" id="6_pf2lm"]
 
 [node name="FreeplaySettingsMenu" type="Node2D"]
 script = ExtResource("1_qg26p")
@@ -31,10 +33,10 @@ offset_bottom = 122.0
 [node name="B" type="PopupMenu" parent="MenuBar"]
 
 [node name="NumNotes" type="HSlider" parent="."]
-offset_left = 529.0
-offset_top = 176.0
-offset_right = 688.0
-offset_bottom = 288.0
+offset_left = 295.0
+offset_top = 130.0
+offset_right = 454.0
+offset_bottom = 242.0
 min_value = 4.0
 max_value = 15.0
 value = 4.0
@@ -43,17 +45,40 @@ ticks_on_borders = true
 script = ExtResource("3_p50rh")
 
 [node name="NumDetuned" type="HSlider" parent="."]
-offset_left = 524.0
-offset_top = 295.0
-offset_right = 691.0
-offset_bottom = 345.0
+offset_left = 290.0
+offset_top = 249.0
+offset_right = 457.0
+offset_bottom = 299.0
 min_value = 1.0
 value = 1.0
 allow_greater = true
 script = ExtResource("3_obu2l")
+
+[node name="MaxDetuneCents" type="VSlider" parent="."]
+offset_left = 561.0
+offset_top = 158.0
+offset_right = 577.0
+offset_bottom = 305.0
+min_value = 5.0
+max_value = 50.0
+value = 30.0
+script = ExtResource("5_14ibp")
+
+[node name="MinDetuneCents" type="VSlider" parent="."]
+offset_left = 623.0
+offset_top = 159.0
+offset_right = 639.0
+offset_bottom = 306.0
+min_value = 5.0
+max_value = 50.0
+value = 20.0
+script = ExtResource("6_pf2lm")
 
 [connection signal="item_selected" from="DetuneDirection" to="DetuneDirection" method="_on_item_selected"]
 [connection signal="drag_ended" from="NumNotes" to="NumDetuned" method="_on_num_notes_drag_ended"]
 [connection signal="value_changed" from="NumNotes" to="NumNotes" method="_on_value_changed"]
 [connection signal="value_changed" from="NumNotes" to="NumDetuned" method="_on_num_notes_value_changed"]
 [connection signal="value_changed" from="NumDetuned" to="NumDetuned" method="_on_value_changed"]
+[connection signal="value_changed" from="MaxDetuneCents" to="MinDetuneCents" method="_on_max_detune_cents_value_changed"]
+[connection signal="value_changed" from="MaxDetuneCents" to="MaxDetuneCents" method="_on_value_changed"]
+[connection signal="value_changed" from="MinDetuneCents" to="MinDetuneCents" method="_on_value_changed"]
