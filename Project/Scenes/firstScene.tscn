@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c1qqxujrvquvy"]
+[gd_scene load_steps=15 format=3 uid="uid://c1qqxujrvquvy"]
 
 [ext_resource type="Script" path="res://Scenes/AudioStreamPlayerTest.gd" id="1_x644u"]
 [ext_resource type="Script" path="res://Scenes/LevelManager/LevelManager.gd" id="1_xad2n"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://8d8gcs6vjvtc" path="res://RelunaIcons/checkFilled.png" id="6_7w56k"]
 [ext_resource type="Texture2D" uid="uid://cg6lvtjwkq3rm" path="res://RelunaIcons/reset.png" id="6_s2gbu"]
 [ext_resource type="Texture2D" uid="uid://cd3kkhujucqtd" path="res://RelunaIcons/return.png" id="7_lc1xl"]
+[ext_resource type="Texture2D" uid="uid://cxbfhp8by63gd" path="res://RelunaIcons/hint.png" id="8_c0d27"]
+[ext_resource type="Texture2D" uid="uid://c5t2luc0n1rvq" path="res://RelunaIcons/hintFilled.png" id="9_rdd6e"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_msstd"]
 
@@ -52,6 +54,15 @@ offset_bottom = 242.0
 scale = Vector2(0.52, 0.52)
 icon = ExtResource("7_lc1xl")
 flat = true
+
+[node name="HintButton" type="TextureButton" parent="."]
+offset_left = 1093.0
+offset_top = 494.0
+offset_right = 1333.0
+offset_bottom = 734.0
+scale = Vector2(0.640001, 0.640001)
+texture_normal = ExtResource("8_c0d27")
+texture_hover = ExtResource("9_rdd6e")
 
 [node name="ResetButton" type="Button" parent="."]
 offset_left = 237.0
