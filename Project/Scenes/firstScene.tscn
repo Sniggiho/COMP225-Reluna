@@ -1,16 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1qqxujrvquvy"]
+[gd_scene load_steps=16 format=3 uid="uid://c1qqxujrvquvy"]
 
 [ext_resource type="Script" path="res://Scenes/AudioStreamPlayerTest.gd" id="1_x644u"]
 [ext_resource type="Script" path="res://Scenes/LevelManager/LevelManager.gd" id="1_xad2n"]
 [ext_resource type="Texture2D" uid="uid://f7byr3m2so4i" path="res://RelunaIcons/play empty.png" id="3_ad746"]
+[ext_resource type="Texture2D" uid="uid://corvs4jhdgfk3" path="res://RelunaIcons/backArrow.png" id="3_fgehq"]
 [ext_resource type="Texture2D" uid="uid://dqfovth5n1cg0" path="res://RelunaIcons/play filled.png" id="4_f3uym"]
+[ext_resource type="Texture2D" uid="uid://71tu2ixgeqk8" path="res://RelunaIcons/backArrowFilled.png" id="4_peq4r"]
 [ext_resource type="PackedScene" uid="uid://dq0mp8xmuh00" path="res://Scenes/MusicStaff/MusicStaff.tscn" id="5_bafn2"]
 [ext_resource type="Script" path="res://Scenes/DisplayText.gd" id="5_k5ivr"]
 [ext_resource type="Texture2D" uid="uid://c8u1gdexyrdyn" path="res://RelunaIcons/checkEmpty.png" id="5_mk5gt"]
 [ext_resource type="Script" path="res://Scenes/FeedbackPopup.gd" id="5_r4b1t"]
 [ext_resource type="Texture2D" uid="uid://8d8gcs6vjvtc" path="res://RelunaIcons/checkFilled.png" id="6_7w56k"]
 [ext_resource type="Texture2D" uid="uid://cg6lvtjwkq3rm" path="res://RelunaIcons/reset.png" id="6_s2gbu"]
-[ext_resource type="Texture2D" uid="uid://cd3kkhujucqtd" path="res://RelunaIcons/return.png" id="7_lc1xl"]
 [ext_resource type="Texture2D" uid="uid://cxbfhp8by63gd" path="res://RelunaIcons/hint.png" id="8_c0d27"]
 [ext_resource type="Texture2D" uid="uid://c5t2luc0n1rvq" path="res://RelunaIcons/hintFilled.png" id="9_rdd6e"]
 
@@ -30,6 +31,15 @@ maxDetuneCents = 40
 minDetuneCents = 30
 musicStaff = NodePath("../MusicStaff")
 
+[node name="ReturnButton" type="TextureButton" parent="."]
+offset_left = 15.0
+offset_top = 11.0
+offset_right = 255.0
+offset_bottom = 251.0
+scale = Vector2(0.399999, 0.399999)
+texture_normal = ExtResource("3_fgehq")
+texture_hover = ExtResource("4_peq4r")
+
 [node name="PlayButton" type="TextureButton" parent="."]
 offset_left = 659.0
 offset_top = 568.0
@@ -46,14 +56,6 @@ offset_bottom = 901.0
 scale = Vector2(0.6, 0.6)
 texture_normal = ExtResource("5_mk5gt")
 texture_hover = ExtResource("6_7w56k")
-
-[node name="ReturnButton" type="Button" parent="."]
-offset_top = -6.0
-offset_right = 248.0
-offset_bottom = 242.0
-scale = Vector2(0.52, 0.52)
-icon = ExtResource("7_lc1xl")
-flat = true
 
 [node name="HintButton" type="TextureButton" parent="."]
 offset_left = 308.0
@@ -165,10 +167,10 @@ mouse_filter = 2
 text = "Select the two notes that are out of tune"
 script = ExtResource("5_k5ivr")
 
+[connection signal="pressed" from="ReturnButton" to="MusicStaff" method="on_return_button_pressed"]
 [connection signal="pressed" from="PlayButton" to="MusicStaff" method="_on_play_button_pressed"]
 [connection signal="pressed" from="CheckButton" to="LevelManager" method="checkPlayerInput"]
 [connection signal="pressed" from="CheckButton" to="Popup" method="_on_check_button_pressed"]
-[connection signal="pressed" from="ReturnButton" to="MusicStaff" method="on_return_button_pressed"]
 [connection signal="pressed" from="ResetButton" to="LevelManager" method="_reset"]
 [connection signal="pressed" from="ResetButton/ResetButton" to="LevelManager" method="_reset"]
 [connection signal="pressed" from="Debug/ButtonForDetuned" to="Debug/AudioStreamPlayer" method="_on_button_pressed"]
