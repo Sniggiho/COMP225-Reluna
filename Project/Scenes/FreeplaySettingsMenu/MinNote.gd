@@ -10,7 +10,7 @@ var notes : Array = ["c3", "c-3", "d3", "d-3", "e3", "f3", "f-3", "g3", "g-3", "
 var noteMinIndex : int = 9
 var noteMaxIndex : int = 36
 
-
+var currNoteMax : int = 36
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,9 +25,20 @@ func _ready():
 	text.size = Vector2(100, 100)
 	add_child(text)
 	
+	GLevelData.lowestNote = notes[value]
+	
+#	var numTicks : int = noteMaxIndex - noteMinIndex + 1
+#	tick_count = numTicks
 
 
 # PASSED FROM SELF
 func _on_value_changed(passedValue):
+	if passedValue > currNoteMax:
+		value = currNoteMax
 	text.text = notes[value]
-	pass # Replace with function body.
+	GLevelData.lowestNote = notes[value]
+
+
+# PASSED FROM MAX NOTE
+func _on_max_note_value_changed(passedValue):
+	currNoteMax = passedValue

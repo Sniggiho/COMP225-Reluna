@@ -25,8 +25,20 @@ func _ready():
 	text.size = Vector2(100, 100)
 	add_child(text)
 	
+	GLevelData.highestNote = notes[value]
+	
+#	var numTicks : int = noteMaxIndex - noteMinIndex + 1
+#	tick_count = numTicks
+	
 
 # PASSED FROM SELF
 func _on_value_changed(passedValue):
+	if passedValue < currNoteMin:
+		value = currNoteMin
 	text.text = notes[value]
-	pass
+	GLevelData.highestNote = notes[value]
+
+
+# PASSED FROM MIN NOTE
+func _on_min_note_value_changed(passedValue):
+	currNoteMin = passedValue

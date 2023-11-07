@@ -55,6 +55,7 @@ offset_top = 249.0
 offset_right = 457.0
 offset_bottom = 299.0
 min_value = 1.0
+max_value = 3.0
 value = 1.0
 allow_greater = true
 script = ExtResource("3_obu2l")
@@ -88,10 +89,10 @@ theme = ExtResource("7_adwbt")
 icon = ExtResource("7_u3omm")
 
 [node name="numNotesLabel" type="RichTextLabel" parent="."]
-offset_left = 291.0
-offset_top = 114.0
-offset_right = 448.0
-offset_bottom = 275.0
+offset_left = 290.0
+offset_top = 106.0
+offset_right = 447.0
+offset_bottom = 165.0
 text = "Num notes, 
 num detuned"
 fit_content = true
@@ -134,4 +135,6 @@ text = "Min and max note"
 [connection signal="value_changed" from="MinDetuneCents" to="MinDetuneCents" method="_on_value_changed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="value_changed" from="MinNote" to="MinNote" method="_on_value_changed"]
+[connection signal="value_changed" from="MinNote" to="MaxNote" method="_on_min_note_value_changed"]
+[connection signal="value_changed" from="MaxNote" to="MinNote" method="_on_max_note_value_changed"]
 [connection signal="value_changed" from="MaxNote" to="MaxNote" method="_on_value_changed"]
