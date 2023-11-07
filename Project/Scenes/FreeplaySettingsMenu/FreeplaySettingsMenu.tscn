@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bga4qsn2ueiyh"]
+[gd_scene load_steps=11 format=3 uid="uid://bga4qsn2ueiyh"]
 
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gd" id="1_qg26p"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/DetuneDirection.gd" id="2_ygjhj"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MinDetuneCents.gd" id="6_pf2lm"]
 [ext_resource type="Theme" uid="uid://dhkx10rwrne4u" path="res://projectTheme.tres" id="7_adwbt"]
 [ext_resource type="Texture2D" uid="uid://b8vml561x4g7f" path="res://TempImage/cartoonPlayButton.png" id="7_u3omm"]
+[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MinNote.gd" id="9_vy4th"]
+[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MaxNote.gd" id="10_dyvte"]
 
 [node name="FreeplaySettingsMenu" type="Node2D"]
 script = ExtResource("1_qg26p")
@@ -106,12 +108,21 @@ offset_left = 735.0
 offset_top = 248.0
 offset_right = 869.0
 offset_bottom = 264.0
+script = ExtResource("9_vy4th")
 
 [node name="MaxNote" type="HSlider" parent="."]
 offset_left = 733.0
 offset_top = 178.0
 offset_right = 867.0
 offset_bottom = 194.0
+script = ExtResource("10_dyvte")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 715.0
+offset_top = 123.0
+offset_right = 984.0
+offset_bottom = 163.0
+text = "Min and max note"
 
 [connection signal="item_selected" from="DetuneDirection" to="DetuneDirection" method="_on_item_selected"]
 [connection signal="drag_ended" from="NumNotes" to="NumDetuned" method="_on_num_notes_drag_ended"]
@@ -122,3 +133,5 @@ offset_bottom = 194.0
 [connection signal="value_changed" from="MaxDetuneCents" to="MinDetuneCents" method="_on_max_detune_cents_value_changed"]
 [connection signal="value_changed" from="MinDetuneCents" to="MinDetuneCents" method="_on_value_changed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="MinNote" to="MinNote" method="_on_value_changed"]
+[connection signal="value_changed" from="MaxNote" to="MaxNote" method="_on_value_changed"]

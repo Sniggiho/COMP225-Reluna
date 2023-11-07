@@ -13,5 +13,8 @@ func generatePossibleNotes() -> Array:
 	return possibleNotes
 
 
+func _ready():
+	print(generatePossibleNotes())
+
 func _on_button_pressed():
 	SceneTransition.change_scene("res://Scenes/firstScene.tscn")
