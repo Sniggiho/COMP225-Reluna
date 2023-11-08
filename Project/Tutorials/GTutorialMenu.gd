@@ -67,3 +67,17 @@ func _ready():
 	tut10.setup(true, ["a4","c5","e5","a5"], [0,40,0,0], 100, 0, "Select the one sharp note")
 	tut11.setup(false, ["f5","e5","d5","c5"], [0,0,-40,0], 100, 1, "Select the one flat note")
 	tut12.setup(false, ["f5","e5","d5","c5"], [0,0,0,40], 100, 0, "Select the one sharp note")
+
+	tut13.setup(true, ["e4","e4","f4","g4","g4","f4","e4","d4"], [0,0,0,0,-30,0,0,0], 130, 0, "Select the one flat note")
+	tut14.setup(true, ["e4","e4","f4","g4","g4","f4","e4","d4"], [0,0,30,0,0,0,0,0], 130, 0, "Select the one sharp note")
+	
+	tut15.setup(true, ["c4","d4","e4","f4", "g4"], [0,0,0,-40,0], 100, 0, "Select the one flat note")
+	tut16.setup(true, ["c4","d4","e4","f4", "g4"], [0,0,0,0,40], 100, 0, "Select the one sharp note")
+	tut17.setup(true, ["c4","e4","g4","e4", "c4"], [0,40,0,0,0], 100, 0, "Select the one sharp note")
+	tut18.setup(true, ["c4","e4","g4","e4", "c4"], [0,0,-40,0,0], 100, 0, "Select the one flat note")
+	tut19.setup(true, ["a4","b4","c5","d5", "e5"], [0,40,0,0,0], 100, 0, "Select the one sharp note")
+	tut20.setup(true, ["a4","b4","c5","d5", "e5"], [0,0,0,0,-40], 100, 0, "Select the one flat note")
+	tut21.setup(true, ["a4","c5","e5","a5"], [0,0,0,-40], 100, 0, "Select the one flat note")
+	tut22.setup(true, ["a4","c5","e5","a5"], [0,40,0,0], 100, 0, "Select the one sharp note")
+	tut23.setup(false, ["f5","e5","d5","c5"], [0,0,-40,0], 100, 1, "Select the one flat note")
+	tut24.setup(false, ["f5","e5","d5","c5"], [0,0,0,40], 100, 0, "Select the one sharp note")
