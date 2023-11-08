@@ -104,6 +104,16 @@ offset_bottom = 806.0
 text = "12"
 tutorialNum = "12"
 
+[node name="NextButton" type="TextureButton" parent="."]
+offset_left = 1443.0
+offset_top = 746.0
+offset_right = 1683.0
+offset_bottom = 986.0
+scale = Vector2(0.663342, 0.580939)
+texture_normal = ExtResource("3_xlu8n")
+texture_hover = ExtResource("4_a6pmn")
+flip_h = true
+
 [node name="ReturnButton" type="TextureButton" parent="."]
 offset_left = 16.0
 offset_top = 12.0
@@ -113,4 +123,5 @@ scale = Vector2(0.423342, 0.423342)
 texture_normal = ExtResource("3_xlu8n")
 texture_hover = ExtResource("4_a6pmn")
 
+[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]
