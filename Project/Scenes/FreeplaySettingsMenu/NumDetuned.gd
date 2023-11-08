@@ -2,18 +2,18 @@ extends HSlider
 
 var numNotes = GLevelData.numNotes
 
-var text : RichTextLabel
+var text : RichTextLabel = RichTextLabel.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	text = RichTextLabel.new()
+	text.text = str(value)
 	text.size = Vector2(100, 100)
 	text.position = Vector2(-30, -30)
 	text.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(text)
-	min_value = 1
-	value = min_value
-	max_value = 3
+	
+	GLevelData.numDetunedNotes = value
+	
 	tick_count = int(max_value - min_value + 1)
 
 

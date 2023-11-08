@@ -96,8 +96,11 @@ func createTuneCreator(tutorial : bool) -> void:
 	if tutorial:
 		_tuneCreator.setupFullManual(GLevelData.notes, GLevelData.bySharps, GLevelData.detunedAmountsList)
 	else:
-		# TODO: this should all be GLevelData data
-		_tuneCreator.setupRand(numAccidentals, bySharp, lowestNote, highestNote, listOfDetunedNotes, detuneDirection, maxDetuneCents, minDetuneCents)
+		# TODO: Implement num accidents, bySharp to freeplay settings
+		_tuneCreator.setupRand(numAccidentals, bySharp, 
+							   GLevelData.lowestNote, GLevelData.highestNote, 
+							   listOfDetunedNotes, GLevelData.detuneDir, 
+							   GLevelData.maxDetuneCents, GLevelData.minDetuneCents)
 	
 
 ## Delete the tune creator (ideally you're going to create a new one with 
@@ -160,7 +163,7 @@ func _reset() -> void:
 		
 		path.get_child(0).progress_ratio = 0
 		deleteTuneCreator()
-		createListOfDetunedNotes(numNotes)
+		createListOfDetunedNotes(GLevelData.numNotes)
 		createTuneCreator(false)
 
 # Called when the node enters the scene tree for the first time.
@@ -181,7 +184,14 @@ func _ready():
 		musicStaff.setNotesBPM(GLevelData.numNotes, GLevelData.bpm) # TODO this gets moved outside conditional
 	else: 
 		# TODO: update this to use GLevelData
-		createListOfDetunedNotes(numNotes)
+		numNotes = GLevelData.numNotes
+		numOutOfTune = GLevelData.numDetunedNotes
+		minDetuneCents = GLevelData.minDetuneCents
+		maxDetuneCents = GLevelData.maxDetuneCents
+		lowestNote = GLevelData.lowestNote
+		highestNote = GLevelData.highestNote
+		detuneDirection = GLevelData.detuneDir
+		createListOfDetunedNotes(GLevelData.numNotes)
 		createTuneCreator(false)
-		musicStaff.setNotesBPM(numNotes, bpm)
+		musicStaff.setNotesBPM(GLevelData.numNotes, GLevelData.bpm)
 	

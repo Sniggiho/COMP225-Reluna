@@ -4,10 +4,10 @@ var text : RichTextLabel = RichTextLabel.new()
 
 func _ready() -> void:
 	text.text = str(value)
-	add_child(text)
 	text.size = Vector2(100, 100)
 	text.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	text.position = Vector2(0, -30)
+	add_child(text)
 	
 	GLevelData.maxDetuneCents = value
 

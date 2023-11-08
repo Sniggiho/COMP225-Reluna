@@ -11,3 +11,12 @@ func generatePossibleNotes() -> Array:
 	
 	possibleNotes.append("c6")
 	return possibleNotes
+
+
+#func _ready():
+#	print(generatePossibleNotes())
+
+func _on_button_pressed():
+	GLevelData.tutorial = false
+	GLevelData.bpm = 120
+	SceneTransition.change_scene("res://Scenes/firstScene.tscn")

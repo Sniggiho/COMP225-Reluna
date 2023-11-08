@@ -1,14 +1,16 @@
 extends HSlider
 
-var text : RichTextLabel
+var text : RichTextLabel = RichTextLabel.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	text = RichTextLabel.new()
-	add_child(text)
+	text.text = str(value)
 	text.size = Vector2(100, 100)
 	text.position = Vector2(-30, -30)
 	text.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	add_child(text)
+	
+	GLevelData.numNotes = value
 
 
 # SIGNAL FROM SELF

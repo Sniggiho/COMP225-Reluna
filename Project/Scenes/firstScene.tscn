@@ -29,6 +29,7 @@ bySharp = false
 numNotes = 15
 maxDetuneCents = 40
 minDetuneCents = 30
+lowestNote = "a3"
 musicStaff = NodePath("../MusicStaff")
 bpm = 500
 
