@@ -1,6 +1,5 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1qqxujrvquvy"]
+[gd_scene load_steps=15 format=3 uid="uid://c1qqxujrvquvy"]
 
-[ext_resource type="Script" path="res://Scenes/AudioStreamPlayerTest.gd" id="1_x644u"]
 [ext_resource type="Script" path="res://Scenes/LevelManager/LevelManager.gd" id="1_xad2n"]
 [ext_resource type="Texture2D" uid="uid://f7byr3m2so4i" path="res://RelunaIcons/play empty.png" id="3_ad746"]
 [ext_resource type="Texture2D" uid="uid://corvs4jhdgfk3" path="res://RelunaIcons/backArrow.png" id="3_fgehq"]
@@ -27,9 +26,11 @@ position = Vector2(-1, 0)
 script = ExtResource("1_xad2n")
 numAccidentals = 2
 bySharp = false
+numNotes = 15
 maxDetuneCents = 40
 minDetuneCents = 30
 musicStaff = NodePath("../MusicStaff")
+bpm = 500
 
 [node name="ReturnButton" type="TextureButton" parent="."]
 offset_left = 15.0
@@ -89,41 +90,6 @@ scale = Vector2(5, 4.28)
 flat = true
 metadata/_edit_group_ = true
 
-[node name="Debug" type="Node" parent="."]
-
-[node name="TextureRect" type="TextureRect" parent="Debug"]
-visible = false
-offset_right = 196.0
-offset_bottom = 126.0
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Debug"]
-visible = false
-offset_right = 276.0
-offset_bottom = 146.0
-text = "Hello World!"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Debug"]
-volume_db = -80.0
-script = ExtResource("1_x644u")
-
-[node name="ButtonForDetuned" type="Button" parent="Debug"]
-visible = false
-offset_left = 338.0
-offset_top = 376.0
-offset_right = 751.0
-offset_bottom = 478.0
-text = "press for detuned a3"
-
-[node name="ButtonForInTune" type="Button" parent="Debug"]
-visible = false
-offset_left = 337.0
-offset_top = 184.0
-offset_right = 743.0
-offset_bottom = 285.0
-text = "Press for in tune a3"
-
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 offset_right = 1600.0
@@ -173,5 +139,3 @@ script = ExtResource("5_k5ivr")
 [connection signal="pressed" from="CheckButton" to="Popup" method="_on_check_button_pressed"]
 [connection signal="pressed" from="ResetButton" to="LevelManager" method="_reset"]
 [connection signal="pressed" from="ResetButton/ResetButton" to="LevelManager" method="_reset"]
-[connection signal="pressed" from="Debug/ButtonForDetuned" to="Debug/AudioStreamPlayer" method="_on_button_pressed"]
-[connection signal="pressed" from="Debug/ButtonForInTune" to="Debug/AudioStreamPlayer" method="_on_button_for_in_tune_pressed"]
