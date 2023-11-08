@@ -13,6 +13,19 @@ var tut10 = TutorialLevel.new()
 var tut11 = TutorialLevel.new()
 var tut12 = TutorialLevel.new()
 
+var tut13 = TutorialLevel.new()
+var tut14 = TutorialLevel.new()
+var tut15 = TutorialLevel.new()
+var tut16= TutorialLevel.new()
+var tut17 = TutorialLevel.new()
+var tut18 = TutorialLevel.new()
+var tut19 = TutorialLevel.new()
+var tut20 = TutorialLevel.new()
+var tut21 = TutorialLevel.new()
+var tut22 = TutorialLevel.new()
+var tut23 = TutorialLevel.new()
+var tut24 = TutorialLevel.new()
+
 var tutMenu = {
 	1: tut1,
 	2: tut2,
@@ -25,7 +38,19 @@ var tutMenu = {
 	9: tut9,
 	10: tut10,
 	11: tut11,
-	12: tut12
+	12: tut12,
+	13: tut13,
+	14: tut14,
+	15: tut15,
+	16: tut16,
+	17: tut17,
+	18: tut18,
+	19: tut19,
+	20: tut20,
+	21: tut21,
+	22: tut22,
+	23: tut23,
+	24: tut24
 }
 
 func _ready():
