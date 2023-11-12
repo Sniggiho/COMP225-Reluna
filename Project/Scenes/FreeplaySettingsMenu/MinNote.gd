@@ -17,7 +17,12 @@ func _ready():
 	min_value = noteMinIndex
 	max_value = noteMaxIndex
 	
-	value = min_value
+	if GLevelData.valid:
+		value = notes.find(GLevelData.lowestNote)
+	else:
+		value = min_value
+		
+	print("lowest note value: ", value)
 	
 	text.text = notes[value]
 	text.position = Vector2(-20, -20)

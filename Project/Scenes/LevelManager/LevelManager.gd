@@ -195,3 +195,7 @@ func _ready():
 		createTuneCreator(false)
 		musicStaff.setNotesBPM(GLevelData.numNotes, GLevelData.bpm)
 	
+
+
+func _on_return_button_pressed():
+	SceneTransition.change_scene(GLevelData.prevScene)

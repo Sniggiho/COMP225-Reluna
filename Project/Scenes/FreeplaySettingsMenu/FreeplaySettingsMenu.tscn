@@ -11,8 +11,15 @@
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MinNote.gd" id="9_vy4th"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MaxNote.gd" id="10_dyvte"]
 
-[node name="FreeplaySettingsMenu" type="Node2D"]
+[node name="FreeplaySettingsMenu" type="Node2D" node_paths=PackedStringArray("DetuneDirection", "NumNotes", "NumDetuned", "MaxDetuneCents", "MinDetuneCents", "MinNote", "MaxNote")]
 script = ExtResource("1_qg26p")
+DetuneDirection = NodePath("DetuneDirection")
+NumNotes = NodePath("NumNotes")
+NumDetuned = NodePath("NumDetuned")
+MaxDetuneCents = NodePath("MaxDetuneCents")
+MinDetuneCents = NodePath("MinDetuneCents")
+MinNote = NodePath("MinNote")
+MaxNote = NodePath("MaxNote")
 
 [node name="DetuneDirection" type="ItemList" parent="."]
 offset_left = 58.0

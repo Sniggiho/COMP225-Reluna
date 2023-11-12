@@ -1,11 +1,14 @@
 extends Node2D
 
+var valid : bool = false
+
 var tutorial : bool # true for tutorials, false for freeplay
 
 # shared settings
 var bySharps : bool
 var bpm : int
 var numAccidentals : int
+var prevScene : String
 
 var displayText : String = "Display text didn't get set..."
 

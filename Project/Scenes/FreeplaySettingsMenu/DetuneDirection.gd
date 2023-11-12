@@ -12,8 +12,11 @@ var map : Array = [1, 0, -1]
 
 # Select both by default
 func _ready() -> void:
-	self.select(1)
-	GLevelData.detuneDir = 0
+	if GLevelData.valid:
+		self.select(map.find(GLevelData.detuneDir))
+	else:
+		self.select(1)
+		GLevelData.detuneDir = 0
 
 
 # Given the index of the list accessed, reference the map and set GLevelData

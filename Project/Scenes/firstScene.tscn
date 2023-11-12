@@ -134,7 +134,7 @@ mouse_filter = 2
 text = "Select the two notes that are out of tune"
 script = ExtResource("5_k5ivr")
 
-[connection signal="pressed" from="ReturnButton" to="MusicStaff" method="on_return_button_pressed"]
+[connection signal="pressed" from="ReturnButton" to="LevelManager" method="_on_return_button_pressed"]
 [connection signal="pressed" from="PlayButton" to="MusicStaff" method="_on_play_button_pressed"]
 [connection signal="pressed" from="CheckButton" to="LevelManager" method="checkPlayerInput"]
 [connection signal="pressed" from="CheckButton" to="Popup" method="_on_check_button_pressed"]

@@ -6,11 +6,14 @@ var maxDetunedCents = 30
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	text.text = str(value)
-	add_child(text)
 	text.position = Vector2(0, -30)
 	text.size = Vector2(100, 100)
 	text.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	if GLevelData.valid:
+		value = GLevelData.minDetuneCents
+	
+	text.text = str(value)
+	add_child(text)
 	
 	GLevelData.minDetuneCents = value
 	
