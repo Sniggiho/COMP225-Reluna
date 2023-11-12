@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://c1qqxujrvquvy"]
+[gd_scene load_steps=16 format=3 uid="uid://c1qqxujrvquvy"]
 
 [ext_resource type="Script" path="res://Scenes/LevelManager/LevelManager.gd" id="1_xad2n"]
+[ext_resource type="Script" path="res://Scenes/firstScene.gd" id="1_yjiac"]
 [ext_resource type="Texture2D" uid="uid://f7byr3m2so4i" path="res://RelunaIcons/play empty.png" id="3_ad746"]
 [ext_resource type="Texture2D" uid="uid://corvs4jhdgfk3" path="res://RelunaIcons/backArrow.png" id="3_fgehq"]
 [ext_resource type="Texture2D" uid="uid://dqfovth5n1cg0" path="res://RelunaIcons/play filled.png" id="4_f3uym"]
@@ -8,15 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://dq0mp8xmuh00" path="res://Scenes/MusicStaff/MusicStaff.tscn" id="5_bafn2"]
 [ext_resource type="Script" path="res://Scenes/DisplayText.gd" id="5_k5ivr"]
 [ext_resource type="Texture2D" uid="uid://c8u1gdexyrdyn" path="res://RelunaIcons/checkEmpty.png" id="5_mk5gt"]
-[ext_resource type="Script" path="res://Scenes/FeedbackPopup.gd" id="5_r4b1t"]
 [ext_resource type="Texture2D" uid="uid://8d8gcs6vjvtc" path="res://RelunaIcons/checkFilled.png" id="6_7w56k"]
 [ext_resource type="Texture2D" uid="uid://cg6lvtjwkq3rm" path="res://RelunaIcons/reset.png" id="6_s2gbu"]
 [ext_resource type="Texture2D" uid="uid://cxbfhp8by63gd" path="res://RelunaIcons/hint.png" id="8_c0d27"]
 [ext_resource type="Texture2D" uid="uid://c5t2luc0n1rvq" path="res://RelunaIcons/hintFilled.png" id="9_rdd6e"]
+[ext_resource type="Script" path="res://Scenes/Feedback.gd" id="12_plc4t"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_msstd"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_yjiac")
 
 [node name="MusicStaff" parent="." instance=ExtResource("5_bafn2")]
 position = Vector2(77, 179)
@@ -47,8 +49,11 @@ offset_left = 659.0
 offset_top = 568.0
 offset_right = 899.0
 offset_bottom = 808.0
+focus_neighbor_left = NodePath("../HintButton")
+focus_neighbor_right = NodePath("../CheckButton")
 texture_normal = ExtResource("3_ad746")
 texture_hover = ExtResource("4_f3uym")
+texture_focused = ExtResource("4_f3uym")
 
 [node name="CheckButton" type="TextureButton" parent="."]
 offset_left = 1093.0
@@ -56,8 +61,11 @@ offset_top = 661.0
 offset_right = 1333.0
 offset_bottom = 901.0
 scale = Vector2(0.6, 0.6)
+focus_neighbor_left = NodePath("../PlayButton")
+focus_neighbor_right = NodePath("../ResetButton")
 texture_normal = ExtResource("5_mk5gt")
 texture_hover = ExtResource("6_7w56k")
+texture_focused = ExtResource("6_7w56k")
 
 [node name="HintButton" type="TextureButton" parent="."]
 offset_left = 308.0
@@ -65,8 +73,10 @@ offset_top = 654.0
 offset_right = 548.0
 offset_bottom = 894.0
 scale = Vector2(0.637106, 0.637106)
+focus_neighbor_right = NodePath("../PlayButton")
 texture_normal = ExtResource("8_c0d27")
 texture_hover = ExtResource("9_rdd6e")
+texture_focused = ExtResource("9_rdd6e")
 
 [node name="ResetButton" type="Button" parent="."]
 offset_left = 1417.0
@@ -74,6 +84,7 @@ offset_top = 721.0
 offset_right = 1702.0
 offset_bottom = 1013.0
 scale = Vector2(0.490653, 0.480003)
+focus_neighbor_left = NodePath("../CheckButton")
 theme_override_colors/font_hover_color = Color(0.517647, 0.498039, 0.886275, 1)
 theme_override_colors/icon_hover_color = Color(0.517647, 0.498039, 0.886275, 1)
 theme_override_colors/icon_hover_pressed_color = Color(0.517647, 0.498039, 0.886275, 1)
@@ -97,32 +108,37 @@ offset_right = 1600.0
 offset_bottom = 900.0
 color = Color(0.262745, 0.262745, 0.262745, 0.494118)
 
-[node name="Popup" type="Popup" parent="."]
-title = "Feedback"
+[node name="Feedback" type="PopupPanel" parent="."]
 initial_position = 1
-size = Vector2i(901, 615)
-script = ExtResource("5_r4b1t")
+size = Vector2i(329, 162)
+max_size = Vector2i(1000, 1000)
+script = ExtResource("12_plc4t")
 
-[node name="feedbackTemp" type="RichTextLabel" parent="Popup"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -46.5
-offset_top = -11.5
-offset_right = 46.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CenterContainer" type="CenterContainer" parent="Feedback"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 319.0
+offset_bottom = 152.0
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="Feedback/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ColorRect" type="ColorRect" parent="Feedback/CenterContainer/MarginContainer"]
+layout_mode = 2
+color = Color(0.0862745, 1, 1, 1)
+
+[node name="feedbackTemp" type="RichTextLabel" parent="Feedback/CenterContainer/MarginContainer"]
+layout_mode = 2
+theme_type_variation = &"feedback"
 text = "I popped up"
 fit_content = true
+scroll_active = false
 autowrap_mode = 0
-
-[node name="ColorRect" type="ColorRect" parent="Popup"]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="DisplayText" type="RichTextLabel" parent="."]
 offset_left = 443.0
@@ -135,8 +151,8 @@ text = "Select the two notes that are out of tune"
 script = ExtResource("5_k5ivr")
 
 [connection signal="pressed" from="ReturnButton" to="LevelManager" method="_on_return_button_pressed"]
-[connection signal="pressed" from="PlayButton" to="MusicStaff" method="_on_play_button_pressed"]
+[connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CheckButton" to="LevelManager" method="checkPlayerInput"]
-[connection signal="pressed" from="CheckButton" to="Popup" method="_on_check_button_pressed"]
+[connection signal="pressed" from="CheckButton" to="Feedback" method="_on_check_button_pressed"]
 [connection signal="pressed" from="ResetButton" to="LevelManager" method="_reset"]
 [connection signal="pressed" from="ResetButton/ResetButton" to="LevelManager" method="_reset"]
