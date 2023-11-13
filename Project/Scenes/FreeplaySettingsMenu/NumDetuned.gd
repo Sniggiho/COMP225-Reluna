@@ -1,4 +1,4 @@
-extends HSlider
+extends VSlider
 
 var numNotes = GLevelData.numNotes
 

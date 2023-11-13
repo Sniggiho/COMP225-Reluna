@@ -37,11 +37,11 @@ size = Vector2i(500, 500)
 
 [node name="Bobert" type="PopupMenu" parent="MenuBar"]
 
-[node name="NumNotes" type="HSlider" parent="."]
-offset_left = 295.0
-offset_top = 130.0
-offset_right = 454.0
-offset_bottom = 242.0
+[node name="NumNotes" type="VSlider" parent="."]
+offset_left = 289.0
+offset_top = 158.0
+offset_right = 329.0
+offset_bottom = 299.0
 min_value = 4.0
 max_value = 15.0
 value = 4.0
@@ -49,11 +49,11 @@ tick_count = 12
 ticks_on_borders = true
 script = ExtResource("3_p50rh")
 
-[node name="NumDetuned" type="HSlider" parent="."]
-offset_left = 290.0
-offset_top = 249.0
-offset_right = 457.0
-offset_bottom = 299.0
+[node name="NumDetuned" type="VSlider" parent="."]
+offset_left = 361.0
+offset_top = 161.0
+offset_right = 400.0
+offset_bottom = 297.0
 min_value = 1.0
 max_value = 3.0
 value = 1.0
@@ -104,26 +104,36 @@ offset_right = 678.0
 offset_bottom = 140.0
 text = "max and min detuned cents"
 
-[node name="MinNote" type="HSlider" parent="."]
-offset_left = 735.0
-offset_top = 248.0
-offset_right = 869.0
-offset_bottom = 264.0
+[node name="MinNote" type="VSlider" parent="."]
+offset_left = 792.0
+offset_top = 182.0
+offset_right = 835.0
+offset_bottom = 334.0
 script = ExtResource("9_vy4th")
 
-[node name="MaxNote" type="HSlider" parent="."]
+[node name="MaxNote" type="VSlider" parent="."]
 offset_left = 733.0
 offset_top = 178.0
-offset_right = 867.0
-offset_bottom = 194.0
+offset_right = 759.0
+offset_bottom = 336.0
 script = ExtResource("10_dyvte")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="MinMaxNoteText" type="RichTextLabel" parent="."]
 offset_left = 715.0
 offset_top = 123.0
 offset_right = 984.0
 offset_bottom = 163.0
 text = "Min and max note"
+
+[node name="BPM" type="VSlider" parent="."]
+offset_left = 972.0
+offset_top = 163.0
+offset_right = 988.0
+offset_bottom = 317.0
+min_value = 100.0
+max_value = 240.0
+step = 5.0
+value = 100.0
 
 [connection signal="item_selected" from="DetuneDirection" to="DetuneDirection" method="_on_item_selected"]
 [connection signal="drag_ended" from="NumNotes" to="NumDetuned" method="_on_num_notes_drag_ended"]
