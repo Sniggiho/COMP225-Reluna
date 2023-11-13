@@ -122,7 +122,7 @@ func checkPlayerInput():
 	
 	var correct : bool = listOfDetunedNotes.hash() == playersSelectedNotes.hash()
 	
-	var feedbackText = get_parent().find_child("Feedback").find_child("feedbackTemp")
+	var feedbackText = get_parent().find_child("Feedback").find_child("FeedbackTemp")
 	
 	## TODO
 	if correct:

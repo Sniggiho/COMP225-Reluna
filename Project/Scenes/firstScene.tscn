@@ -132,7 +132,7 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 color = Color(0.0862745, 1, 1, 1)
 
-[node name="feedbackTemp" type="RichTextLabel" parent="Feedback/CenterContainer/MarginContainer"]
+[node name="FeedbackTemp" type="RichTextLabel" parent="Feedback/CenterContainer/MarginContainer"]
 layout_mode = 2
 theme_type_variation = &"feedback"
 text = "I popped up"

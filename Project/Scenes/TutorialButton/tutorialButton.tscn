@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ukpg5ih6vcgr" path="res://RelunaIcons/levelOutline.png" id="1_gqk5d"]
 [ext_resource type="Script" path="res://Scenes/TutorialButton/tutorialButton.gd" id="2_1pyx0"]
 
-[node name="tutorialButton" type="Button"]
+[node name="TutorialButton" type="Button"]
 offset_left = 1.0
 offset_top = -1.0
 offset_right = 295.0
