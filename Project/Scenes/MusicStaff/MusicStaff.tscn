@@ -1,17 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq0mp8xmuh00"]
+[gd_scene load_steps=7 format=3 uid="uid://dq0mp8xmuh00"]
 
 [ext_resource type="Script" path="res://Scenes/MusicStaff/MusicStaff.gd" id="1_5gv1w"]
 [ext_resource type="Texture2D" uid="uid://bspymo7qdmuuk" path="res://Scenes/MusicStaff/trebleStaff.png" id="2_o0hg7"]
 [ext_resource type="PackedScene" uid="uid://b7kyrbrs3vv1m" path="res://Scenes/PlayBar/play_bar.tscn" id="3_56f0e"]
+[ext_resource type="Texture2D" uid="uid://c2185eldy3b1d" path="res://Scenes/MusicStaff/sharp.png" id="4_bp0ky"]
+[ext_resource type="Texture2D" uid="uid://do8in4h6g4ypg" path="res://Scenes/MusicStaff/flat.png" id="5_ruqht"]
 
 [sub_resource type="Curve2D" id="Curve2D_urwcl"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1440, 0)
+"points": PackedVector2Array(0, 0, 0, 0, -14, 6, 0, 0, 0, 0, 1440, 6)
 }
 point_count = 2
 
 [node name="MusicStaff" type="Node2D"]
-position = Vector2(2.08165e-12, 2.08165e-12)
+position = Vector2(100, 150)
 script = ExtResource("1_5gv1w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -24,6 +26,7 @@ position = Vector2(0, 93)
 curve = SubResource("Curve2D_urwcl")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-14, 6)
 loop = false
 
 [node name="PlayBar" parent="." node_paths=PackedStringArray("path") instance=ExtResource("3_56f0e")]
@@ -31,3 +34,63 @@ position = Vector2(-2.08165e-12, 93)
 default_color = Color(0, 0, 0, 1)
 antialiased = true
 path = NodePath("../Path2D")
+
+[node name="sharp1" type="Sprite2D" parent="."]
+position = Vector2(207, 1)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("4_bp0ky")
+
+[node name="sharp2" type="Sprite2D" parent="."]
+position = Vector2(255, 94)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("4_bp0ky")
+
+[node name="sharp3" type="Sprite2D" parent="."]
+position = Vector2(399, 155)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("4_bp0ky")
+
+[node name="sharp4" type="Sprite2D" parent="."]
+position = Vector2(351, 63)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("4_bp0ky")
+
+[node name="sharp5" type="Sprite2D" parent="."]
+position = Vector2(304, -31)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("4_bp0ky")
+
+[node name="sharp6" type="Sprite2D" parent="."]
+position = Vector2(447, 31)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("4_bp0ky")
+
+[node name="flat1" type="Sprite2D" parent="."]
+position = Vector2(208, 93)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_ruqht")
+
+[node name="flat2" type="Sprite2D" parent="."]
+position = Vector2(256, 0)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_ruqht")
+
+[node name="flat3" type="Sprite2D" parent="."]
+position = Vector2(304, 126)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_ruqht")
+
+[node name="flat4" type="Sprite2D" parent="."]
+position = Vector2(352, 31)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_ruqht")
+
+[node name="flat5" type="Sprite2D" parent="."]
+position = Vector2(400, 156)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_ruqht")
+
+[node name="flat6" type="Sprite2D" parent="."]
+position = Vector2(448, 63)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("5_ruqht")
