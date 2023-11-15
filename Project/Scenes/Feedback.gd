@@ -1,4 +1,4 @@
-extends PopupPanel
+extends Window
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,4 +14,8 @@ func _process(delta):
 
 
 func _on_check_button_pressed():
-	popup()
+	show()
+
+
+func _on_return_button_pressed():
+	hide()

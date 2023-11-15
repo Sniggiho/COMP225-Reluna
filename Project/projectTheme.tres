@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dhkx10rwrne4u"]
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dhkx10rwrne4u"]
 
 [ext_resource type="FontFile" uid="uid://c5ab6oet3avnf" path="res://Ubuntu-Bold.ttf" id="1_l4cr8"]
 [ext_resource type="FontFile" uid="uid://d3lg2hx5rx507" path="res://Ubuntu-Medium.ttf" id="1_q22qy"]
@@ -12,6 +12,13 @@ texture_margin_top = 10.0
 texture_margin_right = 10.0
 texture_margin_bottom = 10.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7s40d"]
+texture = ExtResource("3_8oed0")
+texture_margin_left = 12.0
+texture_margin_top = 12.0
+texture_margin_right = 12.0
+texture_margin_bottom = 12.0
+
 [resource]
 default_font_size = 23
 Button/colors/font_color = Color(0.305882, 0.305882, 0.305882, 1)
@@ -23,6 +30,7 @@ PopupPanel/styles/panel = SubResource("StyleBoxTexture_4urrk")
 RichTextLabel/colors/default_color = Color(0.74902, 0.0980392, 0.901961, 1)
 RichTextLabel/font_sizes/bold_font_size = 600
 RichTextLabel/fonts/bold_font = ExtResource("1_l4cr8")
+Window/styles/embedded_border = SubResource("StyleBoxTexture_7s40d")
 feedback/base_type = &"RichTextLabel"
 feedback/colors/default_color = Color(0.305882, 0.305882, 0.305882, 1)
 feedback/font_sizes/normal_font_size = 50

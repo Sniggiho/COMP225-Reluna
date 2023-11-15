@@ -108,38 +108,6 @@ offset_right = 1600.0
 offset_bottom = 900.0
 color = Color(0.262745, 0.262745, 0.262745, 0.494118)
 
-[node name="Feedback" type="PopupPanel" parent="."]
-initial_position = 1
-size = Vector2i(329, 162)
-max_size = Vector2i(1000, 1000)
-script = ExtResource("12_plc4t")
-
-[node name="CenterContainer" type="CenterContainer" parent="Feedback"]
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 319.0
-offset_bottom = 152.0
-size_flags_horizontal = 4
-
-[node name="MarginContainer" type="MarginContainer" parent="Feedback/CenterContainer"]
-layout_mode = 2
-theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 20
-theme_override_constants/margin_bottom = 20
-
-[node name="ColorRect" type="ColorRect" parent="Feedback/CenterContainer/MarginContainer"]
-layout_mode = 2
-color = Color(0.0862745, 1, 1, 1)
-
-[node name="FeedbackTemp" type="RichTextLabel" parent="Feedback/CenterContainer/MarginContainer"]
-layout_mode = 2
-theme_type_variation = &"feedback"
-text = "I popped up"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-
 [node name="DisplayText" type="RichTextLabel" parent="."]
 offset_left = 443.0
 offset_top = 37.0
@@ -150,9 +118,61 @@ mouse_filter = 2
 text = "Select the two notes that are out of tune"
 script = ExtResource("5_k5ivr")
 
+[node name="Feedback" type="Window" parent="."]
+initial_position = 1
+size = Vector2i(600, 400)
+visible = false
+transient = true
+exclusive = true
+unresizable = true
+borderless = true
+script = ExtResource("12_plc4t")
+
+[node name="PanelContainer" type="PanelContainer" parent="Feedback"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Feedback/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Feedback/PanelContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ColorRect" type="ColorRect" parent="Feedback/PanelContainer/CenterContainer/MarginContainer"]
+layout_mode = 2
+color = Color(0.0862745, 1, 1, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Feedback/PanelContainer/CenterContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="FeedbackTemp" type="RichTextLabel" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"feedback"
+text = "I popped up"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="ReturnButton" type="Button" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "return "
+
+[node name="NextButton" type="Button" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "next"
+
 [connection signal="pressed" from="ReturnButton" to="LevelManager" method="_on_return_button_pressed"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CheckButton" to="LevelManager" method="checkPlayerInput"]
 [connection signal="pressed" from="CheckButton" to="Feedback" method="_on_check_button_pressed"]
 [connection signal="pressed" from="ResetButton" to="LevelManager" method="_reset"]
 [connection signal="pressed" from="ResetButton/ResetButton" to="LevelManager" method="_reset"]
+[connection signal="pressed" from="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/ReturnButton" to="Feedback" method="_on_return_button_pressed"]
