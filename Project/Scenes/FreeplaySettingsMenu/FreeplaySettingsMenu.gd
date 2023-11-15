@@ -15,7 +15,6 @@ func generatePossibleNotes() -> Array:
 
 func _on_button_pressed():
 	GLevelData.tutorial = false
-	GLevelData.bpm = 120
 	GLevelData.prevScene = "res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.tscn"
 	GLevelData.valid = true
 	SceneTransition.change_scene("res://Scenes/firstScene.tscn")

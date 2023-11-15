@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bga4qsn2ueiyh"]
+[gd_scene load_steps=12 format=3 uid="uid://bga4qsn2ueiyh"]
 
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gd" id="1_qg26p"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/DetuneDirection.gd" id="2_ygjhj"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://b8vml561x4g7f" path="res://TempImage/cartoonPlayButton.png" id="7_u3omm"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MinNote.gd" id="9_vy4th"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MaxNote.gd" id="10_dyvte"]
+[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/BPM.gd" id="11_lxjt2"]
 
 [node name="FreeplaySettingsMenu" type="Node2D"]
 script = ExtResource("1_qg26p")
@@ -133,7 +134,8 @@ offset_bottom = 317.0
 min_value = 100.0
 max_value = 240.0
 step = 5.0
-value = 100.0
+value = 120.0
+script = ExtResource("11_lxjt2")
 
 [connection signal="item_selected" from="DetuneDirection" to="DetuneDirection" method="_on_item_selected"]
 [connection signal="drag_ended" from="NumNotes" to="NumDetuned" method="_on_num_notes_drag_ended"]
@@ -148,3 +150,4 @@ value = 100.0
 [connection signal="value_changed" from="MinNote" to="MaxNote" method="_on_min_note_value_changed"]
 [connection signal="value_changed" from="MaxNote" to="MinNote" method="_on_max_note_value_changed"]
 [connection signal="value_changed" from="MaxNote" to="MaxNote" method="_on_value_changed"]
+[connection signal="value_changed" from="BPM" to="BPM" method="_on_value_changed"]

@@ -184,6 +184,7 @@ func _ready():
 		musicStaff.setNotesBPM(GLevelData.numNotes, GLevelData.bpm) # TODO this gets moved outside conditional
 	else: 
 		# TODO: update this to use GLevelData
+#		bpm = GLevelData.bpm
 		numNotes = GLevelData.numNotes
 		numOutOfTune = GLevelData.numDetunedNotes
 		minDetuneCents = GLevelData.minDetuneCents
@@ -193,6 +194,7 @@ func _ready():
 		detuneDirection = GLevelData.detuneDir
 		createListOfDetunedNotes(GLevelData.numNotes)
 		createTuneCreator(false)
+		print(GLevelData.bpm)
 		musicStaff.setNotesBPM(GLevelData.numNotes, GLevelData.bpm)
 	
 
