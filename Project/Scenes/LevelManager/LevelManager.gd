@@ -122,17 +122,20 @@ func checkPlayerInput():
 	
 	var correct : bool = listOfDetunedNotes.hash() == playersSelectedNotes.hash()
 	
-	var feedbackText = get_parent().find_child("Feedback").find_child("FeedbackTemp")
+	var correctText = get_parent().find_child("Feedback").find_child("Correct")
+	var incorrectText = get_parent().find_child("Feedback").find_child("Incorrect")
 	
 	## TODO
 	if correct:
 		print("Yay you were correct!")
-		if feedbackText:
-			feedbackText.text = "Yay you were correct!"
+		if correctText:
+			correctText.visible = true
+			incorrectText.visible = false
 	else:
 		print("Aw, you were incorrect :(")
-		if feedbackText:
-			feedbackText.text = "Aw, you were incorrect :("
+		if incorrectText:
+			incorrectText.visible = true
+			correctText.visible = false
 
 func getNoteCountBPM() -> Array:
 	return [numNotes, bpm]

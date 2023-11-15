@@ -120,17 +120,22 @@ script = ExtResource("5_k5ivr")
 
 [node name="Feedback" type="Window" parent="."]
 initial_position = 1
-size = Vector2i(600, 400)
+size = Vector2i(1300, 650)
 visible = false
 transient = true
 exclusive = true
 unresizable = true
 borderless = true
+content_scale_mode = 1
 script = ExtResource("12_plc4t")
 
 [node name="PanelContainer" type="PanelContainer" parent="Feedback"]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"popupPanel"
 
 [node name="CenterContainer" type="CenterContainer" parent="Feedback/PanelContainer"]
 layout_mode = 2
@@ -142,32 +147,47 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 
-[node name="ColorRect" type="ColorRect" parent="Feedback/PanelContainer/CenterContainer/MarginContainer"]
-layout_mode = 2
-color = Color(0.0862745, 1, 1, 1)
-
 [node name="VBoxContainer" type="VBoxContainer" parent="Feedback/PanelContainer/CenterContainer/MarginContainer"]
 layout_mode = 2
+alignment = 1
 
-[node name="FeedbackTemp" type="RichTextLabel" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer"]
+[node name="Correct" type="RichTextLabel" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
 theme_type_variation = &"feedback"
-text = "I popped up"
+theme_override_colors/default_color = Color(0, 0.639216, 0, 1)
+text = "CORRECT"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Incorrect" type="RichTextLabel" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"feedback"
+theme_override_colors/default_color = Color(1, 0, 0, 1)
+text = "INCORRECT"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_constants/separation = 700
 alignment = 1
 
 [node name="ReturnButton" type="Button" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "return "
+theme_type_variation = &"popupButtons"
+text = " return "
+icon_alignment = 1
 
 [node name="NextButton" type="Button" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "next"
+theme_type_variation = &"popupButtons"
+text = " next "
 
 [connection signal="pressed" from="ReturnButton" to="LevelManager" method="_on_return_button_pressed"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]

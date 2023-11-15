@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://dhkx10rwrne4u"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dhkx10rwrne4u"]
 
 [ext_resource type="FontFile" uid="uid://c5ab6oet3avnf" path="res://Ubuntu-Bold.ttf" id="1_l4cr8"]
 [ext_resource type="FontFile" uid="uid://d3lg2hx5rx507" path="res://Ubuntu-Medium.ttf" id="1_q22qy"]
@@ -19,6 +19,20 @@ texture_margin_top = 12.0
 texture_margin_right = 12.0
 texture_margin_bottom = 12.0
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4sygg"]
+texture = ExtResource("3_8oed0")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k0aij"]
+texture = ExtResource("3_8oed0")
+texture_margin_left = 15.0
+texture_margin_top = 15.0
+texture_margin_right = 15.0
+texture_margin_bottom = 15.0
+
 [resource]
 default_font_size = 23
 Button/colors/font_color = Color(0.305882, 0.305882, 0.305882, 1)
@@ -33,13 +47,22 @@ RichTextLabel/fonts/bold_font = ExtResource("1_l4cr8")
 Window/styles/embedded_border = SubResource("StyleBoxTexture_7s40d")
 feedback/base_type = &"RichTextLabel"
 feedback/colors/default_color = Color(0.305882, 0.305882, 0.305882, 1)
-feedback/font_sizes/normal_font_size = 50
-feedback/fonts/normal_font = ExtResource("3_ojqbp")
+feedback/colors/selection_color = Color(0, 1, 0, 1)
+feedback/font_sizes/normal_font_size = 150
+feedback/fonts/normal_font = ExtResource("1_l4cr8")
 menuButton/base_type = &"Button"
 menuButton/colors/font_color = Color(0.305882, 0.305882, 0.305882, 1)
 menuButton/colors/font_hover_color = Color(0.0431373, 0.8, 0.956863, 1)
 menuButton/font_sizes/font_size = 80
 menuButton/fonts/font = ExtResource("1_q22qy")
+popupButtons/base_type = &"Button"
+popupButtons/colors/font_color = Color(0.305882, 0.305882, 0.305882, 1)
+popupButtons/colors/font_hover_color = Color(0.0862745, 1, 1, 1)
+popupButtons/font_sizes/font_size = 80
+popupButtons/fonts/font = ExtResource("1_q22qy")
+popupButtons/styles/normal = SubResource("StyleBoxTexture_4sygg")
+popupPanel/base_type = &"PanelContainer"
+popupPanel/styles/panel = SubResource("StyleBoxTexture_k0aij")
 tutorialButton/base_type = &"Button"
 tutorialButton/colors/font_color = Color(0, 0, 0, 1)
 tutorialButton/colors/font_focus_color = Color(0.0431373, 0.8, 0.956863, 1)
