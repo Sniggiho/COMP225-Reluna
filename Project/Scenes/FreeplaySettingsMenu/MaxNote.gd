@@ -1,4 +1,4 @@
-extends HSlider
+extends VSlider
 
 var text : RichTextLabel = RichTextLabel.new()
 
@@ -17,15 +17,11 @@ func _ready():
 	min_value = noteMinIndex
 	max_value = noteMaxIndex
 	
-	print(GLevelData.highestNote)
-	GLevelData.printValues()
-	
-	if GLevelData.valid:
-		value = notes.find(GLevelData.highestNote)
-	else:
-		value = max_value
+#	if GLevelData.valid:
+#		value = notes.find(GLevelData.highestNote)
+#	else:
+	value = max_value
 		
-	print("highest note value:", value)
 	
 	text.text = notes[value]
 	text.position = Vector2(-20, -20)
