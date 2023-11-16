@@ -32,6 +32,12 @@ func _ready():
 	startX = 0
 	startY = 0
 	
+	if not GLevelData.bySharps:
+		for i in range(1,GLevelData.numAccidentals+1):
+			get_node("sharp" + str(i)).show()  
+	else:
+		for i in range(1,GLevelData.numAccidentals+1):
+			get_node("flat" + str(i)).show()  
 func _draw():
 	var y = startY
 	for i in range(5):

@@ -36,31 +36,37 @@ antialiased = true
 path = NodePath("../Path2D")
 
 [node name="sharp1" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(209, 1)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_bp0ky")
 
 [node name="sharp2" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(257, 94)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_bp0ky")
 
 [node name="sharp3" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(307, -31)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_bp0ky")
 
 [node name="sharp4" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(353, 63)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_bp0ky")
 
 [node name="sharp5" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(402, 155)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_bp0ky")
 
 [node name="sharp6" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(449, 31)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_bp0ky")
