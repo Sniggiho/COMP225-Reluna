@@ -97,7 +97,7 @@ func createTuneCreator(tutorial : bool) -> void:
 		_tuneCreator.setupFullManual(GLevelData.notes, GLevelData.bySharps, GLevelData.detunedAmountsList)
 	else:
 		# TODO: Implement num accidents, bySharp to freeplay settings
-		_tuneCreator.setupRand(numAccidentals, bySharp, 
+		_tuneCreator.setupRand(GLevelData.numAccidentals, bySharp, 
 							   GLevelData.lowestNote, GLevelData.highestNote, 
 							   listOfDetunedNotes, GLevelData.detuneDir, 
 							   GLevelData.maxDetuneCents, GLevelData.minDetuneCents)
@@ -195,6 +195,7 @@ func _ready():
 		lowestNote = GLevelData.lowestNote
 		highestNote = GLevelData.highestNote
 		detuneDirection = GLevelData.detuneDir
+		numAccidentals = GLevelData.numAccidentals
 		createListOfDetunedNotes(GLevelData.numNotes)
 		createTuneCreator(false)
 		print(GLevelData.bpm)
