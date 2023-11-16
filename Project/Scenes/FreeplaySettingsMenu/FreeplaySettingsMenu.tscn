@@ -158,6 +158,7 @@ offset_top = 160.0
 offset_right = 1199.0
 offset_bottom = 303.0
 max_value = 6.0
+tick_count = 7
 script = ExtResource("12_h41v1")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="NumAccidentals"]
