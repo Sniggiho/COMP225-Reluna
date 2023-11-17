@@ -37,7 +37,11 @@ func _ready():
 			get_node("sharp" + str(i)).show()  
 	else:
 		for i in range(1,GLevelData.numAccidentals+1):
-			get_node("flat" + str(i)).show()  
+			get_node("flat" + str(i)).show()
+	
+	self.get_child(1).get_curve().set_point_position(0,Vector2(295+45*GLevelData.numAccidentals,0))
+
+
 func _draw():
 	var y = startY
 	for i in range(5):

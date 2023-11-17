@@ -16,13 +16,11 @@ var melodyLengthT : float = (6)*60/120.0/0.8
 func setNotesBPM(numNotes : int, bpm : float) -> void:
 	self.numNotes = numNotes
 	self.bpm = bpm
-	melodyLengthT = (numNotes + 1) * 60. / bpm / 0.8
+	self.melodyLengthT = (numNotes + 1) * 60. / bpm / 0.8
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	visible = false
-	pass # Replace with function body.
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -32,8 +30,6 @@ func _process(delta):
 		
 		if pathFollow.progress_ratio >= 1:
 			_reset()
-		pass
-	pass
 
 # Reset position of play bar, set invisible, make it stop playing
 func _reset() -> void:
@@ -41,7 +37,6 @@ func _reset() -> void:
 	visible = false
 	pathFollow.progress_ratio = 0
 	global_position = pathFollow.global_position
-	pass
 
 func play() -> void:
 	if not playing:

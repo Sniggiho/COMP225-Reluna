@@ -184,7 +184,7 @@ func _ready():
 		listOfDetunedNotes = detuneList
 		# then we make the tune creator
 		createTuneCreator(true)
-		musicStaff.setNotesBPM(GLevelData.numNotes, GLevelData.bpm) # TODO this gets moved outside conditional
+		musicStaff.setNotesBPM(GLevelData.numNotes, GLevelData.bpm) # TODO we don't need this?
 	else: 
 		# TODO: update this to use GLevelData
 #		bpm = GLevelData.bpm
