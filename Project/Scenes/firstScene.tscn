@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1qqxujrvquvy"]
+[gd_scene load_steps=14 format=3 uid="uid://c1qqxujrvquvy"]
 
 [ext_resource type="Script" path="res://Scenes/LevelManager/LevelManager.gd" id="1_xad2n"]
 [ext_resource type="Script" path="res://Scenes/firstScene.gd" id="1_yjiac"]
@@ -10,12 +10,9 @@
 [ext_resource type="Script" path="res://Scenes/DisplayText.gd" id="5_k5ivr"]
 [ext_resource type="Texture2D" uid="uid://c8u1gdexyrdyn" path="res://RelunaIcons/checkEmpty.png" id="5_mk5gt"]
 [ext_resource type="Texture2D" uid="uid://8d8gcs6vjvtc" path="res://RelunaIcons/checkFilled.png" id="6_7w56k"]
-[ext_resource type="Texture2D" uid="uid://cg6lvtjwkq3rm" path="res://RelunaIcons/reset.png" id="6_s2gbu"]
 [ext_resource type="Texture2D" uid="uid://cxbfhp8by63gd" path="res://RelunaIcons/hint.png" id="8_c0d27"]
 [ext_resource type="Texture2D" uid="uid://c5t2luc0n1rvq" path="res://RelunaIcons/hintFilled.png" id="9_rdd6e"]
 [ext_resource type="Script" path="res://Scenes/Feedback.gd" id="12_plc4t"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_msstd"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_yjiac")
@@ -62,7 +59,6 @@ offset_right = 1333.0
 offset_bottom = 901.0
 scale = Vector2(0.6, 0.6)
 focus_neighbor_left = NodePath("../PlayButton")
-focus_neighbor_right = NodePath("../ResetButton")
 texture_normal = ExtResource("5_mk5gt")
 texture_hover = ExtResource("6_7w56k")
 texture_focused = ExtResource("6_7w56k")
@@ -78,30 +74,6 @@ texture_normal = ExtResource("8_c0d27")
 texture_hover = ExtResource("9_rdd6e")
 texture_focused = ExtResource("9_rdd6e")
 
-[node name="ResetButton" type="Button" parent="."]
-offset_left = 1417.0
-offset_top = 721.0
-offset_right = 1702.0
-offset_bottom = 1013.0
-scale = Vector2(0.490653, 0.480003)
-focus_neighbor_left = NodePath("../CheckButton")
-theme_override_colors/font_hover_color = Color(0.517647, 0.498039, 0.886275, 1)
-theme_override_colors/icon_hover_color = Color(0.517647, 0.498039, 0.886275, 1)
-theme_override_colors/icon_hover_pressed_color = Color(0.517647, 0.498039, 0.886275, 1)
-theme_override_styles/focus = SubResource("StyleBoxEmpty_msstd")
-icon = ExtResource("6_s2gbu")
-flat = true
-icon_alignment = 1
-metadata/_edit_group_ = true
-
-[node name="ResetButton" type="Button" parent="ResetButton"]
-layout_mode = 0
-offset_right = 57.0
-offset_bottom = 68.0
-scale = Vector2(5, 4.28)
-flat = true
-metadata/_edit_group_ = true
-
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
 offset_right = 1600.0
@@ -111,9 +83,10 @@ color = Color(0.262745, 0.262745, 0.262745, 0.494118)
 [node name="DisplayText" type="RichTextLabel" parent="."]
 offset_left = 443.0
 offset_top = 37.0
-offset_right = 833.0
+offset_right = 825.0
 offset_bottom = 77.0
 scale = Vector2(2.40627, 2.40627)
+size_flags_horizontal = 4
 mouse_filter = 2
 text = "Select the two notes that are out of tune"
 script = ExtResource("5_k5ivr")
@@ -143,9 +116,9 @@ layout_mode = 2
 [node name="MarginContainer" type="MarginContainer" parent="Feedback/PanelContainer/CenterContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 15
+theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 15
-theme_override_constants/margin_bottom = 15
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Feedback/PanelContainer/CenterContainer/MarginContainer"]
 layout_mode = 2
@@ -153,11 +126,10 @@ alignment = 1
 
 [node name="Correct" type="RichTextLabel" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
 theme_type_variation = &"feedback"
 theme_override_colors/default_color = Color(0, 0.639216, 0, 1)
-text = "CORRECT"
+bbcode_enabled = true
+text = "[center]CORRECT"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
@@ -165,13 +137,23 @@ autowrap_mode = 0
 [node name="Incorrect" type="RichTextLabel" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer"]
 visible = false
 layout_mode = 2
-size_flags_horizontal = 4
 theme_type_variation = &"feedback"
 theme_override_colors/default_color = Color(1, 0, 0, 1)
-text = "INCORRECT"
+bbcode_enabled = true
+text = "[center]INCORRECT"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
+
+[node name="Attempts" type="RichTextLabel" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer"]
+layout_direction = 2
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_colors/default_color = Color(0.305882, 0.305882, 0.305882, 1)
+theme_override_font_sizes/normal_font_size = 60
+bbcode_enabled = true
+text = "[center]Attempts: 1"
+fit_content = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -193,6 +175,5 @@ text = " next "
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="CheckButton" to="LevelManager" method="checkPlayerInput"]
 [connection signal="pressed" from="CheckButton" to="Feedback" method="_on_check_button_pressed"]
-[connection signal="pressed" from="ResetButton" to="LevelManager" method="_reset"]
-[connection signal="pressed" from="ResetButton/ResetButton" to="LevelManager" method="_reset"]
 [connection signal="pressed" from="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/ReturnButton" to="Feedback" method="_on_return_button_pressed"]
+[connection signal="pressed" from="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/NextButton" to="LevelManager" method="_reset"]
