@@ -39,7 +39,8 @@ func _ready():
 		for i in range(1,GLevelData.numAccidentals+1):
 			get_node("flat" + str(i)).show()
 	
-	self.get_child(1).get_curve().set_point_position(0,Vector2(295+45*GLevelData.numAccidentals,0))
+	var buffer = staffLength*screenX*0.05
+	self.get_child(1).get_curve().set_point_position(0,Vector2(buffer+45*GLevelData.numAccidentals,0))
 
 
 func _draw():
@@ -52,7 +53,7 @@ func _draw():
 			lineThickness)
 			
 		y = y + screenY * lineHeight
-		pass
+		
 	draw_line(
 		Vector2(startX, startY - 2.5), 
 		Vector2(startX, y - lineHeight * screenY + 2.2), 
