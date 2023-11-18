@@ -44,13 +44,20 @@ func _ready():
 		lastAccidental = get_node("flat" + str(GLevelData.numAccidentals))
 	
 	var xBuffer = 0
+	var accidentalWidth = 0
 	if GLevelData.numAccidentals == 0:
-		xBuffer = lastAccidental.get_rect().position.x
+		xBuffer = get_node("flat1").position.x
 	else:
 		xBuffer = lastAccidental.get_rect().end.x
+		accidentalWidth = lastAccidental.texture.get_width()*lastAccidental.scale.x
 
-	var accidentalWidth = lastAccidental.get_rect().end.x - lastAccidental.get_rect().position.x
-	print("xbuffer is", xBuffer, "accidenbtal width is", accidentalWidth)
+	print(xBuffer+accidentalWidth*GLevelData.numAccidentals)
+	
+	draw_line(
+			Vector2(xBuffer+accidentalWidth*GLevelData.numAccidentals,-1000), 
+			Vector2(xBuffer+accidentalWidth*GLevelData.numAccidentals,1000), 
+			Color.BLACK, 
+			100)
 	self.get_child(1).get_curve().set_point_position(0,Vector2(xBuffer+accidentalWidth*GLevelData.numAccidentals,0))
 
 
