@@ -70,6 +70,9 @@ var listOfDetunedNotes : Array
 ## Used in tutorial mode, a list of the notes comprising the melody
 var notes : Array 
 
+## keeps track of the attempts
+var attempts : int
+
 ## Randomly selects notes to be out of tune, storing this value in the listOfDetunedNotes class variable
 func createListOfDetunedNotes(numNotes:int) -> void:
 	var detuneList = []
@@ -97,7 +100,7 @@ func createTuneCreator(tutorial : bool) -> void:
 		_tuneCreator.setupFullManual(GLevelData.notes, GLevelData.bySharps, GLevelData.detunedAmountsList)
 	else:
 		# TODO: Implement num accidents, bySharp to freeplay settings
-		_tuneCreator.setupRand(GLevelData.numAccidentals, bySharp, 
+		_tuneCreator.setupRand(GLevelData.numAccidentals, GLevelData.bySharps, 
 							   GLevelData.lowestNote, GLevelData.highestNote, 
 							   listOfDetunedNotes, GLevelData.detuneDir, 
 							   GLevelData.maxDetuneCents, GLevelData.minDetuneCents)
@@ -124,24 +127,28 @@ func checkPlayerInput():
 	
 	var correctText = get_parent().find_child("Feedback").find_child("Correct")
 	var incorrectText = get_parent().find_child("Feedback").find_child("Incorrect")
+	var attemptText = get_parent().find_child('Feedback').find_child('Attempts')
 	
 	## TODO
 	if correct:
 		print("Yay you were correct!")
-		if correctText:
-			correctText.visible = true
-			incorrectText.visible = false
+		attempts = attempts + 1
+		attemptText.text = "[center]Attempts: " + str(attempts)
+		attempts = 0
+		correctText.visible = true
+		incorrectText.visible = false
 	else:
+		attempts = attempts + 1
+		attemptText.text = "[center]Attempts: " + str(attempts)
 		print("Aw, you were incorrect :(")
-		if incorrectText:
-			incorrectText.visible = true
-			correctText.visible = false
+		incorrectText.visible = true
+		correctText.visible = false
 
 func getNoteCountBPM() -> Array:
 	return [numNotes, bpm]
 
 ## Call to keep a level manager around and generate new list of detuned notes, tune creator, etc.
-func _reset() -> void:
+func _reset():
 	if GLevelData.tutorial: # if it's a tutorial, go to the next one
 		# TODO: this really shouldn't be in the reset button
 		var nextTutNum = GLevelData.currentTut + 1
@@ -168,6 +175,8 @@ func _reset() -> void:
 		deleteTuneCreator()
 		createListOfDetunedNotes(GLevelData.numNotes)
 		createTuneCreator(false)
+
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -196,6 +205,7 @@ func _ready():
 		highestNote = GLevelData.highestNote
 		detuneDirection = GLevelData.detuneDir
 		numAccidentals = GLevelData.numAccidentals
+		bySharp = GLevelData.bySharps
 		createListOfDetunedNotes(GLevelData.numNotes)
 		createTuneCreator(false)
 		print(GLevelData.bpm)
@@ -205,3 +215,6 @@ func _ready():
 
 func _on_return_button_pressed():
 	SceneTransition.change_scene(GLevelData.prevScene)
+
+
+

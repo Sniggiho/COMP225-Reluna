@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bga4qsn2ueiyh"]
+[gd_scene load_steps=19 format=3 uid="uid://bga4qsn2ueiyh"]
 
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gd" id="1_qg26p"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/DetuneDirection.gd" id="2_ygjhj"]
@@ -14,6 +14,9 @@
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumAccidentals.gd" id="12_h41v1"]
 [ext_resource type="Shader" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gdshader" id="12_wkt3d"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/RichTextLabel.gd" id="13_3tafd"]
+[ext_resource type="Texture2D" uid="uid://c2185eldy3b1d" path="res://Scenes/MusicStaff/sharp.png" id="15_xdgnf"]
+[ext_resource type="Texture2D" uid="uid://do8in4h6g4ypg" path="res://Scenes/MusicStaff/flat.png" id="16_yuih7"]
+[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/BySharp.gd" id="17_cybx8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hdgyu"]
 shader = ExtResource("12_wkt3d")
@@ -172,6 +175,21 @@ text = "NumAccidentals"
 script = ExtResource("13_3tafd")
 shader = ExtResource("12_wkt3d")
 
+[node name="BySharp" type="OptionButton" parent="."]
+offset_left = 282.0
+offset_top = 370.0
+offset_right = 769.0
+offset_bottom = 778.0
+item_count = 2
+selected = 0
+popup/item_0/text = "Sharp"
+popup/item_0/icon = ExtResource("15_xdgnf")
+popup/item_0/id = 0
+popup/item_1/text = "Flat"
+popup/item_1/icon = ExtResource("16_yuih7")
+popup/item_1/id = 1
+script = ExtResource("17_cybx8")
+
 [connection signal="item_selected" from="DetuneDirection" to="DetuneDirection" method="_on_item_selected"]
 [connection signal="drag_ended" from="NumNotes" to="NumDetuned" method="_on_num_notes_drag_ended"]
 [connection signal="value_changed" from="NumNotes" to="NumNotes" method="_on_value_changed"]
@@ -187,3 +205,4 @@ shader = ExtResource("12_wkt3d")
 [connection signal="value_changed" from="MaxNote" to="MaxNote" method="_on_value_changed"]
 [connection signal="value_changed" from="BPM" to="BPM" method="_on_value_changed"]
 [connection signal="value_changed" from="NumAccidentals" to="NumAccidentals" method="_on_value_changed"]
+[connection signal="item_selected" from="BySharp" to="BySharp" method="_on_item_selected"]
