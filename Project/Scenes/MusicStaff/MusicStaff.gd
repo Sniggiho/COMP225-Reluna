@@ -44,21 +44,12 @@ func _ready():
 		lastAccidental = get_node("flat" + str(GLevelData.numAccidentals))
 	
 	var xBuffer = 0
-	var accidentalWidth = 0
 	if GLevelData.numAccidentals == 0:
-		xBuffer = get_node("flat1").position.x
+		xBuffer = get_node("flat1").position.x - get_node("flat1").texture.get_width()*get_node("flat1").scale.x/2
 	else:
-		xBuffer = lastAccidental.get_rect().end.x
-		accidentalWidth = lastAccidental.texture.get_width()*lastAccidental.scale.x
+		xBuffer = lastAccidental.position.x + lastAccidental.texture.get_width()*lastAccidental.scale.x/2
 
-	print(xBuffer+accidentalWidth*GLevelData.numAccidentals)
-	
-	draw_line(
-			Vector2(xBuffer+accidentalWidth*GLevelData.numAccidentals,-1000), 
-			Vector2(xBuffer+accidentalWidth*GLevelData.numAccidentals,1000), 
-			Color.BLACK, 
-			100)
-	self.get_child(1).get_curve().set_point_position(0,Vector2(xBuffer+accidentalWidth*GLevelData.numAccidentals,0))
+	self.get_child(1).get_curve().set_point_position(0,Vector2(xBuffer,0))
 
 
 func _draw():
@@ -71,7 +62,7 @@ func _draw():
 			lineThickness)
 			
 		y = y + screenY * lineHeight
-		
+			
 	draw_line(
 		Vector2(startX, startY - 2.5), 
 		Vector2(startX, y - lineHeight * screenY + 2.2), 

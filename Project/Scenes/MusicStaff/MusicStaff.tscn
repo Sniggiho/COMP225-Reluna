@@ -37,72 +37,72 @@ path = NodePath("../Path2D")
 
 [node name="sharp1" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(209, 1)
+position = Vector2(213, 1)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_bp0ky")
 
 [node name="sharp2" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(257, 94)
+position = Vector2(261, 94)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_bp0ky")
 
 [node name="sharp3" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(307, -31)
+position = Vector2(311, -31)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_bp0ky")
 
 [node name="sharp4" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(353, 63)
+position = Vector2(357, 63)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_bp0ky")
 
 [node name="sharp5" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(402, 155)
+position = Vector2(406, 155)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_bp0ky")
 
 [node name="sharp6" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(449, 31)
+position = Vector2(453, 31)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("4_bp0ky")
 
 [node name="flat1" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(208, 93)
+position = Vector2(212, 93)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_ruqht")
 
 [node name="flat2" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(256, 0)
+position = Vector2(260, 0)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_ruqht")
 
 [node name="flat3" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(304, 126)
+position = Vector2(308, 126)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_ruqht")
 
 [node name="flat4" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(352, 31)
+position = Vector2(356, 31)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_ruqht")
 
 [node name="flat5" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(400, 156)
+position = Vector2(404, 156)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_ruqht")
 
 [node name="flat6" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(448, 63)
+position = Vector2(452, 63)
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("5_ruqht")

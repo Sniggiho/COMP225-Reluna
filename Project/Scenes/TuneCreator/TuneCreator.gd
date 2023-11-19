@@ -88,9 +88,7 @@ func setupFullManual(notes, bySharps, detunedAmountsList):
 
 ## Given the parameters for generating notes, running generate will populate the screen with notes. 
 func generate(randomNotes = true, randomDetune = true) -> void:
-	#var dx : float = 1.0 / (_numNotes-1)
-	#dx = 1.0 / _numNotes
-	
+
 	var pathMin = 0.0
 	var pathMax = 1
 	var dx = (pathMax - pathMin) / (float) (_numNotes + 1)
