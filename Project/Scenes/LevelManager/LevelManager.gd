@@ -167,8 +167,7 @@ func _reset():
 
 		SceneTransition.change_scene("res://Scenes/firstScene.tscn")
 	else:
-	# TODO: update this to use GLevelData
-		GLevelData.displayText = "Random Level - Update this!!"
+		GLevelData.displayText = self._generateInstructionText()
 		self.get_parent().find_child("DisplayText").refresh()
 		
 		path.get_child(0).progress_ratio = 0
@@ -176,7 +175,19 @@ func _reset():
 		createListOfDetunedNotes(GLevelData.numNotes)
 		createTuneCreator(false)
 
+func _generateInstructionText() -> String:
+	var instructionText = "Select "
 	
+	if GLevelData.detuneDir == -1: # flat only
+		instructionText += str(GLevelData.numDetunedNotes) + " flat note"
+	elif GLevelData.detuneDir == 1: # sharp only
+		instructionText += str(GLevelData.numDetunedNotes) + " sharp note"
+	else: # both flat and sharp
+		instructionText += str(GLevelData.numDetunedNotes) + " out of tune note"
+		
+	if GLevelData.numDetunedNotes >1:
+		instructionText += "s"
+	return instructionText
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -195,8 +206,8 @@ func _ready():
 		createTuneCreator(true)
 		musicStaff.setNotesBPM(GLevelData.numNotes, GLevelData.bpm) # TODO we don't need this?
 	else: 
-		# TODO: update this to use GLevelData
-#		bpm = GLevelData.bpm
+		GLevelData.displayText = self._generateInstructionText()
+		#TODO: do we need all these?
 		numNotes = GLevelData.numNotes
 		numOutOfTune = GLevelData.numDetunedNotes
 		minDetuneCents = GLevelData.minDetuneCents
