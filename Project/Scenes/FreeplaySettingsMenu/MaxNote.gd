@@ -31,6 +31,8 @@ func _ready():
 	
 	GLevelData.highestNote = notes[value+1]
 	
+	print("GLevelData's lowest note: ", GLevelData.highestNote)
+	
 #	var numTicks : int = noteMaxIndex - noteMinIndex + 1
 #	tick_count = numTicks
 	
@@ -41,6 +43,7 @@ func _on_value_changed(passedValue):
 		value = currNoteMin
 	text.text = notes[value]
 	GLevelData.highestNote = notes[value+1]
+	print("GLevelData's lowest note: ", GLevelData.highestNote)
 
 
 # PASSED FROM MIN NOTE

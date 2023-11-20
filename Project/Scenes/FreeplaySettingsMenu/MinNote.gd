@@ -16,14 +16,12 @@ var currNoteMax : int = 36
 func _ready():
 	min_value = noteMinIndex
 	max_value = noteMaxIndex
-	print("GLevelData's lowest note: ", GLevelData.lowestNote)
+
 	
-	print("Find index: ", notes.find(GLevelData.lowestNote))
 	if GLevelData.valid:
 		value = notes.find(GLevelData.lowestNote)
 	else:
 		value = min_value
-	print("min notes value is this: ", value)
 	
 	text.text = notes[value]
 	text.position = Vector2(-20, -20)
@@ -32,7 +30,7 @@ func _ready():
 	add_child(text)
 	
 	GLevelData.lowestNote = notes[value]
-	
+	print("GLevelData's lowest note: ", GLevelData.lowestNote)
 #	var numTicks : int = noteMaxIndex - noteMinIndex + 1
 #	tick_count = numTicks
 
@@ -43,6 +41,7 @@ func _on_value_changed(passedValue):
 		value = currNoteMax
 	text.text = notes[value]
 	GLevelData.lowestNote = notes[value]
+	print("GLevelData's lowest note: ", GLevelData.lowestNote)
 
 
 # PASSED FROM MAX NOTE
