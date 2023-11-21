@@ -178,12 +178,13 @@ func _createNoteArrayChromatic(lowOct, highOct)-> Array:
 ##		allNotes : array
 ##			array containing the names of all notes found in the given key
 func _createNoteArrayInKey(accidentals, bySharps, lowestNote, highestNote) -> Array:
-
+	print("create note array calls were: accidentals = ", accidentals, " byShaprs = ", bySharps, " lowestNote = ", lowestNote, " and higghest note = ", highestNote)
 	assert(accidentals<=6) # cannot have more than 6 accidentals
 	# sharps order is: F – C – G – D – A – E – B
 	# flats order is: B - E - A - D - G - C - F
 	
 	var sharps = ["f-", "c-", "g-", "d-", "a-", "f", "c"]
+	var naturalsForSharps = ["f", "c", "g", "d", "a", "e", "b"]
 	
 	var flats = ["a-", "d-", "g-", "c-", "f-", "c", "f"]
 	var naturalsForFlats = ["b","e","a","d","g","c","f"] # to simplify adding natural notes to a key with flats
@@ -195,13 +196,14 @@ func _createNoteArrayInKey(accidentals, bySharps, lowestNote, highestNote) -> Ar
 		for i in range(accidentals):
 			notesInKey.append(sharps[i])
 		for i in range(accidentals, 7):
-			notesInKey.append(sharps[i].replace("-",""))
+			notesInKey.append(naturalsForSharps[i])
 	else:
 		for i in range(accidentals):
 			notesInKey.append(flats[i])
 		for i in range(accidentals, 7):
 			notesInKey.append(naturalsForFlats[i])
 			
+	print("Note names in key are: ", notesInKey)
 	var lowOct = int(lowestNote[-1])
 	var highOct = int(highestNote[-1])
 	
@@ -211,7 +213,7 @@ func _createNoteArrayInKey(accidentals, bySharps, lowestNote, highestNote) -> Ar
 	
 	var allNotesCorrectRange = []
 	for n in allNotes: # narrows down to only the permitted notes
-		if self.compareNotes(n, lowestNote) and self.compareNotes(highestNote, n):
+		if self.compareNotes(n, lowestNote) and not self.compareNotes(n, highestNote):
 			allNotesCorrectRange.append(n)
 			
 	

@@ -1,7 +1,7 @@
 extends OptionButton
 
 
-var map : Array = [false, true]
+var map : Array = [true, false]
 
 func _updateSetting():
 	GLevelData.bySharps = map[selected]

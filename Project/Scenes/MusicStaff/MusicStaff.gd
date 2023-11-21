@@ -33,7 +33,7 @@ func _ready():
 	startY = 0
 	var lastAccidental : Sprite2D
 	
-	if not GLevelData.bySharps:
+	if GLevelData.bySharps:
 		for i in range(1,GLevelData.numAccidentals+1):
 			get_node("sharp" + str(i)).show()
 		lastAccidental = get_node("sharp" + str(GLevelData.numAccidentals))

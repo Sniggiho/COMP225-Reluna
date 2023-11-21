@@ -5,7 +5,7 @@ var text : RichTextLabel = RichTextLabel.new()
 var notes : Array = ["c3", "c-3", "d3", "d-3", "e3", "f3", "f-3", "g3", "g-3", "a3", "a-3", "b3", 
 					 "c4", "c-4", "d4", "d-4", "e4", "f4", "f-4", "g4", "g-4", "a4", "a-4", "b4", 
 					 "c5", "c-5", "d5", "d-5", "e5", "f5", "f-5", "g5", "g-5", "a5", "a-5", "b5", 
-					 "c6", "c6"]
+					 "c6", "c-6"]
 					
 var noteMinIndex : int = 9
 var noteMaxIndex : int = 36
@@ -31,7 +31,7 @@ func _ready():
 	
 	GLevelData.highestNote = notes[value+1]
 	
-	print("GLevelData's lowest note: ", GLevelData.highestNote)
+	print("GLevelData's highest note: ", GLevelData.highestNote)
 	
 #	var numTicks : int = noteMaxIndex - noteMinIndex + 1
 #	tick_count = numTicks
@@ -43,7 +43,7 @@ func _on_value_changed(passedValue):
 		value = currNoteMin
 	text.text = notes[value]
 	GLevelData.highestNote = notes[value+1]
-	print("GLevelData's lowest note: ", GLevelData.highestNote)
+	print("GLevelData's higherst note: ", GLevelData.highestNote)
 
 
 # PASSED FROM MIN NOTE
