@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bga4qsn2ueiyh"]
+[gd_scene load_steps=20 format=3 uid="uid://bga4qsn2ueiyh"]
 
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gd" id="1_qg26p"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/DetuneDirection.gd" id="2_ygjhj"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://c2185eldy3b1d" path="res://Scenes/MusicStaff/sharp.png" id="15_xdgnf"]
 [ext_resource type="Texture2D" uid="uid://do8in4h6g4ypg" path="res://Scenes/MusicStaff/flat.png" id="16_yuih7"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/BySharp.gd" id="17_cybx8"]
+[ext_resource type="PackedScene" uid="uid://cdkxlettgjlwb" path="res://Scenes/NewHSlider/NewHSlider.tscn" id="18_2jqco"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hdgyu"]
 shader = ExtResource("12_wkt3d")
@@ -38,6 +39,7 @@ item_2/text = "Flat"
 script = ExtResource("2_ygjhj")
 
 [node name="MenuBar" type="MenuBar" parent="."]
+visible = false
 offset_left = 934.0
 offset_top = 82.0
 offset_right = 974.0
@@ -189,6 +191,13 @@ popup/item_1/text = "Flat"
 popup/item_1/icon = ExtResource("16_yuih7")
 popup/item_1/id = 1
 script = ExtResource("17_cybx8")
+
+[node name="NewHSlider" parent="." instance=ExtResource("18_2jqco")]
+offset_left = 146.0
+offset_top = -204.0
+offset_right = 1016.0
+offset_bottom = -114.0
+text = "Number of Notes"
 
 [connection signal="item_selected" from="DetuneDirection" to="DetuneDirection" method="_on_item_selected"]
 [connection signal="drag_ended" from="NumNotes" to="NumDetuned" method="_on_num_notes_drag_ended"]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://cdkxlettgjlwb"]
+
+[ext_resource type="Script" path="res://Scenes/NewHSlider/NewHSlider.gd" id="1_176bh"]
+[ext_resource type="Script" path="res://Scenes/NewHSlider/Background.gd" id="2_wapvo"]
+[ext_resource type="Script" path="res://Scenes/NewHSlider/Selected.gd" id="3_e14w8"]
+[ext_resource type="Script" path="res://Scenes/NewHSlider/Text.gd" id="3_e331l"]
+[ext_resource type="Script" path="res://Scenes/NewHSlider/CenterContainer.gd" id="4_cpalq"]
+
+[node name="NewHSlider" type="HSlider"]
+offset_right = 1209.0
+offset_bottom = 97.0
+max_value = 15.0
+value = 4.0
+script = ExtResource("1_176bh")
+text = "Label"
+margin = 8.0
+
+[node name="Border" type="ColorRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(1261, 446)
+layout_mode = 2
+offset_right = 1261.0
+offset_bottom = 446.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 2
+offset_right = 1209.0
+offset_bottom = 97.0
+mouse_filter = 2
+color = Color(0.584314, 0.584314, 0.584314, 1)
+script = ExtResource("2_wapvo")
+
+[node name="Selected" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+offset_right = 322.4
+offset_bottom = 97.0
+script = ExtResource("3_e14w8")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(1209, 97)
+layout_mode = 1
+offset_right = 1209.0
+offset_bottom = 97.0
+script = ExtResource("4_cpalq")
+
+[node name="Text" type="RichTextLabel" parent="CenterContainer"]
+clip_contents = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 48
+text = "Label"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("3_e331l")
+
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]
