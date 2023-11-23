@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bga4qsn2ueiyh"]
+[gd_scene load_steps=21 format=3 uid="uid://bga4qsn2ueiyh"]
 
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gd" id="1_qg26p"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/DetuneDirection.gd" id="2_ygjhj"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://do8in4h6g4ypg" path="res://Scenes/MusicStaff/flat.png" id="16_yuih7"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/BySharp.gd" id="17_cybx8"]
 [ext_resource type="PackedScene" uid="uid://cdkxlettgjlwb" path="res://Scenes/NewHSlider/NewHSlider.tscn" id="18_2jqco"]
+[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumNotes2.gd" id="19_amv7j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hdgyu"]
 shader = ExtResource("12_wkt3d")
@@ -192,11 +193,24 @@ popup/item_1/icon = ExtResource("16_yuih7")
 popup/item_1/id = 1
 script = ExtResource("17_cybx8")
 
-[node name="NewHSlider" parent="." instance=ExtResource("18_2jqco")]
-offset_left = 146.0
-offset_top = -204.0
-offset_right = 1016.0
-offset_bottom = -114.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = 60.0
+offset_top = 305.0
+offset_right = 848.0
+offset_bottom = 875.0
+
+[node name="NewHSlider2" parent="VBoxContainer" instance=ExtResource("18_2jqco")]
+layout_mode = 2
+script = ExtResource("19_amv7j")
+test = false
+text = "Number of Notes"
+
+[node name="NewHSlider3" parent="VBoxContainer" instance=ExtResource("18_2jqco")]
+layout_mode = 2
+text = "Number of Notes"
+
+[node name="NewHSlider4" parent="VBoxContainer" instance=ExtResource("18_2jqco")]
+layout_mode = 2
 text = "Number of Notes"
 
 [connection signal="item_selected" from="DetuneDirection" to="DetuneDirection" method="_on_item_selected"]

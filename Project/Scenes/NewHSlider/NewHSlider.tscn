@@ -1,60 +1,69 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdkxlettgjlwb"]
+[gd_scene load_steps=5 format=3 uid="uid://cdkxlettgjlwb"]
 
 [ext_resource type="Script" path="res://Scenes/NewHSlider/NewHSlider.gd" id="1_176bh"]
-[ext_resource type="Script" path="res://Scenes/NewHSlider/Background.gd" id="2_wapvo"]
-[ext_resource type="Script" path="res://Scenes/NewHSlider/Selected.gd" id="3_e14w8"]
 [ext_resource type="Script" path="res://Scenes/NewHSlider/Text.gd" id="3_e331l"]
-[ext_resource type="Script" path="res://Scenes/NewHSlider/CenterContainer.gd" id="4_cpalq"]
+[ext_resource type="Shader" path="res://Scenes/NewHSlider/TextShader.gdshader" id="5_fu81e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oc08h"]
+shader = ExtResource("5_fu81e")
+shader_parameter/color = null
 
 [node name="NewHSlider" type="HSlider"]
-offset_right = 1209.0
-offset_bottom = 97.0
+custom_minimum_size = Vector2(0, 50)
+offset_left = 343.0
+offset_top = 137.0
+offset_right = 1028.0
+offset_bottom = 346.0
 max_value = 15.0
 value = 4.0
 script = ExtResource("1_176bh")
 text = "Label"
-margin = 8.0
+margin = 4.0
+height = 50.0
 
 [node name="Border" type="ColorRect" parent="."]
-visible = false
-custom_minimum_size = Vector2(1261, 446)
 layout_mode = 2
-offset_right = 1261.0
-offset_bottom = 446.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 689.0
+offset_bottom = 213.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 2
-offset_right = 1209.0
-offset_bottom = 97.0
+offset_right = 685.0
+offset_bottom = 209.0
 mouse_filter = 2
 color = Color(0.584314, 0.584314, 0.584314, 1)
-script = ExtResource("2_wapvo")
+metadata/_edit_lock_ = true
 
 [node name="Selected" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-offset_right = 322.4
-offset_bottom = 97.0
-script = ExtResource("3_e14w8")
+offset_right = 182.667
+offset_bottom = 209.0
+metadata/_edit_lock_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-custom_minimum_size = Vector2(1209, 97)
+custom_minimum_size = Vector2(685, 209)
 layout_mode = 1
-offset_right = 1209.0
-offset_bottom = 97.0
-script = ExtResource("4_cpalq")
+offset_right = 685.0
+offset_bottom = 209.0
+metadata/_edit_lock_ = true
 
 [node name="Text" type="RichTextLabel" parent="CenterContainer"]
+material = SubResource("ShaderMaterial_oc08h")
 clip_contents = false
 layout_mode = 2
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 48
+theme_override_font_sizes/normal_font_size = 104
 text = "Label"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_e331l")
+metadata/_edit_lock_ = true
 
-[connection signal="value_changed" from="." to="." method="_on_value_changed"]
+[connection signal="item_rect_changed" from="." to="." method="_on_item_rect_changed_newhslider_base"]
+[connection signal="value_changed" from="." to="." method="_on_value_changed_newhslider_base"]
