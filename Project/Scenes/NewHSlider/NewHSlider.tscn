@@ -67,9 +67,8 @@ autowrap_mode = 0
 script = ExtResource("3_e331l")
 metadata/_edit_lock_ = true
 
-[connection signal="focus_entered" from="." to="." method="_selected"]
-[connection signal="focus_exited" from="." to="." method="_deselected"]
-[connection signal="item_rect_changed" from="." to="." method="_on_item_rect_changed_newhslider_base"]
-[connection signal="mouse_entered" from="." to="." method="_selected"]
-[connection signal="mouse_exited" from="." to="." method="_deselected"]
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="value_changed" from="." to="." method="_on_value_changed_newhslider_base"]
