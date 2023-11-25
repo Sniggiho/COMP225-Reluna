@@ -17,9 +17,13 @@ class_name NewHSlider
 ## Selects which side the "selected" bar starts from 
 @export var flip : bool = false
 
+@export_color_no_alpha var backgroundColor : Color
+
+@export_color_no_alpha var backgroundSelectedColor : Color
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_on_item_rect_changed_newhslider_base()
+	
 	pass # Replace with function body.
 
 
@@ -54,6 +58,22 @@ func _on_value_changed_newhslider_base(passedValue):
 	value = max(minActualValue, passedValue)
 	_updateSelectedSize()
 	pass # Replace with function body.
+
+
+## CONNECTED FROM FOCUS ENTER AND MOUSE ENTER
+## Change the background color
+func _selected():
+#	$Background.color *= 1.25
+	$Background.color = backgroundSelectedColor
+	pass
+	
+
+## CONNECTED FROM FOCUS EXIT AND MOUSE EXIT
+## Change the background color
+func _deselected():
+#	$Background.color /= 1.25
+	$Background.color = backgroundColor
+	pass
 
 
 func _on_item_rect_changed_newhslider_base():

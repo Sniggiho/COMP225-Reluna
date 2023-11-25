@@ -20,6 +20,8 @@ script = ExtResource("1_176bh")
 text = "Label"
 margin = 4.0
 height = 50.0
+backgroundColor = Color(0.690196, 0.690196, 0.690196, 1)
+backgroundSelectedColor = Color(0.654902, 0.811765, 0.882353, 1)
 
 [node name="Border" type="ColorRect" parent="."]
 layout_mode = 2
@@ -36,7 +38,7 @@ layout_mode = 2
 offset_right = 685.0
 offset_bottom = 209.0
 mouse_filter = 2
-color = Color(0.584314, 0.584314, 0.584314, 1)
+color = Color(0.690196, 0.690196, 0.690196, 1)
 metadata/_edit_lock_ = true
 
 [node name="Selected" type="ColorRect" parent="."]
@@ -65,5 +67,9 @@ autowrap_mode = 0
 script = ExtResource("3_e331l")
 metadata/_edit_lock_ = true
 
+[connection signal="focus_entered" from="." to="." method="_selected"]
+[connection signal="focus_exited" from="." to="." method="_deselected"]
 [connection signal="item_rect_changed" from="." to="." method="_on_item_rect_changed_newhslider_base"]
+[connection signal="mouse_entered" from="." to="." method="_selected"]
+[connection signal="mouse_exited" from="." to="." method="_deselected"]
 [connection signal="value_changed" from="." to="." method="_on_value_changed_newhslider_base"]
