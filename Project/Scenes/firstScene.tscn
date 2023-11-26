@@ -4,14 +4,14 @@
 [ext_resource type="Script" path="res://Scenes/firstScene.gd" id="1_yjiac"]
 [ext_resource type="Texture2D" uid="uid://f7byr3m2so4i" path="res://RelunaIcons/play empty.png" id="3_ad746"]
 [ext_resource type="Texture2D" uid="uid://corvs4jhdgfk3" path="res://RelunaIcons/backArrow.png" id="3_fgehq"]
-[ext_resource type="Texture2D" uid="uid://dqfovth5n1cg0" path="res://RelunaIcons/play filled.png" id="4_f3uym"]
 [ext_resource type="Texture2D" uid="uid://71tu2ixgeqk8" path="res://RelunaIcons/backArrowFilled.png" id="4_peq4r"]
 [ext_resource type="PackedScene" uid="uid://dq0mp8xmuh00" path="res://Scenes/MusicStaff/MusicStaff.tscn" id="5_bafn2"]
 [ext_resource type="Script" path="res://Scenes/DisplayText.gd" id="5_k5ivr"]
 [ext_resource type="Texture2D" uid="uid://c8u1gdexyrdyn" path="res://RelunaIcons/checkEmpty.png" id="5_mk5gt"]
-[ext_resource type="Texture2D" uid="uid://8d8gcs6vjvtc" path="res://RelunaIcons/checkFilled.png" id="6_7w56k"]
+[ext_resource type="Texture2D" uid="uid://ikn1k8wp15am" path="res://RelunaIcons/playHighlighted.png" id="7_kusi7"]
 [ext_resource type="Texture2D" uid="uid://cxbfhp8by63gd" path="res://RelunaIcons/hint.png" id="8_c0d27"]
-[ext_resource type="Texture2D" uid="uid://c5t2luc0n1rvq" path="res://RelunaIcons/hintFilled.png" id="9_rdd6e"]
+[ext_resource type="Texture2D" uid="uid://r001jll7cuxa" path="res://RelunaIcons/checkHighlighted.png" id="9_k7p43"]
+[ext_resource type="Texture2D" uid="uid://bojfpfwpd3vbg" path="res://RelunaIcons/hintHighlighted.png" id="11_mmdue"]
 [ext_resource type="Script" path="res://Scenes/Feedback.gd" id="12_plc4t"]
 
 [node name="Main" type="Node2D"]
@@ -49,8 +49,8 @@ offset_bottom = 808.0
 focus_neighbor_left = NodePath("../HintButton")
 focus_neighbor_right = NodePath("../CheckButton")
 texture_normal = ExtResource("3_ad746")
-texture_hover = ExtResource("4_f3uym")
-texture_focused = ExtResource("4_f3uym")
+texture_hover = ExtResource("7_kusi7")
+texture_focused = ExtResource("7_kusi7")
 
 [node name="CheckButton" type="TextureButton" parent="."]
 offset_left = 1093.0
@@ -60,8 +60,8 @@ offset_bottom = 901.0
 scale = Vector2(0.6, 0.6)
 focus_neighbor_left = NodePath("../PlayButton")
 texture_normal = ExtResource("5_mk5gt")
-texture_hover = ExtResource("6_7w56k")
-texture_focused = ExtResource("6_7w56k")
+texture_hover = ExtResource("9_k7p43")
+texture_focused = ExtResource("9_k7p43")
 
 [node name="HintButton" type="TextureButton" parent="."]
 offset_left = 308.0
@@ -71,8 +71,8 @@ offset_bottom = 894.0
 scale = Vector2(0.637106, 0.637106)
 focus_neighbor_right = NodePath("../PlayButton")
 texture_normal = ExtResource("8_c0d27")
-texture_hover = ExtResource("9_rdd6e")
-texture_focused = ExtResource("9_rdd6e")
+texture_hover = ExtResource("11_mmdue")
+texture_focused = ExtResource("11_mmdue")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
