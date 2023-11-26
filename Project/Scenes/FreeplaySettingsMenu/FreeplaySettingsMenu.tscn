@@ -27,10 +27,10 @@ shader_parameter/mousePosition = null
 script = ExtResource("1_qg26p")
 
 [node name="DetuneDirection" type="ItemList" parent="."]
-offset_left = 67.0
-offset_top = 442.0
-offset_right = 234.0
-offset_bottom = 611.0
+offset_left = 1043.0
+offset_top = 64.0
+offset_right = 1210.0
+offset_bottom = 233.0
 auto_height = true
 item_count = 3
 item_0/text = "Sharp"
@@ -51,10 +51,10 @@ size = Vector2i(500, 500)
 [node name="Bobert" type="PopupMenu" parent="MenuBar"]
 
 [node name="PlayButton" type="Button" parent="."]
-offset_left = 932.0
-offset_top = 332.0
-offset_right = 1452.0
-offset_bottom = 852.0
+offset_left = 1324.0
+offset_top = 228.0
+offset_right = 1844.0
+offset_bottom = 748.0
 theme = ExtResource("7_adwbt")
 icon = ExtResource("7_u3omm")
 
@@ -98,10 +98,10 @@ script = ExtResource("13_3tafd")
 shader = ExtResource("12_wkt3d")
 
 [node name="BySharp" type="OptionButton" parent="."]
-offset_left = 427.0
-offset_top = 425.0
-offset_right = 859.0
-offset_bottom = 805.0
+offset_left = 967.0
+offset_top = 483.0
+offset_right = 1399.0
+offset_bottom = 863.0
 item_count = 2
 selected = 0
 popup/item_0/text = "Sharp"
@@ -113,17 +113,20 @@ popup/item_1/id = 1
 script = ExtResource("17_cybx8")
 
 [node name="NotesSettings" type="VBoxContainer" parent="."]
-offset_left = 35.0
-offset_top = 54.0
-offset_right = 823.0
-offset_bottom = 266.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 976.0
+offset_bottom = 898.0
 
 [node name="NumNotes" parent="NotesSettings" instance=ExtResource("18_2jqco")]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 script = ExtResource("19_amv7j")
 text = "Number of Notes"
+height = 100.0
 
 [node name="NumDetunedNotes" parent="NotesSettings" instance=ExtResource("18_2jqco")]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 max_value = 3.0
 value = 1.0
@@ -131,8 +134,10 @@ script = ExtResource("20_d2nyq")
 text = "Number of Detuned Notes"
 minActualValue = 1
 maxActualValue = 3
+height = 100.0
 
 [node name="MaxDetuneCents" parent="NotesSettings" instance=ExtResource("18_2jqco")]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 max_value = 50.0
 step = 5.0
@@ -141,10 +146,12 @@ script = ExtResource("21_oi6lf")
 text = "Maximum Detune (cents)"
 minActualValue = 5
 maxActualValue = 50
+height = 100.0
 backgroundColor = Color(0.686275, 0.686275, 0.686275, 1)
 backgroundSelectedColor = Color(0.596078, 0.827451, 0.901961, 1)
 
 [node name="MinDetuneCents" parent="NotesSettings" instance=ExtResource("18_2jqco")]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 max_value = 50.0
 step = 5.0
@@ -153,8 +160,10 @@ script = ExtResource("22_ha0as")
 text = "Minimum Detune (cents)"
 minActualValue = 5
 maxActualValue = 50
+height = 100.0
 
 [node name="MinNote" parent="NotesSettings" instance=ExtResource("18_2jqco")]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 min_value = 9.0
 max_value = 36.0
@@ -163,8 +172,10 @@ script = ExtResource("19_08umj")
 text = "Minimum Note"
 minActualValue = 0
 maxActualValue = 36
+height = 100.0
 
 [node name="MaxNote" parent="NotesSettings" instance=ExtResource("18_2jqco")]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 min_value = 9.0
 max_value = 36.0
@@ -173,6 +184,7 @@ script = ExtResource("20_ivtfm")
 text = "Maximum Note"
 minActualValue = 9
 maxActualValue = 36
+height = 100.0
 
 [connection signal="item_selected" from="DetuneDirection" to="DetuneDirection" method="_on_item_selected"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_button_pressed"]
