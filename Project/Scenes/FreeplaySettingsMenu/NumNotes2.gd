@@ -1,10 +1,19 @@
 @tool
 extends NewHSlider
 
-@export var test : bool
+# Please don't overload ready or process :(
 
-# Called when the node enters the scene tree for the first time.
+signal valueChanged(value)
+
 func _ready():
-	pass # Replace with function body.
-	
+	_ready2()
+	print(GLevelData.numNotes)
+	if GLevelData.valid:
+		value = GLevelData.numNotes
+	updateLabel(str(value))
 
+
+func _on_value_changed_derived(passedValue):
+	updateLabel(str(value))
+	GLevelData.numNotes = value
+	valueChanged.emit(value)
