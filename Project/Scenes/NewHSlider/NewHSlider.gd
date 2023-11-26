@@ -8,6 +8,8 @@ class_name NewHSlider
 ## Edit this value to be the minimum allowed value of the slider instead of min_value
 @export var minActualValue : int = 4
 
+@export var maxActualValue : int = 15
+
 ## Margin number of pixels for a border
 @export var margin : float = 20
 
@@ -64,7 +66,8 @@ func _updateSelectedSize() -> void:
 
 
 func _on_value_changed_newhslider_base(passedValue) -> void:
-	value = max(minActualValue, passedValue)
+	value = max(minActualValue, min(maxActualValue, passedValue))
+#	value = min(maxActualValue, value)
 	_updateSelectedSize()
 	pass # Replace with function body.
 

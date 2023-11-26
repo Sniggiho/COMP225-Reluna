@@ -18,6 +18,7 @@ max_value = 15.0
 value = 4.0
 script = ExtResource("1_176bh")
 text = "Label"
+maxActualValue = null
 margin = 4.0
 height = 50.0
 backgroundColor = Color(0.690196, 0.690196, 0.690196, 1)

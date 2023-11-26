@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bga4qsn2ueiyh"]
+[gd_scene load_steps=24 format=3 uid="uid://bga4qsn2ueiyh"]
 
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gd" id="1_qg26p"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/DetuneDirection.gd" id="2_ygjhj"]
@@ -20,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://cdkxlettgjlwb" path="res://Scenes/NewHSlider/NewHSlider.tscn" id="18_2jqco"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumNotes2.gd" id="19_amv7j"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumDetunedNotes.gd" id="20_d2nyq"]
+[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MaxDetuneCents2.gd" id="21_oi6lf"]
+[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MinDetuneCents2.gd" id="22_ha0as"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hdgyu"]
 shader = ExtResource("12_wkt3d")
@@ -196,28 +198,47 @@ popup/item_1/icon = ExtResource("16_yuih7")
 popup/item_1/id = 1
 script = ExtResource("17_cybx8")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="NotesSettings" type="VBoxContainer" parent="."]
 offset_left = 60.0
 offset_top = 305.0
 offset_right = 848.0
-offset_bottom = 875.0
+offset_bottom = 517.0
 
-[node name="NumNotes" parent="VBoxContainer" instance=ExtResource("18_2jqco")]
+[node name="NumNotes" parent="NotesSettings" instance=ExtResource("18_2jqco")]
 layout_mode = 2
 script = ExtResource("19_amv7j")
 text = "Number of Notes"
 
-[node name="NumDetunedNotes" parent="VBoxContainer" instance=ExtResource("18_2jqco")]
+[node name="NumDetunedNotes" parent="NotesSettings" instance=ExtResource("18_2jqco")]
 layout_mode = 2
 max_value = 3.0
 value = 1.0
 script = ExtResource("20_d2nyq")
 text = "Number of Detuned Notes"
 minActualValue = 1
+maxActualValue = 3
 
-[node name="NewHSlider4" parent="VBoxContainer" instance=ExtResource("18_2jqco")]
+[node name="MaxDetuneCents" parent="NotesSettings" instance=ExtResource("18_2jqco")]
 layout_mode = 2
-text = "Number of Notes"
+max_value = 50.0
+step = 5.0
+value = 30.0
+script = ExtResource("21_oi6lf")
+text = "Maximum Detune (cents)"
+minActualValue = 5
+maxActualValue = 50
+backgroundColor = Color(0.686275, 0.686275, 0.686275, 1)
+backgroundSelectedColor = Color(0.596078, 0.827451, 0.901961, 1)
+
+[node name="MinDetuneCents" parent="NotesSettings" instance=ExtResource("18_2jqco")]
+layout_mode = 2
+max_value = 50.0
+step = 5.0
+value = 20.0
+script = ExtResource("22_ha0as")
+text = "Minimum Detune (cents)"
+minActualValue = 5
+maxActualValue = 50
 
 [connection signal="item_selected" from="DetuneDirection" to="DetuneDirection" method="_on_item_selected"]
 [connection signal="drag_ended" from="NumNotes" to="NumDetuned" method="_on_num_notes_drag_ended"]
@@ -235,6 +256,9 @@ text = "Number of Notes"
 [connection signal="value_changed" from="BPM" to="BPM" method="_on_value_changed"]
 [connection signal="value_changed" from="NumAccidentals" to="NumAccidentals" method="_on_value_changed"]
 [connection signal="item_selected" from="BySharp" to="BySharp" method="_on_item_selected"]
-[connection signal="valueChanged" from="VBoxContainer/NumNotes" to="VBoxContainer/NumDetunedNotes" method="_on_num_notes_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/NumNotes" to="VBoxContainer/NumNotes" method="_on_value_changed_derived"]
-[connection signal="value_changed" from="VBoxContainer/NumDetunedNotes" to="VBoxContainer/NumDetunedNotes" method="_on_value_changed_derived"]
+[connection signal="valueChanged" from="NotesSettings/NumNotes" to="NotesSettings/NumDetunedNotes" method="_on_num_notes_value_changed"]
+[connection signal="value_changed" from="NotesSettings/NumNotes" to="NotesSettings/NumNotes" method="_on_value_changed_derived"]
+[connection signal="value_changed" from="NotesSettings/NumDetunedNotes" to="NotesSettings/NumDetunedNotes" method="_on_value_changed_derived"]
+[connection signal="value_changed" from="NotesSettings/MaxDetuneCents" to="NotesSettings/MaxDetuneCents" method="_on_value_changed_derived"]
+[connection signal="value_changed" from="NotesSettings/MaxDetuneCents" to="NotesSettings/MinDetuneCents" method="_on_max_detune_cents_value_changed"]
+[connection signal="value_changed" from="NotesSettings/MinDetuneCents" to="NotesSettings/MinDetuneCents" method="_on_value_changed_derived"]
