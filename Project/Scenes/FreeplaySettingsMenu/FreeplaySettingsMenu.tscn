@@ -1,11 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://bga4qsn2ueiyh"]
+[gd_scene load_steps=22 format=3 uid="uid://bga4qsn2ueiyh"]
 
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gd" id="1_qg26p"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/DetuneDirection.gd" id="2_ygjhj"]
-[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumDetuned.gd" id="3_obu2l"]
-[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumNotes.gd" id="3_p50rh"]
-[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MaxDetuneCents.gd" id="5_14ibp"]
-[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MinDetuneCents.gd" id="6_pf2lm"]
 [ext_resource type="Theme" uid="uid://dhkx10rwrne4u" path="res://projectTheme.tres" id="7_adwbt"]
 [ext_resource type="Texture2D" uid="uid://b8vml561x4g7f" path="res://TempImage/cartoonPlayButton.png" id="7_u3omm"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MinNote.gd" id="9_vy4th"]
@@ -18,8 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://do8in4h6g4ypg" path="res://Scenes/MusicStaff/flat.png" id="16_yuih7"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/BySharp.gd" id="17_cybx8"]
 [ext_resource type="PackedScene" uid="uid://cdkxlettgjlwb" path="res://Scenes/NewHSlider/NewHSlider.tscn" id="18_2jqco"]
+[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MinNote2.gd" id="19_08umj"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumNotes2.gd" id="19_amv7j"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumDetunedNotes.gd" id="20_d2nyq"]
+[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MaxNote2.gd" id="20_ivtfm"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MaxDetuneCents2.gd" id="21_oi6lf"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MinDetuneCents2.gd" id="22_ha0as"]
 
@@ -31,10 +29,10 @@ shader_parameter/mousePosition = null
 script = ExtResource("1_qg26p")
 
 [node name="DetuneDirection" type="ItemList" parent="."]
-offset_left = 58.0
-offset_top = 129.0
-offset_right = 225.0
-offset_bottom = 298.0
+offset_left = 67.0
+offset_top = 442.0
+offset_right = 234.0
+offset_bottom = 611.0
 auto_height = true
 item_count = 3
 item_0/text = "Sharp"
@@ -54,60 +52,6 @@ size = Vector2i(500, 500)
 
 [node name="Bobert" type="PopupMenu" parent="MenuBar"]
 
-[node name="NumNotes" type="VSlider" parent="."]
-offset_left = 289.0
-offset_top = 158.0
-offset_right = 329.0
-offset_bottom = 299.0
-focus_neighbor_right = NodePath("../NumDetuned")
-min_value = 4.0
-max_value = 15.0
-value = 4.0
-tick_count = 12
-ticks_on_borders = true
-script = ExtResource("3_p50rh")
-
-[node name="NumDetuned" type="VSlider" parent="."]
-offset_left = 361.0
-offset_top = 161.0
-offset_right = 400.0
-offset_bottom = 297.0
-focus_neighbor_left = NodePath("../NumNotes")
-min_value = 1.0
-max_value = 3.0
-value = 1.0
-allow_greater = true
-script = ExtResource("3_obu2l")
-
-[node name="numNotesLabel" type="RichTextLabel" parent="."]
-offset_left = 290.0
-offset_top = 106.0
-offset_right = 447.0
-offset_bottom = 170.0
-text = "Num notes, 
-num detuned"
-fit_content = true
-
-[node name="MaxDetuneCents" type="VSlider" parent="."]
-offset_left = 561.0
-offset_top = 158.0
-offset_right = 577.0
-offset_bottom = 305.0
-min_value = 5.0
-max_value = 50.0
-value = 30.0
-script = ExtResource("5_14ibp")
-
-[node name="MinDetuneCents" type="VSlider" parent="."]
-offset_left = 623.0
-offset_top = 159.0
-offset_right = 639.0
-offset_bottom = 306.0
-min_value = 5.0
-max_value = 50.0
-value = 20.0
-script = ExtResource("6_pf2lm")
-
 [node name="PlayButton" type="Button" parent="."]
 offset_left = 932.0
 offset_top = 332.0
@@ -116,39 +60,32 @@ offset_bottom = 852.0
 theme = ExtResource("7_adwbt")
 icon = ExtResource("7_u3omm")
 
-[node name="detunedCents" type="RichTextLabel" parent="."]
-offset_left = 508.0
-offset_top = 52.0
-offset_right = 678.0
-offset_bottom = 140.0
-text = "max and min detuned cents"
-
 [node name="MinNote" type="VSlider" parent="."]
-offset_left = 792.0
-offset_top = 182.0
-offset_right = 835.0
-offset_bottom = 334.0
+offset_left = 1094.0
+offset_top = 91.0
+offset_right = 1137.0
+offset_bottom = 243.0
 script = ExtResource("9_vy4th")
 
 [node name="MaxNote" type="VSlider" parent="."]
-offset_left = 733.0
-offset_top = 178.0
-offset_right = 759.0
-offset_bottom = 336.0
+offset_left = 1035.0
+offset_top = 87.0
+offset_right = 1061.0
+offset_bottom = 245.0
 script = ExtResource("10_dyvte")
 
 [node name="MinMaxNoteText" type="RichTextLabel" parent="."]
-offset_left = 715.0
-offset_top = 123.0
-offset_right = 984.0
-offset_bottom = 163.0
+offset_left = 1017.0
+offset_top = 32.0
+offset_right = 1286.0
+offset_bottom = 72.0
 text = "Min and max note"
 
 [node name="BPM" type="VSlider" parent="."]
-offset_left = 972.0
-offset_top = 163.0
-offset_right = 988.0
-offset_bottom = 317.0
+offset_left = 1274.0
+offset_top = 72.0
+offset_right = 1290.0
+offset_bottom = 226.0
 min_value = 100.0
 max_value = 240.0
 step = 5.0
@@ -164,10 +101,10 @@ offset_bottom = 12.0
 text = "BPM"
 
 [node name="NumAccidentals" type="VSlider" parent="."]
-offset_left = 1183.0
-offset_top = 160.0
-offset_right = 1199.0
-offset_bottom = 303.0
+offset_left = 1485.0
+offset_top = 69.0
+offset_right = 1501.0
+offset_bottom = 212.0
 max_value = 6.0
 tick_count = 7
 script = ExtResource("12_h41v1")
@@ -184,10 +121,10 @@ script = ExtResource("13_3tafd")
 shader = ExtResource("12_wkt3d")
 
 [node name="BySharp" type="OptionButton" parent="."]
-offset_left = 282.0
-offset_top = 370.0
-offset_right = 769.0
-offset_bottom = 778.0
+offset_left = 427.0
+offset_top = 425.0
+offset_right = 859.0
+offset_bottom = 805.0
 item_count = 2
 selected = 0
 popup/item_0/text = "Sharp"
@@ -199,10 +136,10 @@ popup/item_1/id = 1
 script = ExtResource("17_cybx8")
 
 [node name="NotesSettings" type="VBoxContainer" parent="."]
-offset_left = 60.0
-offset_top = 305.0
-offset_right = 848.0
-offset_bottom = 517.0
+offset_left = 35.0
+offset_top = 54.0
+offset_right = 823.0
+offset_bottom = 266.0
 
 [node name="NumNotes" parent="NotesSettings" instance=ExtResource("18_2jqco")]
 layout_mode = 2
@@ -240,14 +177,27 @@ text = "Minimum Detune (cents)"
 minActualValue = 5
 maxActualValue = 50
 
+[node name="MinNote" parent="NotesSettings" instance=ExtResource("18_2jqco")]
+layout_mode = 2
+min_value = 9.0
+max_value = 36.0
+value = 9.0
+script = ExtResource("19_08umj")
+text = "Minimum Note"
+minActualValue = 0
+maxActualValue = 36
+
+[node name="MaxNote" parent="NotesSettings" instance=ExtResource("18_2jqco")]
+layout_mode = 2
+min_value = 9.0
+max_value = 36.0
+value = 36.0
+script = ExtResource("20_ivtfm")
+text = "Maximum Note"
+minActualValue = 9
+maxActualValue = 36
+
 [connection signal="item_selected" from="DetuneDirection" to="DetuneDirection" method="_on_item_selected"]
-[connection signal="drag_ended" from="NumNotes" to="NumDetuned" method="_on_num_notes_drag_ended"]
-[connection signal="value_changed" from="NumNotes" to="NumNotes" method="_on_value_changed"]
-[connection signal="value_changed" from="NumNotes" to="NumDetuned" method="_on_num_notes_value_changed"]
-[connection signal="value_changed" from="NumDetuned" to="NumDetuned" method="_on_value_changed"]
-[connection signal="value_changed" from="MaxDetuneCents" to="MaxDetuneCents" method="_on_value_changed"]
-[connection signal="value_changed" from="MaxDetuneCents" to="MinDetuneCents" method="_on_max_detune_cents_value_changed"]
-[connection signal="value_changed" from="MinDetuneCents" to="MinDetuneCents" method="_on_value_changed"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_button_pressed"]
 [connection signal="value_changed" from="MinNote" to="MinNote" method="_on_value_changed"]
 [connection signal="value_changed" from="MinNote" to="MaxNote" method="_on_min_note_value_changed"]
@@ -262,3 +212,7 @@ maxActualValue = 50
 [connection signal="value_changed" from="NotesSettings/MaxDetuneCents" to="NotesSettings/MaxDetuneCents" method="_on_value_changed_derived"]
 [connection signal="value_changed" from="NotesSettings/MaxDetuneCents" to="NotesSettings/MinDetuneCents" method="_on_max_detune_cents_value_changed"]
 [connection signal="value_changed" from="NotesSettings/MinDetuneCents" to="NotesSettings/MinDetuneCents" method="_on_value_changed_derived"]
+[connection signal="value_changed" from="NotesSettings/MinNote" to="NotesSettings/MinNote" method="_on_value_changed_derived"]
+[connection signal="value_changed" from="NotesSettings/MinNote" to="NotesSettings/MaxNote" method="_on_min_note_value_changed"]
+[connection signal="value_changed" from="NotesSettings/MaxNote" to="NotesSettings/MinNote" method="_on_max_note_value_changed"]
+[connection signal="value_changed" from="NotesSettings/MaxNote" to="NotesSettings/MaxNote" method="_on_value_changed_derived"]

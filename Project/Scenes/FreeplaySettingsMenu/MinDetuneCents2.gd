@@ -10,6 +10,7 @@ func _ready():
 	if GLevelData.valid:
 		value = GLevelData.minDetuneCents
 	updateLabel(str(value))
+	GLevelData.minDetuneCents = value
 
 
 ## SIGNAL FROM SELF

@@ -8,6 +8,7 @@ func _ready():
 	if GLevelData.valid:
 		value = GLevelData.maxDetuneCents
 	updateLabel(str(value))
+	GLevelData.maxDetuneCents = value
 
 
 func _on_value_changed_derived(passedValue):

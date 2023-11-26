@@ -1,16 +1,16 @@
 @tool
 extends NewHSlider
 
-# Please don't overload ready or process :(
+# Please don't overload ready without calling _ready2() :(
 
 signal valueChanged(value)
 
 func _ready():
 	_ready2()
-	print(GLevelData.numNotes)
 	if GLevelData.valid:
 		value = GLevelData.numNotes
 	updateLabel(str(value))
+	GLevelData.numNotes = value
 
 
 func _on_value_changed_derived(passedValue):

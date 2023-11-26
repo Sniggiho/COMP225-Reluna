@@ -79,7 +79,7 @@ func createListOfDetunedNotes(numNotes:int) -> void:
 	for n in range(numNotes):
 		detuneList.append(false)
 		
-	detuneList[0] = false # we require that the first note be out of tune
+	detuneList[0] = false # we require that the first note not be out of tune
 	
 	var possibleIndices = range(1,numNotes)
 	possibleIndices.shuffle()

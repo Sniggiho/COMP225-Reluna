@@ -7,6 +7,7 @@ func _ready():
 	if GLevelData.valid:
 		value = GLevelData.numDetunedNotes
 	updateLabel(str(value))
+	GLevelData.numDetunedNotes = value
 	
 
 ## CONNECTED FROM SELF

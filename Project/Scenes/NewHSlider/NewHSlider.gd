@@ -60,8 +60,10 @@ func _process(_delta):
 
 func _updateSelectedSize() -> void:
 	if not flip:
-		$Selected.size.x = value / max_value * self.size.x
+		# Improved so while (min_value < max_value), min_value can be anything and the bar still works
+		$Selected.size.x = (value - min_value) / (max_value - min_value) * self.size.x
 	else:
+		# TODO: Implement flip, if needed
 		pass
 
 
