@@ -1,11 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://bga4qsn2ueiyh"]
+[gd_scene load_steps=20 format=3 uid="uid://bga4qsn2ueiyh"]
 
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gd" id="1_qg26p"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/DetuneDirection.gd" id="2_ygjhj"]
 [ext_resource type="Theme" uid="uid://dhkx10rwrne4u" path="res://projectTheme.tres" id="7_adwbt"]
 [ext_resource type="Texture2D" uid="uid://b8vml561x4g7f" path="res://TempImage/cartoonPlayButton.png" id="7_u3omm"]
-[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MinNote.gd" id="9_vy4th"]
-[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MaxNote.gd" id="10_dyvte"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/BPM.gd" id="11_lxjt2"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumAccidentals.gd" id="12_h41v1"]
 [ext_resource type="Shader" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gdshader" id="12_wkt3d"]
@@ -59,27 +57,6 @@ offset_right = 1452.0
 offset_bottom = 852.0
 theme = ExtResource("7_adwbt")
 icon = ExtResource("7_u3omm")
-
-[node name="MinNote" type="VSlider" parent="."]
-offset_left = 1094.0
-offset_top = 91.0
-offset_right = 1137.0
-offset_bottom = 243.0
-script = ExtResource("9_vy4th")
-
-[node name="MaxNote" type="VSlider" parent="."]
-offset_left = 1035.0
-offset_top = 87.0
-offset_right = 1061.0
-offset_bottom = 245.0
-script = ExtResource("10_dyvte")
-
-[node name="MinMaxNoteText" type="RichTextLabel" parent="."]
-offset_left = 1017.0
-offset_top = 32.0
-offset_right = 1286.0
-offset_bottom = 72.0
-text = "Min and max note"
 
 [node name="BPM" type="VSlider" parent="."]
 offset_left = 1274.0
@@ -199,10 +176,6 @@ maxActualValue = 36
 
 [connection signal="item_selected" from="DetuneDirection" to="DetuneDirection" method="_on_item_selected"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_button_pressed"]
-[connection signal="value_changed" from="MinNote" to="MinNote" method="_on_value_changed"]
-[connection signal="value_changed" from="MinNote" to="MaxNote" method="_on_min_note_value_changed"]
-[connection signal="value_changed" from="MaxNote" to="MinNote" method="_on_max_note_value_changed"]
-[connection signal="value_changed" from="MaxNote" to="MaxNote" method="_on_value_changed"]
 [connection signal="value_changed" from="BPM" to="BPM" method="_on_value_changed"]
 [connection signal="value_changed" from="NumAccidentals" to="NumAccidentals" method="_on_value_changed"]
 [connection signal="item_selected" from="BySharp" to="BySharp" method="_on_item_selected"]
