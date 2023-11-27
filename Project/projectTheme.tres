@@ -54,6 +54,7 @@ feedback/font_sizes/normal_font_size = 150
 feedback/fonts/normal_font = ExtResource("1_l4cr8")
 menuButton/base_type = &"Button"
 menuButton/colors/font_color = Color(0.305882, 0.305882, 0.305882, 1)
+menuButton/colors/font_focus_color = Color(0.0431373, 0.8, 0.956863, 1)
 menuButton/colors/font_hover_color = Color(0.0431373, 0.8, 0.956863, 1)
 menuButton/font_sizes/font_size = 80
 menuButton/fonts/font = ExtResource("1_q22qy")

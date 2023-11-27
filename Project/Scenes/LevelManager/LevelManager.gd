@@ -128,8 +128,10 @@ func checkPlayerInput():
 	var correctText = get_parent().find_child("Feedback").find_child("Correct")
 	var incorrectText = get_parent().find_child("Feedback").find_child("Incorrect")
 	var attemptText = get_parent().find_child('Feedback').find_child('Attempts')
+	var returnButton = get_parent().find_child("Feedback").find_child("ReturnButton")
+	var nextButton = get_parent().find_child("Feedback").find_child("NextButton")
 	
-	## TODO
+	## if it is correct
 	if correct:
 		print("Yay you were correct!")
 		attempts = attempts + 1
@@ -137,12 +139,18 @@ func checkPlayerInput():
 		attempts = 0
 		correctText.visible = true
 		incorrectText.visible = false
+		returnButton.visible = false
+		nextButton.visible = true
+	## not correct
 	else:
 		attempts = attempts + 1
 		attemptText.text = "[center]Attempts: " + str(attempts)
 		print("Aw, you were incorrect :(")
 		incorrectText.visible = true
 		correctText.visible = false
+		returnButton.visible = true
+		nextButton.visible = false
+		
 
 func getNoteCountBPM() -> Array:
 	return [numNotes, bpm]
