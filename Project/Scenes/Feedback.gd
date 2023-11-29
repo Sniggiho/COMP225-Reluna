@@ -21,3 +21,9 @@ func _on_check_button_pressed():
 
 func _on_return_button_pressed():
 	hide()
+	
+
+
+
+func _on_next_button_pressed():
+	hide()

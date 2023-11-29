@@ -178,3 +178,4 @@ text = " next "
 [connection signal="pressed" from="CheckButton" to="Feedback" method="_on_check_button_pressed"]
 [connection signal="pressed" from="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/ReturnButton" to="Feedback" method="_on_return_button_pressed"]
 [connection signal="pressed" from="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/NextButton" to="LevelManager" method="_reset"]
+[connection signal="pressed" from="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/NextButton" to="Feedback" method="_on_next_button_pressed"]
