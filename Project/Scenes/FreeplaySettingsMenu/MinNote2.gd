@@ -1,26 +1,36 @@
 @tool
 extends NewHSlider
 
+var highestNoteAllowed = "d6" # this is exclusive! meaning the highest is really c6
+var lowestNoteAllowed = "a3"
 
-var notes : Array = ["c3", "c-3", "d3", "d-3", "e3", "f3", "f-3", "g3", "g-3", "a3", "a-3", "b3", 
-					 "c4", "c-4", "d4", "d-4", "e4", "f4", "f-4", "g4", "g-4", "a4", "a-4", "b4", 
-					 "c5", "c-5", "d5", "d-5", "e5", "f5", "f-5", "g5", "g-5", "a5", "a-5", "b5", 
-					 "c6"]
-					
+var _tuneCreatorScene : PackedScene = preload("res://Scenes/TuneCreator/tune_creator.tscn")
+var _tuneCreator : TuneCreator
 
-var noteMinIndex : int = 9
-var noteMaxIndex : int = 36
+var key : Array
+
+func _init():
+	_tuneCreator = _tuneCreatorScene.instantiate()
+	add_child(_tuneCreator)
+	key  = _tuneCreator._createNoteArrayInKey(GLevelData.numAccidentals, GLevelData.bySharps, lowestNoteAllowed, highestNoteAllowed) #accidentals, bySharps, lowestNote, highestNote
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_ready2()
-	GLevelData.lowestNote = notes[value]
-	updateLabel(GLevelData.lowestNote)
+	value = 0
+	maxActualValue = len(key)
+	max_value = len(key)-1
+	GLevelData.lowestNote = lowestNoteAllowed
+	updateLabel(_tuneCreator.getPrintableNoteName(GLevelData.lowestNote, GLevelData.bySharps))
+	
 
 
 func _on_value_changed_derived(passedValue):
-	GLevelData.lowestNote = notes[value]
-	updateLabel(GLevelData.lowestNote)
+	key  = _tuneCreator._createNoteArrayInKey(GLevelData.numAccidentals, GLevelData.bySharps, lowestNoteAllowed, highestNoteAllowed)
+	key.sort_custom(_tuneCreator.compareNotes)
+	key.reverse()
+	GLevelData.lowestNote = key[value]
+	updateLabel(_tuneCreator.getPrintableNoteName(GLevelData.lowestNote, GLevelData.bySharps))
 
 
 func _on_max_note_value_changed(passedValue):

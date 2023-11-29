@@ -223,6 +223,18 @@ func _createNoteArrayInKey(accidentals, bySharps, lowestNote, highestNote) -> Ar
 ## return if scale is sharp or flat
 func getBySharps() -> bool:
 	return self._bySharps
+	
+## given a note name consistent with the internal use of this program, returns the same
+# note name but formatted appropriately for printing.
+# e.g. "c-5" becomes "C#5"
+func getPrintableNoteName(n, bySharps : bool):
+	n = n.to_upper()
+	if n.contains("-"):
+		if bySharps:
+			n = n.replace("-", "#")
+		else:
+			n = n.replace("-", "♭")
+	return n
 
 ## returns true if the first note is higher than or equal to the second note, and false if the second note is higher 
 func compareNotes(n1,n2) -> bool:

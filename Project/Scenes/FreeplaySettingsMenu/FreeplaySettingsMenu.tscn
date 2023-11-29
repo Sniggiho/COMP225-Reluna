@@ -123,6 +123,7 @@ custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 script = ExtResource("19_amv7j")
 text = "Number of Notes"
+minActualValue = 4
 height = 100.0
 
 [node name="NumDetunedNotes" parent="NotesSettings" instance=ExtResource("18_2jqco")]
@@ -165,25 +166,18 @@ height = 100.0
 [node name="MinNote" parent="NotesSettings" instance=ExtResource("18_2jqco")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-min_value = 9.0
-max_value = 36.0
-value = 9.0
+value = 0.0
 script = ExtResource("19_08umj")
 text = "Minimum Note"
-minActualValue = 0
-maxActualValue = 36
 height = 100.0
 
 [node name="MaxNote" parent="NotesSettings" instance=ExtResource("18_2jqco")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-min_value = 9.0
 max_value = 36.0
 value = 36.0
 script = ExtResource("20_ivtfm")
 text = "Maximum Note"
-minActualValue = 9
-maxActualValue = 36
 height = 100.0
 
 [connection signal="item_selected" from="DetuneDirection" to="DetuneDirection" method="_on_item_selected"]

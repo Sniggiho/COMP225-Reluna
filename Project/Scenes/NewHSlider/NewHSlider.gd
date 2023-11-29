@@ -6,7 +6,7 @@ class_name NewHSlider
 #var hasLabel : bool = false
 
 ## Edit this value to be the minimum allowed value of the slider instead of min_value
-@export var minActualValue : int = 4
+@export var minActualValue : int = 0
 
 @export var maxActualValue : int = 15
 
