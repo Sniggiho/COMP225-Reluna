@@ -8,7 +8,7 @@ class_name NewHSlider
 ## Edit this value to be the minimum allowed value of the slider instead of min_value
 @export var minActualValue : int = 0
 
-@export var maxActualValue : int = 15
+@export var maxActualValue : int = 30
 
 ## Margin number of pixels for a border
 @export var margin : float = 20
