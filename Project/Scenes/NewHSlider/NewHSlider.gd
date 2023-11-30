@@ -25,8 +25,6 @@ class_name NewHSlider
 var mouseIn : bool = false
 var focusIn : bool = false
 
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_ready2()
@@ -63,7 +61,13 @@ func _process(_delta):
 func _updateSelectedSize() -> void:
 	if not flip:
 		# Improved so while (min_value < max_value), min_value can be anything and the bar still works
-		$Selected.size.x = (value - min_value) / (max_value - min_value) * self.size.x
+		$Selected.position = Vector2(margin, margin)
+		$Selected.size.x = (value - min_value) / (max_value - min_value) * self.size.x - 2 * margin
+		$Selected.size.y = self.size.y - 2 * margin
+		
+		if $Selected.size.x < 5:
+			$Selected.size.x = 5
+		
 	else:
 		# TODO: Implement flip, if needed
 		pass

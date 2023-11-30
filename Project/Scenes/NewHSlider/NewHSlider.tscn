@@ -43,8 +43,10 @@ metadata/_edit_lock_ = true
 
 [node name="Selected" type="ColorRect" parent="."]
 layout_mode = 2
-offset_right = 182.667
-offset_bottom = 209.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 178.667
+offset_bottom = 205.0
 metadata/_edit_lock_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
