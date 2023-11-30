@@ -38,6 +38,8 @@ func _ready2():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if not (min_value < max_value):
+		max_value = min_value + 1
 	if Engine.is_editor_hint():
 		$CenterContainer/Text.text = text
 	self.custom_minimum_size.y = height

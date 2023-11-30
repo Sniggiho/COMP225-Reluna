@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc8js46hls3gt"]
+
+[ext_resource type="Script" path="res://Scenes/NewItemList/NewItemList.gd" id="1_b6lh1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jsukl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7w4nd"]
+
+[node name="NewItemList" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 168.0
+offset_top = 54.0
+offset_right = 862.0
+offset_bottom = 409.0
+script = ExtResource("1_b6lh1")
+flatPressed = false
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 698.0
+offset_bottom = 359.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 694.0
+offset_bottom = 355.0
+mouse_filter = 2
+color = Color(0.72549, 0.72549, 0.72549, 1)
+metadata/_edit_lock_ = true
+
+[node name="SharpButton" type="Button" parent="."]
+layout_mode = 2
+offset_right = 345.0
+offset_bottom = 355.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jsukl")
+flat = true
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="SharpButton"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 341.0
+offset_bottom = 351.0
+mouse_filter = 2
+color = Color(0.5, 0.5, 0.9, 1)
+metadata/_edit_lock_ = true
+
+[node name="FlatButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 349.0
+offset_right = 694.0
+offset_bottom = 355.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7w4nd")
+flat = true
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="FlatButton"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 341.0
+offset_bottom = 351.0
+mouse_filter = 2
+color = Color(0.5, 0.5, 0.5, 1)
+metadata/_edit_lock_ = true
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(347, 0, 347, 355)
+width = 4.0
+default_color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[connection signal="buttonsChanged" from="." to="." method="_on_buttons_changed"]
+[connection signal="pressed" from="SharpButton" to="." method="_on_sharp_button_pressed"]
+[connection signal="pressed" from="FlatButton" to="." method="_on_flat_button_pressed"]

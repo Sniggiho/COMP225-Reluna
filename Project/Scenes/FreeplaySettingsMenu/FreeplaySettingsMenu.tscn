@@ -166,16 +166,18 @@ height = 100.0
 [node name="MinNote" parent="NotesSettings" instance=ExtResource("18_2jqco")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+max_value = 1.0
 value = 0.0
 script = ExtResource("19_08umj")
 text = "Minimum Note"
+maxActualValue = 0
 height = 100.0
 
 [node name="MaxNote" parent="NotesSettings" instance=ExtResource("18_2jqco")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 max_value = 36.0
-value = 36.0
+value = 0.0
 script = ExtResource("20_ivtfm")
 text = "Maximum Note"
 height = 100.0
