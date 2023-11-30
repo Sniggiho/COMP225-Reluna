@@ -48,7 +48,7 @@ func _process(_delta):
 	$Background.size = self.size
 	$CenterContainer.size = self.size
 #	$CenterContainer/Text.text = self.text
-	$CenterContainer/Text.add_theme_font_size_override("normal_font_size", self.size.y / 2.)
+	$CenterContainer/Text.add_theme_font_size_override("normal_font_size", self.size.y / 2.5)
 #
 	$Selected.size.y = self.size.y
 	

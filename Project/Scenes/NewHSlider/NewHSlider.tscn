@@ -59,13 +59,12 @@ material = SubResource("ShaderMaterial_oc08h")
 clip_contents = false
 layout_mode = 2
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 104
+theme_override_font_sizes/normal_font_size = 83
 text = "Label"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("3_e331l")
-metadata/_edit_lock_ = true
 
 [connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
