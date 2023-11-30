@@ -124,6 +124,7 @@ layout_mode = 2
 script = ExtResource("19_amv7j")
 text = "Number of Notes"
 minActualValue = 4
+maxActualValue = 15
 height = 100.0
 
 [node name="NumDetunedNotes" parent="NotesSettings" instance=ExtResource("18_2jqco")]

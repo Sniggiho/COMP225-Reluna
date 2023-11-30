@@ -18,7 +18,7 @@ func _init():
 func _ready():
 	_ready2()
 	value = 0
-	maxActualValue = len(key)
+	maxActualValue = len(key)-1
 	max_value = len(key)-1
 	GLevelData.lowestNote = lowestNoteAllowed
 	updateLabel(_tuneCreator.getPrintableNoteName(GLevelData.lowestNote, GLevelData.bySharps))
@@ -29,6 +29,8 @@ func _on_value_changed_derived(passedValue):
 	key  = _tuneCreator._createNoteArrayInKey(GLevelData.numAccidentals, GLevelData.bySharps, lowestNoteAllowed, highestNoteAllowed)
 	key.sort_custom(_tuneCreator.compareNotes)
 	key.reverse()
+	maxActualValue = min(maxActualValue, len(key)-1)
+	max_value = min(max_value, len(key)-1)
 	GLevelData.lowestNote = key[value]
 	updateLabel(_tuneCreator.getPrintableNoteName(GLevelData.lowestNote, GLevelData.bySharps))
 
