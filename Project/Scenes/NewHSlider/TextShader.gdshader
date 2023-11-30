@@ -1,15 +1,14 @@
 shader_type canvas_item;
 
-uniform vec3 color;
+uniform float rightEdge;
+
+uniform vec4 positiveTextColor;
+uniform vec4 negativeTextColor;
 
 void fragment() {
-	
-	// Place fragment code here.
-	
-	/* Pseudocode
-		if selected width is past this pixels coordinate,  
-		color it the new color, otherwise do nothing. 
-		
-		Or modulate the color in some way
-	*/
+	if (rightEdge > SCREEN_UV.x) {
+		COLOR.rgb = positiveTextColor.rgb;
+	} else {
+		COLOR.rgb = negativeTextColor.rgb;
+	}
 }

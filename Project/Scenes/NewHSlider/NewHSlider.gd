@@ -25,9 +25,15 @@ class_name NewHSlider
 var mouseIn : bool = false
 var focusIn : bool = false
 
+signal selectedChanged
+
+@export_color_no_alpha var positiveTextColor : Color
+@export_color_no_alpha var negativeTextColor : Color
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_ready2()
+	
 
 
 func _ready2():
@@ -55,6 +61,7 @@ func _process(_delta):
 	
 	_updateSelectedSize()
 	_updateBackgroundColor()
+	_updateShader()
 	pass
 
 
@@ -68,16 +75,25 @@ func _updateSelectedSize() -> void:
 		if $Selected.size.x < 5:
 			$Selected.size.x = 5
 		
+		
 	else:
 		# TODO: Implement flip, if needed
 		pass
+	selectedChanged.emit()
+
+
+func _updateShader() -> void:
+	# Transforms to UV coords, essentially, for the right edge of Selected
+	var screen = get_viewport_rect().size
+	var right = ($Selected.global_position.x + $Selected.size.x) / screen.x
+	$CenterContainer/Text.get_material().set_shader_parameter("rightEdge", right)
+	$CenterContainer/Text.get_material().set_shader_parameter("positiveTextColor", positiveTextColor)
+	$CenterContainer/Text.get_material().set_shader_parameter("negativeTextColor", negativeTextColor)
 
 
 func _on_value_changed_newhslider_base(passedValue) -> void:
 	value = max(minActualValue, min(maxActualValue, passedValue))
-#	value = min(maxActualValue, value)
 	_updateSelectedSize()
-	pass # Replace with function body.
 
 
 func updateLabel(label : String) -> void:
