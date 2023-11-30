@@ -12,7 +12,6 @@ var key : Array
 func _init():
 	_tuneCreator = _tuneCreatorScene.instantiate()
 	add_child(_tuneCreator)
-	key  = _tuneCreator._createNoteArrayInKey(GLevelData.numAccidentals, GLevelData.bySharps, lowestNoteAllowed, highestNoteAllowed) #accidentals, bySharps, lowestNote, highestNote
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,20 +19,28 @@ func _ready():
 	value = 0
 	maxActualValue = len(key)-1
 	max_value = len(key)-1
-	GLevelData.lowestNote = lowestNoteAllowed
-	updateLabel(_tuneCreator.getPrintableNoteName(GLevelData.lowestNote, GLevelData.bySharps))
-	
-
+	_key_updated()
 
 func _on_value_changed_derived(passedValue):
-	key  = _tuneCreator._createNoteArrayInKey(GLevelData.numAccidentals, GLevelData.bySharps, lowestNoteAllowed, highestNoteAllowed)
-	key.sort_custom(_tuneCreator.compareNotes)
-	key.reverse()
-	maxActualValue = min(maxActualValue, len(key)-1)
-	max_value = min(max_value, len(key)-1)
 	GLevelData.lowestNote = key[value]
 	updateLabel(_tuneCreator.getPrintableNoteName(GLevelData.lowestNote, GLevelData.bySharps))
 
 
 func _on_max_note_value_changed(passedValue):
 	maxActualValue = passedValue
+	
+func _key_updated():
+	key  = _tuneCreator._createNoteArrayInKey(GLevelData.numAccidentals, GLevelData.bySharps, lowestNoteAllowed, highestNoteAllowed)
+	key.sort_custom(_tuneCreator.compareNotes)
+	key.reverse()
+	GLevelData.lowestNote = key[value]
+	updateLabel(_tuneCreator.getPrintableNoteName(GLevelData.lowestNote, GLevelData.bySharps))
+	maxActualValue = min(maxActualValue, len(key)-1)
+
+
+func _on_by_sharps_buttons_changed():
+	_key_updated()
+
+
+func _on_num_accidentals_value_changed(value):
+	_key_updated()
