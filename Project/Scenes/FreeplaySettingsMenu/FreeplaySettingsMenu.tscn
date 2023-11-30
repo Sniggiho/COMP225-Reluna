@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bga4qsn2ueiyh"]
+[gd_scene load_steps=21 format=3 uid="uid://bga4qsn2ueiyh"]
 
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gd" id="1_qg26p"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/DetuneDirection.gd" id="2_ygjhj"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cdkxlettgjlwb" path="res://Scenes/NewHSlider/NewHSlider.tscn" id="18_2jqco"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MinNote2.gd" id="19_08umj"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumNotes2.gd" id="19_amv7j"]
+[ext_resource type="PackedScene" uid="uid://cc8js46hls3gt" path="res://Scenes/NewItemList/NewItemList.tscn" id="19_ik1lg"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumDetunedNotes.gd" id="20_d2nyq"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MaxNote2.gd" id="20_ivtfm"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MaxDetuneCents2.gd" id="21_oi6lf"]
@@ -171,7 +172,7 @@ max_value = 1.0
 value = 0.0
 script = ExtResource("19_08umj")
 text = "Minimum Note"
-maxActualValue = 0
+maxActualValue = -1
 height = 100.0
 
 [node name="MaxNote" parent="NotesSettings" instance=ExtResource("18_2jqco")]
@@ -182,6 +183,28 @@ value = 0.0
 script = ExtResource("20_ivtfm")
 text = "Maximum Note"
 height = 100.0
+
+[node name="BySharps" parent="NotesSettings" instance=ExtResource("19_ik1lg")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+negativeColor = Color(0.445313, 0.445313, 0.445313, 1)
+positiveColor = Color(1, 1, 1, 1)
+type = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NotesSettings"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NotesSettings/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Detuned Notes Can be:"
+
+[node name="DetuneDirection" parent="NotesSettings/VBoxContainer" instance=ExtResource("19_ik1lg")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+negativeColor = Color(0.447059, 0.447059, 0.447059, 1)
+positiveColor = Color(1, 1, 1, 1)
 
 [connection signal="item_selected" from="DetuneDirection" to="DetuneDirection" method="_on_item_selected"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_button_pressed"]

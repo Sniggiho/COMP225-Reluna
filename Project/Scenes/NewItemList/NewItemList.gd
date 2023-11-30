@@ -9,7 +9,7 @@ var doubleSelect : bool = true
 
 @export var neutralColor : Color = Color("b0b0b0")
 @export var negativeColor : Color = Color(0.5, 0.5, 0.5)
-@export var positiveColor : Color
+@export var positiveColor : Color 
 
 enum option {AccidentalChoice, DetuneDirection}
 @export var type : option = option.AccidentalChoice
@@ -18,8 +18,7 @@ signal buttonsChanged
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	pass # Replace with function body.
+	_updateButtonColor()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,46 +47,51 @@ func _process(_delta):
 	$FlatButton/ColorRect.position = Vector2(backgroundMargin, backgroundMargin)
 	$FlatButton/ColorRect.size = $FlatButton.size - 2 * Vector2(backgroundMargin, backgroundMargin)
 	
+	if Engine.is_editor_hint():
+		_updateButtonColor()
 	
+
+
+func _updateButtonColor() -> void:
 	if sharpPressed:
-		$SharpButton/ColorRect.color = Color(0.5, 0.5, 0.9)
+		$SharpButton/ColorRect.color = positiveColor # Color(0.5, 0.5, 0.9)
 	else:
-		$SharpButton/ColorRect.color = Color(0.5, 0.5, 0.5)
+		$SharpButton/ColorRect.color = negativeColor # Color(0.5, 0.5, 0.5)
 		
 	if flatPressed:
-		$FlatButton/ColorRect.color = Color(0.5, 0.5, 0.9)
+		$FlatButton/ColorRect.color = positiveColor # Color(0.5, 0.5, 0.9)
 	else:
-		$FlatButton/ColorRect.color = Color(0.5, 0.5, 0.5)
+		$FlatButton/ColorRect.color = negativeColor # Color(0.5, 0.5, 0.5)
 
 
 func _on_sharp_button_pressed():
 	if doubleSelect:
-		if not sharpPressed or flatPressed:
-			sharpPressed = !sharpPressed
+		sharpPressed = !sharpPressed
+		if not sharpPressed and not flatPressed:
+			flatPressed = true
 	else:
 		sharpPressed = !sharpPressed
 		flatPressed = true if not sharpPressed else false
-		buttonsChanged.emit()
-			
-		pass
+	buttonsChanged.emit()
 
 
 func _on_flat_button_pressed():
 	if doubleSelect:
-		if sharpPressed or not flatPressed:
-			flatPressed = !flatPressed
+		flatPressed = !flatPressed
+		if not sharpPressed and not flatPressed:
+			sharpPressed = true
 	else:
 		flatPressed = !flatPressed
 		sharpPressed = true if not flatPressed else false
-		buttonsChanged.emit()
-		pass
+	buttonsChanged.emit()
 
 
+# Connected from self
+# As designed, any time a button is clicked it will update itself and maybe the other one
 func _on_buttons_changed():
 	if type == option.AccidentalChoice:
 		GLevelData.bySharps = sharpPressed
 	else:
 		# if both selected, it's 0. -1 if just flat, 1 if just sharp
 		GLevelData.detuneDir = int(sharpPressed) - int(flatPressed)
-		pass
-	pass # Replace with function body.
+	_updateButtonColor()
