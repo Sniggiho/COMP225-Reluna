@@ -47,10 +47,14 @@ func _on_area_2d_area_entered(_area):
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q24im"]
 size = Vector2(59.75, 59.5)
 
-[node name="Note" type="Node2D"]
+[node name="Note" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+focus_mode = 2
 script = ExtResource("1_2wmyl")
 
 [node name="Button" type="Button" parent="."]
+layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
@@ -63,7 +67,6 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-focus_mode = 0
 action_mode = 0
 flat = true
 
@@ -81,6 +84,6 @@ script = SubResource("GDScript_ns5jr")
 position = Vector2(-1.125, 0)
 shape = SubResource("RectangleShape2D_q24im")
 
-[connection signal="pressed" from="Button" to="." method="select"]
 [connection signal="pressed" from="Button" to="AudioStreamPlayer" method="playDetuned"]
+[connection signal="pressed" from="Button" to="." method="select"]
 [connection signal="area_entered" from="Area2D" to="AudioStreamPlayer" method="_on_area_2d_area_entered"]

@@ -60,6 +60,7 @@ menuButton/font_sizes/font_size = 80
 menuButton/fonts/font = ExtResource("1_q22qy")
 popupButtons/base_type = &"Button"
 popupButtons/colors/font_color = Color(0.305882, 0.305882, 0.305882, 1)
+popupButtons/colors/font_focus_color = Color(0.0862745, 1, 1, 1)
 popupButtons/colors/font_hover_color = Color(0.0862745, 1, 1, 1)
 popupButtons/font_sizes/font_size = 80
 popupButtons/fonts/font = ExtResource("1_q22qy")

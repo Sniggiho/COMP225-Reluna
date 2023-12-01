@@ -109,13 +109,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+focus_mode = 2
 theme_type_variation = &"popupPanel"
 
 [node name="CenterContainer" type="CenterContainer" parent="Feedback/PanelContainer"]
 layout_mode = 2
+focus_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Feedback/PanelContainer/CenterContainer"]
 layout_mode = 2
+focus_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 15
@@ -123,6 +126,7 @@ theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Feedback/PanelContainer/CenterContainer/MarginContainer"]
 layout_mode = 2
+focus_mode = 2
 alignment = 1
 
 [node name="Correct" type="RichTextLabel" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer"]
@@ -158,6 +162,7 @@ fit_content = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
+focus_mode = 2
 theme_override_constants/separation = 700
 alignment = 1
 

@@ -1,4 +1,4 @@
-extends Node2D
+extends Control
 class_name Note
 
 @export var detuneCents := 0 # the number of cents out of tune 
@@ -27,8 +27,12 @@ func _ready():
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
+func _process(delta):
 	focusedNote()
+
+func _input(event):
+	if self.has_focus() and event.is_action_pressed("ui_accept"):
+		selected = ! selected
 	
 func centsToRatio(cents) -> float:
 	return pow(2, cents/1200.0)
@@ -154,7 +158,7 @@ func select() -> void:
 		_timerDeleteRoutine()
 
 func focusedNote() -> void: 
-	if $Button.has_focus():
+	if self.has_focus():
 		sprite.modulate = focusedColor
 	else: 
 		_changeColor()
