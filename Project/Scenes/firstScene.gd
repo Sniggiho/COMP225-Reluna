@@ -26,14 +26,14 @@ func numAttempts() -> int:
 	return 1
 
 func setUpFocusNeighbors() -> void: 
-	playButton.focus_neighbor_top = playButton.get_path_to(notes[middleNote])
-	notes[middleNote].focus_neighbor_bottom = notes[middleNote].get_path_to(playButton)
-	returnButton.focus_neighbor_bottom = returnButton.get_path_to(notes[middleNote])
+	playButton.focus_neighbor_top = playButton.get_path_to(notes[middleNote].get_node("Button"))
+	notes[middleNote].get_node("Button").focus_neighbor_bottom = notes[middleNote].get_node("Button").get_path_to(playButton)
+	returnButton.focus_neighbor_bottom = returnButton.get_path_to(notes[middleNote].get_node("Button"))
 	for i in len(notes) - 1:
-		notes[i].focus_neighbor_right = notes[i].get_path_to(notes[i+1])
+		notes[i].get_node("Button").focus_neighbor_right = notes[i].get_node("Button").get_path_to(notes[i+1].get_node("Button"))
 	for i in range(1, len(notes)):
-		notes[i].focus_neighbor_left = notes[i].get_path_to(notes[i-1])
+		notes[i].get_node("Button").focus_neighbor_left = notes[i].get_node("Button").get_path_to(notes[i-1].get_node("Button"))
 	for i in len(notes):
-		notes[i].focus_neighbor_top = notes[i].get_path_to(returnButton)
-		notes[i].focus_neighbor_bottom = notes[i].get_path_to(playButton)
+		notes[i].get_node("Button").focus_neighbor_top = notes[i].get_node("Button").get_path_to(returnButton)
+		notes[i].get_node("Button").focus_neighbor_bottom = notes[i].get_node("Button").get_path_to(playButton)
 

@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bw1j8vgpnjrk8"]
+[gd_scene load_steps=6 format=3 uid="uid://bw1j8vgpnjrk8"]
 
 [ext_resource type="Script" path="res://Scenes/Note/Note.gd" id="1_2wmyl"]
 [ext_resource type="Texture2D" uid="uid://fwm6q230qh27" path="res://Scenes/Note/quarter2.png" id="2_m8vj1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s86jd"]
 
 [sub_resource type="GDScript" id="GDScript_ns5jr"]
 script/source = "extends AudioStreamPlayer
@@ -67,6 +69,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_s86jd")
 action_mode = 0
 flat = true
 
@@ -84,6 +87,6 @@ script = SubResource("GDScript_ns5jr")
 position = Vector2(-1.125, 0)
 shape = SubResource("RectangleShape2D_q24im")
 
-[connection signal="pressed" from="Button" to="AudioStreamPlayer" method="playDetuned"]
 [connection signal="pressed" from="Button" to="." method="select"]
+[connection signal="pressed" from="Button" to="AudioStreamPlayer" method="playDetuned"]
 [connection signal="area_entered" from="Area2D" to="AudioStreamPlayer" method="_on_area_2d_area_entered"]

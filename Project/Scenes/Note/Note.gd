@@ -3,7 +3,7 @@ class_name Note
 
 @export var detuneCents := 0 # the number of cents out of tune 
 @export var noteName := "c3" # default note is c3
-
+@onready var button : Button = $Button
 @onready var sprite : Sprite2D = $Button/Sprite2D
 
 @export var defaultColor : Color = Color("000000")
@@ -158,7 +158,7 @@ func select() -> void:
 		_timerDeleteRoutine()
 
 func focusedNote() -> void: 
-	if self.has_focus():
+	if button.has_focus():
 		sprite.modulate = focusedColor
 	else: 
 		_changeColor()
