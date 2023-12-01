@@ -6,9 +6,9 @@ class_name NewHSlider
 #var hasLabel : bool = false
 
 ## Edit this value to be the minimum allowed value of the slider instead of min_value
-@export var minActualValue : int = 4
+@export var minActualValue : int = 0
 
-@export var maxActualValue : int = 15
+@export var maxActualValue : int = 30
 
 ## Margin number of pixels for a border
 @export var margin : float = 20
@@ -25,11 +25,15 @@ class_name NewHSlider
 var mouseIn : bool = false
 var focusIn : bool = false
 
+signal selectedChanged
 
+@export_color_no_alpha var positiveTextColor : Color
+@export_color_no_alpha var negativeTextColor : Color
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_ready2()
+	
 
 
 func _ready2():
@@ -38,6 +42,8 @@ func _ready2():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if not (min_value < max_value):
+		max_value = min_value + 1
 	if Engine.is_editor_hint():
 		$CenterContainer/Text.text = text
 	self.custom_minimum_size.y = height
@@ -46,7 +52,7 @@ func _process(_delta):
 	$Background.size = self.size
 	$CenterContainer.size = self.size
 #	$CenterContainer/Text.text = self.text
-	$CenterContainer/Text.add_theme_font_size_override("normal_font_size", self.size.y / 2.)
+	$CenterContainer/Text.add_theme_font_size_override("normal_font_size", self.size.y / 2.5)
 #
 	$Selected.size.y = self.size.y
 	
@@ -55,23 +61,39 @@ func _process(_delta):
 	
 	_updateSelectedSize()
 	_updateBackgroundColor()
+	_updateShader()
 	pass
 
 
 func _updateSelectedSize() -> void:
 	if not flip:
 		# Improved so while (min_value < max_value), min_value can be anything and the bar still works
-		$Selected.size.x = (value - min_value) / (max_value - min_value) * self.size.x
+		$Selected.position = Vector2(margin, margin)
+		$Selected.size.x = (value - min_value) / (max_value - min_value) * self.size.x - 2 * margin
+		$Selected.size.y = self.size.y - 2 * margin
+		
+		if $Selected.size.x < 5:
+			$Selected.size.x = 5
+		
+		
 	else:
 		# TODO: Implement flip, if needed
 		pass
+	selectedChanged.emit()
+
+
+func _updateShader() -> void:
+	# Transforms to UV coords, essentially, for the right edge of Selected
+	var screen = get_viewport_rect().size
+	var right = ($Selected.global_position.x + $Selected.size.x) / screen.x
+	$CenterContainer/Text.get_material().set_shader_parameter("rightEdge", right)
+	$CenterContainer/Text.get_material().set_shader_parameter("positiveTextColor", positiveTextColor)
+	$CenterContainer/Text.get_material().set_shader_parameter("negativeTextColor", negativeTextColor)
 
 
 func _on_value_changed_newhslider_base(passedValue) -> void:
 	value = max(minActualValue, min(maxActualValue, passedValue))
-#	value = min(maxActualValue, value)
 	_updateSelectedSize()
-	pass # Replace with function body.
 
 
 func updateLabel(label : String) -> void:

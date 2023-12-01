@@ -1,19 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://bga4qsn2ueiyh"]
+[gd_scene load_steps=18 format=3 uid="uid://bga4qsn2ueiyh"]
 
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gd" id="1_qg26p"]
-[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/DetuneDirection.gd" id="2_ygjhj"]
 [ext_resource type="Theme" uid="uid://dhkx10rwrne4u" path="res://projectTheme.tres" id="7_adwbt"]
 [ext_resource type="Texture2D" uid="uid://b8vml561x4g7f" path="res://TempImage/cartoonPlayButton.png" id="7_u3omm"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/BPM.gd" id="11_lxjt2"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumAccidentals.gd" id="12_h41v1"]
 [ext_resource type="Shader" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gdshader" id="12_wkt3d"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/RichTextLabel.gd" id="13_3tafd"]
-[ext_resource type="Texture2D" uid="uid://c2185eldy3b1d" path="res://Scenes/MusicStaff/sharp.png" id="15_xdgnf"]
-[ext_resource type="Texture2D" uid="uid://do8in4h6g4ypg" path="res://Scenes/MusicStaff/flat.png" id="16_yuih7"]
-[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/BySharp.gd" id="17_cybx8"]
 [ext_resource type="PackedScene" uid="uid://cdkxlettgjlwb" path="res://Scenes/NewHSlider/NewHSlider.tscn" id="18_2jqco"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MinNote2.gd" id="19_08umj"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumNotes2.gd" id="19_amv7j"]
+[ext_resource type="PackedScene" uid="uid://cc8js46hls3gt" path="res://Scenes/NewItemList/NewItemList.tscn" id="19_ik1lg"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumDetunedNotes.gd" id="20_d2nyq"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MaxNote2.gd" id="20_ivtfm"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MaxDetuneCents2.gd" id="21_oi6lf"]
@@ -23,20 +20,14 @@
 shader = ExtResource("12_wkt3d")
 shader_parameter/mousePosition = null
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_kvu5a"]
+grow_begin = 4.0
+grow_end = 4.0
+thickness = 4
+vertical = true
+
 [node name="FreeplaySettingsMenu" type="Node2D"]
 script = ExtResource("1_qg26p")
-
-[node name="DetuneDirection" type="ItemList" parent="."]
-offset_left = 1043.0
-offset_top = 64.0
-offset_right = 1210.0
-offset_bottom = 233.0
-auto_height = true
-item_count = 3
-item_0/text = "Sharp"
-item_1/text = "Both"
-item_2/text = "Flat"
-script = ExtResource("2_ygjhj")
 
 [node name="MenuBar" type="MenuBar" parent="."]
 visible = false
@@ -97,32 +88,19 @@ text = "NumAccidentals"
 script = ExtResource("13_3tafd")
 shader = ExtResource("12_wkt3d")
 
-[node name="BySharp" type="OptionButton" parent="."]
-offset_left = 967.0
-offset_top = 483.0
-offset_right = 1399.0
-offset_bottom = 863.0
-item_count = 2
-selected = 0
-popup/item_0/text = "Sharp"
-popup/item_0/icon = ExtResource("15_xdgnf")
-popup/item_0/id = 0
-popup/item_1/text = "Flat"
-popup/item_1/icon = ExtResource("16_yuih7")
-popup/item_1/id = 1
-script = ExtResource("17_cybx8")
-
 [node name="NotesSettings" type="VBoxContainer" parent="."]
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 976.0
-offset_bottom = 898.0
+offset_right = 1012.0
+offset_bottom = 886.0
 
 [node name="NumNotes" parent="NotesSettings" instance=ExtResource("18_2jqco")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 script = ExtResource("19_amv7j")
 text = "Number of Notes"
+minActualValue = 4
+maxActualValue = 15
 height = 100.0
 
 [node name="NumDetunedNotes" parent="NotesSettings" instance=ExtResource("18_2jqco")]
@@ -147,8 +125,7 @@ text = "Maximum Detune (cents)"
 minActualValue = 5
 maxActualValue = 50
 height = 100.0
-backgroundColor = Color(0.686275, 0.686275, 0.686275, 1)
-backgroundSelectedColor = Color(0.596078, 0.827451, 0.901961, 1)
+positiveTextColor = Color(0.164706, 0.717647, 0.921569, 1)
 
 [node name="MinDetuneCents" parent="NotesSettings" instance=ExtResource("18_2jqco")]
 custom_minimum_size = Vector2(0, 100)
@@ -165,32 +142,76 @@ height = 100.0
 [node name="MinNote" parent="NotesSettings" instance=ExtResource("18_2jqco")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-min_value = 9.0
-max_value = 36.0
-value = 9.0
+max_value = 1.0
+value = 0.0
 script = ExtResource("19_08umj")
 text = "Minimum Note"
-minActualValue = 0
-maxActualValue = 36
+maxActualValue = -1
 height = 100.0
 
 [node name="MaxNote" parent="NotesSettings" instance=ExtResource("18_2jqco")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-min_value = 9.0
 max_value = 36.0
-value = 36.0
+value = 0.0
 script = ExtResource("20_ivtfm")
 text = "Maximum Note"
-minActualValue = 9
-maxActualValue = 36
 height = 100.0
 
-[connection signal="item_selected" from="DetuneDirection" to="DetuneDirection" method="_on_item_selected"]
+[node name="BySharps" parent="NotesSettings" instance=ExtResource("19_ik1lg")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+negativeColor = Color(0.445313, 0.445313, 0.445313, 1)
+type = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NotesSettings"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="CenterContainer" type="HBoxContainer" parent="NotesSettings/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VSeparator" type="VSeparator" parent="NotesSettings/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_kvu5a")
+
+[node name="ColorRect" type="ColorRect" parent="NotesSettings/VBoxContainer/CenterContainer"]
+custom_minimum_size = Vector2(1000, 50)
+layout_mode = 2
+color = Color(0.6875, 0.6875, 0.6875, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NotesSettings/VBoxContainer/CenterContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.5
+offset_top = -25.0
+offset_right = 127.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.156863, 0.156863, 0.309804, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/normal_font_size = 32
+text = "Detuned Notes Can be:"
+fit_content = true
+autowrap_mode = 0
+
+[node name="VSeparator2" type="VSeparator" parent="NotesSettings/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_kvu5a")
+
+[node name="DetuneDirection" parent="NotesSettings/VBoxContainer" instance=ExtResource("19_ik1lg")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
 [connection signal="pressed" from="PlayButton" to="." method="_on_button_pressed"]
 [connection signal="value_changed" from="BPM" to="BPM" method="_on_value_changed"]
 [connection signal="value_changed" from="NumAccidentals" to="NumAccidentals" method="_on_value_changed"]
-[connection signal="item_selected" from="BySharp" to="BySharp" method="_on_item_selected"]
 [connection signal="valueChanged" from="NotesSettings/NumNotes" to="NotesSettings/NumDetunedNotes" method="_on_num_notes_value_changed"]
 [connection signal="value_changed" from="NotesSettings/NumNotes" to="NotesSettings/NumNotes" method="_on_value_changed_derived"]
 [connection signal="value_changed" from="NotesSettings/NumDetunedNotes" to="NotesSettings/NumDetunedNotes" method="_on_value_changed_derived"]

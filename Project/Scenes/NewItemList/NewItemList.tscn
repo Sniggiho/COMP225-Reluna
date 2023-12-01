@@ -1,0 +1,137 @@
+[gd_scene load_steps=4 format=3 uid="uid://cc8js46hls3gt"]
+
+[ext_resource type="Script" path="res://Scenes/NewItemList/NewItemList.gd" id="1_b6lh1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jsukl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7w4nd"]
+
+[node name="NewItemList" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1433.0
+offset_bottom = 369.0
+script = ExtResource("1_b6lh1")
+sharpPressed = false
+negativeColor = Color(0.447059, 0.447059, 0.447059, 1)
+positiveColor = Color(1, 1, 1, 1)
+positiveFontColor = Color(0.164706, 0.717647, 0.921569, 1)
+negativeFontColor = Color(0.207843, 0.207843, 0.207843, 1)
+selectedColor = Color(0.654902, 0.811765, 0.882353, 1)
+type = 1
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 1437.0
+offset_bottom = 373.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="Foreground1" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 716.5
+offset_bottom = 369.0
+mouse_filter = 2
+color = Color(0.690196, 0.690196, 0.690196, 1)
+metadata/_edit_lock_ = true
+
+[node name="Foreground2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 716.5
+offset_right = 1433.0
+offset_bottom = 369.0
+mouse_filter = 2
+color = Color(0.690196, 0.690196, 0.690196, 1)
+metadata/_edit_lock_ = true
+
+[node name="SharpButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 714.5
+offset_bottom = 369.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jsukl")
+text = "Sharp"
+flat = true
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="SharpButton"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 710.5
+offset_bottom = 365.0
+mouse_filter = 2
+color = Color(0.447059, 0.447059, 0.447059, 1)
+metadata/_edit_lock_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="SharpButton"]
+layout_mode = 0
+offset_right = 714.5
+offset_bottom = 369.0
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="SharpButton/CenterContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.207843, 0.207843, 0.207843, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/normal_font_size = 147
+text = "Sharp"
+fit_content = true
+autowrap_mode = 0
+metadata/_edit_lock_ = true
+
+[node name="FlatButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 718.5
+offset_right = 1433.0
+offset_bottom = 369.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_7w4nd")
+text = "Flat"
+flat = true
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="FlatButton"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 710.5
+offset_bottom = 365.0
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="FlatButton"]
+layout_mode = 0
+offset_right = 714.5
+offset_bottom = 369.0
+metadata/_edit_lock_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="FlatButton/CenterContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0.164706, 0.717647, 0.921569, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/normal_font_size = 147
+text = "Flat"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+metadata/_edit_lock_ = true
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(716.5, 0, 716.5, 369)
+width = 4.0
+default_color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[connection signal="buttonsChanged" from="." to="." method="_on_buttons_changed"]
+[connection signal="focus_entered" from="SharpButton" to="." method="_on_sharp_button_focus_entered"]
+[connection signal="focus_exited" from="SharpButton" to="." method="_on_sharp_button_focus_exited"]
+[connection signal="mouse_entered" from="SharpButton" to="." method="_on_sharp_button_mouse_entered"]
+[connection signal="mouse_exited" from="SharpButton" to="." method="_on_sharp_button_mouse_exited"]
+[connection signal="pressed" from="SharpButton" to="." method="_on_sharp_button_pressed"]
+[connection signal="focus_entered" from="FlatButton" to="." method="_on_flat_button_focus_entered"]
+[connection signal="focus_exited" from="FlatButton" to="." method="_on_flat_button_focus_exited"]
+[connection signal="mouse_entered" from="FlatButton" to="." method="_on_flat_button_mouse_entered"]
+[connection signal="mouse_exited" from="FlatButton" to="." method="_on_flat_button_mouse_exited"]
+[connection signal="pressed" from="FlatButton" to="." method="_on_flat_button_pressed"]
