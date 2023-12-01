@@ -234,6 +234,9 @@ func _ready():
 
 func _on_return_button_pressed():
 	SceneTransition.change_scene(GLevelData.prevScene)
+	
+func getTuneCreator() -> TuneCreator:
+	return _tuneCreator
 
 
 
