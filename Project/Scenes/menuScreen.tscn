@@ -9,24 +9,48 @@
 script = ExtResource("1_2n4jg")
 
 [node name="Label" type="Label" parent="."]
-offset_left = 320.0
-offset_top = 216.0
-offset_right = 1275.0
-offset_bottom = 366.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 295.0
+offset_top = 228.0
+offset_right = 1250.0
+offset_bottom = 378.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 theme = ExtResource("2_2whrt")
-text = "Tooner Boomer"
+text = "Retuna"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="PlayButton" type="Button" parent="."]
-offset_left = 632.0
-offset_top = 488.0
-offset_right = 920.0
-offset_bottom = 594.0
+[node name="Tutorial" type="Button" parent="."]
+offset_left = 536.0
+offset_top = 480.0
+offset_right = 1037.0
+offset_bottom = 586.0
+focus_neighbor_bottom = NodePath("../Freeplay")
 theme = ExtResource("2_2whrt")
 theme_type_variation = &"menuButton"
 theme_override_styles/focus = SubResource("StyleBoxEmpty_nc82v")
-text = "play"
+text = "tutorials"
 flat = true
 icon_alignment = 1
 
-[connection signal="pressed" from="PlayButton" to="." method="_on_menu_button_pressed"]
+[node name="Freeplay" type="Button" parent="."]
+offset_left = 537.0
+offset_top = 631.0
+offset_right = 1032.0
+offset_bottom = 737.0
+focus_neighbor_top = NodePath("../Tutorial")
+theme = ExtResource("2_2whrt")
+theme_type_variation = &"menuButton"
+theme_override_styles/focus = SubResource("StyleBoxEmpty_nc82v")
+text = "freeplay"
+flat = true
+icon_alignment = 1
+
+[connection signal="pressed" from="Tutorial" to="." method="_to_tutorial"]
+[connection signal="pressed" from="Freeplay" to="." method="_to_freeplay"]

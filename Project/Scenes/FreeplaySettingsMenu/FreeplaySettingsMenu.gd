@@ -18,3 +18,9 @@ func _on_button_pressed():
 	GLevelData.prevScene = "res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.tscn"
 	GLevelData.valid = true
 	SceneTransition.change_scene("res://Scenes/firstScene.tscn")
+	
+
+func _goto_main_menu():
+	GLevelData.valid = false
+	SceneTransition.change_scene("res://Scenes/menuScreen.tscn")
+	pass

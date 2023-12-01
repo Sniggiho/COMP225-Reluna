@@ -1,12 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://bga4qsn2ueiyh"]
+[gd_scene load_steps=17 format=3 uid="uid://bga4qsn2ueiyh"]
 
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gd" id="1_qg26p"]
-[ext_resource type="Theme" uid="uid://dhkx10rwrne4u" path="res://projectTheme.tres" id="7_adwbt"]
-[ext_resource type="Texture2D" uid="uid://b8vml561x4g7f" path="res://TempImage/cartoonPlayButton.png" id="7_u3omm"]
-[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/BPM.gd" id="11_lxjt2"]
-[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumAccidentals.gd" id="12_h41v1"]
-[ext_resource type="Shader" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gdshader" id="12_wkt3d"]
-[ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/RichTextLabel.gd" id="13_3tafd"]
+[ext_resource type="Texture2D" uid="uid://71tu2ixgeqk8" path="res://RelunaIcons/backArrowFilled.png" id="13_5oshy"]
+[ext_resource type="Script" path="res://Scenes/NewHSlider/BPM.gd" id="16_3ew6s"]
+[ext_resource type="Texture2D" uid="uid://corvs4jhdgfk3" path="res://RelunaIcons/backArrow.png" id="16_im4tj"]
+[ext_resource type="Script" path="res://Scenes/NewHSlider/NumAccidentals.gd" id="16_vterl"]
 [ext_resource type="PackedScene" uid="uid://cdkxlettgjlwb" path="res://Scenes/NewHSlider/NewHSlider.tscn" id="18_2jqco"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MinNote2.gd" id="19_08umj"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/NumNotes2.gd" id="19_amv7j"]
@@ -16,11 +14,19 @@
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MaxDetuneCents2.gd" id="21_oi6lf"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MinDetuneCents2.gd" id="22_ha0as"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hdgyu"]
-shader = ExtResource("12_wkt3d")
-shader_parameter/mousePosition = null
-
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_kvu5a"]
+grow_begin = 4.0
+grow_end = 4.0
+thickness = 4
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_pjunv"]
+grow_begin = 4.0
+grow_end = 4.0
+thickness = 4
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_l8p8p"]
 grow_begin = 4.0
 grow_end = 4.0
 thickness = 4
@@ -29,82 +35,28 @@ vertical = true
 [node name="FreeplaySettingsMenu" type="Node2D"]
 script = ExtResource("1_qg26p")
 
-[node name="MenuBar" type="MenuBar" parent="."]
-visible = false
-offset_left = 934.0
-offset_top = 82.0
-offset_right = 974.0
-offset_bottom = 122.0
-
-[node name="Alice" type="PopupMenu" parent="MenuBar"]
-size = Vector2i(500, 500)
-
-[node name="Bobert" type="PopupMenu" parent="MenuBar"]
-
-[node name="PlayButton" type="Button" parent="."]
-offset_left = 1324.0
-offset_top = 228.0
-offset_right = 1844.0
-offset_bottom = 748.0
-theme = ExtResource("7_adwbt")
-icon = ExtResource("7_u3omm")
-
-[node name="BPM" type="VSlider" parent="."]
-offset_left = 1274.0
-offset_top = 72.0
-offset_right = 1290.0
-offset_bottom = 226.0
-min_value = 100.0
-max_value = 240.0
-step = 5.0
-value = 120.0
-script = ExtResource("11_lxjt2")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="BPM"]
-layout_mode = 0
-offset_left = -19.0
-offset_top = -28.0
-offset_right = 57.0
-offset_bottom = 12.0
-text = "BPM"
-
-[node name="NumAccidentals" type="VSlider" parent="."]
-offset_left = 1485.0
-offset_top = 69.0
-offset_right = 1501.0
-offset_bottom = 212.0
-max_value = 6.0
-tick_count = 7
-script = ExtResource("12_h41v1")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="NumAccidentals"]
-material = SubResource("ShaderMaterial_hdgyu")
-layout_mode = 0
-offset_left = -76.0
-offset_top = -37.0
-offset_right = 139.0
-offset_bottom = 3.0
-text = "NumAccidentals"
-script = ExtResource("13_3tafd")
-shader = ExtResource("12_wkt3d")
+[node name="BackButton" type="TextureButton" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("16_im4tj")
+texture_hover = ExtResource("13_5oshy")
+texture_focused = ExtResource("13_5oshy")
 
 [node name="NotesSettings" type="VBoxContainer" parent="."]
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 1012.0
-offset_bottom = 886.0
+offset_left = 409.0
+offset_top = 59.0
+offset_right = 1217.0
+offset_bottom = 1019.0
 
 [node name="NumNotes" parent="NotesSettings" instance=ExtResource("18_2jqco")]
-custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 script = ExtResource("19_amv7j")
 text = "Number of Notes"
 minActualValue = 4
 maxActualValue = 15
-height = 100.0
 
 [node name="NumDetunedNotes" parent="NotesSettings" instance=ExtResource("18_2jqco")]
-custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 max_value = 3.0
 value = 1.0
@@ -112,10 +64,8 @@ script = ExtResource("20_d2nyq")
 text = "Number of Detuned Notes"
 minActualValue = 1
 maxActualValue = 3
-height = 100.0
 
 [node name="MaxDetuneCents" parent="NotesSettings" instance=ExtResource("18_2jqco")]
-custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 max_value = 50.0
 step = 5.0
@@ -124,10 +74,8 @@ script = ExtResource("21_oi6lf")
 text = "Maximum Detune (cents)"
 minActualValue = 5
 maxActualValue = 50
-height = 100.0
 
 [node name="MinDetuneCents" parent="NotesSettings" instance=ExtResource("18_2jqco")]
-custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 max_value = 50.0
 step = 5.0
@@ -136,51 +84,40 @@ script = ExtResource("22_ha0as")
 text = "Minimum Detune (cents)"
 minActualValue = 5
 maxActualValue = 50
-height = 100.0
 
 [node name="MinNote" parent="NotesSettings" instance=ExtResource("18_2jqco")]
-custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 max_value = 1.0
 value = 0.0
 script = ExtResource("19_08umj")
 text = "Minimum Note"
 maxActualValue = -1
-height = 100.0
 
 [node name="MaxNote" parent="NotesSettings" instance=ExtResource("18_2jqco")]
-custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 max_value = 36.0
 value = 0.0
 script = ExtResource("20_ivtfm")
 text = "Maximum Note"
-height = 100.0
 
-[node name="BySharps" parent="NotesSettings" instance=ExtResource("19_ik1lg")]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-negativeColor = Color(0.445313, 0.445313, 0.445313, 1)
-type = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="NotesSettings"]
+[node name="DetuneDirection" type="VBoxContainer" parent="NotesSettings"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
-[node name="CenterContainer" type="HBoxContainer" parent="NotesSettings/VBoxContainer"]
+[node name="CenterContainer" type="HBoxContainer" parent="NotesSettings/DetuneDirection"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="VSeparator" type="VSeparator" parent="NotesSettings/VBoxContainer/CenterContainer"]
+[node name="VSeparator" type="VSeparator" parent="NotesSettings/DetuneDirection/CenterContainer"]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_kvu5a")
 
-[node name="ColorRect" type="ColorRect" parent="NotesSettings/VBoxContainer/CenterContainer"]
-custom_minimum_size = Vector2(1000, 50)
+[node name="ColorRect" type="ColorRect" parent="NotesSettings/DetuneDirection/CenterContainer"]
+custom_minimum_size = Vector2(800, 50)
 layout_mode = 2
 color = Color(0.6875, 0.6875, 0.6875, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="NotesSettings/VBoxContainer/CenterContainer/ColorRect"]
+[node name="RichTextLabel" type="RichTextLabel" parent="NotesSettings/DetuneDirection/CenterContainer/ColorRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
@@ -200,19 +137,90 @@ text = "Detuned Notes Can be:"
 fit_content = true
 autowrap_mode = 0
 
-[node name="VSeparator2" type="VSeparator" parent="NotesSettings/VBoxContainer/CenterContainer"]
+[node name="VSeparator2" type="VSeparator" parent="NotesSettings/DetuneDirection/CenterContainer"]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_kvu5a")
 
-[node name="DetuneDirection" parent="NotesSettings/VBoxContainer" instance=ExtResource("19_ik1lg")]
+[node name="DetuneDirection" parent="NotesSettings/DetuneDirection" instance=ExtResource("19_ik1lg")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[connection signal="pressed" from="PlayButton" to="." method="_on_button_pressed"]
-[connection signal="value_changed" from="BPM" to="BPM" method="_on_value_changed"]
-[connection signal="value_changed" from="NumAccidentals" to="NumAccidentals" method="_on_value_changed"]
-[connection signal="value_changed" from="NumAccidentals" to="NotesSettings/MinNote" method="_on_num_accidentals_value_changed"]
-[connection signal="value_changed" from="NumAccidentals" to="NotesSettings/MaxNote" method="_on_num_accidentals_value_changed"]
+[node name="Accidental Choice" type="VBoxContainer" parent="NotesSettings"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NotesSettings/Accidental Choice"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VSeparator" type="VSeparator" parent="NotesSettings/Accidental Choice/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_pjunv")
+
+[node name="ColorRect" type="ColorRect" parent="NotesSettings/Accidental Choice/HBoxContainer"]
+custom_minimum_size = Vector2(800, 50)
+layout_mode = 2
+color = Color(0.683594, 0.683594, 0.683594, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NotesSettings/Accidental Choice/HBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.15625, 0.15625, 0.308594, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/normal_font_size = 32
+text = "Accidental Choice:"
+fit_content = true
+autowrap_mode = 0
+
+[node name="VSeparator2" type="VSeparator" parent="NotesSettings/Accidental Choice/HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_l8p8p")
+
+[node name="BySharps" parent="NotesSettings/Accidental Choice" instance=ExtResource("19_ik1lg")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+negativeColor = Color(0.445313, 0.445313, 0.445313, 1)
+type = 0
+
+[node name="BPM" parent="NotesSettings" instance=ExtResource("18_2jqco")]
+layout_mode = 2
+max_value = 240.0
+step = 5.0
+value = 120.0
+script = ExtResource("16_3ew6s")
+text = "BPM"
+minActualValue = 100
+maxActualValue = 240
+
+[node name="NumAccidentals" parent="NotesSettings" instance=ExtResource("18_2jqco")]
+layout_mode = 2
+max_value = 6.0
+value = 0.0
+script = ExtResource("16_vterl")
+text = "Number of Accidentals"
+maxActualValue = 6
+
+[node name="ForwardButton" type="TextureButton" parent="."]
+offset_left = 1503.0
+offset_top = 1.0
+offset_right = 1743.0
+offset_bottom = 241.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("16_im4tj")
+texture_hover = ExtResource("13_5oshy")
+texture_focused = ExtResource("13_5oshy")
+flip_h = true
+
+[connection signal="pressed" from="BackButton" to="." method="_goto_main_menu"]
 [connection signal="valueChanged" from="NotesSettings/NumNotes" to="NotesSettings/NumDetunedNotes" method="_on_num_notes_value_changed"]
 [connection signal="value_changed" from="NotesSettings/NumNotes" to="NotesSettings/NumNotes" method="_on_value_changed_derived"]
 [connection signal="value_changed" from="NotesSettings/NumDetunedNotes" to="NotesSettings/NumDetunedNotes" method="_on_value_changed_derived"]
@@ -225,5 +233,8 @@ layout_mode = 2
 [connection signal="maxNoteChanged" from="NotesSettings/MaxNote" to="NotesSettings/MinNote" method="_on_max_note_changed"]
 [connection signal="value_changed" from="NotesSettings/MaxNote" to="NotesSettings/MinNote" method="_on_max_note_value_changed"]
 [connection signal="value_changed" from="NotesSettings/MaxNote" to="NotesSettings/MaxNote" method="_on_value_changed_derived"]
-[connection signal="buttonsChanged" from="NotesSettings/BySharps" to="NotesSettings/MinNote" method="_on_by_sharps_buttons_changed"]
-[connection signal="buttonsChanged" from="NotesSettings/BySharps" to="NotesSettings/MaxNote" method="_on_by_sharps_buttons_changed"]
+[connection signal="buttonsChanged" from="NotesSettings/Accidental Choice/BySharps" to="NotesSettings/MinNote" method="_on_by_sharps_buttons_changed"]
+[connection signal="buttonsChanged" from="NotesSettings/Accidental Choice/BySharps" to="NotesSettings/MaxNote" method="_on_by_sharps_buttons_changed"]
+[connection signal="value_changed" from="NotesSettings/BPM" to="NotesSettings/BPM" method="_on_value_changed_derived"]
+[connection signal="value_changed" from="NotesSettings/NumAccidentals" to="NotesSettings/NumAccidentals" method="_on_value_changed_derived"]
+[connection signal="pressed" from="ForwardButton" to="." method="_on_button_pressed"]

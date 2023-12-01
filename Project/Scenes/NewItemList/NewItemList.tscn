@@ -9,7 +9,7 @@
 [node name="NewItemList" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 1433.0
+offset_right = 1309.0
 offset_bottom = 369.0
 script = ExtResource("1_b6lh1")
 sharpPressed = false
@@ -24,7 +24,7 @@ type = 1
 layout_mode = 0
 offset_left = -4.0
 offset_top = -4.0
-offset_right = 1437.0
+offset_right = 1313.0
 offset_bottom = 373.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
@@ -32,7 +32,7 @@ metadata/_edit_lock_ = true
 
 [node name="Foreground1" type="ColorRect" parent="."]
 layout_mode = 0
-offset_right = 716.5
+offset_right = 654.5
 offset_bottom = 369.0
 mouse_filter = 2
 color = Color(0.690196, 0.690196, 0.690196, 1)
@@ -40,8 +40,8 @@ metadata/_edit_lock_ = true
 
 [node name="Foreground2" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = 716.5
-offset_right = 1433.0
+offset_left = 654.5
+offset_right = 1309.0
 offset_bottom = 369.0
 mouse_filter = 2
 color = Color(0.690196, 0.690196, 0.690196, 1)
@@ -49,7 +49,7 @@ metadata/_edit_lock_ = true
 
 [node name="SharpButton" type="Button" parent="."]
 layout_mode = 0
-offset_right = 714.5
+offset_right = 652.5
 offset_bottom = 369.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jsukl")
 text = "Sharp"
@@ -60,7 +60,7 @@ metadata/_edit_lock_ = true
 layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 710.5
+offset_right = 648.5
 offset_bottom = 365.0
 mouse_filter = 2
 color = Color(0.447059, 0.447059, 0.447059, 1)
@@ -68,7 +68,7 @@ metadata/_edit_lock_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="SharpButton"]
 layout_mode = 0
-offset_right = 714.5
+offset_right = 652.5
 offset_bottom = 369.0
 metadata/_edit_lock_ = true
 
@@ -84,8 +84,8 @@ metadata/_edit_lock_ = true
 
 [node name="FlatButton" type="Button" parent="."]
 layout_mode = 2
-offset_left = 718.5
-offset_right = 1433.0
+offset_left = 656.5
+offset_right = 1309.0
 offset_bottom = 369.0
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7w4nd")
 text = "Flat"
@@ -96,14 +96,14 @@ metadata/_edit_lock_ = true
 layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 710.5
+offset_right = 648.5
 offset_bottom = 365.0
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="FlatButton"]
 layout_mode = 0
-offset_right = 714.5
+offset_right = 652.5
 offset_bottom = 369.0
 metadata/_edit_lock_ = true
 
@@ -119,7 +119,7 @@ autowrap_mode = 0
 metadata/_edit_lock_ = true
 
 [node name="Line2D" type="Line2D" parent="."]
-points = PackedVector2Array(716.5, 0, 716.5, 369)
+points = PackedVector2Array(654.5, 0, 654.5, 369)
 width = 4.0
 default_color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
