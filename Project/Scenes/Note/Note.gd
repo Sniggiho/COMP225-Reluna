@@ -8,6 +8,7 @@ class_name Note
 
 @export var defaultColor : Color = Color("000000")
 @export var selectedColor : Color = Color("e24c59")
+@export var focusedColor : Color = Color("0bccf4")
 
 var selectable : bool = true
 var selected : bool = false
@@ -27,7 +28,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	pass
+	focusedNote()
 	
 func centsToRatio(cents) -> float:
 	return pow(2, cents/1200.0)
@@ -152,6 +153,12 @@ func select() -> void:
 		
 		_timerDeleteRoutine()
 
+func focusedNote() -> void: 
+	if $Button.has_focus():
+		sprite.modulate = focusedColor
+	else: 
+		_changeColor()
+		
 # If timer doesn't exist, create it and set parameters
 # Connect it to the function that deletes the texts and the timer itself
 func _timerDeleteRoutine() -> void:
