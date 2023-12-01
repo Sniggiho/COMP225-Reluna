@@ -125,7 +125,6 @@ text = "Maximum Detune (cents)"
 minActualValue = 5
 maxActualValue = 50
 height = 100.0
-positiveTextColor = Color(0.164706, 0.717647, 0.921569, 1)
 
 [node name="MinDetuneCents" parent="NotesSettings" instance=ExtResource("18_2jqco")]
 custom_minimum_size = Vector2(0, 100)

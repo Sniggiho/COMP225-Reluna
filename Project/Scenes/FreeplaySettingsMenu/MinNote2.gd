@@ -3,7 +3,7 @@ extends NewHSlider
 
 signal minNoteChanged
 
-var highestNoteAllowed = "c-6" # this is exclusive! meaning the highest is really c6
+var highestNoteAllowed = "c6" # this is exclusive! meaning the highest is really c6
 var lowestNoteAllowed = "a3"
 
 var _tuneCreatorScene : PackedScene = preload("res://Scenes/TuneCreator/tune_creator.tscn")
@@ -19,10 +19,18 @@ func _init():
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_ready2()
-	value = 0
-	_key_updated()
-	maxActualValue = len(key)-1
-	max_value = len(key)-1
+	if GLevelData.valid:
+		var lowestNote = GLevelData.lowestNote
+		_key_updated()
+		maxActualValue = len(key)-1
+		max_value = len(key)-1
+		value = key.find(lowestNote)
+		updateLabel(_tuneCreator.getPrintableNoteName(GLevelData.lowestNote, GLevelData.bySharps))
+	else:
+		value = 0
+		_key_updated()
+		maxActualValue = len(key)-1
+		max_value = len(key)-1
 	
 
 func _on_value_changed_derived(passedValue):
@@ -55,5 +63,4 @@ func _on_num_accidentals_value_changed(value):
 
 
 func _on_max_note_changed(passedValue):
-	print("new signal called with passed value: ", passedValue)
 	maxActualValue = passedValue

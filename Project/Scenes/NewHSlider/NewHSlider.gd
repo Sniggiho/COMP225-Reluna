@@ -92,9 +92,7 @@ func _updateShader() -> void:
 
 
 func _on_value_changed_newhslider_base(passedValue) -> void:
-	print("value = ", passedValue, " maxActual = ", maxActualValue, " minActual = ", minActualValue)
 	value = max(minActualValue, min(maxActualValue, passedValue))
-	print("value is ", value)
 	_updateSelectedSize()
 
 func updateLabel(label : String) -> void:
