@@ -1,30 +1,47 @@
 extends Node2D
+## Main Scene that users interact with 
+## play a chain of notes and select the out of tune ones
+## interact with notes and other buttons
+## move on to next level or back to tutorial levels
 
-@onready var playButton = $PlayButton
-@onready var returnButton = $ReturnButton
-@onready var hintButton = $HintButton
-@onready var checkButton = $CheckButton 
-@onready var middleNote = len(GLevelData.notes) / 2
-@onready var notes = $LevelManager.getTuneCreator().getListOfNotes()
-var attempts
-var firstFocused = false
+## play button
+@onready var playButton : Button = $PlayButton
+
+## return button
+@onready var returnButton : Button = $ReturnButton
+
+## TODO: hint button
+@onready var hintButton : Button = $HintButton
+
+## button that checks our answers
+@onready var checkButton : Button = $CheckButton 
+
+## the most centered note, use this for button navigation
+@onready var middleNote : int = len(GLevelData.notes) / 2
+
+## array of notes
+@onready var notes : Array = $LevelManager.getTuneCreator().getListOfNotes()
+
+## if the any elements are focused on the screen
+var firstFocused : bool = false
+
+## load in the scene when it first enters the scene tree
 func _ready():
 	setUpFocusNeighbors()
-	
-## change to previous scene when escape button is hit
+
+## takes in keyboard inputs 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		SceneTransition.change_scene(GLevelData.prevScene)
 	if firstFocused == false and (event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right") or event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down")):
 		firstFocused = true
 		playButton.grab_focus()	
-	
-func _on_play_button_pressed():
-	$MusicStaff.playBar.play()
-	
-func numAttempts() -> int:
-	return 1
 
+## play the notes when the playbar is pressed
+func _on_play_button_pressed() -> void:
+	$MusicStaff.playBar.play()
+
+## set up the connections between all the interactable buttons
 func setUpFocusNeighbors() -> void: 
 	playButton.focus_neighbor_top = playButton.get_path_to(notes[middleNote].get_node("Button"))
 	notes[middleNote].get_node("Button").focus_neighbor_bottom = notes[middleNote].get_node("Button").get_path_to(playButton)
@@ -36,4 +53,3 @@ func setUpFocusNeighbors() -> void:
 	for i in len(notes):
 		notes[i].get_node("Button").focus_neighbor_top = notes[i].get_node("Button").get_path_to(returnButton)
 		notes[i].get_node("Button").focus_neighbor_bottom = notes[i].get_node("Button").get_path_to(playButton)
-

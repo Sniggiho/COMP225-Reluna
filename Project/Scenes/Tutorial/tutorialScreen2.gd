@@ -1,6 +1,11 @@
 extends Node2D
+## Second Tutorial Level screen
+## Levels 13 to 24
 
+## first level on this screen
 @onready var level13 = $Level13
+
+## loads in when the scene first enters the scene tree
 func _ready():
 	GLevelData.prevScene = "res://Scenes/Tutorial/tutorialScreen2.tscn"
 	level13.grab_focus()
@@ -10,5 +15,6 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		SceneTransition.change_scene("res://Scenes/Tutorial/tutorialScreen.tscn")
 
+## changes to the previous tutorial screen
 func _on_return_button_pressed():
 	SceneTransition.change_scene("res://Scenes/Tutorial/tutorialScreen.tscn")

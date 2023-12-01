@@ -1,71 +1,100 @@
 extends Control
 class_name Note
+## Note class is an interactable note that encomposses all of
+## the characteristics of a note including note name, note sound, 
+## note color, note shape and size, ledger lines 
 
-@export var detuneCents := 0 # the number of cents out of tune 
-@export var noteName := "c3" # default note is c3
+## number of cents detuned
+@export var detuneCents := 0
+
+## the note name, default is c3
+@export var noteName := "c3"
+
+## interactable note button
 @onready var button : Button = $Button
+
+## image of note
 @onready var sprite : Sprite2D = $Button/Sprite2D
 
+## default color of the note
 @export var defaultColor : Color = Color("000000")
+
+## color of note when selected 
 @export var selectedColor : Color = Color("e24c59")
+
+## color of note when focused but not selected
 @export var focusedColor : Color = Color("0bccf4")
 
+## if object is selectable
 var selectable : bool = true
+
+## if the note is selected
 var selected : bool = false
+
+## timer
 var timer : Timer
 
+## Music staff's line gap 
 var lineHeight : float
 
+## error message for first note will always be in tune
 var text : RichTextLabel
 
+## if debugging of note labels is on
 var noteLabelDebug : bool = false
+
+## note label
 var noteLabel : RichTextLabel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	sprite.modulate = defaultColor
-	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	focusedNote()
 
+## "enter" to select currently focused notes
 func _input(event):
 	if self.has_focus() and event.is_action_pressed("ui_accept"):
 		selected = ! selected
-	
+
+# conversion of cents
 func centsToRatio(cents) -> float:
 	return pow(2, cents/1200.0)
 
+## assign note name
 func setNoteByName(note: String) -> void:
 	note.strip_escapes()
 	note.to_lower()
 	noteName = note
-	
+
+## getter method for the note name
 func getNoteName() -> String:
 	return noteName
-	
+
+## sets the detuned amount
 func setDetuneCents(cents) -> void:
 	detuneCents = cents
-	
+
+## getter method for detuned amount
 func getDetuneCents() -> int:
 	return detuneCents
 
-
+## flips note up or down depending on position on the staff
 func orientation() -> void:
 	_draw()
 	if(noteName[-1] > "4"):
-		var sprite = $Button/Sprite2D
 		sprite.set_flip_h(true)
 		sprite.set_flip_v(true)
 		var height = sprite.texture.get_height()
 		sprite.set_offset(Vector2(0,height*0.55))
-		
 
+## draw the ledger lines
 func _draw():
 	createLedgerLines()
-	pass
-		
+
+## create ledger lines for the notes
 func createLedgerLines() ->  void:
 	if get_parent():
 		var h : int = hOffset()
@@ -130,9 +159,9 @@ func createLedgerLines() ->  void:
 					)
 			pass
 	
-	
 	pass
 
+## select the note and change color accordingly
 func select() -> void:
 	if selectable:
 		selected = !selected
@@ -157,12 +186,13 @@ func select() -> void:
 		
 		_timerDeleteRoutine()
 
+## check if note is focused and change color accordingly
 func focusedNote() -> void: 
 	if button.has_focus():
 		sprite.modulate = focusedColor
 	else: 
 		_changeColor()
-		
+
 # If timer doesn't exist, create it and set parameters
 # Connect it to the function that deletes the texts and the timer itself
 func _timerDeleteRoutine() -> void:
@@ -173,7 +203,7 @@ func _timerDeleteRoutine() -> void:
 		timer.wait_time = 2
 		add_child(timer)
 		timer.timeout.connect(_clearTexts)
-		
+
 # connected to timer if it exsits.
 # Timer only exists for the first click of the first note
 func _clearTexts() -> void:
@@ -185,14 +215,14 @@ func _clearTexts() -> void:
 	
 	timer.queue_free()
 
-
+## toggles color between selected and unselected notes
 func _changeColor() -> void:
 	if selected:
 		sprite.modulate = selectedColor
 	else:
 		sprite.modulate = defaultColor
 	pass
-	
+
 # return how much the note offset is 
 func hOffset() -> int:
 	## uses C for the off set just because that is what it starts with
@@ -205,4 +235,3 @@ func hOffset() -> int:
 	if not get_parent().getBySharps() and len(noteName) == 3:
 		noteVal += 1
 	return octave + noteVal
-	

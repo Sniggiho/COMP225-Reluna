@@ -1,6 +1,5 @@
 extends Node2D
 class_name MusicStaff
-
 # creates the actual visualization of the music staff and 
 # notes on the screen. Connects callbacks with TuneCreator
 # to allow for user interaction
@@ -23,9 +22,11 @@ var trebleRatio
 @onready var playBar : PlayBar = $PlayBar
 @onready var path : Path2D = $Path2D
 
+## set the BPM
 func setNotesBPM(numNotes : int, bpm : float) -> void:
 	playBar.setNotesBPM(numNotes, bpm)
 
+## load in the first time enters the scene tree
 func _ready():
 	screenX = get_viewport_rect().size.x
 	screenY = get_viewport_rect().size.y
@@ -51,7 +52,7 @@ func _ready():
 
 	self.get_child(1).get_curve().set_point_position(0,Vector2(xBuffer,0))
 
-
+## draws the music staff
 func _draw():
 	var y = startY
 	for i in range(5):
@@ -82,7 +83,7 @@ func _draw():
 	playBar.points[1] = Vector2(startX, h/2 + 32)
 	playBar.width = lineThickness * 1.5
 
-	
+## getter method for the line height
 func getLineHeight() -> float:
 	return self.screenY * lineHeight
 	
