@@ -95,7 +95,6 @@ func _on_value_changed_newhslider_base(passedValue) -> void:
 	value = max(minActualValue, min(maxActualValue, passedValue))
 	_updateSelectedSize()
 
-
 func updateLabel(label : String) -> void:
 	$CenterContainer/Text.updateLabel(label)
 

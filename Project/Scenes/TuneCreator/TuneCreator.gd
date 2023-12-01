@@ -172,7 +172,7 @@ func _createNoteArrayChromatic(lowOct, highOct)-> Array:
 ##		lowest : int 
 ##			all notes in key must be this or higher (inclusive)
 ##		highOct : int 
-##			all notes in key must be lower than this (exclusive)
+##			all notes in key must be lower than this (inclusive)
 ##
 ##	Return:
 ##		allNotes : array
@@ -213,7 +213,7 @@ func _createNoteArrayInKey(accidentals, bySharps, lowestNote, highestNote) -> Ar
 	
 	var allNotesCorrectRange = []
 	for n in allNotes: # narrows down to only the permitted notes
-		if self.compareNotes(n, lowestNote) and not self.compareNotes(n, highestNote):
+		if self.compareNotes(n, lowestNote) and self.compareNotes(highestNote, n):
 			allNotesCorrectRange.append(n)
 			
 	
@@ -233,6 +233,9 @@ func getPrintableNoteName(n, bySharps : bool):
 		if bySharps:
 			n = n.replace("-", "#")
 		else:
+			var noteNames = ["A", "B", "C", "D", "E", "F", "G", "A"]
+			var enharmonicIdx = noteNames.find(n[0])
+			n = noteNames[enharmonicIdx+1]+ n.right(-1) 
 			n = n.replace("-", "♭")
 	return n
 
