@@ -233,6 +233,9 @@ func getPrintableNoteName(n, bySharps : bool):
 		if bySharps:
 			n = n.replace("-", "#")
 		else:
+			var noteNames = ["A", "B", "C", "D", "E", "F", "G", "A"]
+			var enharmonicIdx = noteNames.find(n[0])
+			n = noteNames[enharmonicIdx+1]+ n.right(-1) 
 			n = n.replace("-", "♭")
 	return n
 
