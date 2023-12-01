@@ -5,16 +5,16 @@ extends Node2D
 ## move on to next level or back to tutorial levels
 
 ## play button
-@onready var playButton : Button = $PlayButton
+@onready var playButton : TextureButton = $PlayButton
 
 ## return button
-@onready var returnButton : Button = $ReturnButton
+@onready var returnButton : TextureButton = $ReturnButton
 
 ## TODO: hint button
-@onready var hintButton : Button = $HintButton
+@onready var hintButton : TextureButton = $HintButton
 
 ## button that checks our answers
-@onready var checkButton : Button = $CheckButton 
+@onready var checkButton : TextureButton = $CheckButton 
 
 ## the most centered note, use this for button navigation
 @onready var middleNote : int = len(GLevelData.notes) / 2
