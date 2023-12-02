@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bga4qsn2ueiyh"]
+[gd_scene load_steps=18 format=3 uid="uid://bga4qsn2ueiyh"]
 
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gd" id="1_qg26p"]
 [ext_resource type="Texture2D" uid="uid://71tu2ixgeqk8" path="res://RelunaIcons/backArrowFilled.png" id="13_5oshy"]
@@ -14,11 +14,10 @@
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MaxDetuneCents2.gd" id="21_oi6lf"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MinDetuneCents2.gd" id="22_ha0as"]
 
-[sub_resource type="StyleBoxLine" id="StyleBoxLine_kvu5a"]
-grow_begin = 4.0
-grow_end = 4.0
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_hdchv"]
+grow_begin = 0.0
+grow_end = 0.0
 thickness = 4
-vertical = true
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_pjunv"]
 grow_begin = 4.0
@@ -27,6 +26,12 @@ thickness = 4
 vertical = true
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_l8p8p"]
+grow_begin = 4.0
+grow_end = 4.0
+thickness = 4
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_kvu5a"]
 grow_begin = 4.0
 grow_end = 4.0
 thickness = 4
@@ -44,124 +49,50 @@ texture_hover = ExtResource("13_5oshy")
 texture_focused = ExtResource("13_5oshy")
 
 [node name="NotesSettings" type="VBoxContainer" parent="."]
-offset_left = 409.0
-offset_top = 59.0
-offset_right = 1217.0
-offset_bottom = 1019.0
+offset_left = 397.0
+offset_top = 9.0
+offset_right = 1205.0
+offset_bottom = 969.0
 
-[node name="NumNotes" parent="NotesSettings" instance=ExtResource("18_2jqco")]
-layout_mode = 2
-script = ExtResource("19_amv7j")
-text = "Number of Notes"
-minActualValue = 4
-maxActualValue = 15
+[node name="ForwardButton" type="TextureButton" parent="."]
+offset_left = 1503.0
+offset_top = 1.0
+offset_right = 1743.0
+offset_bottom = 241.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("16_im4tj")
+texture_hover = ExtResource("13_5oshy")
+texture_focused = ExtResource("13_5oshy")
+flip_h = true
 
-[node name="NumDetunedNotes" parent="NotesSettings" instance=ExtResource("18_2jqco")]
-layout_mode = 2
-max_value = 3.0
-value = 1.0
-script = ExtResource("20_d2nyq")
-text = "Number of Detuned Notes"
-minActualValue = 1
-maxActualValue = 3
+[node name="ColumnA" type="VBoxContainer" parent="."]
+offset_left = 69.0
+offset_top = 239.0
+offset_right = 669.0
+offset_bottom = 809.0
 
-[node name="MaxDetuneCents" parent="NotesSettings" instance=ExtResource("18_2jqco")]
-layout_mode = 2
-max_value = 50.0
-step = 5.0
-value = 30.0
-script = ExtResource("21_oi6lf")
-text = "Maximum Detune (cents)"
-minActualValue = 5
-maxActualValue = 50
-
-[node name="MinDetuneCents" parent="NotesSettings" instance=ExtResource("18_2jqco")]
-layout_mode = 2
-max_value = 50.0
-step = 5.0
-value = 20.0
-script = ExtResource("22_ha0as")
-text = "Minimum Detune (cents)"
-minActualValue = 5
-maxActualValue = 50
-
-[node name="MinNote" parent="NotesSettings" instance=ExtResource("18_2jqco")]
-layout_mode = 2
-max_value = 1.0
-value = 0.0
-script = ExtResource("19_08umj")
-text = "Minimum Note"
-maxActualValue = -1
-
-[node name="MaxNote" parent="NotesSettings" instance=ExtResource("18_2jqco")]
-layout_mode = 2
-max_value = 36.0
-value = 0.0
-script = ExtResource("20_ivtfm")
-text = "Maximum Note"
-
-[node name="DetuneDirection" type="VBoxContainer" parent="NotesSettings"]
-custom_minimum_size = Vector2(0, 150)
-layout_mode = 2
-
-[node name="CenterContainer" type="HBoxContainer" parent="NotesSettings/DetuneDirection"]
+[node name="Accidental Choice" type="VBoxContainer" parent="ColumnA"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="VSeparator" type="VSeparator" parent="NotesSettings/DetuneDirection/CenterContainer"]
+[node name="HSeparator" type="HSeparator" parent="ColumnA/Accidental Choice"]
 layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_kvu5a")
+theme_override_styles/separator = SubResource("StyleBoxLine_hdchv")
 
-[node name="ColorRect" type="ColorRect" parent="NotesSettings/DetuneDirection/CenterContainer"]
-custom_minimum_size = Vector2(800, 50)
-layout_mode = 2
-color = Color(0.6875, 0.6875, 0.6875, 1)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="NotesSettings/DetuneDirection/CenterContainer/ColorRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -127.5
-offset_top = -25.0
-offset_right = 127.5
-offset_bottom = 25.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/default_color = Color(0.156863, 0.156863, 0.309804, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
-theme_override_font_sizes/normal_font_size = 32
-text = "Detuned Notes Can be:"
-fit_content = true
-autowrap_mode = 0
-
-[node name="VSeparator2" type="VSeparator" parent="NotesSettings/DetuneDirection/CenterContainer"]
-layout_mode = 2
-theme_override_styles/separator = SubResource("StyleBoxLine_kvu5a")
-
-[node name="DetuneDirection" parent="NotesSettings/DetuneDirection" instance=ExtResource("19_ik1lg")]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="Accidental Choice" type="VBoxContainer" parent="NotesSettings"]
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="NotesSettings/Accidental Choice"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ColumnA/Accidental Choice"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="VSeparator" type="VSeparator" parent="NotesSettings/Accidental Choice/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="ColumnA/Accidental Choice/HBoxContainer"]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_pjunv")
 
-[node name="ColorRect" type="ColorRect" parent="NotesSettings/Accidental Choice/HBoxContainer"]
-custom_minimum_size = Vector2(800, 50)
+[node name="ColorRect" type="ColorRect" parent="ColumnA/Accidental Choice/HBoxContainer"]
+custom_minimum_size = Vector2(592, 50)
 layout_mode = 2
 color = Color(0.683594, 0.683594, 0.683594, 1)
 
-[node name="RichTextLabel" type="RichTextLabel" parent="NotesSettings/Accidental Choice/HBoxContainer/ColorRect"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ColumnA/Accidental Choice/HBoxContainer/ColorRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -181,17 +112,47 @@ text = "Accidental Choice:"
 fit_content = true
 autowrap_mode = 0
 
-[node name="VSeparator2" type="VSeparator" parent="NotesSettings/Accidental Choice/HBoxContainer"]
+[node name="VSeparator2" type="VSeparator" parent="ColumnA/Accidental Choice/HBoxContainer"]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_l8p8p")
 
-[node name="BySharps" parent="NotesSettings/Accidental Choice" instance=ExtResource("19_ik1lg")]
+[node name="BySharps" parent="ColumnA/Accidental Choice" instance=ExtResource("19_ik1lg")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 negativeColor = Color(0.445313, 0.445313, 0.445313, 1)
 type = 0
 
-[node name="BPM" parent="NotesSettings" instance=ExtResource("18_2jqco")]
+[node name="NumAccidentals" parent="ColumnA" instance=ExtResource("18_2jqco")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+max_value = 6.0
+value = 0.0
+script = ExtResource("16_vterl")
+text = "Number of Accidentals"
+maxActualValue = 6
+height = 100.0
+
+[node name="MaxNote" parent="ColumnA" instance=ExtResource("18_2jqco")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+max_value = 36.0
+value = 0.0
+script = ExtResource("20_ivtfm")
+text = "Maximum Note"
+height = 100.0
+
+[node name="MinNote" parent="ColumnA" instance=ExtResource("18_2jqco")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+max_value = 1.0
+value = 0.0
+script = ExtResource("19_08umj")
+text = "Minimum Note"
+maxActualValue = -1
+height = 100.0
+
+[node name="BPM" parent="ColumnA" instance=ExtResource("18_2jqco")]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 max_value = 240.0
 step = 5.0
@@ -200,41 +161,131 @@ script = ExtResource("16_3ew6s")
 text = "BPM"
 minActualValue = 100
 maxActualValue = 240
+height = 100.0
 
-[node name="NumAccidentals" parent="NotesSettings" instance=ExtResource("18_2jqco")]
+[node name="ColumnB" type="VBoxContainer" parent="."]
+offset_left = 914.0
+offset_top = 246.0
+offset_right = 1514.0
+offset_bottom = 816.0
+
+[node name="DetuneDirection" type="VBoxContainer" parent="ColumnB"]
 layout_mode = 2
-max_value = 6.0
-value = 0.0
-script = ExtResource("16_vterl")
-text = "Number of Accidentals"
-maxActualValue = 6
+theme_override_constants/separation = 0
 
-[node name="ForwardButton" type="TextureButton" parent="."]
-offset_left = 1503.0
-offset_top = 1.0
-offset_right = 1743.0
-offset_bottom = 241.0
-scale = Vector2(0.4, 0.4)
-texture_normal = ExtResource("16_im4tj")
-texture_hover = ExtResource("13_5oshy")
-texture_focused = ExtResource("13_5oshy")
-flip_h = true
+[node name="HSeparator" type="HSeparator" parent="ColumnB/DetuneDirection"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_hdchv")
+
+[node name="CenterContainer" type="HBoxContainer" parent="ColumnB/DetuneDirection"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="VSeparator" type="VSeparator" parent="ColumnB/DetuneDirection/CenterContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_kvu5a")
+
+[node name="ColorRect" type="ColorRect" parent="ColumnB/DetuneDirection/CenterContainer"]
+custom_minimum_size = Vector2(592, 50)
+layout_mode = 2
+color = Color(0.6875, 0.6875, 0.6875, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ColumnB/DetuneDirection/CenterContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.5
+offset_top = -25.0
+offset_right = 127.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(0.156863, 0.156863, 0.309804, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/normal_font_size = 32
+text = "Detuned Notes Can be:"
+fit_content = true
+autowrap_mode = 0
+
+[node name="VSeparator2" type="VSeparator" parent="ColumnB/DetuneDirection/CenterContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxLine_kvu5a")
+
+[node name="DetuneDirection" parent="ColumnB/DetuneDirection" instance=ExtResource("19_ik1lg")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="NumNotes" parent="ColumnB" instance=ExtResource("18_2jqco")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+script = ExtResource("19_amv7j")
+text = "Number of Notes"
+minActualValue = 4
+maxActualValue = 15
+height = 100.0
+
+[node name="NumDetunedNotes" parent="ColumnB" instance=ExtResource("18_2jqco")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+max_value = 3.0
+value = 1.0
+script = ExtResource("20_d2nyq")
+text = "Number of Detuned Notes"
+minActualValue = 1
+maxActualValue = 3
+height = 100.0
+
+[node name="MaxDetuneCents" parent="ColumnB" instance=ExtResource("18_2jqco")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+max_value = 50.0
+step = 5.0
+value = 30.0
+script = ExtResource("21_oi6lf")
+text = "Maximum Detune (cents)"
+minActualValue = 5
+maxActualValue = 50
+height = 100.0
+
+[node name="MinDetuneCents" parent="ColumnB" instance=ExtResource("18_2jqco")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+max_value = 50.0
+step = 5.0
+value = 20.0
+script = ExtResource("22_ha0as")
+text = "Minimum Detune (cents)"
+minActualValue = 5
+maxActualValue = 50
+height = 100.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 249.0
+offset_top = 7.0
+offset_right = 1344.0
+offset_bottom = 157.0
+text = "Freeplay Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="BackButton" to="." method="_goto_main_menu"]
-[connection signal="valueChanged" from="NotesSettings/NumNotes" to="NotesSettings/NumDetunedNotes" method="_on_num_notes_value_changed"]
-[connection signal="value_changed" from="NotesSettings/NumNotes" to="NotesSettings/NumNotes" method="_on_value_changed_derived"]
-[connection signal="value_changed" from="NotesSettings/NumDetunedNotes" to="NotesSettings/NumDetunedNotes" method="_on_value_changed_derived"]
-[connection signal="value_changed" from="NotesSettings/MaxDetuneCents" to="NotesSettings/MaxDetuneCents" method="_on_value_changed_derived"]
-[connection signal="value_changed" from="NotesSettings/MaxDetuneCents" to="NotesSettings/MinDetuneCents" method="_on_max_detune_cents_value_changed"]
-[connection signal="value_changed" from="NotesSettings/MinDetuneCents" to="NotesSettings/MinDetuneCents" method="_on_value_changed_derived"]
-[connection signal="minNoteChanged" from="NotesSettings/MinNote" to="NotesSettings/MaxNote" method="_on_min_note_min_note_changed"]
-[connection signal="value_changed" from="NotesSettings/MinNote" to="NotesSettings/MinNote" method="_on_value_changed_derived"]
-[connection signal="maxNoteChanged" from="NotesSettings/MaxNote" to="NotesSettings/MinNote" method="_on_max_note_max_note_changed"]
-[connection signal="value_changed" from="NotesSettings/MaxNote" to="NotesSettings/MaxNote" method="_on_value_changed_derived"]
-[connection signal="buttonsChanged" from="NotesSettings/Accidental Choice/BySharps" to="NotesSettings/MinNote" method="_on_by_sharps_buttons_changed"]
-[connection signal="buttonsChanged" from="NotesSettings/Accidental Choice/BySharps" to="NotesSettings/MaxNote" method="_on_by_sharps_buttons_changed"]
-[connection signal="value_changed" from="NotesSettings/BPM" to="NotesSettings/BPM" method="_on_value_changed_derived"]
-[connection signal="value_changed" from="NotesSettings/NumAccidentals" to="NotesSettings/MinNote" method="_on_num_accidentals_value_changed"]
-[connection signal="value_changed" from="NotesSettings/NumAccidentals" to="NotesSettings/MaxNote" method="_on_num_accidentals_value_changed"]
-[connection signal="value_changed" from="NotesSettings/NumAccidentals" to="NotesSettings/NumAccidentals" method="_on_value_changed_derived"]
 [connection signal="pressed" from="ForwardButton" to="." method="_on_button_pressed"]
+[connection signal="buttonsChanged" from="ColumnA/Accidental Choice/BySharps" to="ColumnA/MinNote" method="_on_by_sharps_buttons_changed"]
+[connection signal="buttonsChanged" from="ColumnA/Accidental Choice/BySharps" to="ColumnA/MaxNote" method="_on_by_sharps_buttons_changed"]
+[connection signal="value_changed" from="ColumnA/NumAccidentals" to="ColumnA/MinNote" method="_on_num_accidentals_value_changed"]
+[connection signal="value_changed" from="ColumnA/NumAccidentals" to="ColumnA/MaxNote" method="_on_num_accidentals_value_changed"]
+[connection signal="value_changed" from="ColumnA/NumAccidentals" to="ColumnA/NumAccidentals" method="_on_value_changed_derived"]
+[connection signal="maxNoteChanged" from="ColumnA/MaxNote" to="ColumnA/MinNote" method="_on_max_note_max_note_changed"]
+[connection signal="value_changed" from="ColumnA/MaxNote" to="ColumnA/MaxNote" method="_on_value_changed_derived"]
+[connection signal="minNoteChanged" from="ColumnA/MinNote" to="ColumnA/MaxNote" method="_on_min_note_min_note_changed"]
+[connection signal="value_changed" from="ColumnA/MinNote" to="ColumnA/MinNote" method="_on_value_changed_derived"]
+[connection signal="value_changed" from="ColumnA/BPM" to="ColumnA/BPM" method="_on_value_changed_derived"]
+[connection signal="valueChanged" from="ColumnB/NumNotes" to="ColumnB/NumDetunedNotes" method="_on_num_notes_value_changed"]
+[connection signal="value_changed" from="ColumnB/NumNotes" to="ColumnB/NumNotes" method="_on_value_changed_derived"]
+[connection signal="value_changed" from="ColumnB/NumDetunedNotes" to="ColumnB/NumDetunedNotes" method="_on_value_changed_derived"]
+[connection signal="value_changed" from="ColumnB/MaxDetuneCents" to="ColumnB/MaxDetuneCents" method="_on_value_changed_derived"]
+[connection signal="value_changed" from="ColumnB/MaxDetuneCents" to="ColumnB/MinDetuneCents" method="_on_max_detune_cents_value_changed"]
+[connection signal="value_changed" from="ColumnB/MinDetuneCents" to="ColumnB/MinDetuneCents" method="_on_value_changed_derived"]

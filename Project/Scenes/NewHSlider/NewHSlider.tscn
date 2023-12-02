@@ -7,16 +7,16 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oc08h"]
 resource_local_to_scene = true
 shader = ExtResource("5_fu81e")
-shader_parameter/rightEdge = 0.208123
+shader_parameter/rightEdge = 0.280583
 shader_parameter/positiveTextColor = null
 shader_parameter/negativeTextColor = null
 
 [node name="NewHSlider" type="HSlider"]
 custom_minimum_size = Vector2(0, 50)
-offset_left = 8.0
-offset_top = 16.0
-offset_right = 1511.0
-offset_bottom = 626.0
+offset_left = 254.0
+offset_top = 140.0
+offset_right = 1363.0
+offset_bottom = 430.0
 max_value = 15.0
 value = 4.0
 script = ExtResource("1_176bh")
@@ -32,16 +32,16 @@ negativeTextColor = Color(1, 1, 1, 1)
 layout_mode = 2
 offset_left = -4.0
 offset_top = -4.0
-offset_right = 1507.0
-offset_bottom = 614.0
+offset_right = 1113.0
+offset_bottom = 294.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 2
-offset_right = 1503.0
-offset_bottom = 610.0
+offset_right = 1109.0
+offset_bottom = 290.0
 mouse_filter = 2
 color = Color(0.690196, 0.690196, 0.690196, 1)
 metadata/_edit_lock_ = true
@@ -50,15 +50,15 @@ metadata/_edit_lock_ = true
 layout_mode = 2
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 396.8
-offset_bottom = 606.0
+offset_right = 291.733
+offset_bottom = 286.0
 metadata/_edit_lock_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-custom_minimum_size = Vector2(1503, 610)
+custom_minimum_size = Vector2(1109, 290)
 layout_mode = 1
-offset_right = 1503.0
-offset_bottom = 610.0
+offset_right = 1109.0
+offset_bottom = 290.0
 metadata/_edit_lock_ = true
 
 [node name="Text" type="RichTextLabel" parent="CenterContainer"]
@@ -67,7 +67,7 @@ clip_contents = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
-theme_override_font_sizes/normal_font_size = 244
+theme_override_font_sizes/normal_font_size = 116
 text = "Label"
 fit_content = true
 scroll_active = false
