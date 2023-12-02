@@ -74,6 +74,7 @@ metadata/_edit_lock_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="SharpButton/CenterContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/default_color = Color(0.207843, 0.207843, 0.207843, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_font_sizes/normal_font_size = 147
@@ -109,6 +110,7 @@ metadata/_edit_lock_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="FlatButton/CenterContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/default_color = Color(0.164706, 0.717647, 0.921569, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_font_sizes/normal_font_size = 147

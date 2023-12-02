@@ -1,7 +1,7 @@
 @tool
 extends NewHSlider
 
-signal minNoteChanged
+signal minNoteChanged(passedValue : int)
 
 var highestNoteAllowed = "c6" # this is exclusive! meaning the highest is really c6
 var lowestNoteAllowed = "a3"
@@ -62,5 +62,5 @@ func _on_num_accidentals_value_changed(value):
 	_key_updated()
 
 
-func _on_max_note_changed(passedValue):
+func _on_max_note_max_note_changed(passedValue):
 	maxActualValue = passedValue
