@@ -23,10 +23,19 @@ var focusIn2 : bool = false
 enum option {AccidentalChoice, DetuneDirection}
 @export var type : option = option.AccidentalChoice
 
+@export var topFocus : Control
+
 signal buttonsChanged
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if type == option.AccidentalChoice:
+		$SharpButton.grab_focus()
+		
+	if topFocus:
+		$SharpButton.focus_neighbor_top = $SharpButton.get_path_to(topFocus)
+		$FlatButton.focus_neighbor_top = $FlatButton.get_path_to(topFocus)
+	
 	_updateButtonColor()
 	
 	if GLevelData.valid:
@@ -43,6 +52,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	
 	doubleSelect = type == option.DetuneDirection
 	
 	$Line2D.width = backgroundMargin
@@ -111,6 +121,16 @@ func _updateFocusColoring() -> void:
 		$Foreground2.color = selectedColor
 	else:
 		$Foreground2.color = neutralColor
+
+
+## Expose button child so focus neighbors can be set
+func getSharpButton() -> Button:
+	return $SharpButton
+	
+
+## Expose button child so focus neighbors can be set
+func getFlatButton() -> Button:
+	return $FlatButton
 
 
 func _on_sharp_button_pressed():

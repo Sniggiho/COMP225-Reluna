@@ -96,7 +96,7 @@ func generate(randomNotes = true, randomDetune = true) -> void:
 	_pathFollower.progress_ratio = pathMin
 	
 	for i in range(_numNotes):
-		var note = _noteScene.instantiate()
+		var note : Note = _noteScene.instantiate()
 		_pathFollower.progress_ratio += dx
 		
 		if randomNotes:		# if we should randomly generate the note values
@@ -122,8 +122,8 @@ func generate(randomNotes = true, randomDetune = true) -> void:
 			else: # if we're in full manual tune creation, and just need to look up the proper detune amount
 				note.setDetuneCents(self._detunedAmountsList[i])
 
+		add_child(note) 
 		note.orientation()
-		add_child(note)
 		note.lineHeight = lineHeight
 		_listOfNotes.append(note)
 		note.global_position = _pathFollower.global_position

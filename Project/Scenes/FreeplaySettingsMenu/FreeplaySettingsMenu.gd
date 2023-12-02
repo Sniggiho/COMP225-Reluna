@@ -1,6 +1,12 @@
 extends Node2D
 class_name FreeplaySettingsMenu
 
+func _ready():
+	# What a fucking mess
+	$ForwardButton.focus_neighbor_bottom = $ForwardButton.get_path_to($"CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/DetuneDirection/DetuneDirection".getFlatButton())
+	
+	$BackButton.focus_neighbor_bottom = $BackButton.get_path_to($"CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps".getSharpButton())
+
 func generatePossibleNotes() -> Array:
 	var noteOrder = ["c","c-","d","d-","e","f","f-","g","g-","a","a-","b"]
 	var possibleNotes = []
