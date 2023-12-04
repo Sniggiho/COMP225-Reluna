@@ -21,3 +21,7 @@ func _on_pressed():
 	SceneTransition.change_scene("res://Scenes/firstScene.tscn")
 	
 	GLevelData.printValues()
+
+
+func _on_mouse_entered():
+	grab_focus()

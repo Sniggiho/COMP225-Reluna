@@ -17,4 +17,5 @@ flat = true
 icon_alignment = 1
 script = ExtResource("2_1pyx0")
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]
