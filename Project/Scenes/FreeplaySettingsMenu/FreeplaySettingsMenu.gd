@@ -19,6 +19,11 @@ func generatePossibleNotes() -> Array:
 	return possibleNotes
 
 
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		_goto_main_menu()
+
+
 func _on_button_pressed():
 	GLevelData.tutorial = false
 	GLevelData.prevScene = "res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.tscn"
