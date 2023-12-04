@@ -197,7 +197,6 @@ func select() -> void:
 ## check if note is focused and change color accordingly
 func focusedNote() -> void: 
 	if button.has_focus():
-#		sprite.modulate = focusedColor
 		selectedSprite.visible = true
 	else: 
 		selectedSprite.visible = false

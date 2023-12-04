@@ -43,6 +43,7 @@ func _on_play_button_pressed() -> void:
 
 ## set up the connections between all the interactable buttons
 func setUpFocusNeighbors() -> void: 
+	notes = $LevelManager.getTuneCreator().getListOfNotes()
 	playButton.focus_neighbor_top = playButton.get_path_to(notes[middleNote].get_node("Button"))
 	notes[middleNote].get_node("Button").focus_neighbor_bottom = notes[middleNote].get_node("Button").get_path_to(playButton)
 	returnButton.focus_neighbor_bottom = returnButton.get_path_to(notes[middleNote].get_node("Button"))

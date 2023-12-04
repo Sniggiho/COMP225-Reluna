@@ -73,6 +73,11 @@ var notes : Array
 ## keeps track of the attempts
 var attempts : int
 
+## Used to alert the main scene that new notes have been generated and so focus neighbors must be set again
+## Emitted with the creation of a new tune creator
+## For some reason I can't just put it in the createTuneCreator function, so I put the emit in reset
+signal newTuneCreator
+
 ## Randomly selects notes to be out of tune, storing this value in the listOfDetunedNotes class variable
 func createListOfDetunedNotes(numNotes:int) -> void:
 	var detuneList = []
@@ -182,6 +187,8 @@ func _reset():
 		deleteTuneCreator()
 		createListOfDetunedNotes(GLevelData.numNotes)
 		createTuneCreator(false)
+	newTuneCreator.emit()
+		
 
 func _generateInstructionText() -> String:
 	var instructionText = "Select "
@@ -199,6 +206,8 @@ func _generateInstructionText() -> String:
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	newTuneCreator.connect(get_parent().setUpFocusNeighbors)
+	
 	path = musicStaff.get_child(1)
 		
 	if GLevelData.tutorial: # if we're currently in a tutorial level
