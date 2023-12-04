@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bw1j8vgpnjrk8"]
+[gd_scene load_steps=7 format=3 uid="uid://bw1j8vgpnjrk8"]
 
 [ext_resource type="Script" path="res://Scenes/Note/Note.gd" id="1_2wmyl"]
+[ext_resource type="Texture2D" uid="uid://ck0uip1cbdrkq" path="res://Scenes/Note/thickNote2.png" id="2_e4kmj"]
 [ext_resource type="Texture2D" uid="uid://fwm6q230qh27" path="res://Scenes/Note/quarter2.png" id="2_m8vj1"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s86jd"]
@@ -72,6 +73,13 @@ size_flags_vertical = 4
 theme_override_styles/focus = SubResource("StyleBoxEmpty_s86jd")
 action_mode = 0
 flat = true
+
+[node name="SelectedImage" type="Sprite2D" parent="Button"]
+visible = false
+modulate = Color(0, 1, 1, 1)
+position = Vector2(30, -26)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("2_e4kmj")
 
 [node name="Sprite2D" type="Sprite2D" parent="Button"]
 position = Vector2(30, -26)

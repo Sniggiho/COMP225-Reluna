@@ -16,6 +16,9 @@ class_name Note
 ## image of note
 @onready var sprite : Sprite2D = $Button/Sprite2D
 
+## image for selected ntoe
+@onready var selectedSprite : Sprite2D = $Button/SelectedImage
+
 ## default color of the note
 @export var defaultColor : Color = Color("000000")
 
@@ -87,8 +90,13 @@ func orientation() -> void:
 	if(noteName[-1] > "4"):
 		sprite.set_flip_h(true)
 		sprite.set_flip_v(true)
+		
+		selectedSprite.set_flip_h(true)
+		selectedSprite.set_flip_v(true)
+		
 		var height = sprite.texture.get_height()
 		sprite.set_offset(Vector2(0,height*0.55))
+		selectedSprite.set_offset(Vector2(0, height * 0.55))
 
 ## draw the ledger lines
 func _draw():
@@ -189,8 +197,10 @@ func select() -> void:
 ## check if note is focused and change color accordingly
 func focusedNote() -> void: 
 	if button.has_focus():
-		sprite.modulate = focusedColor
+#		sprite.modulate = focusedColor
+		selectedSprite.visible = true
 	else: 
+		selectedSprite.visible = false
 		_changeColor()
 
 # If timer doesn't exist, create it and set parameters
