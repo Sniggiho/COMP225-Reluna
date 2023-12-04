@@ -27,6 +27,10 @@ enum option {AccidentalChoice, DetuneDirection}
 
 signal buttonsChanged
 
+@export var leftLabel : String = "Sharp"
+@export var rightLabel : String = "Flat"
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if type == option.AccidentalChoice:
@@ -88,6 +92,7 @@ func _process(_delta):
 	$FlatButton/CenterContainer/RichTextLabel.add_theme_font_size_override("normal_font_size", self.size.y / 2.5)
 	
 	_updateFocusColoring()
+	_setButtonText()
 	
 	if Engine.is_editor_hint():
 		_updateButtonColor()
@@ -131,6 +136,13 @@ func getSharpButton() -> Button:
 ## Expose button child so focus neighbors can be set
 func getFlatButton() -> Button:
 	return $FlatButton
+
+
+func _setButtonText() -> void:
+	$SharpButton/CenterContainer/RichTextLabel.text = leftLabel
+	$FlatButton/CenterContainer/RichTextLabel.text = rightLabel
+		
+	pass
 
 
 func _on_sharp_button_pressed():

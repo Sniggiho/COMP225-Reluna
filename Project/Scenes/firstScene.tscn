@@ -65,6 +65,7 @@ texture_hover = ExtResource("9_k7p43")
 texture_focused = ExtResource("9_k7p43")
 
 [node name="HintButton" type="TextureButton" parent="."]
+visible = false
 offset_left = 308.0
 offset_top = 654.0
 offset_right = 548.0

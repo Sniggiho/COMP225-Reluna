@@ -75,15 +75,14 @@ action_mode = 0
 flat = true
 
 [node name="SelectedImage" type="Sprite2D" parent="Button"]
-visible = false
 modulate = Color(0, 1, 1, 1)
-position = Vector2(30, -26)
-scale = Vector2(0.06, 0.06)
+position = Vector2(33, -38.345)
+scale = Vector2(0.07, 0.07)
 texture = ExtResource("2_e4kmj")
 
 [node name="Sprite2D" type="Sprite2D" parent="Button"]
-position = Vector2(30, -26)
-scale = Vector2(0.06, 0.06)
+position = Vector2(33, -38.345)
+scale = Vector2(0.07, 0.07)
 texture = ExtResource("2_m8vj1")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

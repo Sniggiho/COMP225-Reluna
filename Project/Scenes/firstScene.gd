@@ -36,6 +36,11 @@ func _input(event):
 	if firstFocused == false and (event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right") or event.is_action_pressed("ui_up") or event.is_action_pressed("ui_down")):
 		firstFocused = true
 		playButton.grab_focus()	
+	
+	# Currently removed, need to figure out input
+#	if event.is_action_pressed("play"):
+#		_on_play_button_pressed()
+#		pass
 
 ## play the notes when the playbar is pressed
 func _on_play_button_pressed() -> void:
