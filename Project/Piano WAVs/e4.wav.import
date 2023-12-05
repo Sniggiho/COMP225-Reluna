@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dmavc58bmg2ml"
+path="res://.godot/imported/e4.wav-45421de00c7b0c12d8d00c3691ccac79.sample"
+
+[deps]
+
+source_file="res://Piano WAVs/e4.wav"
+dest_files=["res://.godot/imported/e4.wav-45421de00c7b0c12d8d00c3691ccac79.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bnd7t36qw7ief"
+path="res://.godot/imported/a4.wav-dcafe07b93795062205971d88efc3ec2.sample"
+
+[deps]
+
+source_file="res://Piano WAVs/a4.wav"
+dest_files=["res://.godot/imported/a4.wav-dcafe07b93795062205971d88efc3ec2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

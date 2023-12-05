@@ -14,13 +14,13 @@ var defaultVolume = 3 # this is in decibels
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var noteName = get_node(\"..\").getNoteName()
-	var audioStream: AudioStreamMP3 = loadMp3(\"res://Piano Key WAV/\" + noteName + \".mp3\")
+	var audioStream: AudioStreamWAV = load(\"res://Piano WAVs/\" + noteName + \".wav\")
 	self.set_stream(audioStream)
 	self.set_volume_db(defaultVolume)
 
-func loadMp3(path) -> AudioStreamMP3:
+func loadMp3(path) -> AudioStreamWAV:
 	var file = FileAccess.open(path, FileAccess.READ)
-	var sound = AudioStreamMP3.new()
+	var sound = AudioStreamWAV.new()
 	sound.data = file.get_buffer(file.get_length())
 	return sound
 	
