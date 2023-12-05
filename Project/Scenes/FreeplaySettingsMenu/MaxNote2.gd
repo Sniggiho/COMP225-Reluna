@@ -22,6 +22,7 @@ func _ready():
 	print("gleveldata highest note ", GLevelData.highestNote)
 
 	if GLevelData.valid:
+		print("restoring note vals")
 		var highestNote = GLevelData.highestNote
 		_key_updated()
 		value = key.find(highestNote)
