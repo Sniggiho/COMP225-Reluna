@@ -9,7 +9,7 @@
 [sub_resource type="GDScript" id="GDScript_ns5jr"]
 script/source = "extends AudioStreamPlayer
 
-var defaultVolume = 0 # this is in decibels
+var defaultVolume = -1 # this is in decibels
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
