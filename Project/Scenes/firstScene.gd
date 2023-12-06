@@ -43,6 +43,17 @@ func _input(event):
 #	if event.is_action_pressed("play"):
 #		_on_play_button_pressed()
 #		pass
+func _process(delta):
+	var numSelected = 0
+	for i in notes:
+		if i.selected:
+			numSelected = numSelected + 1
+	if numSelected > 0:
+		for i in notes: 
+			i.get_node("Button").focus_neighbor_bottom = i.get_node("Button").get_path_to(checkButton)
+	else: 
+		for i in notes: 
+			i.get_node("Button").focus_neighbor_bottom = i.get_node("Button").get_path_to(playButton)
 
 ## play the notes when the playbar is pressed
 func _on_play_button_pressed() -> void:
@@ -52,6 +63,7 @@ func _on_play_button_pressed() -> void:
 func setUpFocusNeighbors() -> void: 
 	notes = $LevelManager.getTuneCreator().getListOfNotes()
 	playButton.focus_neighbor_top = playButton.get_path_to(notes[middleNote].get_node("Button"))
+	checkButton.focus_neighbor_top = checkButton.get_path_to(notes[middleNote].get_node("Button"))
 	notes[middleNote].get_node("Button").focus_neighbor_bottom = notes[middleNote].get_node("Button").get_path_to(playButton)
 	returnButton.focus_neighbor_bottom = returnButton.get_path_to(notes[middleNote].get_node("Button"))
 	for i in len(notes) - 1:
