@@ -163,8 +163,15 @@ func getNoteCountBPM() -> Array:
 ## Call to keep a level manager around and generate new list of detuned notes, tune creator, etc.
 func _reset():
 	if GLevelData.tutorial: # if it's a tutorial, go to the next one
-		# TODO: this really shouldn't be in the reset button
 		var nextTutNum = GLevelData.currentTut + 1
+		
+		if not GLevelData.currentTut in GLevelData.completedTuts:
+			GLevelData.completedTuts.append(GLevelData.currentTut)
+		
+		if nextTutNum > len(GTutorialMenu.tutMenu):
+			SceneTransition.change_scene(GLevelData.prevScene)
+			return
+			
 		var nextTut = GTutorialMenu.tutMenu[nextTutNum]
 		
 		GLevelData.tutorial = true

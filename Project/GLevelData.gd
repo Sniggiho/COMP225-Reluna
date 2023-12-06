@@ -25,6 +25,7 @@ var numNotes : int
 var notes : Array
 var detunedAmountsList : Array
 var currentTut : int
+var completedTuts : Array = []
 
 # Debugger function printing all internal variables
 func printValues():
