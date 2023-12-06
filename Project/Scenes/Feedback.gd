@@ -15,19 +15,25 @@ extends Window
 ## "esc" allows for user to force quit and return to current level
 ## no focus on return and next button until use arrow keys
 ## "enter" will press the button
+
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		SceneTransition.change_scene("res://Scenes/firstScene.tscn")
-	if _returnButton.visible and (event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right") or event.is_action_pressed("ui_down") or event.is_action_pressed("ui_up")):
-		_returnButton.grab_focus()
-	if _nextButton.visible and (event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right") or event.is_action_pressed("ui_down") or event.is_action_pressed("ui_up")):
-		_nextButton.grab_focus()
+	#if _returnButton.visible and (event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right") or event.is_action_pressed("ui_down") or event.is_action_pressed("ui_up")):
+	#	_returnButton.grab_focus()
+	#if _nextButton.visible and (event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right") or event.is_action_pressed("ui_down") or event.is_action_pressed("ui_up")):
+	#	_nextButton.grab_focus()
 	if _returnButton.has_focus() and event.is_action_pressed("ui_accept"):
 		hide()
 	if _nextButton.has_focus() and event.is_action_pressed("ui_accept"):
 		hide()
 		get_node("../LevelManager")._reset()
 
+func _process(delta):
+	if _returnButton.visible:
+		_returnButton.grab_focus()
+	if _nextButton.visible:
+		_nextButton.grab_focus()
 ## display feedback window when check button is pressed
 func _on_check_button_pressed():
 	show()

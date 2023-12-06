@@ -73,3 +73,6 @@ func setUpFocusNeighbors() -> void:
 	for i in len(notes):
 		notes[i].get_node("Button").focus_neighbor_top = notes[i].get_node("Button").get_path_to(returnButton)
 		notes[i].get_node("Button").focus_neighbor_bottom = notes[i].get_node("Button").get_path_to(playButton)
+
+
+

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1qqxujrvquvy"]
+[gd_scene load_steps=16 format=3 uid="uid://c1qqxujrvquvy"]
 
 [ext_resource type="Script" path="res://Scenes/LevelManager/LevelManager.gd" id="1_xad2n"]
 [ext_resource type="Script" path="res://Scenes/firstScene.gd" id="1_yjiac"]
@@ -10,8 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://c8u1gdexyrdyn" path="res://RelunaIcons/checkEmpty.png" id="5_mk5gt"]
 [ext_resource type="Texture2D" uid="uid://ikn1k8wp15am" path="res://RelunaIcons/playHighlighted.png" id="7_kusi7"]
 [ext_resource type="Texture2D" uid="uid://cxbfhp8by63gd" path="res://RelunaIcons/hint.png" id="8_c0d27"]
+[ext_resource type="Script" path="res://Scenes/PlayButton.gd" id="8_gyu0r"]
 [ext_resource type="Texture2D" uid="uid://r001jll7cuxa" path="res://RelunaIcons/checkHighlighted.png" id="9_k7p43"]
 [ext_resource type="Texture2D" uid="uid://bojfpfwpd3vbg" path="res://RelunaIcons/hintHighlighted.png" id="11_mmdue"]
+[ext_resource type="Script" path="res://Scenes/CheckButton.gd" id="11_tqw5o"]
 [ext_resource type="Script" path="res://Scenes/Feedback.gd" id="12_plc4t"]
 
 [node name="Main" type="Node2D"]
@@ -52,6 +54,7 @@ focus_neighbor_right = NodePath("../CheckButton")
 texture_normal = ExtResource("3_ad746")
 texture_hover = ExtResource("7_kusi7")
 texture_focused = ExtResource("7_kusi7")
+script = ExtResource("8_gyu0r")
 
 [node name="CheckButton" type="TextureButton" parent="."]
 offset_left = 1093.0
@@ -63,6 +66,7 @@ focus_neighbor_left = NodePath("../PlayButton")
 texture_normal = ExtResource("5_mk5gt")
 texture_hover = ExtResource("9_k7p43")
 texture_focused = ExtResource("9_k7p43")
+script = ExtResource("11_tqw5o")
 
 [node name="HintButton" type="TextureButton" parent="."]
 visible = false
@@ -180,7 +184,9 @@ theme_type_variation = &"popupButtons"
 text = " next "
 
 [connection signal="pressed" from="ReturnButton" to="LevelManager" method="_on_return_button_pressed"]
+[connection signal="mouse_entered" from="PlayButton" to="PlayButton" method="_on_mouse_entered"]
 [connection signal="pressed" from="PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="CheckButton" to="CheckButton" method="_on_mouse_entered"]
 [connection signal="pressed" from="CheckButton" to="LevelManager" method="checkPlayerInput"]
 [connection signal="pressed" from="CheckButton" to="Feedback" method="_on_check_button_pressed"]
 [connection signal="pressed" from="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/ReturnButton" to="Feedback" method="_on_return_button_pressed"]

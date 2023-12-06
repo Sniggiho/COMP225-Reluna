@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://bw1j8vgpnjrk8"]
+[gd_scene load_steps=8 format=3 uid="uid://bw1j8vgpnjrk8"]
 
 [ext_resource type="Script" path="res://Scenes/Note/Note.gd" id="1_2wmyl"]
+[ext_resource type="Script" path="res://Scenes/Note/Button.gd" id="2_7eit0"]
 [ext_resource type="Texture2D" uid="uid://ck0uip1cbdrkq" path="res://Scenes/Note/thickNote2.png" id="2_e4kmj"]
 [ext_resource type="Texture2D" uid="uid://fwm6q230qh27" path="res://Scenes/Note/quarter2.png" id="2_m8vj1"]
 
@@ -73,6 +74,7 @@ size_flags_vertical = 4
 theme_override_styles/focus = SubResource("StyleBoxEmpty_s86jd")
 action_mode = 0
 flat = true
+script = ExtResource("2_7eit0")
 
 [node name="SelectedImage" type="Sprite2D" parent="Button"]
 modulate = Color(0, 1, 1, 1)
@@ -94,6 +96,7 @@ script = SubResource("GDScript_ns5jr")
 position = Vector2(-1.125, 0)
 shape = SubResource("RectangleShape2D_q24im")
 
+[connection signal="mouse_entered" from="Button" to="Button" method="_on_mouse_entered"]
 [connection signal="pressed" from="Button" to="." method="select"]
 [connection signal="pressed" from="Button" to="AudioStreamPlayer" method="playDetuned"]
 [connection signal="area_entered" from="Area2D" to="AudioStreamPlayer" method="_on_area_2d_area_entered"]
