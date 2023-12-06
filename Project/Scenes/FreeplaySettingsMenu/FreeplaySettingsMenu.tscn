@@ -151,12 +151,71 @@ theme_override_styles/separator = SubResource("StyleBoxLine_l8p8p")
 [node name="BySharps" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice" node_paths=PackedStringArray("topFocus") instance=ExtResource("19_ik1lg")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+sharpPressed = true
+flatPressed = false
 negativeColor = Color(0.6875, 0.6875, 0.6875, 1)
 negativeFontColor = Color(0.996094, 0.996094, 0.996094, 1)
 type = 0
 topFocus = NodePath("../../../../../../../../BackButton")
 leftLabel = "Sharps"
 rightLabel = "Flats"
+
+[node name="Background" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps" index="0"]
+offset_right = 604.0
+offset_bottom = 104.0
+
+[node name="Foreground1" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps" index="1"]
+offset_right = 300.0
+offset_bottom = 100.0
+color = Color(0.690196, 0.690196, 0.690196, 1)
+
+[node name="Foreground2" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps" index="2"]
+offset_left = 300.0
+offset_right = 600.0
+offset_bottom = 100.0
+color = Color(0.690196, 0.690196, 0.690196, 1)
+
+[node name="SharpButton" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps" index="3"]
+offset_right = 298.0
+offset_bottom = 100.0
+focus_neighbor_top = NodePath("../../../../../../../../../BackButton")
+
+[node name="ColorRect" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps/SharpButton" index="0"]
+offset_right = 294.0
+offset_bottom = 96.0
+color = Color(1, 1, 1, 1)
+
+[node name="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps/SharpButton" index="1"]
+offset_right = 298.0
+offset_bottom = 100.0
+
+[node name="RichTextLabel" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps/SharpButton/CenterContainer" index="0"]
+theme_override_colors/default_color = Color(0.164706, 0.717647, 0.921569, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Sharps"
+
+[node name="FlatButton" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps" index="4"]
+offset_left = 302.0
+offset_right = 600.0
+offset_bottom = 100.0
+focus_neighbor_top = NodePath("../../../../../../../../../BackButton")
+
+[node name="ColorRect" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps/FlatButton" index="0"]
+offset_right = 294.0
+offset_bottom = 96.0
+color = Color(0.6875, 0.6875, 0.6875, 1)
+
+[node name="CenterContainer" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps/FlatButton" index="1"]
+offset_right = 298.0
+offset_bottom = 100.0
+
+[node name="RichTextLabel" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps/FlatButton/CenterContainer" index="0"]
+theme_override_colors/default_color = Color(0.996094, 0.996094, 0.996094, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Flats"
+
+[node name="Line2D" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps" index="5"]
+points = PackedVector2Array(300, 0, 300, 100)
 
 [node name="NumAccidentals" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA" instance=ExtResource("18_2jqco")]
 custom_minimum_size = Vector2(0, 100)
@@ -190,7 +249,7 @@ height = 100.0
 [node name="BPM" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA" instance=ExtResource("18_2jqco")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../../../../../../../BackButton")
+focus_neighbor_bottom = NodePath("../../../Column B/ColumnB/NumNotes")
 max_value = 240.0
 step = 5.0
 value = 120.0
@@ -206,11 +265,34 @@ layout_mode = 2
 [node name="ColumnB" type="VBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B"]
 layout_mode = 2
 
+[node name="NumNotes" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB" instance=ExtResource("18_2jqco")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../../../../../../ForwardButton")
+max_value = 12.0
+script = ExtResource("19_amv7j")
+text = "Number of Notes"
+minActualValue = 4
+maxActualValue = 12
+height = 100.0
+
+[node name="NumDetunedNotes" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB" instance=ExtResource("18_2jqco")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+max_value = 3.0
+value = 1.0
+script = ExtResource("20_d2nyq")
+text = "Number of Detuned Notes"
+minActualValue = 1
+maxActualValue = 3
+height = 100.0
+
 [node name="DetuneDirection" type="VBoxContainer" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="HSeparator" type="HSeparator" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/DetuneDirection"]
+visible = false
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_hdchv")
 
@@ -251,7 +333,7 @@ autowrap_mode = 0
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxLine_kvu5a")
 
-[node name="DetuneDirection" type="Control" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/DetuneDirection" node_paths=PackedStringArray("topFocus")]
+[node name="DetuneDirection" type="Control" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/DetuneDirection"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 script = ExtResource("10_6dn0e")
@@ -261,7 +343,6 @@ positiveFontColor = Color(0.164706, 0.717647, 0.921569, 1)
 negativeFontColor = Color(0.996094, 0.996094, 0.996094, 1)
 selectedColor = Color(0.654902, 0.811765, 0.882353, 1)
 type = 1
-topFocus = NodePath("../../../../../../../../ForwardButton")
 
 [node name="Background" type="ColorRect" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/DetuneDirection/DetuneDirection"]
 layout_mode = 0
@@ -294,7 +375,6 @@ metadata/_edit_lock_ = true
 layout_mode = 0
 offset_right = 298.0
 offset_bottom = 100.0
-focus_neighbor_top = NodePath("../../../../../../../../../ForwardButton")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jsukl")
 text = "Sharp"
 flat = true
@@ -331,7 +411,6 @@ layout_mode = 2
 offset_left = 302.0
 offset_right = 600.0
 offset_bottom = 100.0
-focus_neighbor_top = NodePath("../../../../../../../../../ForwardButton")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_7w4nd")
 text = "Flat"
 flat = true
@@ -370,27 +449,6 @@ width = 4.0
 default_color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
-[node name="NumNotes" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB" instance=ExtResource("18_2jqco")]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-max_value = 12.0
-script = ExtResource("19_amv7j")
-text = "Number of Notes"
-minActualValue = 4
-maxActualValue = 12
-height = 100.0
-
-[node name="NumDetunedNotes" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB" instance=ExtResource("18_2jqco")]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-max_value = 3.0
-value = 1.0
-script = ExtResource("20_d2nyq")
-text = "Number of Detuned Notes"
-minActualValue = 1
-maxActualValue = 3
-height = 100.0
-
 [node name="MaxDetuneCents" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB" instance=ExtResource("18_2jqco")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
@@ -406,7 +464,7 @@ height = 100.0
 [node name="MinDetuneCents" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB" instance=ExtResource("18_2jqco")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../../../../../../../ForwardButton")
+focus_neighbor_bottom = NodePath("../../../Column A/ColumnA/Accidental Choice/BySharps/SharpButton")
 max_value = 50.0
 step = 5.0
 value = 20.0
@@ -415,6 +473,18 @@ text = "Minimum Detune (cents)"
 minActualValue = 5
 maxActualValue = 50
 height = 100.0
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2(920, 480)
+points = PackedVector2Array(0, 0, 0, 50)
+width = 4.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D2" type="Line2D" parent="."]
+position = Vector2(1524, 479)
+points = PackedVector2Array(0, 0, 0, 50)
+width = 4.0
+default_color = Color(0, 0, 0, 1)
 
 [connection signal="pressed" from="BackButton" to="." method="_goto_main_menu"]
 [connection signal="pressed" from="ForwardButton" to="." method="_on_button_pressed"]
@@ -428,6 +498,9 @@ height = 100.0
 [connection signal="minNoteChanged" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MinNote" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MaxNote" method="_on_min_note_min_note_changed"]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MinNote" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MinNote" method="_on_value_changed_derived"]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/BPM" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/BPM" method="_on_value_changed_derived"]
+[connection signal="valueChanged" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumNotes" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumDetunedNotes" method="_on_num_notes_value_changed"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumNotes" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumNotes" method="_on_value_changed_derived"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumDetunedNotes" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumDetunedNotes" method="_on_value_changed_derived"]
 [connection signal="buttonsChanged" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/DetuneDirection/DetuneDirection" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/DetuneDirection/DetuneDirection" method="_on_buttons_changed" flags=18]
 [connection signal="focus_entered" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/DetuneDirection/DetuneDirection/SharpButton" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/DetuneDirection/DetuneDirection" method="_on_sharp_button_focus_entered" flags=18]
 [connection signal="focus_exited" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/DetuneDirection/DetuneDirection/SharpButton" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/DetuneDirection/DetuneDirection" method="_on_sharp_button_focus_exited" flags=18]
@@ -439,9 +512,8 @@ height = 100.0
 [connection signal="mouse_entered" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/DetuneDirection/DetuneDirection/FlatButton" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/DetuneDirection/DetuneDirection" method="_on_flat_button_mouse_entered" flags=18]
 [connection signal="mouse_exited" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/DetuneDirection/DetuneDirection/FlatButton" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/DetuneDirection/DetuneDirection" method="_on_flat_button_mouse_exited" flags=18]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/DetuneDirection/DetuneDirection/FlatButton" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/DetuneDirection/DetuneDirection" method="_on_flat_button_pressed" flags=18]
-[connection signal="valueChanged" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumNotes" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumDetunedNotes" method="_on_num_notes_value_changed"]
-[connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumNotes" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumNotes" method="_on_value_changed_derived"]
-[connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumDetunedNotes" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumDetunedNotes" method="_on_value_changed_derived"]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/MaxDetuneCents" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/MaxDetuneCents" method="_on_value_changed_derived"]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/MaxDetuneCents" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/MinDetuneCents" method="_on_max_detune_cents_value_changed"]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/MinDetuneCents" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/MinDetuneCents" method="_on_value_changed_derived"]
+
+[editable path="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps"]

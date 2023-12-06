@@ -5,6 +5,9 @@ var tut : TutorialLevel
 
 func _ready():
 	tut = GTutorialMenu.tutMenu[int(tutorialNum)]
+	if int(tutorialNum) in GLevelData.completedTuts:
+		self.get_child(0).show() # if GLevelData thinks we've done this
+		
 	
 func _on_pressed():
 	GLevelData.tutorial = true
