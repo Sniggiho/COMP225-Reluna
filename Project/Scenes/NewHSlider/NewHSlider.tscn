@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oc08h"]
 resource_local_to_scene = true
 shader = ExtResource("5_fu81e")
-shader_parameter/rightEdge = 0.280583
+shader_parameter/rightEdge = 0.451392
 shader_parameter/positiveTextColor = null
 shader_parameter/negativeTextColor = null
 
