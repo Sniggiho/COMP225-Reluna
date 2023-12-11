@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bptbnn7l5qp5q"]
+
+[node name="CreditScreen" type="Node2D"]
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 432.0
+offset_top = 66.0
+offset_right = 1217.0
+offset_bottom = 216.0
+text = "Reluna, 2023
+"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 32.0
+offset_top = 267.0
+offset_right = 2597.0
+offset_bottom = 417.0
+scale = Vector2(0.6, 0.6)
+text = "Ethan Scheelk, Rhys O'Higgins, Jeff Wang
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_left = 32.0
+offset_top = 408.0
+offset_right = 1576.0
+offset_bottom = 872.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+"
