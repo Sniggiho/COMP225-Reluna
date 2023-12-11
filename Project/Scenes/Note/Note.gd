@@ -14,10 +14,10 @@ class_name Note
 @onready var button : Button = $Button
 
 ## image of note
-@onready var sprite : Sprite2D = $Button/Sprite2D
+@onready var sprite : Sprite2D = $Sprite2D
 
 ## image for selected ntoe
-@onready var selectedSprite : Sprite2D = $Button/SelectedImage
+@onready var selectedSprite : Sprite2D = $SelectedImage
 
 ## default color of the note
 @export var defaultColor : Color = Color("000000")
@@ -119,7 +119,7 @@ func createLedgerLines() ->  void:
 #		color = Color.CADET_BLUE # DEBUG
 
 		# Ledger line length (horizontal)
-		var length = 75
+		var length = 100
 		
 		# AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 		if h >= 5: # If above the staff
@@ -178,7 +178,7 @@ func select() -> void:
 		if not text:
 			text = RichTextLabel.new()
 			text.text = "The first note will always be in-tune"
-			text.size = Vector2(100, 100)
+			text.size = Vector2(200, 200)
 			text.mouse_filter = Control.MOUSE_FILTER_IGNORE
 			add_child(text)
 			

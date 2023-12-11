@@ -49,7 +49,7 @@ func _on_area_2d_area_entered(_area):
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q24im"]
-size = Vector2(59.75, 59.5)
+size = Vector2(72, 69)
 
 [node name="Note" type="Control"]
 layout_mode = 3
@@ -57,16 +57,27 @@ anchors_preset = 0
 focus_mode = 2
 script = ExtResource("1_2wmyl")
 
+[node name="SelectedImage" type="Sprite2D" parent="."]
+modulate = Color(0, 1, 1, 1)
+position = Vector2(3, -71)
+scale = Vector2(0.078, 0.078)
+texture = ExtResource("2_e4kmj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, -71)
+scale = Vector2(0.078, 0.078)
+texture = ExtResource("2_m8vj1")
+
 [node name="Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.0
-offset_top = -30.0
-offset_right = 28.0
-offset_bottom = 29.0
+offset_left = -44.0
+offset_top = -34.0
+offset_right = 40.0
+offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -76,24 +87,13 @@ action_mode = 0
 flat = true
 script = ExtResource("2_7eit0")
 
-[node name="SelectedImage" type="Sprite2D" parent="Button"]
-modulate = Color(0, 1, 1, 1)
-position = Vector2(33, -38.345)
-scale = Vector2(0.07, 0.07)
-texture = ExtResource("2_e4kmj")
-
-[node name="Sprite2D" type="Sprite2D" parent="Button"]
-position = Vector2(33, -38.345)
-scale = Vector2(0.07, 0.07)
-texture = ExtResource("2_m8vj1")
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 script = SubResource("GDScript_ns5jr")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-1.125, 0)
+position = Vector2(-2, 0.5)
 shape = SubResource("RectangleShape2D_q24im")
 
 [connection signal="mouse_entered" from="Button" to="Button" method="_on_mouse_entered"]

@@ -1,3 +1,4 @@
+@tool
 extends Node2D
 class_name MusicStaff
 # creates the actual visualization of the music staff and 
