@@ -167,6 +167,7 @@ offset_bottom = 104.0
 [node name="Foreground1" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps" index="1"]
 offset_right = 300.0
 offset_bottom = 100.0
+color = Color(0.654902, 0.811765, 0.882353, 1)
 
 [node name="Foreground2" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps" index="2"]
 offset_left = 300.0
