@@ -95,6 +95,7 @@ func generate(randomNotes = true, randomDetune = true) -> void:
 	
 	_pathFollower.progress_ratio = pathMin
 	
+	var pathY : float = _pathFollower.global_position.y
 	for i in range(_numNotes):
 		var note : Note = _noteScene.instantiate()
 		_pathFollower.progress_ratio += dx
@@ -127,8 +128,8 @@ func generate(randomNotes = true, randomDetune = true) -> void:
 		note.lineHeight = lineHeight
 		_listOfNotes.append(note)
 		print(_pathFollower.global_position)
-		note.global_position = _pathFollower.global_position
-		note.global_position.y += -1 * (note.hOffset() * lineHeight / 2)
+		note.global_position.x = _pathFollower.global_position.x
+		note.global_position.y = pathY + -1 * (note.hOffset() * lineHeight / 2)
 #		print(note.global_position.y)
 		##print(note.hOffset() * lineHeight / 2)
 #	_pathFollower.progress_ratio = 0

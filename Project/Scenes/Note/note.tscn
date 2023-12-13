@@ -59,12 +59,12 @@ script = ExtResource("1_2wmyl")
 
 [node name="SelectedImage" type="Sprite2D" parent="."]
 modulate = Color(0, 1, 1, 1)
-position = Vector2(3, -71)
+position = Vector2(3, -70)
 scale = Vector2(0.078, 0.078)
 texture = ExtResource("2_e4kmj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(3, -71)
+position = Vector2(3, -70)
 scale = Vector2(0.078, 0.078)
 texture = ExtResource("2_m8vj1")
 
