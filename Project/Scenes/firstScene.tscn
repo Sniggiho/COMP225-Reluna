@@ -86,20 +86,6 @@ offset_right = 1600.0
 offset_bottom = 900.0
 color = Color(0.262745, 0.262745, 0.262745, 0.494118)
 
-[node name="DisplayText" type="RichTextLabel" parent="."]
-offset_left = 184.0
-offset_top = 27.0
-offset_right = 1437.0
-offset_bottom = 115.0
-size_flags_horizontal = 4
-mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 64
-text = "Select the two notes that are out of tune"
-fit_content = true
-scroll_active = false
-autowrap_mode = 0
-script = ExtResource("5_k5ivr")
-
 [node name="Feedback" type="Window" parent="."]
 initial_position = 1
 size = Vector2i(1300, 650)
@@ -185,6 +171,33 @@ visible = false
 layout_mode = 2
 theme_type_variation = &"popupButtons"
 text = " next "
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_right = 1598.0
+offset_bottom = 114.0
+mouse_filter = 2
+
+[node name="DisplayText" type="RichTextLabel" parent="CenterContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0.635294, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/normal_font_size = 64
+text = "Select the two notes that are out of tune"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+script = ExtResource("5_k5ivr")
+
+[node name="ColorRect" type="ColorRect" parent="CenterContainer/DisplayText"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -175.0
+offset_top = -20.0
+offset_right = 1426.0
+offset_bottom = 106.0
+color = Color(0.737255, 0.737255, 0.737255, 1)
 
 [connection signal="pressed" from="ReturnButton" to="LevelManager" method="_on_return_button_pressed"]
 [connection signal="mouse_entered" from="PlayButton" to="PlayButton" method="_on_mouse_entered"]
