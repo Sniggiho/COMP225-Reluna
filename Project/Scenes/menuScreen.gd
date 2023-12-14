@@ -16,4 +16,7 @@ func _to_tutorial():
 func _to_freeplay():
 	SceneTransition.change_scene("res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.tscn")
 	
+func _to_credits():
+	SceneTransition.change_scene("res://Scenes/CreditScreen/CreditScreen.tscn")
+	
 

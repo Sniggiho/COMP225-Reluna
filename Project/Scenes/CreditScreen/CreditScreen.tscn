@@ -1,6 +1,11 @@
-[gd_scene format=3 uid="uid://bptbnn7l5qp5q"]
+[gd_scene load_steps=4 format=3 uid="uid://bptbnn7l5qp5q"]
+
+[ext_resource type="Texture2D" uid="uid://corvs4jhdgfk3" path="res://RelunaIcons/backArrow.png" id="1_fx3l8"]
+[ext_resource type="Script" path="res://Scenes/CreditScreen/CreditScreen.gd" id="1_gscmn"]
+[ext_resource type="Texture2D" uid="uid://71tu2ixgeqk8" path="res://RelunaIcons/backArrowFilled.png" id="2_r0htm"]
 
 [node name="CreditScreen" type="Node2D"]
+script = ExtResource("1_gscmn")
 
 [node name="Label2" type="Label" parent="."]
 offset_left = 432.0
@@ -28,3 +33,15 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 "
+
+[node name="Return" type="TextureButton" parent="."]
+offset_left = 21.0
+offset_top = 8.0
+offset_right = 261.0
+offset_bottom = 248.0
+scale = Vector2(0.4, 0.4)
+texture_normal = ExtResource("1_fx3l8")
+texture_hover = ExtResource("2_r0htm")
+texture_focused = ExtResource("2_r0htm")
+
+[connection signal="pressed" from="Return" to="." method="_to_main_menu"]
