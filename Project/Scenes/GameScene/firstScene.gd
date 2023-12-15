@@ -38,11 +38,8 @@ func _input(event):
 		playButton.grab_focus()	
 	if event.is_action_pressed("play"):
 		$MusicStaff.playBar.play()
-	
-	# Currently removed, need to figure out input
-#	if event.is_action_pressed("play"):
-#		_on_play_button_pressed()
-#		pass
+		
+		
 func _process(delta):
 	var numSelected = 0
 	for i in notes:

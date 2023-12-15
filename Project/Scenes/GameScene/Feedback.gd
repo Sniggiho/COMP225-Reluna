@@ -18,7 +18,7 @@ extends Window
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
-		SceneTransition.change_scene("res://Scenes/firstScene.tscn")
+		SceneTransition.change_scene("res://Scenes/GameScene/firstScene.tscn")
 	#if _returnButton.visible and (event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right") or event.is_action_pressed("ui_down") or event.is_action_pressed("ui_up")):
 	#	_returnButton.grab_focus()
 	#if _nextButton.visible and (event.is_action_pressed("ui_left") or event.is_action_pressed("ui_right") or event.is_action_pressed("ui_down") or event.is_action_pressed("ui_up")):

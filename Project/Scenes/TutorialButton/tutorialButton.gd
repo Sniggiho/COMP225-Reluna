@@ -21,7 +21,7 @@ func _on_pressed():
 	
 	GLevelData.currentTut = int(tutorialNum)
 
-	SceneTransition.change_scene("res://Scenes/firstScene.tscn")
+	SceneTransition.change_scene("res://Scenes/GameScene/firstScene.tscn")
 	
 	GLevelData.printValues()
 

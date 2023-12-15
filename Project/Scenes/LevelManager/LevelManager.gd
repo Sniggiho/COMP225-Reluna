@@ -185,7 +185,7 @@ func _reset():
 		
 		GLevelData.currentTut = GLevelData.currentTut + 1
 
-		SceneTransition.change_scene("res://Scenes/firstScene.tscn")
+		SceneTransition.change_scene("res://Scenes/GameScene/firstScene.tscn")
 	else:
 		GLevelData.displayText = self._generateInstructionText()
 		self.get_parent().find_child("DisplayText").refresh()

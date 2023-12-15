@@ -11,7 +11,7 @@ func _input(event):
 		tutorial.grab_focus()
 		
 func _to_tutorial():
-	SceneTransition.change_scene("res://Scenes/Tutorial/tutorialScreen.tscn")
+	SceneTransition.change_scene("res://Scenes/TutorialMenu/tutorialScreen.tscn")
 	
 func _to_freeplay():
 	SceneTransition.change_scene("res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.tscn")

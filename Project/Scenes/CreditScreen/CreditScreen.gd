@@ -7,4 +7,4 @@ func _input(event):
 		
 
 func _to_main_menu():
-	SceneTransition.change_scene("res://Scenes/menuScreen.tscn")
+	SceneTransition.change_scene("res://Scenes/MainMenu/menuScreen.tscn")

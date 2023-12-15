@@ -11,15 +11,15 @@ config_version=5
 [application]
 
 config/name="Comp 225-reluna"
-run/main_scene="res://Scenes/firstScene.tscn"
+run/main_scene="res://Scenes/GameScene/firstScene.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
-SceneTransition="*res://Scenes/sceneTransition.tscn"
-GLevelData="*res://GLevelData.gd"
-GTutorialMenu="*res://Tutorials/GTutorialMenu.gd"
+SceneTransition="*res://Scenes/SceneTransition/sceneTransition.tscn"
+GLevelData="*res://Scenes/GLevelData.gd"
+GTutorialMenu="*res://Scenes/Tutorials/GTutorialMenu.gd"
 
 [display]
 

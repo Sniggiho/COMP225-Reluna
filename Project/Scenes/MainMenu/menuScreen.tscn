@@ -1,15 +1,15 @@
 [gd_scene load_steps=7 format=3 uid="uid://djhc22rfbysqm"]
 
-[ext_resource type="Script" path="res://Scenes/menuScreen.gd" id="1_2n4jg"]
-[ext_resource type="Theme" uid="uid://dhkx10rwrne4u" path="res://projectTheme.tres" id="2_2whrt"]
-[ext_resource type="Texture2D" uid="uid://chc7fnhopvy4b" path="res://RelunaIcons/RetunaLogo.png" id="3_clclf"]
-[ext_resource type="Texture2D" uid="uid://wotkdmesotoe" path="res://RelunaIcons/info icon.png" id="4_3bwv0"]
-[ext_resource type="Texture2D" uid="uid://bh2i34enn17v4" path="res://RelunaIcons/info icon focused.png" id="5_oy0q4"]
+[ext_resource type="Script" path="res://Scenes/MainMenu/menuScreen.gd" id="1_hwh7r"]
+[ext_resource type="Theme" uid="uid://dhkx10rwrne4u" path="res://projectTheme.tres" id="2_ertyu"]
+[ext_resource type="Texture2D" uid="uid://chc7fnhopvy4b" path="res://RelunaIcons/RetunaLogo.png" id="3_kj3ku"]
+[ext_resource type="Texture2D" uid="uid://wotkdmesotoe" path="res://RelunaIcons/info icon.png" id="4_4qv1i"]
+[ext_resource type="Texture2D" uid="uid://bh2i34enn17v4" path="res://RelunaIcons/info icon focused.png" id="5_hq8y0"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nc82v"]
 
 [node name="menuScreen" type="Node2D"]
-script = ExtResource("1_2n4jg")
+script = ExtResource("1_hwh7r")
 
 [node name="Tutorial" type="Button" parent="."]
 offset_left = 5.0
@@ -18,7 +18,7 @@ offset_right = 506.0
 offset_bottom = 858.0
 focus_neighbor_top = NodePath("../Info")
 focus_neighbor_right = NodePath("../Freeplay")
-theme = ExtResource("2_2whrt")
+theme = ExtResource("2_ertyu")
 theme_type_variation = &"menuButton"
 theme_override_styles/focus = SubResource("StyleBoxEmpty_nc82v")
 text = "tutorials"
@@ -32,7 +32,7 @@ offset_right = 1596.0
 offset_bottom = 860.0
 focus_neighbor_left = NodePath("../Tutorial")
 focus_neighbor_top = NodePath("../Info")
-theme = ExtResource("2_2whrt")
+theme = ExtResource("2_ertyu")
 theme_type_variation = &"menuButton"
 theme_override_styles/focus = SubResource("StyleBoxEmpty_nc82v")
 text = "freeplay"
@@ -43,7 +43,7 @@ icon_alignment = 1
 z_index = -1
 position = Vector2(807, 451)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_clclf")
+texture = ExtResource("3_kj3ku")
 
 [node name="Info" type="TextureButton" parent="."]
 offset_left = 44.0
@@ -53,9 +53,9 @@ offset_bottom = 549.0
 scale = Vector2(0.15, 0.15)
 focus_neighbor_right = NodePath("../Freeplay")
 focus_neighbor_bottom = NodePath("../Tutorial")
-texture_normal = ExtResource("4_3bwv0")
-texture_hover = ExtResource("5_oy0q4")
-texture_focused = ExtResource("5_oy0q4")
+texture_normal = ExtResource("4_4qv1i")
+texture_hover = ExtResource("5_hq8y0")
+texture_focused = ExtResource("5_hq8y0")
 
 [connection signal="pressed" from="Tutorial" to="." method="_to_tutorial"]
 [connection signal="pressed" from="Freeplay" to="." method="_to_freeplay"]

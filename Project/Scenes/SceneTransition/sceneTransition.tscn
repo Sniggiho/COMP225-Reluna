@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b4b6segjarn0a"]
 
-[ext_resource type="Script" path="res://Scenes/sceneTransition.gd" id="1_r80i1"]
+[ext_resource type="Script" path="res://Scenes/SceneTransition/sceneTransition.gd" id="1_s1phh"]
 
 [sub_resource type="Animation" id="Animation_m8ynh"]
 resource_name = "RESET"
@@ -41,7 +41,7 @@ _data = {
 }
 
 [node name="sceneTransition" type="CanvasLayer"]
-script = ExtResource("1_r80i1")
+script = ExtResource("1_s1phh")
 
 [node name="dissolveRect" type="ColorRect" parent="."]
 modulate = Color(1, 1, 1, 0)

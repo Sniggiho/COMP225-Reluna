@@ -19,10 +19,10 @@ func _on_button_pressed():
 	GLevelData.tutorial = false
 	GLevelData.prevScene = "res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.tscn"
 	GLevelData.valid = true
-	SceneTransition.change_scene("res://Scenes/firstScene.tscn")
+	SceneTransition.change_scene("res://Scenes/GameScene/firstScene.tscn")
 	
 
 func _goto_main_menu():
 	GLevelData.valid = false
-	SceneTransition.change_scene("res://Scenes/menuScreen.tscn")
+	SceneTransition.change_scene("res://Scenes/MainMenu/menuScreen.tscn")
 	pass
