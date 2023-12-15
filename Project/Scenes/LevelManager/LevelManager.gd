@@ -38,7 +38,7 @@ class_name LevelManager
 @export var lowestNote : String = "c4"
 
 ## The maximum octave of notes to generate
-@export var highestNote : String = "c6"
+# @export var highestNote : String = "c6"
 
 ## Direction of detune, that is sharp or flat or both.
 ## Sharp indicates increasing cents (detuneDirection =  1). 
@@ -237,7 +237,7 @@ func _ready():
 		minDetuneCents = GLevelData.minDetuneCents
 		maxDetuneCents = GLevelData.maxDetuneCents
 		lowestNote = GLevelData.lowestNote
-		highestNote = GLevelData.highestNote
+		# highestNote = GLevelData.highestNote
 		detuneDirection = GLevelData.detuneDir
 		numAccidentals = GLevelData.numAccidentals
 		bySharp = GLevelData.bySharps
