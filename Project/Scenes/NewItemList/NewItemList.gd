@@ -34,7 +34,8 @@ signal buttonsChanged
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if type == option.AccidentalChoice:
-		$SharpButton.grab_focus()
+		pass
+#		$SharpButton.grab_focus()
 		
 	if topFocus:
 		$SharpButton.focus_neighbor_top = $SharpButton.get_path_to(topFocus)

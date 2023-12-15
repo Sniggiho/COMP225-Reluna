@@ -46,9 +46,11 @@ vertical = true
 script = ExtResource("1_qg26p")
 
 [node name="BackButton" type="TextureButton" parent="."]
-offset_top = 1.0
-offset_right = 240.0
-offset_bottom = 241.0
+offset_left = 28.0
+offset_top = 43.0
+offset_right = 268.0
+offset_bottom = 283.0
+scale = Vector2(0.75, 0.75)
 focus_neighbor_top = NodePath("../CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/BPM")
 focus_neighbor_right = NodePath("../ForwardButton")
 texture_normal = ExtResource("16_im4tj")
@@ -62,9 +64,11 @@ offset_right = 1205.0
 offset_bottom = 969.0
 
 [node name="ForwardButton" type="TextureButton" parent="."]
-offset_left = 1360.0
-offset_right = 1600.0
-offset_bottom = 240.0
+offset_left = 1388.0
+offset_top = 44.0
+offset_right = 1628.0
+offset_bottom = 284.0
+scale = Vector2(0.75, 0.75)
 focus_neighbor_left = NodePath("../BackButton")
 focus_neighbor_top = NodePath("../CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/MinDetuneCents")
 texture_normal = ExtResource("16_im4tj")
@@ -494,9 +498,9 @@ default_color = Color(0, 0, 0, 1)
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MaxNote" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MaxNote" method="_on_value_changed_derived"]
 [connection signal="minNoteChanged" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MinNote" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MaxNote" method="_on_min_note_min_note_changed"]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MinNote" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MinNote" method="_on_value_changed_derived"]
-[connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/NumAccidentals" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/NumAccidentals" method="_on_value_changed_derived"]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/NumAccidentals" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MaxNote" method="_on_num_accidentals_value_changed"]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/NumAccidentals" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MinNote" method="_on_num_accidentals_value_changed"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/NumAccidentals" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/NumAccidentals" method="_on_value_changed_derived"]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/BPM" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/BPM" method="_on_value_changed_derived"]
 [connection signal="valueChanged" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumNotes" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumDetunedNotes" method="_on_num_notes_value_changed"]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumNotes" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumNotes" method="_on_value_changed_derived"]
