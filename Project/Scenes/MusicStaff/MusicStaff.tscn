@@ -31,7 +31,7 @@ loop = false
 
 [node name="PlayBar" parent="." node_paths=PackedStringArray("path") instance=ExtResource("3_56f0e")]
 position = Vector2(-2.08165e-12, 93)
-points = PackedVector2Array(0, -51.84, 0, 115.84)
+points = PackedVector2Array(0, -105.6, 0, 169.6)
 width = 7.5
 default_color = Color(0, 0, 0, 1)
 antialiased = true
