@@ -55,7 +55,9 @@ func _key_updated():
 
 
 func _on_by_sharps_buttons_changed():
-	_key_updated()
+	if self.is_inside_tree():
+		_key_updated()
+
 
 
 func _on_num_accidentals_value_changed(value):
