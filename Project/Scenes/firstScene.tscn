@@ -181,7 +181,7 @@ mouse_filter = 2
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
-theme_override_colors/default_color = Color(0, 0.635294, 1, 1)
+theme_override_colors/default_color = Color(0.164706, 0.717647, 0.921569, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_font_sizes/normal_font_size = 64
 text = "Select the two notes that are out of tune"
@@ -197,7 +197,7 @@ offset_left = -175.0
 offset_top = -20.0
 offset_right = 1426.0
 offset_bottom = 106.0
-color = Color(0.737255, 0.737255, 0.737255, 1)
+color = Color(1, 1, 1, 0.301961)
 
 [connection signal="pressed" from="ReturnButton" to="LevelManager" method="_on_return_button_pressed"]
 [connection signal="mouse_entered" from="PlayButton" to="PlayButton" method="_on_mouse_entered"]

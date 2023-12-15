@@ -275,6 +275,7 @@ text = "Number of Notes"
 minActualValue = 4
 maxActualValue = 12
 height = 100.0
+positiveTextColor = Color(0.164706, 0.717647, 0.921569, 1)
 
 [node name="NumDetunedNotes" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB" instance=ExtResource("18_2jqco")]
 custom_minimum_size = Vector2(0, 100)

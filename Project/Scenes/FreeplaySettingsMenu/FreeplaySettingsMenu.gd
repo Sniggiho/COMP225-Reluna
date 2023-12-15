@@ -9,17 +9,6 @@ func _ready():
 	
 	$BackButton.focus_neighbor_bottom = $BackButton.get_path_to($"CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps".getSharpButton())
 
-func generatePossibleNotes() -> Array:
-	var noteOrder = ["c","c-","d","d-","e","f","f-","g","g-","a","a-","b"]
-	var possibleNotes = []
-	for i in range(3,6):
-		for n in noteOrder:
-			var noteName = n + str(i)
-			possibleNotes.append(noteName)
-	
-	possibleNotes.append("c6")
-	return possibleNotes
-
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
