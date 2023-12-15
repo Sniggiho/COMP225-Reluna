@@ -217,16 +217,6 @@ text = "Flats"
 [node name="Line2D" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps" index="5"]
 points = PackedVector2Array(300, 0, 300, 100)
 
-[node name="NumAccidentals" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA" instance=ExtResource("18_2jqco")]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-max_value = 6.0
-value = 0.0
-script = ExtResource("16_vterl")
-text = "Number of Accidentals"
-maxActualValue = 6
-height = 100.0
-
 [node name="MaxNote" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA" instance=ExtResource("18_2jqco")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
@@ -244,6 +234,16 @@ value = 0.0
 script = ExtResource("19_08umj")
 text = "Lowest Note"
 maxActualValue = -1
+height = 100.0
+
+[node name="NumAccidentals" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA" instance=ExtResource("18_2jqco")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+max_value = 6.0
+value = 0.0
+script = ExtResource("16_vterl")
+text = "Number of Accidentals"
+maxActualValue = 6
 height = 100.0
 
 [node name="BPM" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA" instance=ExtResource("18_2jqco")]
@@ -490,13 +490,13 @@ default_color = Color(0, 0, 0, 1)
 [connection signal="pressed" from="ForwardButton" to="." method="_on_button_pressed"]
 [connection signal="buttonsChanged" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MaxNote" method="_on_by_sharps_buttons_changed"]
 [connection signal="buttonsChanged" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MinNote" method="_on_by_sharps_buttons_changed"]
-[connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/NumAccidentals" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/NumAccidentals" method="_on_value_changed_derived"]
-[connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/NumAccidentals" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MaxNote" method="_on_num_accidentals_value_changed"]
-[connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/NumAccidentals" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MinNote" method="_on_num_accidentals_value_changed"]
 [connection signal="maxNoteChanged" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MaxNote" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MinNote" method="_on_max_note_max_note_changed"]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MaxNote" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MaxNote" method="_on_value_changed_derived"]
 [connection signal="minNoteChanged" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MinNote" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MaxNote" method="_on_min_note_min_note_changed"]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MinNote" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MinNote" method="_on_value_changed_derived"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/NumAccidentals" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/NumAccidentals" method="_on_value_changed_derived"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/NumAccidentals" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MaxNote" method="_on_num_accidentals_value_changed"]
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/NumAccidentals" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MinNote" method="_on_num_accidentals_value_changed"]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/BPM" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/BPM" method="_on_value_changed_derived"]
 [connection signal="valueChanged" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumNotes" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumDetunedNotes" method="_on_num_notes_value_changed"]
 [connection signal="value_changed" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumNotes" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/NumNotes" method="_on_value_changed_derived"]

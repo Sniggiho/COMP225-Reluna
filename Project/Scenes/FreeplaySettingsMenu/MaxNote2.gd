@@ -22,7 +22,6 @@ func _ready():
 	print("gleveldata highest note ", GLevelData.highestNote)
 
 	if GLevelData.valid:
-		print("restoring note vals")
 		var highestNote = GLevelData.highestNote
 		_key_updated()
 		value = key.find(highestNote)
@@ -55,7 +54,8 @@ func _key_updated():
 	
 
 func _on_num_accidentals_value_changed(value):
-	_key_updated()
+	if self.is_inside_tree():
+		_key_updated()
 
 
 func _on_by_sharps_buttons_changed():
