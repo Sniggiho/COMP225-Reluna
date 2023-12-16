@@ -483,13 +483,25 @@ maxActualValue = 50
 height = 100.0
 
 [node name="Line2D" type="Line2D" parent="."]
-position = Vector2(920, 480)
+position = Vector2(920, 464)
 points = PackedVector2Array(0, 0, 0, 50)
 width = 4.0
 default_color = Color(0, 0, 0, 1)
 
 [node name="Line2D2" type="Line2D" parent="."]
-position = Vector2(1524, 479)
+position = Vector2(1524, 463)
+points = PackedVector2Array(0, 0, 0, 50)
+width = 4.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D" type="Line2D" parent="Line2D2"]
+position = Vector2(-1449, -206)
+points = PackedVector2Array(0, 0, 0, 50)
+width = 4.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Line2D2" type="Line2D" parent="Line2D2"]
+position = Vector2(-845, -206)
 points = PackedVector2Array(0, 0, 0, 50)
 width = 4.0
 default_color = Color(0, 0, 0, 1)
