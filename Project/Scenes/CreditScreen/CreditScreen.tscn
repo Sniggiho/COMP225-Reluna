@@ -31,6 +31,7 @@ offset_top = 352.0
 offset_right = 1538.0
 offset_bottom = 896.0
 theme_override_colors/default_color = Color(0.351563, 0.351563, 0.351563, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_font_sizes/normal_font_size = 48
 text = "Thank you to Lauren Milne for continued guidance and support for this project. Thank you to everyone in Macalester COMP225 Section 2 Fall '23 for all your input, feedback, and ideas. And thank you to our friends and housemates for putting up with the incessant plink plunk of out-of-tune notes as we developed this.
 Made in Godot 4.
