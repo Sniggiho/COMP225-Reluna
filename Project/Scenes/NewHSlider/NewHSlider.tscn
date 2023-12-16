@@ -7,7 +7,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_oc08h"]
 resource_local_to_scene = true
 shader = ExtResource("5_fu81e")
-shader_parameter/rightEdge = 0.451392
+shader_parameter/rightEdge = 0.408051
 shader_parameter/positiveTextColor = null
 shader_parameter/negativeTextColor = null
 
@@ -15,13 +15,14 @@ shader_parameter/negativeTextColor = null
 custom_minimum_size = Vector2(0, 50)
 offset_left = 254.0
 offset_top = 140.0
-offset_right = 1363.0
-offset_bottom = 430.0
+offset_right = 1264.0
+offset_bottom = 656.0
 max_value = 15.0
 value = 4.0
 script = ExtResource("1_176bh")
 text = "Label"
 margin = 4.0
+innerMargin = 30.0
 height = 50.0
 backgroundColor = Color(0.690196, 0.690196, 0.690196, 1)
 backgroundSelectedColor = Color(0.654902, 0.811765, 0.882353, 1)
@@ -32,33 +33,33 @@ negativeTextColor = Color(1, 1, 1, 1)
 layout_mode = 2
 offset_left = -4.0
 offset_top = -4.0
-offset_right = 1113.0
-offset_bottom = 294.0
+offset_right = 1014.0
+offset_bottom = 520.0
 mouse_filter = 2
 color = Color(0, 0, 0, 1)
 metadata/_edit_lock_ = true
 
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 2
-offset_right = 1109.0
-offset_bottom = 290.0
+offset_right = 1010.0
+offset_bottom = 516.0
 mouse_filter = 2
 color = Color(0.690196, 0.690196, 0.690196, 1)
 metadata/_edit_lock_ = true
 
 [node name="Selected" type="ColorRect" parent="."]
 layout_mode = 2
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 291.733
-offset_bottom = 286.0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 239.333
+offset_bottom = 486.0
 metadata/_edit_lock_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-custom_minimum_size = Vector2(1109, 290)
+custom_minimum_size = Vector2(1010, 516)
 layout_mode = 1
-offset_right = 1109.0
-offset_bottom = 290.0
+offset_right = 1010.0
+offset_bottom = 516.0
 metadata/_edit_lock_ = true
 
 [node name="Text" type="RichTextLabel" parent="CenterContainer"]
@@ -67,7 +68,7 @@ clip_contents = false
 layout_mode = 2
 mouse_filter = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
-theme_override_font_sizes/normal_font_size = 116
+theme_override_font_sizes/normal_font_size = 206
 text = "Label"
 fit_content = true
 scroll_active = false

@@ -3,6 +3,8 @@ extends Control
 
 @export var backgroundMargin : int = 4
 
+@export var innerMargin : float = 4
+
 @export var sharpPressed : bool = true
 @export var flatPressed : bool = false
 var doubleSelect : bool = true
@@ -78,11 +80,11 @@ func _process(_delta):
 	
 	
 	
-	$SharpButton/ColorRect.position = Vector2(backgroundMargin, backgroundMargin)
-	$SharpButton/ColorRect.size = $SharpButton.size - 2 * Vector2(backgroundMargin, backgroundMargin)
+	$SharpButton/ColorRect.position = Vector2(innerMargin, innerMargin)
+	$SharpButton/ColorRect.size = $SharpButton.size - 2 * Vector2(innerMargin, innerMargin)
 	
-	$FlatButton/ColorRect.position = Vector2(backgroundMargin, backgroundMargin)
-	$FlatButton/ColorRect.size = $FlatButton.size - 2 * Vector2(backgroundMargin, backgroundMargin)
+	$FlatButton/ColorRect.position = Vector2(innerMargin, innerMargin)
+	$FlatButton/ColorRect.size = $FlatButton.size - 2 * Vector2(innerMargin, innerMargin)
 	
 	$SharpButton/CenterContainer.size = $SharpButton.size
 	$FlatButton/CenterContainer.size = $FlatButton.size

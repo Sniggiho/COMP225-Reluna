@@ -12,6 +12,7 @@ anchors_preset = 0
 offset_right = 1309.0
 offset_bottom = 369.0
 script = ExtResource("1_b6lh1")
+innerMargin = 20.0
 sharpPressed = false
 negativeColor = Color(0.447059, 0.447059, 0.447059, 1)
 positiveColor = Color(1, 1, 1, 1)
@@ -58,10 +59,10 @@ metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="SharpButton"]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 648.5
-offset_bottom = 365.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 632.5
+offset_bottom = 349.0
 mouse_filter = 2
 color = Color(0.447059, 0.447059, 0.447059, 1)
 metadata/_edit_lock_ = true
@@ -95,10 +96,10 @@ metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="FlatButton"]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = 648.5
-offset_bottom = 365.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 632.5
+offset_bottom = 349.0
 mouse_filter = 2
 color = Color(0.447059, 0.447059, 0.447059, 1)
 metadata/_edit_lock_ = true

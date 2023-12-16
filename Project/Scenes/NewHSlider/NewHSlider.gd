@@ -13,6 +13,8 @@ class_name NewHSlider
 ## Margin number of pixels for a border
 @export var margin : float = 20
 
+@export var innerMargin : float = 10
+
 ## A given height
 @export var height : float = 20
 
@@ -68,9 +70,9 @@ func _process(_delta):
 func _updateSelectedSize() -> void:
 	if not flip:
 		# Improved so while (min_value < max_value), min_value can be anything and the bar still works
-		$Selected.position = Vector2(margin, margin)
-		$Selected.size.x = (value - min_value) / (max_value - min_value) * self.size.x - 2 * margin
-		$Selected.size.y = self.size.y - 2 * margin
+		$Selected.position = Vector2(innerMargin, innerMargin)
+		$Selected.size.x = (value - min_value) / (max_value - min_value) * self.size.x - 2 * innerMargin
+		$Selected.size.y = self.size.y - 2 * innerMargin
 		
 		if $Selected.size.x < 5:
 			$Selected.size.x = 5
