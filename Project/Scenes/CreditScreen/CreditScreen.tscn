@@ -12,6 +12,7 @@ offset_left = 432.0
 offset_top = 66.0
 offset_right = 1217.0
 offset_bottom = 216.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 text = "Reluna, 2023
 "
 
@@ -21,6 +22,7 @@ offset_top = 267.0
 offset_right = 2597.0
 offset_bottom = 417.0
 scale = Vector2(0.6, 0.6)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 text = "Ethan Scheelk, Rhys O'Higgins, Jeff Wang
 "
 
@@ -30,6 +32,7 @@ offset_top = 408.0
 offset_right = 1571.0
 offset_bottom = 880.0
 theme_override_colors/default_color = Color(0.351563, 0.351563, 0.351563, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_font_sizes/normal_font_size = 48
 text = "Thank you to Lauren Milne for continued guidance and support for this project. Thank you to everyone in Macalester COMP225 Section 2 Fall '23 for all your input, feedback, and ideas. And thank you to our friends and housemates for putting up with the incessant plink plunk of out-of-tune notes as we developed this.
 

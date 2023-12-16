@@ -100,6 +100,7 @@ offset_top = 4.0
 offset_right = 648.5
 offset_bottom = 365.0
 mouse_filter = 2
+color = Color(0.447059, 0.447059, 0.447059, 1)
 metadata/_edit_lock_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="FlatButton"]
@@ -111,7 +112,7 @@ metadata/_edit_lock_ = true
 [node name="RichTextLabel" type="RichTextLabel" parent="FlatButton/CenterContainer"]
 layout_mode = 2
 mouse_filter = 2
-theme_override_colors/default_color = Color(0.164706, 0.717647, 0.921569, 1)
+theme_override_colors/default_color = Color(0.207843, 0.207843, 0.207843, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 theme_override_font_sizes/normal_font_size = 147
 text = "Flat"
