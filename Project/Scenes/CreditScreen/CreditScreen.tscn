@@ -25,13 +25,15 @@ text = "Ethan Scheelk, Rhys O'Higgins, Jeff Wang
 "
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_left = 32.0
+offset_left = 36.0
 offset_top = 408.0
-offset_right = 1576.0
-offset_bottom = 872.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/normal_font_size = 40
-text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+offset_right = 1571.0
+offset_bottom = 880.0
+theme_override_colors/default_color = Color(0.351563, 0.351563, 0.351563, 1)
+theme_override_font_sizes/normal_font_size = 48
+text = "Thank you to Lauren Milne for continued guidance and support for this project. Thank you to everyone in Macalester COMP225 Section 2 Fall '23 for all your input, feedback, and ideas. And thank you to our friends and housemates for putting up with the incessant plink plunk of out-of-tune notes as we developed this.
+
+Made in Godot 4.
 "
 
 [node name="Return" type="TextureButton" parent="."]
