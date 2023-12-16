@@ -4,7 +4,7 @@ extends NewHSlider
 signal minNoteChanged(passedValue : int)
 
 var highestNoteAllowed = "c6" # this is exclusive! meaning the highest is really c6
-var lowestNoteAllowed = "a3"
+var lowestNoteAllowed = "c4"
 
 var _tuneCreatorScene : PackedScene = preload("res://Scenes/TuneCreator/tune_creator.tscn")
 var _tuneCreator : TuneCreator

@@ -3,16 +3,14 @@
 [ext_resource type="Script" path="res://Scenes/TutorialMenu/tutorialScreen.gd" id="1_kmdq0"]
 [ext_resource type="PackedScene" uid="uid://34403u2svqws" path="res://Scenes/TutorialButton/tutorialButton.tscn" id="2_ydgpw"]
 [ext_resource type="Texture2D" uid="uid://corvs4jhdgfk3" path="res://RelunaIcons/backArrow.png" id="3_gpd1r"]
-[ext_resource type="Texture2D" uid="uid://71tu2ixgeqk8" path="res://RelunaIcons/backArrowFilled.png" id="4_poun2"]
+[ext_resource type="Texture2D" uid="uid://dqg26wq4ious3" path="res://RelunaIcons/backArrowFocused.png" id="4_8vjau"]
 
 [node name="tutorialScreen" type="Node2D"]
 script = ExtResource("1_kmdq0")
 
 [node name="Level1" parent="." instance=ExtResource("2_ydgpw")]
-offset_left = 57.0
-offset_top = 144.0
-offset_right = 351.0
-offset_bottom = 480.0
+offset_top = 220.0
+offset_bottom = 556.0
 focus_neighbor_left = NodePath("../ReturnButton")
 focus_neighbor_top = NodePath("../ReturnButton")
 focus_neighbor_right = NodePath("../Level2")
@@ -21,10 +19,10 @@ text = "1"
 tutorialNum = "1"
 
 [node name="Level2" parent="." instance=ExtResource("2_ydgpw")]
-offset_left = 301.0
-offset_top = 146.0
-offset_right = 597.0
-offset_bottom = 482.0
+offset_left = 263.0
+offset_top = 222.0
+offset_right = 559.0
+offset_bottom = 558.0
 focus_neighbor_left = NodePath("../Level1")
 focus_neighbor_right = NodePath("../Level3")
 focus_neighbor_bottom = NodePath("../Level8")
@@ -32,10 +30,10 @@ text = "2"
 tutorialNum = "2"
 
 [node name="Level3" parent="." instance=ExtResource("2_ydgpw")]
-offset_left = 548.0
-offset_top = 143.0
-offset_right = 842.0
-offset_bottom = 479.0
+offset_left = 530.0
+offset_top = 219.0
+offset_right = 824.0
+offset_bottom = 555.0
 focus_neighbor_left = NodePath("../Level2")
 focus_neighbor_right = NodePath("../Level4")
 focus_neighbor_bottom = NodePath("../Level9")
@@ -43,10 +41,10 @@ text = "3"
 tutorialNum = "3"
 
 [node name="Level4" parent="." instance=ExtResource("2_ydgpw")]
-offset_left = 783.0
-offset_top = 146.0
-offset_right = 1077.0
-offset_bottom = 482.0
+offset_left = 791.0
+offset_top = 222.0
+offset_right = 1085.0
+offset_bottom = 558.0
 focus_neighbor_left = NodePath("../Level3")
 focus_neighbor_right = NodePath("../Level5")
 focus_neighbor_bottom = NodePath("../Level10")
@@ -54,10 +52,10 @@ text = "4"
 tutorialNum = "4"
 
 [node name="Level5" parent="." instance=ExtResource("2_ydgpw")]
-offset_left = 1022.0
-offset_top = 147.0
-offset_right = 1316.0
-offset_bottom = 483.0
+offset_left = 1045.0
+offset_top = 223.0
+offset_right = 1339.0
+offset_bottom = 559.0
 focus_neighbor_left = NodePath("../Level4")
 focus_neighbor_right = NodePath("../Level6")
 focus_neighbor_bottom = NodePath("../Level11")
@@ -65,30 +63,30 @@ text = "5"
 tutorialNum = "5"
 
 [node name="Level6" parent="." instance=ExtResource("2_ydgpw")]
-offset_left = 1256.0
-offset_top = 148.0
-offset_right = 1550.0
-offset_bottom = 484.0
+offset_left = 1296.0
+offset_top = 224.0
+offset_right = 1590.0
+offset_bottom = 560.0
 focus_neighbor_left = NodePath("../Level5")
 focus_neighbor_bottom = NodePath("../Level12")
 text = "6"
 tutorialNum = "6"
 
 [node name="Level7" parent="." instance=ExtResource("2_ydgpw")]
-offset_left = 57.0
-offset_top = 466.0
-offset_right = 351.0
-offset_bottom = 802.0
+offset_left = 4.0
+offset_top = 494.0
+offset_right = 298.0
+offset_bottom = 830.0
 focus_neighbor_top = NodePath("../Level1")
 focus_neighbor_right = NodePath("../Level8")
 text = "7"
 tutorialNum = "7"
 
 [node name="Level8" parent="." instance=ExtResource("2_ydgpw")]
-offset_left = 305.0
-offset_top = 468.0
-offset_right = 599.0
-offset_bottom = 804.0
+offset_left = 270.0
+offset_top = 496.0
+offset_right = 564.0
+offset_bottom = 832.0
 focus_neighbor_left = NodePath("../Level7")
 focus_neighbor_top = NodePath("../Level2")
 focus_neighbor_right = NodePath("../Level9")
@@ -96,10 +94,10 @@ text = "8"
 tutorialNum = "8"
 
 [node name="Level9" parent="." instance=ExtResource("2_ydgpw")]
-offset_left = 548.0
-offset_top = 465.0
-offset_right = 842.0
-offset_bottom = 801.0
+offset_left = 533.0
+offset_top = 493.0
+offset_right = 827.0
+offset_bottom = 829.0
 focus_neighbor_left = NodePath("../Level8")
 focus_neighbor_top = NodePath("../Level3")
 focus_neighbor_right = NodePath("../Level10")
@@ -107,10 +105,10 @@ text = "9"
 tutorialNum = "9"
 
 [node name="Level10" parent="." instance=ExtResource("2_ydgpw")]
-offset_left = 785.0
-offset_top = 468.0
-offset_right = 1079.0
-offset_bottom = 804.0
+offset_left = 796.0
+offset_top = 496.0
+offset_right = 1090.0
+offset_bottom = 832.0
 focus_neighbor_left = NodePath("../Level9")
 focus_neighbor_top = NodePath("../Level4")
 focus_neighbor_right = NodePath("../Level11")
@@ -118,10 +116,10 @@ text = "10"
 tutorialNum = "10"
 
 [node name="Level11" parent="." instance=ExtResource("2_ydgpw")]
-offset_left = 1022.0
-offset_top = 469.0
-offset_right = 1316.0
-offset_bottom = 805.0
+offset_left = 1048.0
+offset_top = 497.0
+offset_right = 1342.0
+offset_bottom = 833.0
 focus_neighbor_left = NodePath("../Level10")
 focus_neighbor_top = NodePath("../Level5")
 focus_neighbor_right = NodePath("../Level12")
@@ -129,10 +127,10 @@ text = "11"
 tutorialNum = "11"
 
 [node name="Level12" parent="." instance=ExtResource("2_ydgpw")]
-offset_left = 1256.0
-offset_top = 470.0
-offset_right = 1550.0
-offset_bottom = 808.0
+offset_left = 1299.0
+offset_top = 498.0
+offset_right = 1593.0
+offset_bottom = 836.0
 focus_neighbor_left = NodePath("../Level11")
 focus_neighbor_top = NodePath("../Level6")
 focus_neighbor_right = NodePath("../NextButton")
@@ -141,29 +139,39 @@ text = "12"
 tutorialNum = "12"
 
 [node name="NextButton" type="TextureButton" parent="."]
-offset_left = 1443.0
-offset_top = 746.0
-offset_right = 1683.0
-offset_bottom = 986.0
-scale = Vector2(0.663342, 0.580939)
+offset_left = 1386.0
+offset_top = 44.0
+offset_right = 1626.0
+offset_bottom = 284.0
+scale = Vector2(0.75, 0.75)
 focus_neighbor_left = NodePath("../Level12")
 focus_neighbor_top = NodePath("../Level12")
 texture_normal = ExtResource("3_gpd1r")
-texture_hover = ExtResource("4_poun2")
-texture_focused = ExtResource("4_poun2")
+texture_hover = ExtResource("4_8vjau")
+texture_focused = ExtResource("4_8vjau")
 flip_h = true
 
 [node name="ReturnButton" type="TextureButton" parent="."]
-offset_left = 16.0
-offset_top = 12.0
-offset_right = 256.0
-offset_bottom = 252.0
-scale = Vector2(0.423342, 0.423342)
+offset_left = 26.0
+offset_top = 38.0
+offset_right = 266.0
+offset_bottom = 278.0
+scale = Vector2(0.75, 0.75)
 focus_neighbor_right = NodePath("../Level1")
 focus_neighbor_bottom = NodePath("../Level1")
 texture_normal = ExtResource("3_gpd1r")
-texture_hover = ExtResource("4_poun2")
-texture_focused = ExtResource("4_poun2")
+texture_hover = ExtResource("4_8vjau")
+texture_focused = ExtResource("4_8vjau")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 258.0
+offset_top = 53.0
+offset_right = 1353.0
+offset_bottom = 203.0
+text = "Tutorial Levels
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="pressed" from="ReturnButton" to="." method="_on_return_button_pressed"]

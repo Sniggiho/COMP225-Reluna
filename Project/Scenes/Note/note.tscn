@@ -58,9 +58,9 @@ focus_mode = 2
 script = ExtResource("1_2wmyl")
 
 [node name="SelectedImage" type="Sprite2D" parent="."]
-modulate = Color(0, 1, 1, 1)
+light_mask = 0
 position = Vector2(2, -71)
-scale = Vector2(0.079, 0.079)
+scale = Vector2(0.08, 0.08)
 texture = ExtResource("2_e4kmj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

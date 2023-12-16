@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dq0mp8xmuh00" path="res://Scenes/MusicStaff/MusicStaff.tscn" id="2_sj7hj"]
 [ext_resource type="Script" path="res://Scenes/LevelManager/LevelManager.gd" id="3_h6u58"]
 [ext_resource type="Texture2D" uid="uid://corvs4jhdgfk3" path="res://RelunaIcons/backArrow.png" id="4_mrgby"]
-[ext_resource type="Texture2D" uid="uid://71tu2ixgeqk8" path="res://RelunaIcons/backArrowFilled.png" id="5_o5k85"]
+[ext_resource type="Texture2D" uid="uid://dqg26wq4ious3" path="res://RelunaIcons/backArrowFocused.png" id="5_objsu"]
 [ext_resource type="Texture2D" uid="uid://f7byr3m2so4i" path="res://RelunaIcons/play empty.png" id="6_qjtma"]
 [ext_resource type="Texture2D" uid="uid://ikn1k8wp15am" path="res://RelunaIcons/playHighlighted.png" id="7_3mv0h"]
 [ext_resource type="Script" path="res://Scenes/GameScene/PlayButton.gd" id="8_3d3gp"]
@@ -20,7 +20,7 @@
 script = ExtResource("1_l8c6x")
 
 [node name="MusicStaff" parent="." instance=ExtResource("2_sj7hj")]
-position = Vector2(80, 250)
+position = Vector2(80, 316)
 
 [node name="LevelManager" type="Node2D" parent="." node_paths=PackedStringArray("musicStaff")]
 position = Vector2(-1, 0)
@@ -35,14 +35,14 @@ musicStaff = NodePath("../MusicStaff")
 bpm = 500
 
 [node name="ReturnButton" type="TextureButton" parent="."]
-offset_left = 15.0
-offset_top = 11.0
-offset_right = 255.0
-offset_bottom = 251.0
-scale = Vector2(0.399999, 0.399999)
+offset_left = 22.0
+offset_top = 25.0
+offset_right = 262.0
+offset_bottom = 265.0
+scale = Vector2(0.75, 0.75)
 texture_normal = ExtResource("4_mrgby")
-texture_hover = ExtResource("5_o5k85")
-texture_focused = ExtResource("5_o5k85")
+texture_hover = ExtResource("5_objsu")
+texture_focused = ExtResource("5_objsu")
 
 [node name="PlayButton" type="TextureButton" parent="."]
 offset_left = 681.0
@@ -173,30 +173,34 @@ theme_type_variation = &"popupButtons"
 text = " next "
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-offset_right = 1600.0
-offset_bottom = 115.0
+offset_left = 15.0
+offset_top = 52.0
+offset_right = 1615.0
+offset_bottom = 176.0
 mouse_filter = 2
 
 [node name="DisplayText" type="RichTextLabel" parent="CenterContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 mouse_filter = 2
-theme_override_colors/default_color = Color(0.164706, 0.717647, 0.921569, 1)
+theme_override_colors/default_color = Color(0.305882, 0.305882, 0.305882, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
-theme_override_font_sizes/normal_font_size = 64
-text = "Select the two notes that are out of tune"
+theme_override_font_sizes/normal_font_size = 90
+text = "select 1 out of tune note
+"
 fit_content = true
 scroll_active = false
 autowrap_mode = 0
 script = ExtResource("15_eekbl")
 
 [node name="ColorRect" type="ColorRect" parent="CenterContainer/DisplayText"]
+visible = false
 show_behind_parent = true
 layout_mode = 0
 offset_left = -175.0
-offset_top = -20.0
+offset_top = -12.0
 offset_right = 1426.0
-offset_bottom = 106.0
+offset_bottom = 114.0
 color = Color(1, 1, 1, 0.301961)
 
 [connection signal="pressed" from="ReturnButton" to="LevelManager" method="_on_return_button_pressed"]

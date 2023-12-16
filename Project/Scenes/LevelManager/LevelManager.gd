@@ -146,6 +146,9 @@ func checkPlayerInput():
 		incorrectText.visible = false
 		returnButton.visible = false
 		nextButton.visible = true
+		
+		if not GLevelData.currentTut in GLevelData.completedTuts:
+			GLevelData.completedTuts.append(GLevelData.currentTut)
 	## not correct
 	else:
 		attempts = attempts + 1
@@ -165,8 +168,6 @@ func _reset():
 	if GLevelData.tutorial: # if it's a tutorial, go to the next one
 		var nextTutNum = GLevelData.currentTut + 1
 		
-		if not GLevelData.currentTut in GLevelData.completedTuts:
-			GLevelData.completedTuts.append(GLevelData.currentTut)
 		
 		if nextTutNum > len(GTutorialMenu.tutMenu):
 			SceneTransition.change_scene(GLevelData.prevScene)
