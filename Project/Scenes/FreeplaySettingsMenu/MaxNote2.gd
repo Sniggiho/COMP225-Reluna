@@ -11,6 +11,8 @@ var _tuneCreator : TuneCreator
 
 var key : Array
 
+var sliderReady : bool = false
+
 func _init():
 	_tuneCreator = _tuneCreatorScene.instantiate()
 	add_child(_tuneCreator)
@@ -30,6 +32,8 @@ func _ready():
 		_key_updated()
 		value = len(key) -1#accidentals, bySharps, lowestNote, highestNote
 		GLevelData.highestNote = key[value]
+	
+	sliderReady = true
 
 
 func _on_value_changed_derived(passedValue):
@@ -54,12 +58,12 @@ func _key_updated():
 	
 
 func _on_num_accidentals_value_changed(value):
-	if self.is_inside_tree():
+	if self.sliderReady:
 		_key_updated()
 
 
 func _on_by_sharps_buttons_changed():
-	if self.is_inside_tree():
+	if self.sliderReady:
 		_key_updated()
 
 

@@ -27,4 +27,3 @@ func _on_button_pressed():
 func _goto_main_menu():
 	GLevelData.valid = false
 	SceneTransition.change_scene("res://Scenes/MainMenu/menuScreen.tscn")
-	pass

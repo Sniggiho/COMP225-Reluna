@@ -4,7 +4,7 @@ extends Control
 @export var backgroundMargin : int = 4
 
 @export var sharpPressed : bool = true
-@export var flatPressed : bool = true
+@export var flatPressed : bool = false
 var doubleSelect : bool = true
 
 @export var neutralColor : Color = Color("b0b0b0")
@@ -33,9 +33,6 @@ signal buttonsChanged
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if type == option.AccidentalChoice:
-		pass
-#		$SharpButton.grab_focus()
 		
 	if topFocus:
 		$SharpButton.focus_neighbor_top = $SharpButton.get_path_to(topFocus)
@@ -52,7 +49,8 @@ func _ready():
 			sharpPressed = GLevelData.bySharps
 			flatPressed = !GLevelData.bySharps
 		_updateButtonColor()
-			
+	elif type == option.AccidentalChoice:
+		GLevelData.bySharps = sharpPressed
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -142,8 +140,6 @@ func getFlatButton() -> Button:
 func _setButtonText() -> void:
 	$SharpButton/CenterContainer/RichTextLabel.text = leftLabel
 	$FlatButton/CenterContainer/RichTextLabel.text = rightLabel
-		
-	pass
 
 
 func _on_sharp_button_pressed():

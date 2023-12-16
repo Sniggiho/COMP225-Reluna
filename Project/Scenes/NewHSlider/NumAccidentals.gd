@@ -9,9 +9,6 @@ func _ready():
 		value = GLevelData.numAccidentals
 	updateLabel(str(value))
 	GLevelData.numAccidentals = value
-	
-
-
 
 
 func _on_value_changed_derived(passedValue):
