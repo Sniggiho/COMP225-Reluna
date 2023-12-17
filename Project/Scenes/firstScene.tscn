@@ -1,0 +1,166 @@
+[gd_scene load_steps=12 format=3 uid="uid://c1qqxujrvquvy"]
+
+[ext_resource type="Script" path="res://Scenes/AudioStreamPlayerTest.gd" id="1_x644u"]
+[ext_resource type="Script" path="res://Scenes/LevelManager/LevelManager.gd" id="1_xad2n"]
+[ext_resource type="Texture2D" uid="uid://b8vml561x4g7f" path="res://TempImage/cartoonPlayButton.png" id="3_5h0i4"]
+[ext_resource type="Texture2D" uid="uid://bw3glh7arhfak" path="res://TempImage/cartoonCheckButton.png" id="4_t0ppk"]
+[ext_resource type="PackedScene" uid="uid://dq0mp8xmuh00" path="res://Scenes/MusicStaff/MusicStaff.tscn" id="5_bafn2"]
+[ext_resource type="Script" path="res://Scenes/DisplayText.gd" id="5_k5ivr"]
+[ext_resource type="Texture2D" uid="uid://dcgiumtxtfa4f" path="res://TempImage/cartoonResetButton.png" id="5_qdbmx"]
+[ext_resource type="Script" path="res://Scenes/FeedbackPopup.gd" id="5_r4b1t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_glx47"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_axlb3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_msstd"]
+
+[node name="Main" type="Node2D"]
+
+[node name="MusicStaff" parent="." instance=ExtResource("5_bafn2")]
+position = Vector2(77, 179)
+
+[node name="LevelManager" type="Node2D" parent="." node_paths=PackedStringArray("musicStaff")]
+position = Vector2(-1, 0)
+script = ExtResource("1_xad2n")
+numAccidentals = 2
+bySharp = false
+maxDetuneCents = 40
+minDetuneCents = 30
+musicStaff = NodePath("../MusicStaff")
+
+[node name="PlayButton" type="Button" parent="."]
+offset_left = 636.0
+offset_top = 536.0
+offset_right = 1156.0
+offset_bottom = 1056.0
+scale = Vector2(0.54673, 0.520001)
+size_flags_horizontal = 4
+theme_override_colors/font_hover_color = Color(0.517647, 0.498039, 0.886275, 1)
+theme_override_colors/icon_hover_color = Color(0.517647, 0.498039, 0.886275, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_glx47")
+icon = ExtResource("3_5h0i4")
+flat = true
+icon_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CheckButton" type="Button" parent="."]
+offset_left = 1123.0
+offset_top = 675.0
+offset_right = 1643.0
+offset_bottom = 1195.0
+scale = Vector2(0.342164, 0.325416)
+theme_override_colors/font_hover_color = Color(0.517647, 0.498039, 0.886275, 1)
+theme_override_colors/icon_hover_color = Color(0.517647, 0.498039, 0.886275, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.517647, 0.498039, 0.886275, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_axlb3")
+icon = ExtResource("4_t0ppk")
+flat = true
+icon_alignment = 1
+
+[node name="ResetButton" type="Button" parent="."]
+offset_left = 237.0
+offset_top = 675.0
+offset_right = 757.0
+offset_bottom = 1195.0
+scale = Vector2(0.327103, 0.320003)
+theme_override_colors/font_hover_color = Color(0.517647, 0.498039, 0.886275, 1)
+theme_override_colors/icon_hover_color = Color(0.517647, 0.498039, 0.886275, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.517647, 0.498039, 0.886275, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_msstd")
+icon = ExtResource("5_qdbmx")
+flat = true
+metadata/_edit_group_ = true
+
+[node name="ResetButton" type="Button" parent="ResetButton"]
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 121.0
+scale = Vector2(5, 4.28)
+flat = true
+
+[node name="Debug" type="Node" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Debug"]
+visible = false
+offset_right = 196.0
+offset_bottom = 126.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Debug"]
+visible = false
+offset_right = 276.0
+offset_bottom = 146.0
+text = "Hello World!"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Debug"]
+volume_db = -80.0
+script = ExtResource("1_x644u")
+
+[node name="ButtonForDetuned" type="Button" parent="Debug"]
+visible = false
+offset_left = 338.0
+offset_top = 376.0
+offset_right = 751.0
+offset_bottom = 478.0
+text = "press for detuned a3"
+
+[node name="ButtonForInTune" type="Button" parent="Debug"]
+visible = false
+offset_left = 337.0
+offset_top = 184.0
+offset_right = 743.0
+offset_bottom = 285.0
+text = "Press for in tune a3"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+offset_right = 1600.0
+offset_bottom = 900.0
+color = Color(0.262745, 0.262745, 0.262745, 0.494118)
+
+[node name="Popup" type="Popup" parent="."]
+title = "Feedback"
+initial_position = 1
+size = Vector2i(901, 615)
+script = ExtResource("5_r4b1t")
+
+[node name="feedbackTemp" type="RichTextLabel" parent="Popup"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.5
+offset_top = -11.5
+offset_right = 46.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "I popped up"
+fit_content = true
+autowrap_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="Popup"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DisplayText" type="RichTextLabel" parent="."]
+offset_left = 443.0
+offset_top = 37.0
+offset_right = 833.0
+offset_bottom = 77.0
+scale = Vector2(2.40627, 2.40627)
+mouse_filter = 2
+text = "Select the two notes that are out of tune"
+script = ExtResource("5_k5ivr")
+
+[connection signal="pressed" from="PlayButton" to="MusicStaff" method="_on_play_button_pressed"]
+[connection signal="pressed" from="CheckButton" to="LevelManager" method="checkPlayerInput"]
+[connection signal="pressed" from="CheckButton" to="Popup" method="_on_check_button_pressed"]
+[connection signal="pressed" from="ResetButton" to="LevelManager" method="_reset"]
+[connection signal="pressed" from="ResetButton/ResetButton" to="LevelManager" method="_reset"]
+[connection signal="pressed" from="Debug/ButtonForDetuned" to="Debug/AudioStreamPlayer" method="_on_button_pressed"]
+[connection signal="pressed" from="Debug/ButtonForInTune" to="Debug/AudioStreamPlayer" method="_on_button_for_in_tune_pressed"]

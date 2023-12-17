@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://bj1ewdk7i3gkk"]
+
+[ext_resource type="PackedScene" uid="uid://34403u2svqws" path="res://Scenes/TutorialButton/tutorialButton.tscn" id="1_ph1mo"]
+
+[node name="tutorialScreen" type="Node2D"]
+
+[node name="tutorialButton" parent="." instance=ExtResource("1_ph1mo")]
+offset_left = 120.0
+offset_top = 73.0
+offset_right = 224.0
+offset_bottom = 169.0
+tutorialNum = "1"
+
+[node name="tutorialButton2" parent="." instance=ExtResource("1_ph1mo")]
+offset_left = 544.0
+offset_top = 93.0
+offset_right = 838.0
+offset_bottom = 429.0
+tutorialNum = "2"
+
+[node name="tutorialButton3" parent="." instance=ExtResource("1_ph1mo")]
+offset_left = 999.0
+offset_top = 114.0
+offset_right = 1293.0
+offset_bottom = 450.0
+tutorialNum = "3"

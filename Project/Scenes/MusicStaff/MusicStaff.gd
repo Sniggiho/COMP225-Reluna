@@ -90,4 +90,5 @@ func getLineHeight() -> float:
 	
 
 
-
+func _on_play_button_pressed():
+	playBar.play()
