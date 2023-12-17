@@ -61,6 +61,7 @@ func setUpFocusNeighbors() -> void:
 	notes = $LevelManager.getTuneCreator().getListOfNotes()
 	playButton.focus_neighbor_top = playButton.get_path_to(notes[middleNote].get_node("Button"))
 	checkButton.focus_neighbor_top = checkButton.get_path_to(notes[middleNote].get_node("Button"))
+	hintButton.focus_neighbor_top = hintButton.get_path_to(notes[middleNote].get_node("Button"))
 	notes[middleNote].get_node("Button").focus_neighbor_bottom = notes[middleNote].get_node("Button").get_path_to(playButton)
 	returnButton.focus_neighbor_bottom = returnButton.get_path_to(notes[middleNote].get_node("Button"))
 	for i in len(notes) - 1:
