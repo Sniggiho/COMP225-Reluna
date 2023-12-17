@@ -135,9 +135,15 @@ func checkPlayerInput():
 	var attemptText = get_parent().find_child('Feedback').find_child('Attempts')
 	var returnButton = get_parent().find_child("Feedback").find_child("ReturnButton")
 	var nextButton = get_parent().find_child("Feedback").find_child("NextButton")
+	var confetti1 = get_parent().find_child('Confetti1')
+	var confetti2 = get_parent().find_child('Confetti2')
+	var confetti3 = get_parent().find_child('Confetti3')
 	
 	## if it is correct
 	if correct:
+		confetti1.emitting = true
+		confetti2.emitting = true
+		confetti3.emitting = true
 		print("Yay you were correct!")
 		attempts = attempts + 1
 		attemptText.text = "[center]Attempts: " + str(attempts)

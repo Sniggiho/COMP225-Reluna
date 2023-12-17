@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1qqxujrvquvy"]
+[gd_scene load_steps=21 format=3 uid="uid://c1qqxujrvquvy"]
 
 [ext_resource type="Script" path="res://Scenes/GameScene/firstScene.gd" id="1_l8c6x"]
 [ext_resource type="PackedScene" uid="uid://dq0mp8xmuh00" path="res://Scenes/MusicStaff/MusicStaff.tscn" id="2_sj7hj"]
@@ -15,6 +15,26 @@
 [ext_resource type="Texture2D" uid="uid://bojfpfwpd3vbg" path="res://RelunaIcons/hintHighlighted.png" id="13_t2esq"]
 [ext_resource type="Script" path="res://Scenes/GameScene/Feedback.gd" id="14_2v74r"]
 [ext_resource type="Script" path="res://Scenes/GameScene/DisplayText.gd" id="15_eekbl"]
+[ext_resource type="Texture2D" uid="uid://bgcvedclm2g57" path="res://TempImage/confetti.png" id="16_f2omy"]
+
+[sub_resource type="Curve" id="Curve_mjbet"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_apihe"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.990498, 0.261774), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_nk5cj"]
+offsets = PackedFloat32Array(0, 0.629139, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.77, 0.7623, 0.763583, 1, 1, 1, 1, 0)
+
+[sub_resource type="Curve" id="Curve_1bsu5"]
+min_value = -1.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.998765, -0.254107), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_l8c6x")
@@ -88,7 +108,7 @@ color = Color(0.262745, 0.262745, 0.262745, 0.494118)
 
 [node name="Feedback" type="Window" parent="."]
 initial_position = 1
-size = Vector2i(1300, 650)
+size = Vector2i(1000, 500)
 visible = false
 transient = true
 exclusive = true
@@ -206,6 +226,96 @@ offset_top = -12.0
 offset_right = 1426.0
 offset_bottom = 114.0
 color = Color(1, 1, 1, 0.301961)
+
+[node name="Confetti1" type="CPUParticles2D" parent="."]
+top_level = true
+visibility_layer = 31
+position = Vector2(1259, 327)
+emitting = false
+amount = 20
+lifetime = 3.5
+one_shot = true
+explosiveness = 0.8
+randomness = 0.1
+fract_delta = false
+texture = ExtResource("16_f2omy")
+emission_shape = 4
+emission_points = PackedVector2Array()
+emission_colors = PackedColorArray()
+direction = Vector2(0.2, -1)
+spread = 15.0
+gravity = Vector2(2.08165e-12, 982)
+initial_velocity_min = 631.31
+initial_velocity_max = 813.12
+angular_velocity_min = 36.36
+angular_velocity_max = 109.09
+angular_velocity_curve = SubResource("Curve_mjbet")
+scale_amount_min = 0.0
+scale_amount_curve = SubResource("Curve_apihe")
+color_ramp = SubResource("Gradient_nk5cj")
+hue_variation_curve = SubResource("Curve_1bsu5")
+anim_speed_min = 3.23
+anim_speed_max = 11.64
+
+[node name="Confetti2" type="CPUParticles2D" parent="."]
+top_level = true
+visibility_layer = 31
+position = Vector2(443, 323)
+emitting = false
+amount = 20
+lifetime = 3.5
+one_shot = true
+explosiveness = 0.8
+randomness = 0.1
+fract_delta = false
+texture = ExtResource("16_f2omy")
+emission_shape = 4
+emission_points = PackedVector2Array()
+emission_colors = PackedColorArray()
+direction = Vector2(-0.2, -1)
+spread = 15.0
+gravity = Vector2(2.08165e-12, 982)
+initial_velocity_min = 631.31
+initial_velocity_max = 813.12
+angular_velocity_min = 36.36
+angular_velocity_max = 109.09
+angular_velocity_curve = SubResource("Curve_mjbet")
+scale_amount_min = 0.0
+scale_amount_curve = SubResource("Curve_apihe")
+color_ramp = SubResource("Gradient_nk5cj")
+hue_variation_curve = SubResource("Curve_1bsu5")
+anim_speed_min = 3.23
+anim_speed_max = 11.64
+
+[node name="Confetti3" type="CPUParticles2D" parent="."]
+top_level = true
+visibility_layer = 31
+position = Vector2(828, 325)
+emitting = false
+amount = 25
+lifetime = 3.5
+one_shot = true
+explosiveness = 0.8
+randomness = 0.1
+fract_delta = false
+texture = ExtResource("16_f2omy")
+emission_shape = 4
+emission_points = PackedVector2Array()
+emission_colors = PackedColorArray()
+direction = Vector2(2.08165e-12, -1)
+spread = 25.0
+gravity = Vector2(2.08165e-12, 982)
+initial_velocity_min = 631.31
+initial_velocity_max = 813.12
+angular_velocity_min = 36.36
+angular_velocity_max = 109.09
+angular_velocity_curve = SubResource("Curve_mjbet")
+scale_amount_min = 0.0
+scale_amount_curve = SubResource("Curve_apihe")
+color_ramp = SubResource("Gradient_nk5cj")
+hue_variation_curve = SubResource("Curve_1bsu5")
+anim_speed_min = 3.23
+anim_speed_max = 11.64
 
 [connection signal="pressed" from="ReturnButton" to="LevelManager" method="_on_return_button_pressed"]
 [connection signal="mouse_entered" from="PlayButton" to="PlayButton" method="_on_mouse_entered"]
