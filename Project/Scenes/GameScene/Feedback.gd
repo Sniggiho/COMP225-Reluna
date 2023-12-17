@@ -6,10 +6,10 @@ extends Window
 ## to the next level
 
 ## return button
-@onready var _returnButton = $PanelContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/ReturnButton
+@onready var _returnButton = $PanelContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/ReturnButton
 
 ## next button
-@onready var _nextButton = $PanelContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/NextButton
+@onready var _nextButton = $PanelContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/NextButton
 
 ## controls button functionality of feedback screen
 ## "esc" allows for user to force quit and return to current level

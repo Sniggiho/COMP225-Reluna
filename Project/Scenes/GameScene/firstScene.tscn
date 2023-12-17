@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c1qqxujrvquvy"]
+[gd_scene load_steps=23 format=3 uid="uid://c1qqxujrvquvy"]
 
 [ext_resource type="Script" path="res://Scenes/GameScene/firstScene.gd" id="1_l8c6x"]
 [ext_resource type="PackedScene" uid="uid://dq0mp8xmuh00" path="res://Scenes/MusicStaff/MusicStaff.tscn" id="2_sj7hj"]
@@ -14,8 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://cxbfhp8by63gd" path="res://RelunaIcons/hint.png" id="12_stwnp"]
 [ext_resource type="Texture2D" uid="uid://bojfpfwpd3vbg" path="res://RelunaIcons/hintHighlighted.png" id="13_t2esq"]
 [ext_resource type="Script" path="res://Scenes/GameScene/Feedback.gd" id="14_2v74r"]
+[ext_resource type="Script" path="res://Scenes/GameScene/CorrectSound.gd" id="15_dvoha"]
 [ext_resource type="Script" path="res://Scenes/GameScene/DisplayText.gd" id="15_eekbl"]
 [ext_resource type="Texture2D" uid="uid://bgcvedclm2g57" path="res://TempImage/confetti.png" id="16_f2omy"]
+[ext_resource type="Script" path="res://Scenes/GameScene/IncorrectSound.gd" id="16_x0eif"]
 
 [sub_resource type="Curve" id="Curve_mjbet"]
 min_value = -360.0
@@ -141,6 +143,7 @@ theme_override_constants/margin_bottom = 10
 [node name="VBoxContainer" type="VBoxContainer" parent="Feedback/PanelContainer/CenterContainer/MarginContainer"]
 layout_mode = 2
 focus_mode = 2
+theme_override_constants/separation = 10
 alignment = 1
 
 [node name="Correct" type="RichTextLabel" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer"]
@@ -160,6 +163,7 @@ layout_mode = 2
 theme_type_variation = &"feedback"
 theme_override_colors/default_color = Color(1, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_font_sizes/normal_font_size = 135
 bbcode_enabled = true
 text = "[center]INCORRECT"
 fit_content = true
@@ -177,24 +181,34 @@ bbcode_enabled = true
 text = "[center]Attempts: 1"
 fit_content = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 focus_mode = 2
 theme_override_constants/separation = 700
 alignment = 1
 
-[node name="ReturnButton" type="Button" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="ReturnButton" type="Button" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"popupButtons"
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
 text = " return "
 icon_alignment = 1
 
-[node name="NextButton" type="Button" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="NextButton" type="Button" parent="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
 theme_type_variation = &"popupButtons"
 text = " next "
+
+[node name="CorrectSound" type="AudioStreamPlayer" parent="Feedback"]
+script = ExtResource("15_dvoha")
+
+[node name="IncorrectSound" type="AudioStreamPlayer" parent="Feedback"]
+script = ExtResource("16_x0eif")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 offset_left = 15.0
@@ -323,6 +337,6 @@ anim_speed_max = 11.64
 [connection signal="mouse_entered" from="CheckButton" to="CheckButton" method="_on_mouse_entered"]
 [connection signal="pressed" from="CheckButton" to="LevelManager" method="checkPlayerInput"]
 [connection signal="pressed" from="CheckButton" to="Feedback" method="_on_check_button_pressed"]
-[connection signal="pressed" from="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/ReturnButton" to="Feedback" method="_on_return_button_pressed"]
-[connection signal="pressed" from="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/NextButton" to="LevelManager" method="_reset"]
-[connection signal="pressed" from="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/HBoxContainer/NextButton" to="Feedback" method="_on_next_button_pressed"]
+[connection signal="pressed" from="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/ReturnButton" to="Feedback" method="_on_return_button_pressed"]
+[connection signal="pressed" from="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/NextButton" to="LevelManager" method="_reset"]
+[connection signal="pressed" from="Feedback/PanelContainer/CenterContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/NextButton" to="Feedback" method="_on_next_button_pressed"]

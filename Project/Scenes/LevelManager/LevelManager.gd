@@ -138,9 +138,12 @@ func checkPlayerInput():
 	var confetti1 = get_parent().find_child('Confetti1')
 	var confetti2 = get_parent().find_child('Confetti2')
 	var confetti3 = get_parent().find_child('Confetti3')
+	var correctSound = get_parent().find_child("Feedback").find_child("CorrectSound")
+	var incorrectSound = get_parent().find_child("Feedback").find_child("IncorrectSound")
 	
 	## if it is correct
 	if correct:
+		correctSound.playSound()
 		confetti1.emitting = true
 		confetti2.emitting = true
 		confetti3.emitting = true
@@ -157,6 +160,7 @@ func checkPlayerInput():
 			GLevelData.completedTuts.append(GLevelData.currentTut)
 	## not correct
 	else:
+		incorrectSound.playSound()
 		attempts = attempts + 1
 		attemptText.text = "[center]Attempts: " + str(attempts)
 		print("Aw, you were incorrect :(")
