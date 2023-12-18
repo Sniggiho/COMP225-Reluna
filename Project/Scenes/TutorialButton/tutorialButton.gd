@@ -6,9 +6,10 @@ var tut : TutorialLevel
 func _ready():
 	tut = GTutorialMenu.tutMenu[int(tutorialNum)]
 	if int(tutorialNum) in GLevelData.completedTuts:
-		self.get_child(0).show() # if GLevelData thinks we've done this
+		self.get_child(0).show() # if GLevelData thinks we've done this, show the checkmark
 		
-	
+
+## When pressed loads data from self.tut into GLevelData and transitions to the game scene as a tutorial
 func _on_pressed():
 	GLevelData.tutorial = true
 	GLevelData.bySharps = tut.bySharps
@@ -22,9 +23,6 @@ func _on_pressed():
 	GLevelData.currentTut = int(tutorialNum)
 
 	SceneTransition.change_scene("res://Scenes/GameScene/firstScene.tscn")
-	
-	GLevelData.printValues()
-
 
 func _on_mouse_entered():
 	grab_focus()

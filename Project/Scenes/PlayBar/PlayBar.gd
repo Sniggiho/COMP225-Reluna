@@ -4,15 +4,19 @@ class_name PlayBar
 @export var path : Path2D
 @onready var pathFollow : PathFollow2D = path.get_child(0)
 
+## if the playbar is currently playing
 var playing : bool = false
 
+## the bpm at whoch to play notes
 var bpm : float
 
+## the number of notes in the level - used with bpm to determine playbar speed
 var numNotes : int
 
-## (numNotes + 1) * 60 / bpm / (1 - pregap)
+## How many seconds the melody should last. Determined as: (numNotes + 1) * 60 / bpm / (1 - pregap)
 var melodyLengthT : float = (6)*60/120.0/0.8
 
+## Sets numNotes and bpm, and calculates and sets melodyLengthT 
 func setNotesBPM(numNotes : int, bpm : float) -> void:
 	self.numNotes = numNotes
 	self.bpm = bpm
@@ -22,7 +26,7 @@ func setNotesBPM(numNotes : int, bpm : float) -> void:
 func _ready():
 	visible = false
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+# If playing is true, move the playbar
 func _process(delta):
 	if playing:
 		pathFollow.progress_ratio += (1.0 / melodyLengthT) * delta
@@ -38,6 +42,7 @@ func _reset() -> void:
 	pathFollow.progress_ratio = 0
 	global_position = pathFollow.global_position
 
+## Reset things and beging playing
 func play() -> void:
 	if not playing:
 		pathFollow.progress_ratio = 0

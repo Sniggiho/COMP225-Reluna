@@ -1,5 +1,6 @@
 extends Node2D
 
+# whether or not gleveldata has been set
 var valid : bool = false
 
 var tutorial : bool # true for tutorials, false for freeplay
@@ -44,8 +45,11 @@ func printValues():
 		print("detuneDir:", detuneDir)
 		print("maxDetuneCents:", maxDetuneCents)
 		print("minDetuneCents:", minDetuneCents)
+		print("numNotes:", numNotes)
 	else:
 		# tutorial settings
 		print("notes:",notes)
 		print("detunedAmountsList:", detunedAmountsList)
+		print("completedTuts:", completedTuts)
+		print("currentTut:", currentTut)
 		

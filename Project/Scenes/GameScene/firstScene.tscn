@@ -93,6 +93,7 @@ texture_focused = ExtResource("10_j7ihq")
 script = ExtResource("11_8m4k5")
 
 [node name="HintButton" type="TextureButton" parent="."]
+visible = false
 offset_left = 404.0
 offset_top = 704.0
 offset_right = 644.0

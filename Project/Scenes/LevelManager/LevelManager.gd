@@ -46,25 +46,25 @@ class_name LevelManager
 ## Both means it could be either    (detuneDirection =  0).
 @export var detuneDirection : int = 0
 
-## TODO
+## Displayed when the user check their input
 @onready var feedbackWindow : PackedScene
 
 
-##
+## The music staff to display - also manages play bar movement for playback
 @export var musicStaff : MusicStaff
 
 ## Path is passed to the tune creator
 @onready var path : Path2D
 
-## 
 var staffGapHeight : float
 
 @export var bpm : int = 120
 
+## Tune creator to handle note creation and management
 @onready var _tuneCreatorScene : PackedScene = preload("res://Scenes/TuneCreator/tune_creator.tscn")
 var _tuneCreator : TuneCreator
 
-## Will look like [false, true, false, false, ture], where the "true" positions have detuned notes
+## Will look like [false, true, false, false, ture], where the "true" positions have detuned notes. Used in freeplay mode
 var listOfDetunedNotes : Array
 
 ## Used in tutorial mode, a list of the notes comprising the melody
@@ -141,7 +141,7 @@ func checkPlayerInput():
 	var correctSound = get_parent().find_child("Feedback").find_child("CorrectSound")
 	var incorrectSound = get_parent().find_child("Feedback").find_child("IncorrectSound")
 	
-	## if it is correct
+	# if it is correct
 	if correct:
 		correctSound.playSound()
 		confetti1.emitting = true
@@ -158,7 +158,7 @@ func checkPlayerInput():
 		
 		if not GLevelData.currentTut in GLevelData.completedTuts:
 			GLevelData.completedTuts.append(GLevelData.currentTut)
-	## not correct
+	# not correct
 	else:
 		incorrectSound.playSound()
 		attempts = attempts + 1
@@ -170,6 +170,7 @@ func checkPlayerInput():
 		nextButton.visible = false
 		
 
+## Getter for the number of notes and bpm
 func getNoteCountBPM() -> Array:
 	return [numNotes, bpm]
 
@@ -208,6 +209,7 @@ func _reset():
 	newTuneCreator.emit()
 		
 
+## Generates the text to be displayed at the top of the level
 func _generateInstructionText() -> String:
 	var instructionText = "Select "
 	
@@ -242,7 +244,7 @@ func _ready():
 		musicStaff.setNotesBPM(GLevelData.numNotes, GLevelData.bpm) # TODO we don't need this?
 	else: 
 		GLevelData.displayText = self._generateInstructionText()
-		#TODO: do we need all these?
+
 		numNotes = GLevelData.numNotes
 		numOutOfTune = GLevelData.numDetunedNotes
 		minDetuneCents = GLevelData.minDetuneCents
@@ -264,6 +266,3 @@ func _on_return_button_pressed():
 	
 func getTuneCreator() -> TuneCreator:
 	return _tuneCreator
-
-
-
