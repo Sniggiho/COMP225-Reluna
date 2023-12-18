@@ -4,7 +4,7 @@ extends AudioStreamPlayer
 ## chooses the correct answer
 
 func _ready():
-	var audioStream: AudioStreamMP3 = load("res://Piano WAVs/correctSound.mp3")
+	var audioStream: AudioStream = load("res://Piano WAVs/correctSound3.wav")
 	self.set_stream(audioStream)
 
 func playSound() -> void:

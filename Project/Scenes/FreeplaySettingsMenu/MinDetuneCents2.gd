@@ -20,6 +20,7 @@ func _on_value_changed_derived(passedValue):
 	maxActualValue = passedValue
 	updateLabel(str(value))
 	GLevelData.minDetuneCents = value
+	grab_focus()
 
 
 func _on_max_detune_cents_value_changed(passedValue):

@@ -14,6 +14,7 @@ func _ready():
 func _on_value_changed_derived(passedValue):
 	updateLabel(str(value))
 	GLevelData.numDetunedNotes = value
+	grab_focus()
 
 
 ## CONNECTED FROM NUM NOTES

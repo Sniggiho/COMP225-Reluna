@@ -40,6 +40,7 @@ func _on_value_changed_derived(passedValue):
 	GLevelData.lowestNote = key[value]
 	updateLabel(_tuneCreator.getPrintableNoteName(GLevelData.lowestNote, GLevelData.bySharps))
 	minNoteChanged.emit(value)
+	grab_focus()
 
 #func _on_max_note_value_changed(passedValue):
 #	print("max note value changed called with passed value = ", passedValue)

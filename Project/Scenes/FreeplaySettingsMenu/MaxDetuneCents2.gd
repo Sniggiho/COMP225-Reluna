@@ -14,3 +14,4 @@ func _ready():
 func _on_value_changed_derived(passedValue):
 	updateLabel(str(value))
 	GLevelData.maxDetuneCents = value
+	grab_focus()

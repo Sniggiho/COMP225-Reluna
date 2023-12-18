@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bga4qsn2ueiyh"]
+[gd_scene load_steps=22 format=3 uid="uid://bga4qsn2ueiyh"]
 
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/FreeplaySettingsMenu.gd" id="1_qg26p"]
 [ext_resource type="Texture2D" uid="uid://dqg26wq4ious3" path="res://RelunaIcons/backArrowFocused.png" id="3_sr1yc"]
@@ -14,6 +14,9 @@
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MaxNote2.gd" id="20_ivtfm"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MaxDetuneCents2.gd" id="21_oi6lf"]
 [ext_resource type="Script" path="res://Scenes/FreeplaySettingsMenu/MinDetuneCents2.gd" id="22_ha0as"]
+
+[sub_resource type="GDScript" id="GDScript_cq01l"]
+script/source = "extends TextureButton"
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_hdchv"]
 grow_begin = 0.0
@@ -56,6 +59,7 @@ focus_neighbor_right = NodePath("../ForwardButton")
 texture_normal = ExtResource("16_im4tj")
 texture_hover = ExtResource("3_sr1yc")
 texture_focused = ExtResource("3_sr1yc")
+script = SubResource("GDScript_cq01l")
 
 [node name="ForwardButton" type="TextureButton" parent="."]
 offset_left = 1388.0
@@ -512,6 +516,7 @@ points = PackedVector2Array(0, 0, 0, 50)
 width = 4.0
 default_color = Color(0, 0, 0, 1)
 
+[connection signal="mouse_entered" from="BackButton" to="BackButton" method="_on_mouse_entered"]
 [connection signal="pressed" from="BackButton" to="." method="_goto_main_menu"]
 [connection signal="pressed" from="ForwardButton" to="." method="_on_button_pressed"]
 [connection signal="buttonsChanged" from="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps" to="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/MaxNote" method="_on_by_sharps_buttons_changed"]

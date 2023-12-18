@@ -17,3 +17,4 @@ func _on_value_changed_derived(passedValue):
 	updateLabel(str(value))
 	GLevelData.numNotes = value
 	valueChanged.emit(value)
+	grab_focus()

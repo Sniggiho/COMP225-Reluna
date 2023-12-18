@@ -16,3 +16,4 @@ func _ready():
 func _on_value_changed_derived(passedValue):
 	GLevelData.bpm = value
 	updateLabel(str(value))
+	grab_focus()

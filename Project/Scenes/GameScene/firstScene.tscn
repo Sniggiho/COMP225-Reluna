@@ -207,9 +207,11 @@ theme_type_variation = &"popupButtons"
 text = " next "
 
 [node name="CorrectSound" type="AudioStreamPlayer" parent="Feedback"]
+volume_db = -10.0
 script = ExtResource("15_dvoha")
 
 [node name="IncorrectSound" type="AudioStreamPlayer" parent="Feedback"]
+volume_db = -2.0
 script = ExtResource("16_x0eif")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]

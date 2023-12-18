@@ -10,18 +10,18 @@
 [sub_resource type="GDScript" id="GDScript_ns5jr"]
 script/source = "extends AudioStreamPlayer
 
-var defaultVolume = 0 # this is in decibels
+var defaultVolume = -5 # this is in decibels
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var noteName = get_node(\"..\").getNoteName()
-	var audioStream: AudioStreamWAV = load(\"res://Piano WAVs/\" + noteName + \".wav\")
+	var audioStream: AudioStream = load(\"res://Piano WAVs/\" + noteName + \".wav\")
 	self.set_stream(audioStream)
 	self.set_volume_db(defaultVolume)
 
-func loadMp3(path) -> AudioStreamWAV:
+func loadWav(path) -> AudioStream:
 	var file = FileAccess.open(path, FileAccess.READ)
-	var sound = AudioStreamWAV.new()
+	var sound = AudioStream.new()
 	sound.data = file.get_buffer(file.get_length())
 	return sound
 	
@@ -45,7 +45,6 @@ func _onButtonPressed() -> void:
 
 func _on_area_2d_area_entered(_area):
 	playDetuned()
-	pass # Replace with function body.
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q24im"]

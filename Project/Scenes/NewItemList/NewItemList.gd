@@ -175,6 +175,7 @@ func _on_buttons_changed():
 		# if both selected, it's 0. -1 if just flat, 1 if just sharp
 		GLevelData.detuneDir = int(sharpPressed) - int(flatPressed)
 	_updateButtonColor()
+	grab_focus()
 
 
 
