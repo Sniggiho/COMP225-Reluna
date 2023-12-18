@@ -77,10 +77,6 @@ func _updateSelectedSize() -> void:
 		if $Selected.size.x < 5:
 			$Selected.size.x = 5
 		
-		
-	else:
-		# TODO: Implement flip, if needed
-		pass
 	selectedChanged.emit()
 
 
