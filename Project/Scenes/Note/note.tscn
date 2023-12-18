@@ -18,13 +18,8 @@ func _ready():
 	var audioStream: AudioStream = load(\"res://Piano WAVs/\" + noteName + \".wav\")
 	self.set_stream(audioStream)
 	self.set_volume_db(defaultVolume)
-
-func loadWav(path) -> AudioStream:
-	var file = FileAccess.open(path, FileAccess.READ)
-	var sound = AudioStream.new()
-	sound.data = file.get_buffer(file.get_length())
-	return sound
 	
+## Plays the note an amount out of tune given by detuneCents
 func playDetuned() -> void:
 	var detuneCents = get_node(\"..\").getDetuneCents()
 	var detuneRatio = get_node(\"..\").centsToRatio(detuneCents) # this is a scaling factor on the original pitch
@@ -34,15 +29,16 @@ func playDetuned() -> void:
 	print(get_node(\"..\").noteName)
 	print(str(detuneCents) + \" cents out of tune\")
 
-	
+## Plays the note in tune
 func playInTune() -> void:
 	self.set_pitch_scale(1)
 	self.play()
-	
+
+## Play detuned when clicked
 func _onButtonPressed() -> void:
 	self.playDetuned() 
 
-
+## Play detuned when collided with the playbar
 func _on_area_2d_area_entered(_area):
 	playDetuned()
 "

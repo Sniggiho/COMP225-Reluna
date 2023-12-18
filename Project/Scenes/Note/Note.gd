@@ -2,7 +2,7 @@ extends Control
 class_name Note
 ## Note class is an interactable note that encomposses all of
 ## the characteristics of a note including note name, note sound, 
-## note color, note shape and size, ledger lines 
+## note color, note shape and size, and ledger lines 
 
 ## number of cents detuned
 @export var detuneCents := 0
@@ -165,9 +165,7 @@ func createLedgerLines() ->  void:
 						color,
 						5
 					)
-			pass
-	
-	pass
+
 
 ## select the note and change color accordingly
 func select() -> void:
