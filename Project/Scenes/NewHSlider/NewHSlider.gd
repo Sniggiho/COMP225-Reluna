@@ -8,18 +8,17 @@ class_name NewHSlider
 ## Edit this value to be the minimum allowed value of the slider instead of min_value
 @export var minActualValue : int = 0
 
+## The max value may be some value you want the slider to reflect but not actually reach
 @export var maxActualValue : int = 30
 
 ## Margin number of pixels for a border
 @export var margin : float = 20
 
+## Inner margin width around the selected bar
 @export var innerMargin : float = 10
 
 ## A given height
 @export var height : float = 20
-
-## Selects which side the "selected" bar starts from 
-@export var flip : bool = false
 
 
 @export_color_no_alpha var backgroundColor : Color = Color("afafaf")
@@ -68,14 +67,13 @@ func _process(_delta):
 
 
 func _updateSelectedSize() -> void:
-	if not flip:
-		# Improved so while (min_value < max_value), min_value can be anything and the bar still works
-		$Selected.position = Vector2(innerMargin, innerMargin)
-		$Selected.size.x = (value - min_value) / (max_value - min_value) * self.size.x - 2 * innerMargin
-		$Selected.size.y = self.size.y - 2 * innerMargin
-		
-		if $Selected.size.x < 5:
-			$Selected.size.x = 5
+	# Improved so while (min_value < max_value), min_value can be anything and the bar still works
+	$Selected.position = Vector2(innerMargin, innerMargin)
+	$Selected.size.x = (value - min_value) / (max_value - min_value) * self.size.x - 2 * innerMargin
+	$Selected.size.y = self.size.y - 2 * innerMargin
+	
+	if $Selected.size.x < 5:
+		$Selected.size.x = 5
 		
 	selectedChanged.emit()
 
@@ -89,6 +87,8 @@ func _updateShader() -> void:
 	$CenterContainer/Text.get_material().set_shader_parameter("negativeTextColor", negativeTextColor)
 
 
+# This should be the only point where you directly change value
+# If a derived class changes value in this way, it will lead to circular references
 func _on_value_changed_newhslider_base(passedValue) -> void:
 	value = max(minActualValue, min(maxActualValue, passedValue))
 	_updateSelectedSize()

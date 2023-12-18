@@ -1,12 +1,16 @@
 @tool
 extends Control
 
+# Outer margin width of the colored background
 @export var backgroundMargin : int = 4
 
+# Margin width of the inner selected box
 @export var innerMargin : float = 4
 
 @export var sharpPressed : bool = true
 @export var flatPressed : bool = false
+
+## Variable if both buttons can be selected at the same time 
 var doubleSelect : bool = true
 
 @export var neutralColor : Color = Color("b0b0b0")
@@ -26,6 +30,7 @@ enum option {AccidentalChoice, DetuneDirection}
 @export var type : option = option.AccidentalChoice
 
 @export var topFocus : Control
+@export var bottomFocus : Control
 
 signal buttonsChanged
 
@@ -39,6 +44,10 @@ func _ready():
 	if topFocus:
 		$SharpButton.focus_neighbor_top = $SharpButton.get_path_to(topFocus)
 		$FlatButton.focus_neighbor_top = $FlatButton.get_path_to(topFocus)
+		
+	if bottomFocus:
+		$SharpButton.focus_neighbor_bottom = $SharpButton.get_path_to(bottomFocus)
+		$FlatButton.focus_neighbor_bottom = $FlatButton.get_path_to(bottomFocus)
 	
 	_updateButtonColor()
 	
