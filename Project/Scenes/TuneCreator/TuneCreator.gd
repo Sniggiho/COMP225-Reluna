@@ -12,44 +12,50 @@ class_name TuneCreator
 
 var _path : Path2D
 var _pathFollower : PathFollow2D
-@onready var _noteScene : PackedScene = preload("res://Scenes/Note/note.tscn") # Real note. Button functionality and sound
 
+@onready var _noteScene : PackedScene = preload("res://Scenes/Note/note.tscn")
+
+# the number of notes to create and manage
 var _numNotes : int
+
+# A list detailing which notes are out of tune
 var _detunedList : Array
+
+# If out of tune notes may be sharp or flat. 
 var _detuneDir : int # -1 for flat only, 0 for both, 1 for sharp only
+
+# The maximum and minimum amount that notes should be detuned
 var _maxDetuneCents : int
 var _minDetuneCents : int
 
 # Indicates the list of notes that are put on the screen
 var _listOfNotes : Array
+
 # Pregenerated list of all possible notes 
 var _possibleNotes : Array
 
-var _givenNotes : Array # in the case where we're given a melody, this holds that melody
+# In the case where we're given a melody, this holds that melody
+var _givenNotes : Array 
 
-var _detunedAmountsList : Array # in case of full manual generation we're given a list of how much to detune each note, that's stored here
+# In case of full manual generation we're given a list of how much to detune each note, that's stored here
+var _detunedAmountsList : Array 
 
+# Currently selected notes. Compared to the list of detuned notes to check user input
 var _selectedNotes : Array
 
+# If the current key uses sharps (true) or flats (false)
 var _bySharps : bool = true
 
 var lineHeight : float
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
+## Setter for the TuneCreator's path and path follower
 func givePath(path : Path2D):
 	self._path = path
 	_pathFollower = path.get_child(0)
 
-## For use in free play mode, the user's selection of difficulty is passed to
+## For use in free play mode, the user's desired level generation settings are passed to
 ## the Tune Creator for the generation of notes. 
-## _tuneCreator.setUpRand(numAccidentals, bySharp, minOct, maxOct, listOfDetunedNotes, detuneDirection, maxDetuneCents, minDetuneCents)
 func setupRand(numAccidentals, bySharps, lowestNote, highestNote, detunedList, detuneDir, maxDetuneCents, minDetuneCents) -> void:
 	self._possibleNotes = _createNoteArrayInKey(numAccidentals,bySharps,lowestNote,highestNote)
 	self._bySharps = bySharps
@@ -61,7 +67,7 @@ func setupRand(numAccidentals, bySharps, lowestNote, highestNote, detunedList, d
 	
 	generate()
 
-## For use in tutorial mode. Given a list of notes comprising some melody, and information on which
+## Given a list of notes comprising some melody, and information on which
 ## notes to detune, randomly detunes the given notes within given detune parameters.
 func setupHalfManual(notes, bySharps, detunedList, detuneDir, maxDetuneCents, minDetuneCents):
 	self._givenNotes = notes
@@ -72,7 +78,8 @@ func setupHalfManual(notes, bySharps, detunedList, detuneDir, maxDetuneCents, mi
 	self._maxDetuneCents = maxDetuneCents
 	self._minDetuneCents = minDetuneCents
 	generate(false, true)
-	
+
+##  For use in tutorial mode. Given a list of notes, and how much (if any) to detune each, generates a tune
 func setupFullManual(notes, bySharps, detunedAmountsList):
 	self._givenNotes = notes
 	self._bySharps = bySharps
@@ -127,12 +134,9 @@ func generate(randomNotes = true, randomDetune = true) -> void:
 		note.orientation()
 		note.lineHeight = lineHeight
 		_listOfNotes.append(note)
-		print(_pathFollower.global_position)
 		note.global_position.x = _pathFollower.global_position.x
 		note.global_position.y = pathY + -1 * (note.hOffset() * lineHeight / 2)
-#		print(note.global_position.y)
-		##print(note.hOffset() * lineHeight / 2)
-#	_pathFollower.progress_ratio = 0
+
 	_listOfNotes[0].selectable = false
 
 	
@@ -154,8 +158,6 @@ func cleanup() -> void:
 
 # Internal function for creation of all possible note names between two given octaves. 
 func _createNoteArrayChromatic(lowOct, highOct)-> Array:
-	"""Generates all the possible note names between the two given octaves (inclusive)
-	"""
 	var allNotes = []
 	for note in ["a","b","c","d","e","f","g"]:
 		for oct in range(lowOct,highOct+1):
@@ -165,23 +167,9 @@ func _createNoteArrayChromatic(lowOct, highOct)-> Array:
 	return allNotes
 
 	
-##Creates an array containing the note names for a mode with the specified number of accidentals
-##
-##	Parameters:
-##		accidentals : int 
-##			number of accidentals for the desired key
-##		bySharps : boolean 
-##			if true adds accidentals as sharps; otherwise adds them as flats
-##		lowest : int 
-##			all notes in key must be this or higher (inclusive)
-##		highOct : int 
-##			all notes in key must be lower than this (inclusive)
-##
-##	Return:
-##		allNotes : array
-##			array containing the names of all notes found in the given key
+## Creates an array containing all notes in a key with the specified number and type
+## of accidentals between the given lowest and highest note
 func _createNoteArrayInKey(accidentals, bySharps, lowestNote, highestNote) -> Array:
-	print("create note array calls were: accidentals = ", accidentals, " byShaprs = ", bySharps, " lowestNote = ", lowestNote, " and higghest note = ", highestNote)
 	assert(accidentals<=6) # cannot have more than 6 accidentals
 	# sharps order is: F – C – G – D – A – E – B
 	# flats order is: B - E - A - D - G - C - F
@@ -206,7 +194,6 @@ func _createNoteArrayInKey(accidentals, bySharps, lowestNote, highestNote) -> Ar
 		for i in range(accidentals, 7):
 			notesInKey.append(naturalsForFlats[i])
 			
-	print("Note names in key are: ", notesInKey)
 	var lowOct = int(lowestNote[-1])
 	var highOct = int(highestNote[-1])
 	
@@ -219,8 +206,6 @@ func _createNoteArrayInKey(accidentals, bySharps, lowestNote, highestNote) -> Ar
 		if self.compareNotes(n, lowestNote) and self.compareNotes(highestNote, n):
 			allNotesCorrectRange.append(n)
 			
-	
-	print("Current key contains:", allNotesCorrectRange)
 	return allNotesCorrectRange
 
 ## return if scale is sharp or flat
