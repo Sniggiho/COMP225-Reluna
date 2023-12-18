@@ -224,7 +224,7 @@ func getPrintableNoteName(n, bySharps : bool):
 			var noteNames = ["A", "B", "C", "D", "E", "F", "G", "A"]
 			var enharmonicIdx = noteNames.find(n[0])
 			n = noteNames[enharmonicIdx+1]+ n.right(-1) 
-			n = n.replace("-", "♭")
+			n = n.replace("-",  "b")
 	return n
 
 ## returns true if the first note is higher than or equal to the second note, and false if the second note is higher 

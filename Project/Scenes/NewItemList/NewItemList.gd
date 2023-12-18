@@ -34,8 +34,8 @@ enum option {AccidentalChoice, DetuneDirection}
 
 signal buttonsChanged
 
-@export var leftLabel : String = "Sharp"
-@export var rightLabel : String = "Flat"
+@export var leftLabel : String = "#"
+@export var rightLabel : String = "b"
 
 
 # Called when the node enters the scene tree for the first time.
@@ -62,7 +62,6 @@ func _ready():
 		_updateButtonColor()
 	elif type == option.AccidentalChoice:
 		GLevelData.bySharps = sharpPressed
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

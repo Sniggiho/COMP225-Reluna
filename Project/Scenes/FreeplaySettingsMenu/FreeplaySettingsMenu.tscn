@@ -160,8 +160,6 @@ negativeColor = Color(0.6875, 0.6875, 0.6875, 1)
 negativeFontColor = Color(0.996094, 0.996094, 0.996094, 1)
 type = 0
 topFocus = NodePath("../../../../../../../../BackButton")
-leftLabel = "#"
-rightLabel = "♭"
 
 [node name="Background" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps" index="0"]
 offset_right = 654.0
@@ -219,7 +217,7 @@ offset_bottom = 100.0
 [node name="RichTextLabel" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps/FlatButton/CenterContainer" index="0"]
 theme_override_colors/default_color = Color(0.996094, 0.996094, 0.996094, 1)
 theme_override_font_sizes/normal_font_size = 40
-text = "♭"
+text = "b"
 
 [node name="Line2D" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column A/ColumnA/Accidental Choice/BySharps" index="5"]
 points = PackedVector2Array(325, 0, 325, 100)
@@ -359,6 +357,8 @@ positiveFontColor = Color(0.164706, 0.713726, 0.917647, 1)
 negativeFontColor = Color(0.996094, 0.996094, 0.996094, 1)
 selectedColor = Color(0.654902, 0.811765, 0.882353, 1)
 type = 1
+leftLabel = "Sharp"
+rightLabel = "Flat"
 
 [node name="Background" type="ColorRect" parent="CenterContainer/VBoxContainer/CenterContainer/HBoxContainer/Column B/ColumnB/DetuneDirection/DetuneDirection"]
 layout_mode = 0
